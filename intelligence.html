@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uppipe — Creative Intelligence Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cobalt:#1A56FF;--cobalt-deep:#0D3FBF;--cobalt-tint:#E8EFFE;
+  --lime:#C8FF00;--lime-mid:#A8D900;
+  --cream:#FDFBF7;--white:#FFFFFF;
+  --dark:#2D2D2D;--mid:#6B6B6B;--lt:#AFAFAF;
+  --border:#E8E8E8;--success:#10B981;--warn:#F59E0B;--danger:#EF4444;
+  --g-hero:radial-gradient(ellipse 72% 64% at 14% 88%,#F5C6D8 0%,transparent 62%),
+           radial-gradient(ellipse 58% 52% at 86% 18%,#C8FF00 0%,transparent 58%),
+           radial-gradient(ellipse 62% 56% at 52% 52%,#B8AAFF 0%,transparent 64%),
+           radial-gradient(ellipse 52% 46% at 82% 78%,#5B8BFF 0%,transparent 58%),
+           linear-gradient(138deg,#F5C6D8 0%,#C4AAFF 38%,#4870FF 70%,#C8FF00 100%);
+  --g-pastel:radial-gradient(ellipse 72% 52% at 28% 72%,#F5C6D8 0%,transparent 58%),
+             radial-gradient(ellipse 52% 62% at 82% 28%,#E0ECFF 0%,transparent 54%),
+             radial-gradient(ellipse 48% 48% at 55% 45%,rgba(184,170,255,0.35) 0%,transparent 55%),
+             linear-gradient(128deg,#FDE8F1 0%,#F5C6D8 38%,#E8EFFE 100%);
+}
+body{font-family:'Montserrat',sans-serif;background:var(--g-pastel);background-attachment:fixed;color:var(--dark);min-height:100vh;}
+
+.nav{padding:16px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba(255,255,255,0.65);border-bottom:1px solid rgba(255,255,255,0.8);}
+.logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--cobalt-deep);}
+.logo em{font-style:normal;color:var(--cobalt);}
+.nav-badge{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;background:rgba(200,255,0,0.3);color:#5A8A00;padding:4px 12px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+
+.hero{background:var(--g-hero);padding:72px 48px 80px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.08);}
+.hero-inner{position:relative;z-index:1;max-width:900px;}
+.hero-pill{font-size:8px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;background:rgba(255,255,255,0.9);color:var(--cobalt);padding:5px 16px;border-radius:100px;margin-bottom:20px;display:inline-block;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(40px,6vw,72px);font-weight:800;color:#0D3FBF;line-height:1.0;letter-spacing:-2px;margin-bottom:16px;}
+.hero h1 em{font-style:normal;color:var(--cobalt-deep);}
+.hero p{font-size:14px;color:#0D3FBF;opacity:0.75;line-height:1.8;max-width:560px;font-weight:500;margin-bottom:40px;}
+.stats-row{display:flex;gap:16px;flex-wrap:wrap;}
+.stat{background:rgba(255,255,255,0.6);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:14px;padding:18px 24px;min-width:120px;}
+.stat-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--cobalt-deep);letter-spacing:-1px;line-height:1;}
+.stat-lbl{font-size:9px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-top:4px;font-weight:700;}
+
+.main{display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin:0 auto;padding:48px;gap:24px;}
+@media(max-width:768px){.main{grid-template-columns:1fr;}}
+
+.gcard{backdrop-filter:blur(20px);background:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.85);border-radius:20px;box-shadow:0 8px 32px rgba(26,86,255,0.08),inset 0 1px 0 rgba(255,255,255,0.95);padding:36px;}
+
+.section-label{font-size:8px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:28px;display:flex;align-items:center;gap:10px;}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--cobalt);background:rgba(26,86,255,0.1);padding:2px 8px;border-radius:4px;}
+
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:9px;font-weight:800;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.field-hint{font-size:9px;color:var(--lt);margin-top:5px;font-style:italic;}
+select{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(255,255,255,0.9);color:var(--dark);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;padding:12px 16px;border-radius:12px;outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 2px 8px rgba(26,86,255,0.06);}
+select:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26,86,255,0.12);}
+
+.rush-toggle{display:flex;gap:8px;}
+.rush-btn{flex:1;padding:12px;background:rgba(255,255,255,0.6);border:1.5px solid rgba(255,255,255,0.9);color:var(--mid);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;border-radius:12px;cursor:pointer;transition:all 0.2s;text-align:center;}
+.rush-btn.active{background:var(--cobalt);border-color:var(--cobalt);color:white;box-shadow:0 4px 12px rgba(26,86,255,0.3);}
+.rush-btn.active-rush{background:#EF4444;border-color:#EF4444;color:white;box-shadow:0 4px 12px rgba(239,68,68,0.3);}
+
+.predict-btn{width:100%;padding:16px;background:var(--cobalt);border:none;color:white;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.5px;border-radius:100px;cursor:pointer;margin-top:8px;transition:all 0.2s;box-shadow:0 4px 16px rgba(26,86,255,0.3);display:flex;align-items:center;justify-content:center;gap:8px;}
+.predict-btn:hover{background:var(--cobalt-deep);transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,86,255,0.35);}
+
+.result-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px;text-align:center;gap:12px;}
+.result-empty .icon{width:52px;height:52px;border-radius:50%;background:rgba(26,86,255,0.08);display:flex;align-items:center;justify-content:center;font-size:24px;}
+.result-empty p{font-size:12px;line-height:1.8;max-width:220px;color:var(--mid);}
+
+.result-content{display:none;}
+.result-content.visible{display:block;animation:fadeUp 0.4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.res-header{margin-bottom:20px;}
+.res-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--cobalt);background:rgba(26,86,255,0.08);padding:3px 10px;border-radius:100px;margin-bottom:6px;display:inline-block;}
+.res-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);letter-spacing:-0.5px;}
+.res-subtitle{font-size:11px;color:var(--mid);margin-top:4px;font-weight:500;}
+
+/* CONFIDENCE BADGE */
+.confidence{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:9px;font-weight:800;margin-top:8px;}
+.conf-high{background:#D1FAE5;color:#065F46;}
+.conf-med{background:#FEF3C7;color:#92400E;}
+.conf-low{background:#F3F4F6;color:#6B7280;}
+
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.metric{background:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.9);border-radius:14px;padding:16px;}
+.metric-val{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:2px;color:var(--dark);}
+.metric-lbl{font-size:9px;font-weight:700;color:var(--mid);letter-spacing:1px;text-transform:uppercase;}
+.metric-sub{font-size:9px;color:var(--lt);margin-top:2px;}
+.metric.primary{border-color:rgba(26,86,255,0.3);background:rgba(26,86,255,0.05);}
+.metric.primary .metric-val{color:var(--cobalt-deep);}
+.metric.warn-m .metric-val{color:#B45309;}
+.metric.danger-m .metric-val{color:#B91C1C;}
+.metric.ok-m .metric-val{color:#065F46;}
+
+.rounds-section{margin:16px 0;}
+.rounds-label{font-size:9px;font-weight:800;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.rounds-visual{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.round-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;}
+.round-initial{background:var(--cobalt);color:white;}
+.round-adj{background:rgba(245,158,11,0.2);color:#92400E;border:1.5px solid rgba(245,158,11,0.3);}
+.round-final{background:#D1FAE5;color:#065F46;}
+.rounds-legend{font-size:10px;color:var(--mid);margin-top:8px;line-height:1.6;}
+
+.insight{background:rgba(26,86,255,0.05);border:1.5px solid rgba(26,86,255,0.12);border-left:4px solid var(--cobalt);border-radius:12px;padding:16px;font-size:11px;color:var(--mid);line-height:1.8;font-weight:500;}
+.insight strong{color:var(--dark);}
+
+.fallback-note{font-family:var(--font-mono);font-size:9px;color:var(--color-text-tertiary);margin-top:12px;padding:8px 12px;background:rgba(0,0,0,0.03);border-radius:8px;}
+
+/* TABLE SECTION */
+.table-section{grid-column:1/-1;background:rgba(255,255,255,0.5);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.85);border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(26,86,255,0.06);}
+.table-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);letter-spacing:-0.5px;margin-bottom:6px;}
+.table-sub{font-size:11px;color:var(--mid);margin-bottom:28px;font-weight:500;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{text-align:left;font-size:8px;font-weight:800;color:var(--mid);letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border-bottom:1.5px solid rgba(0,0,0,0.06);}
+td{padding:12px 16px;border-bottom:1px solid rgba(0,0,0,0.04);font-weight:600;}
+tr:hover td{background:rgba(26,86,255,0.03);}
+.pill-g{display:inline-block;padding:3px 10px;border-radius:100px;font-size:9px;font-weight:800;}
+.pg-green{background:#D1FAE5;color:#065F46;}
+.pg-warn{background:#FEF3C7;color:#92400E;}
+.pg-red{background:#FEE2E2;color:#991B1B;}
+
+.dot-row{display:flex;gap:4px;align-items:center;}
+.dot{width:10px;height:10px;border-radius:50%;}
+
+footer{background:rgba(10,12,28,0.88);padding:20px 48px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);}
+footer p{font-size:9px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;}
+footer .accent{color:var(--lime);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">up<em>pipe</em></div>
+  <div class="nav-badge">Intelligence Preview · v0.2</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill">Powered by 7 years of real creative production data</div>
+    <h1>Predict the full<br><em>asset lifecycle.</em></h1>
+    <p>Enter an asset type and client. Uppipe predicts total delivery time, expected revision rounds, and confidence level — before a designer touches the brief.</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">871</div><div class="stat-lbl">Real assets tracked</div></div>
+      <div class="stat"><div class="stat-num">481K+</div><div class="stat-lbl">Project actions logged</div></div>
+      <div class="stat"><div class="stat-num">7 yrs</div><div class="stat-lbl">Production history</div></div>
+      <div class="stat"><div class="stat-num">9</div><div class="stat-lbl">Industries</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- PREDICTOR -->
+  <div class="gcard">
+    <div class="section-label"><span class="section-num">01</span> What are you producing?</div>
+
+    <div class="field">
+      <label>Asset type</label>
+      <select id="assetType">
+        <option value="">Select the asset you need...</option>
+        <optgroup label="Social Media">
+          <option value="Insta Story">Insta Story</option>
+          <option value="Instagram (Image  ONLY, NO Text)">Instagram Image</option>
+          <option value="Facebook Carrousel">Facebook Carousel</option>
+          <option value="Facebook Share Image (Square)">Facebook Share Image (Square)</option>
+          <option value="Facebook Share Image (Vertical)">Facebook Share Image (Vertical)</option>
+          <option value="Facebook Share Image (Horizontal)">Facebook Share Image (Horizontal)</option>
+          <option value="Paid Facebook Ad (Square)">Paid Facebook Ad (Square)</option>
+          <option value="Paid Facebook Ad">Paid Facebook Ad</option>
+          <option value="Banner Filtro">Banner Filtro</option>
+          <option value="Banner Home">Banner Home</option>
+          <option value="InApp">In-App Banner</option>
+          <option value="Collection 1 vertical">Collection 1 Vertical</option>
+          <option value="Collection 3 cuadrados">Collection 3 Squares</option>
+        </optgroup>
+        <optgroup label="Print">
+          <option value="A4 Flyer - One Sided">A4 Flyer — One Sided</option>
+          <option value="A4 Flyer - Two Sided">A4 Flyer — Two Sided</option>
+          <option value="A3 Poster - One Sided">A3 Poster — One Sided</option>
+          <option value="A1 Poster - One Sided">A1 Poster — One Sided</option>
+          <option value="A5 Flyer - Two Sided">A5 Flyer — Two Sided</option>
+          <option value="A6 Print Card - Two Sided">A6 Print Card — Two Sided</option>
+          <option value="4x6 Promo Card - One Sided">4x6 Promo Card — One Sided</option>
+          <option value="4x6 Promo Card - Two Sided">4x6 Promo Card — Two Sided</option>
+          <option value="11x17 Poster - One Sided">11x17 Poster — One Sided</option>
+        </optgroup>
+        <optgroup label="Digital">
+          <option value="Email Body Image">Email Body Image</option>
+          <option value="Email Header">Email Header</option>
+          <option value="Blog Interior Image">Blog Interior Image</option>
+          <option value="Header">Header</option>
+          <option value="Cover">Cover</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="Other">Custom / Other Asset</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Client</label>
+      <select id="client">
+        <option value="">Select client (optional)...</option>
+        <option value="Vanti">Vanti — Energy</option>
+        <option value="Galgo">Galgo — Fintech</option>
+        <option value="Alpina">Alpina — Food & Beverage</option>
+        <option value="Rappi">Rappi — Tech / Delivery</option>
+        <option value="AAICO">AAICO — Real Estate</option>
+        <option value="BrandNew">BrandNew — Agency</option>
+        <option value="Wanderloop">Wanderloop — Travel</option>
+        <option value="Gifted Breads">Gifted Breads — Food</option>
+        <option value="CONACO">CONACO — Construction</option>
+        <option value="Sugati Coaching">Sugati Coaching — Services</option>
+        <option value="400 Grados">400 Grados — F&B</option>
+      </select>
+      <div class="field-hint">If your client isn't listed, we'll use industry benchmarks instead.</div>
+    </div>
+
+    <div class="field">
+      <label>Urgency</label>
+      <div class="rush-toggle">
+        <button class="rush-btn active" id="rushNo" onclick="setRush('No')">Standard delivery</button>
+        <button class="rush-btn" id="rushToday" onclick="setRush('Today')">🔴 Rush — same day</button>
+      </div>
+    </div>
+
+    <button class="predict-btn" onclick="predict()">
+      <span>Predict this asset</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="gcard">
+    <div class="section-label"><span class="section-num">02</span> Asset intelligence</div>
+
+    <div class="result-empty" id="emptyState">
+      <div class="icon">◎</div>
+      <p>Select an asset type and run the prediction to see the full delivery estimate.</p>
+    </div>
+
+    <div class="result-content" id="resultContent">
+      <div class="res-header">
+        <div class="res-tag" id="resTag"></div>
+        <div class="res-title" id="resTitle"></div>
+        <div class="res-subtitle" id="resSubtitle"></div>
+        <div id="confidenceBadge"></div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric primary">
+          <div class="metric-val" id="resTotal">—</div>
+          <div class="metric-lbl">Total delivery time</div>
+          <div class="metric-sub">from brief to approval</div>
+        </div>
+        <div class="metric" id="rushMetric">
+          <div class="metric-val" id="resRush">—</div>
+          <div class="metric-lbl">Under rush</div>
+          <div class="metric-sub">same-day urgency</div>
+        </div>
+      </div>
+
+      <div class="rounds-section">
+        <div class="rounds-label">Typical revision journey</div>
+        <div class="rounds-visual" id="roundsVisual"></div>
+        <div class="rounds-legend" id="roundsLegend"></div>
+      </div>
+
+      <div class="insight" id="insightBox"></div>
+      <div class="fallback-note" id="fallbackNote"></div>
+    </div>
+  </div>
+
+  <!-- CLIENT REVISION TABLE -->
+  <div class="table-section">
+    <div class="table-title">Client revision patterns</div>
+    <div class="table-sub">How many adjustment rounds each client typically requests per asset. Based on real production history.</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Typical rounds</th>
+          <th>Average rounds</th>
+          <th>Pattern</th>
+          <th>What this means</th>
+        </tr>
+      </thead>
+      <tbody id="riskTbody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  <p>Uppipe Creative Intelligence — <span class="accent">trained on real assets, not assumptions</span></p>
+  <p>© 2026 Uppipe · uppipe.io</p>
+</footer>
+
+<script>
+const MODEL = {"L1":{"11x17 Poster - One Sided|Vanti":{"median":0.82,"mean":3.0,"adj_rounds":1.0,"count":5},"4x6 Promo Card - One Sided|Gifted Breads":{"median":2.25,"mean":2.25,"adj_rounds":3.0,"count":1},"4x6 Promo Card - Two Sided|Gifted Breads":{"median":1.81,"mean":1.81,"adj_rounds":4.0,"count":1},"A1 Poster - One Sided|Vanti":{"median":1.55,"mean":1.51,"adj_rounds":1.0,"count":4},"A3 Poster - One Sided|Gifted Breads":{"median":11.37,"mean":11.37,"adj_rounds":8.0,"count":1},"A3 Poster - One Sided|Vanti":{"median":0.19,"mean":0.24,"adj_rounds":1.0,"count":3},"A4 Flyer - One Sided|BrandNew":{"median":2.29,"mean":2.29,"adj_rounds":0.5,"count":2},"A4 Flyer - One Sided|Gifted Breads":{"median":0.27,"mean":0.27,"adj_rounds":0.0,"count":1},"A4 Flyer - One Sided|Vanti":{"median":1.52,"mean":2.13,"adj_rounds":1.0,"count":20},"A4 Flyer - Two Sided|Gifted Breads":{"median":2.8,"mean":2.8,"adj_rounds":0.0,"count":1},"A5 Flyer - Two Sided|BrandNew":{"median":1.2,"mean":1.2,"adj_rounds":1.0,"count":1},"A5 Flyer - Two Sided|Vanti":{"median":0.76,"mean":0.76,"adj_rounds":1.0,"count":1},"A6 Print Card - Two Sided|Galgo":{"median":0.78,"mean":0.78,"adj_rounds":0.0,"count":1},"Banner Filtro|Galgo":{"median":0.09,"mean":0.15,"adj_rounds":0.0,"count":10},"Banner Filtro|Rappi":{"median":0.12,"mean":0.31,"adj_rounds":1.0,"count":11},"Banner Home|Galgo":{"median":0.72,"mean":0.79,"adj_rounds":1.0,"count":28},"Banner Home|Rappi":{"median":0.45,"mean":0.84,"adj_rounds":1.0,"count":12},"Banner Home|Vanti":{"median":0.71,"mean":1.26,"adj_rounds":0.0,"count":18},"Blog Interior Image|BrandNew":{"median":2.44,"mean":2.44,"adj_rounds":1.0,"count":1},"Blog Interior Image|Galgo":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"Blog Interior Image|Vanti":{"median":1.81,"mean":1.81,"adj_rounds":1.0,"count":2},"Collection 1 vertical|Galgo":{"median":0.11,"mean":0.11,"adj_rounds":0.0,"count":1},"Collection 1 vertical|Vanti":{"median":2.07,"mean":2.07,"adj_rounds":2.0,"count":2},"Collection 3 cuadrados|BrandNew":{"median":0.93,"mean":0.93,"adj_rounds":1.0,"count":2},"Collection 3 cuadrados|Vanti":{"median":3.13,"mean":3.13,"adj_rounds":2.0,"count":1},"Cover|Galgo":{"median":0.01,"mean":0.01,"adj_rounds":0.0,"count":1},"Email Body Image|BrandNew":{"median":2.33,"mean":2.33,"adj_rounds":0.0,"count":1},"Email Body Image|Vanti":{"median":0.38,"mean":0.47,"adj_rounds":1.0,"count":3},"Email Header|Alpina":{"median":0.32,"mean":0.32,"adj_rounds":1.0,"count":1},"Facebook Carrousel|BrandNew":{"median":1.33,"mean":1.33,"adj_rounds":0.0,"count":1},"Facebook Carrousel|Galgo":{"median":0.79,"mean":1.38,"adj_rounds":0.0,"count":20},"Facebook Carrousel|Vanti":{"median":1.97,"mean":2.33,"adj_rounds":1.0,"count":3},"Facebook Share Image (Horizontal)|AAICO":{"median":0.33,"mean":0.33,"adj_rounds":0.0,"count":1},"Facebook Share Image (Horizontal)|Galgo":{"median":5.9,"mean":5.9,"adj_rounds":1.0,"count":2},"Facebook Share Image (Square)|Galgo":{"median":1.65,"mean":1.31,"adj_rounds":0.0,"count":3},"Facebook Share Image (Square)|Vanti":{"median":3.4,"mean":3.4,"adj_rounds":0.0,"count":1},"Facebook Share Image (Vertical)|Galgo":{"median":0.13,"mean":1.18,"adj_rounds":1.0,"count":4},"Header|Galgo":{"median":0.02,"mean":0.02,"adj_rounds":0.0,"count":1},"Header|Vanti":{"median":0.8,"mean":0.8,"adj_rounds":0.0,"count":1},"InApp|Rappi":{"median":0.06,"mean":0.26,"adj_rounds":1.0,"count":10},"InApp|Vanti":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"Insta Story|Galgo":{"median":0.6,"mean":0.81,"adj_rounds":0.0,"count":56},"Insta Story|Rappi":{"median":0.04,"mean":0.21,"adj_rounds":1.0,"count":11},"Insta Story|Vanti":{"median":1.25,"mean":1.65,"adj_rounds":0.0,"count":35},"Insta Story|Wanderloop":{"median":2.02,"mean":2.02,"adj_rounds":2.0,"count":2},"Instagram (Image  ONLY, NO Text)|BrandNew":{"median":1.27,"mean":1.27,"adj_rounds":0.5,"count":2},"Instagram (Image  ONLY, NO Text)|Galgo":{"median":0.67,"mean":1.31,"adj_rounds":0.0,"count":21},"Instagram (Image  ONLY, NO Text)|Vanti":{"median":1.41,"mean":2.36,"adj_rounds":0.5,"count":30},"Instagram (Image  ONLY, NO Text)|Wanderloop":{"median":1.18,"mean":1.18,"adj_rounds":2.0,"count":1},"Other|400 Grados":{"median":8.33,"mean":8.33,"adj_rounds":2.0,"count":1},"Other|AAICO":{"median":5.33,"mean":10.26,"adj_rounds":0.5,"count":18},"Other|Alpina":{"median":3.41,"mean":5.83,"adj_rounds":1.0,"count":24},"Other|BrandNew":{"median":6.55,"mean":32.08,"adj_rounds":0.0,"count":84},"Other|CONACO":{"median":8.7,"mean":8.7,"adj_rounds":5.0,"count":1},"Other|Catalina Perez":{"median":5.48,"mean":5.48,"adj_rounds":1.0,"count":1},"Other|Galgo":{"median":1.53,"mean":2.43,"adj_rounds":0.0,"count":159},"Other|Maria Elena Interiores":{"median":0.45,"mean":0.45,"adj_rounds":0.0,"count":1},"Other|Rappi":{"median":0.33,"mean":0.33,"adj_rounds":1.0,"count":2},"Other|Sugati Coaching":{"median":5.4,"mean":4.88,"adj_rounds":1.0,"count":3},"Other|Vanti":{"median":1.75,"mean":3.48,"adj_rounds":1.0,"count":228},"Other|Wanderloop":{"median":2.81,"mean":2.88,"adj_rounds":2.0,"count":4},"Paid Facebook Ad|Galgo":{"median":0.06,"mean":0.06,"adj_rounds":0.0,"count":2},"Paid Facebook Ad (Square)|Galgo":{"median":0.1,"mean":1.59,"adj_rounds":0.0,"count":4}},"L2":{"11x17 Poster - One Sided|Energy":{"median":0.82,"mean":3.0,"adj_rounds":1.0,"count":5},"4x6 Promo Card - One Sided|Food & Beverage":{"median":2.25,"mean":2.25,"adj_rounds":3.0,"count":1},"4x6 Promo Card - Two Sided|Food & Beverage":{"median":1.81,"mean":1.81,"adj_rounds":4.0,"count":1},"A1 Poster - One Sided|Energy":{"median":1.55,"mean":1.51,"adj_rounds":1.0,"count":4},"A3 Poster - One Sided|Energy":{"median":0.19,"mean":0.24,"adj_rounds":1.0,"count":3},"A3 Poster - One Sided|Food & Beverage":{"median":11.37,"mean":11.37,"adj_rounds":8.0,"count":1},"A4 Flyer - One Sided|Agency":{"median":2.29,"mean":2.29,"adj_rounds":0.5,"count":2},"A4 Flyer - One Sided|Energy":{"median":1.52,"mean":2.13,"adj_rounds":1.0,"count":20},"A4 Flyer - One Sided|Food & Beverage":{"median":0.27,"mean":0.27,"adj_rounds":0.0,"count":1},"A4 Flyer - Two Sided|Food & Beverage":{"median":2.8,"mean":2.8,"adj_rounds":0.0,"count":1},"A5 Flyer - Two Sided|Agency":{"median":1.2,"mean":1.2,"adj_rounds":1.0,"count":1},"A5 Flyer - Two Sided|Energy":{"median":0.76,"mean":0.76,"adj_rounds":1.0,"count":1},"A6 Print Card - Two Sided|Fintech":{"median":0.78,"mean":0.78,"adj_rounds":0.0,"count":1},"Banner Filtro|Fintech":{"median":0.09,"mean":0.15,"adj_rounds":0.0,"count":10},"Banner Filtro|Tech / Delivery":{"median":0.12,"mean":0.31,"adj_rounds":1.0,"count":11},"Banner Home|Energy":{"median":0.71,"mean":1.26,"adj_rounds":0.0,"count":18},"Banner Home|Fintech":{"median":0.72,"mean":0.79,"adj_rounds":1.0,"count":28},"Banner Home|Tech / Delivery":{"median":0.45,"mean":0.84,"adj_rounds":1.0,"count":12},"Blog Interior Image|Agency":{"median":2.44,"mean":2.44,"adj_rounds":1.0,"count":1},"Blog Interior Image|Energy":{"median":1.81,"mean":1.81,"adj_rounds":1.0,"count":2},"Blog Interior Image|Fintech":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"Collection 1 vertical|Energy":{"median":2.07,"mean":2.07,"adj_rounds":2.0,"count":2},"Collection 1 vertical|Fintech":{"median":0.11,"mean":0.11,"adj_rounds":0.0,"count":1},"Collection 3 cuadrados|Agency":{"median":0.93,"mean":0.93,"adj_rounds":1.0,"count":2},"Collection 3 cuadrados|Energy":{"median":3.13,"mean":3.13,"adj_rounds":2.0,"count":1},"Cover|Fintech":{"median":0.01,"mean":0.01,"adj_rounds":0.0,"count":1},"Email Body Image|Agency":{"median":2.33,"mean":2.33,"adj_rounds":0.0,"count":1},"Email Body Image|Energy":{"median":0.38,"mean":0.47,"adj_rounds":1.0,"count":3},"Email Header|Food & Beverage":{"median":0.32,"mean":0.32,"adj_rounds":1.0,"count":1},"Facebook Carrousel|Agency":{"median":1.33,"mean":1.33,"adj_rounds":0.0,"count":1},"Facebook Carrousel|Energy":{"median":1.97,"mean":2.33,"adj_rounds":1.0,"count":3},"Facebook Carrousel|Fintech":{"median":0.79,"mean":1.38,"adj_rounds":0.0,"count":20},"Facebook Share Image (Horizontal)|Fintech":{"median":5.9,"mean":5.9,"adj_rounds":1.0,"count":2},"Facebook Share Image (Horizontal)|Real Estate":{"median":0.33,"mean":0.33,"adj_rounds":0.0,"count":1},"Facebook Share Image (Square)|Energy":{"median":3.4,"mean":3.4,"adj_rounds":0.0,"count":1},"Facebook Share Image (Square)|Fintech":{"median":1.65,"mean":1.31,"adj_rounds":0.0,"count":3},"Facebook Share Image (Vertical)|Fintech":{"median":0.13,"mean":1.18,"adj_rounds":1.0,"count":4},"Header|Energy":{"median":0.8,"mean":0.8,"adj_rounds":0.0,"count":1},"Header|Fintech":{"median":0.02,"mean":0.02,"adj_rounds":0.0,"count":1},"InApp|Energy":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"InApp|Tech / Delivery":{"median":0.06,"mean":0.26,"adj_rounds":1.0,"count":10},"Insta Story|Energy":{"median":1.25,"mean":1.65,"adj_rounds":0.0,"count":35},"Insta Story|Fintech":{"median":0.6,"mean":0.81,"adj_rounds":0.0,"count":56},"Insta Story|Tech / Delivery":{"median":0.04,"mean":0.21,"adj_rounds":1.0,"count":11},"Insta Story|Travel":{"median":2.02,"mean":2.02,"adj_rounds":2.0,"count":2},"Instagram (Image  ONLY, NO Text)|Agency":{"median":1.27,"mean":1.27,"adj_rounds":0.5,"count":2},"Instagram (Image  ONLY, NO Text)|Energy":{"median":1.41,"mean":2.36,"adj_rounds":0.5,"count":30},"Instagram (Image  ONLY, NO Text)|Fintech":{"median":0.67,"mean":1.31,"adj_rounds":0.0,"count":21},"Instagram (Image  ONLY, NO Text)|Travel":{"median":1.18,"mean":1.18,"adj_rounds":2.0,"count":1},"Other|Agency":{"median":6.55,"mean":32.08,"adj_rounds":0.0,"count":84},"Other|Construction":{"median":8.7,"mean":8.7,"adj_rounds":5.0,"count":1},"Other|Energy":{"median":1.75,"mean":3.48,"adj_rounds":1.0,"count":228},"Other|Fintech":{"median":1.53,"mean":2.43,"adj_rounds":0.0,"count":159},"Other|Food & Beverage":{"median":3.47,"mean":5.93,"adj_rounds":1.0,"count":25},"Other|Real Estate":{"median":5.22,"mean":9.75,"adj_rounds":0.0,"count":19},"Other|Services":{"median":5.44,"mean":5.03,"adj_rounds":1.0,"count":4},"Other|Tech / Delivery":{"median":0.33,"mean":0.33,"adj_rounds":1.0,"count":2},"Other|Travel":{"median":2.81,"mean":2.88,"adj_rounds":2.0,"count":4},"Paid Facebook Ad|Fintech":{"median":0.06,"mean":0.06,"adj_rounds":0.0,"count":2},"Paid Facebook Ad (Square)|Fintech":{"median":0.1,"mean":1.59,"adj_rounds":0.0,"count":4}},"L3":{"11x17 Poster - One Sided":{"median":0.82,"mean":3.0,"adj_rounds":1.0,"count":5},"4x6 Promo Card - One Sided":{"median":2.25,"mean":2.25,"adj_rounds":3.0,"count":1},"4x6 Promo Card - Two Sided":{"median":1.81,"mean":1.81,"adj_rounds":4.0,"count":1},"A1 Poster - One Sided":{"median":1.55,"mean":1.51,"adj_rounds":1.0,"count":4},"A3 Poster - One Sided":{"median":0.34,"mean":3.02,"adj_rounds":1.0,"count":4},"A4 Flyer - One Sided":{"median":1.47,"mean":2.06,"adj_rounds":1.0,"count":23},"A4 Flyer - Two Sided":{"median":2.8,"mean":2.8,"adj_rounds":0.0,"count":1},"A5 Flyer - Two Sided":{"median":0.98,"mean":0.98,"adj_rounds":1.0,"count":2},"A6 Print Card - Two Sided":{"median":0.78,"mean":0.78,"adj_rounds":0.0,"count":1},"Banner Filtro":{"median":0.12,"mean":0.24,"adj_rounds":1.0,"count":21},"Banner Home":{"median":0.7,"mean":0.95,"adj_rounds":1.0,"count":58},"Blog Interior Image":{"median":1.81,"mean":1.65,"adj_rounds":1.0,"count":4},"Collection 1 vertical":{"median":1.37,"mean":1.42,"adj_rounds":0.0,"count":3},"Collection 3 cuadrados":{"median":1.22,"mean":1.67,"adj_rounds":1.0,"count":3},"Cover":{"median":0.01,"mean":0.01,"adj_rounds":0.0,"count":1},"Email Body Image":{"median":0.56,"mean":0.94,"adj_rounds":0.5,"count":4},"Email Header":{"median":0.32,"mean":0.32,"adj_rounds":1.0,"count":1},"Facebook Carrousel":{"median":1.07,"mean":1.5,"adj_rounds":0.0,"count":24},"Facebook Share Image (Horizontal)":{"median":2.93,"mean":4.04,"adj_rounds":0.0,"count":3},"Facebook Share Image (Square)":{"median":1.86,"mean":1.83,"adj_rounds":0.0,"count":4},"Facebook Share Image (Vertical)":{"median":0.13,"mean":1.18,"adj_rounds":1.0,"count":4},"Header":{"median":0.41,"mean":0.41,"adj_rounds":0.0,"count":2},"InApp":{"median":0.06,"mean":0.28,"adj_rounds":1.0,"count":11},"Insta Story":{"median":0.65,"mean":1.05,"adj_rounds":0.0,"count":104},"Instagram (Image  ONLY, NO Text)":{"median":1.24,"mean":1.89,"adj_rounds":0.0,"count":54},"Other":{"median":2.17,"mean":8.08,"adj_rounds":0.0,"count":526},"Paid Facebook Ad":{"median":0.06,"mean":0.06,"adj_rounds":0.0,"count":2},"Paid Facebook Ad (Square)":{"median":0.1,"mean":1.59,"adj_rounds":0.0,"count":4}},"rush_mod":{"11x17 Poster - One Sided":6.55,"A4 Flyer - One Sided":1.24,"Banner Home":0.7,"Facebook Carrousel":0.46,"Insta Story":0.9,"Instagram (Image  ONLY, NO Text)":1.5,"Other":1.09},"rev_risk":{"400 Grados":{"mean_rounds":2.0,"median_rounds":2.0},"AAICO":{"mean_rounds":0.74,"median_rounds":0.0},"Alpina":{"mean_rounds":1.6,"median_rounds":1.0},"BrandNew":{"mean_rounds":1.39,"median_rounds":0.0},"CONACO":{"mean_rounds":5.0,"median_rounds":5.0},"Catalina Perez":{"mean_rounds":1.0,"median_rounds":1.0},"Galgo":{"mean_rounds":0.45,"median_rounds":0.0},"Gifted Breads":{"mean_rounds":3.0,"median_rounds":3.0},"Maria Elena Interiores":{"mean_rounds":0.0,"median_rounds":0.0},"Rappi":{"mean_rounds":1.2,"median_rounds":1.0},"Sugati Coaching":{"mean_rounds":1.0,"median_rounds":1.0},"Vanti":{"mean_rounds":0.85,"median_rounds":1.0},"Wanderloop":{"mean_rounds":2.14,"median_rounds":2.0}},"industry_map":{"Vanti ":"Energy","Vanti":"Energy","Galgo":"Fintech","Alpina":"Food & Beverage","Rappi":"Tech / Delivery","AAICO":"Real Estate","BrandNew":"Agency","Wanderloop":"Travel","Gifted Breads":"Food & Beverage","CONACO":"Construction","Sugati Coaching":"Services","400 Grados":"Food & Beverage","Catalina Perez":"Services","Maria Elena Interiores":"Real Estate"},"assets":["11x17 Poster - One Sided","4x6 Promo Card - One Sided","4x6 Promo Card - Two Sided","A1 Poster - One Sided","A3 Poster - One Sided","A4 Flyer - One Sided","A4 Flyer - Two Sided","A5 Flyer - Two Sided","A6 Print Card - Two Sided","Banner Filtro","Banner Home","Blog Interior Image","Collection 1 vertical","Collection 3 cuadrados","Cover","Email Body Image","Email Header","Facebook Carrousel","Facebook Share Image (Horizontal)","Facebook Share Image (Square)","Facebook Share Image (Vertical)","Header","InApp","Insta Story","Instagram (Image  ONLY, NO Text)","Other","Paid Facebook Ad","Paid Facebook Ad (Square)"],"clients":["400 Grados","AAICO","Alpina","BrandNew","CONACO","Catalina Perez","Galgo","Gifted Breads","Maria Elena Interiores","Rappi","Sugati Coaching","Vanti","Wanderloop"],"industries":["Agency","Construction","Energy","Fintech","Food & Beverage","Real Estate","Services","Tech / Delivery","Travel"]};
+
+let rush = 'No';
+function setRush(v){
+  rush=v;
+  document.getElementById('rushNo').className='rush-btn'+(v==='No'?' active':'');
+  document.getElementById('rushToday').className='rush-btn'+(v==='Today'?' active-rush':'');
+}
+
+function fmt(h){
+  if(!h||isNaN(h)) return '—';
+  if(h<1) return Math.round(h*60)+'m';
+  const hrs=Math.floor(h), mins=Math.round((h-hrs)*60);
+  return mins?`${hrs}h ${mins}m`:`${hrs}h`;
+}
+
+function getIndustry(client){
+  return MODEL.industry_map[client] || MODEL.industry_map[client+' '] || null;
+}
+
+function lookup(asset, client){
+  // L1: exact asset + client
+  let d = MODEL.L1[`${asset}|${client}`] || MODEL.L1[`${asset}|${client} `];
+  if(d) return {...d, level:'exact', label:`Based on ${d.count} ${asset} jobs for ${client}`};
+
+  // L2: asset + industry
+  const industry = getIndustry(client);
+  if(industry){
+    d = MODEL.L2[`${asset}|${industry}`];
+    if(d) return {...d, level:'industry', label:`Based on ${d.count} ${asset} jobs in ${industry} industry`};
+  }
+
+  // L3: asset global
+  d = MODEL.L3[asset];
+  if(d) return {...d, level:'global', label:`Based on ${d.count} ${asset} jobs across all clients`};
+
+  // Final fallback: Other global
+  d = MODEL.L3['Other'];
+  if(d) return {...d, level:'fallback', label:`No exact data for this asset — using general benchmark (${d.count} jobs)`};
+
+  return null;
+}
+
+function buildRoundsVisual(adjRounds, asset){
+  const rounds = Math.round(adjRounds);
+  const visual = document.getElementById('roundsVisual');
+  const legend = document.getElementById('roundsLegend');
+  visual.innerHTML = '';
+
+  // Initial design dot
+  const d0 = document.createElement('div');
+  d0.className='round-dot round-initial';
+  d0.title='Initial design';
+  d0.textContent='D';
+  visual.appendChild(d0);
+
+  // Adjustment rounds
+  for(let i=0;i<rounds;i++){
+    const arrow = document.createElement('span');
+    arrow.style.cssText='color:#AFAFAF;font-size:12px;';
+    arrow.textContent='→';
+    visual.appendChild(arrow);
+    const dot = document.createElement('div');
+    dot.className='round-dot round-adj';
+    dot.title=`Revision round ${i+1}`;
+    dot.textContent=`R${i+1}`;
+    visual.appendChild(dot);
+  }
+
+  // Final approval
+  const arrow2 = document.createElement('span');
+  arrow2.style.cssText='color:#AFAFAF;font-size:12px;';
+  arrow2.textContent='→';
+  visual.appendChild(arrow2);
+  const dF = document.createElement('div');
+  dF.className='round-dot round-final';
+  dF.title='Final approval';
+  dF.textContent='✓';
+  visual.appendChild(dF);
+
+  legend.innerHTML = `<strong>D</strong> = Initial design &nbsp;·&nbsp; <strong>R</strong> = Revision round &nbsp;·&nbsp; <strong>✓</strong> = Approved<br>This asset typically needs <strong>${rounds} revision round${rounds!==1?'s':''}</strong> before approval.`;
+}
+
+function predict(){
+  const asset = document.getElementById('assetType').value;
+  const client = document.getElementById('client').value;
+  if(!asset){alert('Please select an asset type.');return;}
+
+  const result = lookup(asset, client);
+  if(!result){
+    document.getElementById('insightBox').innerHTML = '<strong>Not enough data yet.</strong> This combination is new. As more jobs are tracked, the model will learn it.';
+    return;
+  }
+
+  // Rush adjustment
+  const rushMod = MODEL.rush_mod[asset] || 1.0;
+  const rushTotal = result.median * rushMod;
+  const rushDiff = rushMod > 1 ? `+${Math.round((rushMod-1)*100)}% slower` : rushMod < 0.98 ? `${Math.round((1-rushMod)*100)}% faster` : 'No significant change';
+  const rushClass = rushMod > 1.05 ? 'warn-m' : rushMod < 0.95 ? 'ok-m' : '';
+
+  // Client revision risk
+  const clientKey = client.trim();
+  const riskData = MODEL.rev_risk[clientKey];
+  const adjRounds = riskData ? riskData.median_rounds : result.adj_rounds;
+
+  // Confidence
+  const confClass = result.level==='exact' ? 'conf-high' : result.level==='industry' ? 'conf-med' : 'conf-low';
+  const confLabel = result.level==='exact' ? '✓ High confidence' : result.level==='industry' ? '~ Industry estimate' : '○ General benchmark';
+
+  // Build insight
+  let insight = '';
+  if(adjRounds >= 3) insight = `<strong>⚠ This asset typically needs several rounds.</strong> ${client||'Clients'} usually request ${adjRounds} revision round${adjRounds!==1?'s':''} on this type of asset. A very detailed brief with clear references will save significant time.`;
+  else if(adjRounds >= 1) insight = `<strong>Plan for at least one revision round.</strong> This is normal for this asset type. Make sure the brief includes format specs, brand references, and copy before starting.`;
+  else insight = `<strong>This asset tends to get approved quickly.</strong> Based on ${result.count} similar jobs, most deliveries go through with minimal back-and-forth. A clear brief should be enough.`;
+
+  if(rush==='Today'){
+    if(rushMod > 1.05) insight += ` Under rush, expect this to take about ${fmt(rushTotal)} — briefs under urgency tend to arrive incomplete.`;
+    else if(rushMod < 0.95) insight += ` Interestingly, this asset type actually finishes slightly faster under rush — scope tends to get simplified.`;
+  }
+
+  // Update UI
+  document.getElementById('resTag').textContent = (client || 'All clients') + ' · ' + (rush==='Today' ? '🔴 RUSH' : 'Standard');
+  document.getElementById('resTitle').textContent = asset;
+  document.getElementById('resSubtitle').textContent = rush==='Today' ? `Estimated: ${fmt(rushTotal)} under rush` : `Estimated: ${fmt(result.median)} typical delivery`;
+  document.getElementById('confidenceBadge').innerHTML = `<span class="confidence ${confClass}">${confLabel}</span>`;
+  document.getElementById('resTotal').textContent = fmt(result.median);
+  document.getElementById('resRush').textContent = rush==='Today' ? fmt(rushTotal) : rushDiff;
+  document.getElementById('rushMetric').className = 'metric ' + (rush==='Today' ? (rushMod>1.05?'warn-m':'ok-m') : '');
+  document.getElementById('insightBox').innerHTML = insight;
+  document.getElementById('fallbackNote').textContent = result.label;
+
+  buildRoundsVisual(adjRounds, asset);
+
+  document.getElementById('emptyState').style.display='none';
+  const rc = document.getElementById('resultContent');
+  rc.classList.remove('visible');
+  setTimeout(()=>rc.classList.add('visible'),10);
+}
+
+// Build revision table
+(function(){
+  const tb = document.getElementById('riskTbody');
+  Object.entries(MODEL.rev_risk)
+    .sort((a,b)=>b[1].mean_rounds - a[1].mean_rounds)
+    .forEach(([client,r])=>{
+      const med = r.median_rounds;
+      const avg = r.mean_rounds;
+      const cls = med <= 0 ? 'pg-green' : med <= 1 ? 'pg-warn' : 'pg-red';
+      const label = med <= 0 ? 'Smooth' : med <= 1 ? 'Normal' : 'Complex';
+      const dots = Array.from({length: Math.min(Math.round(avg)+1, 6)}, (_,i) =>
+        `<div class="dot" style="background:${i===0?'#1A56FF':i<=Math.round(avg)?'#F59E0B':'#D1FAE5'}"></div>`
+      ).join('');
+      const meaning = med <= 0 ? 'Approves on first delivery most of the time'
+        : med === 1 ? 'Usually one round of changes, then approval'
+        : med <= 2 ? 'Expect 2 rounds — plan brief time accordingly'
+        : 'High revision volume — invest heavily in brief quality';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-weight:700">${client.trim()}</td>
+        <td style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${med}</td>
+        <td><span class="pill-g ${cls}">${label}</span></td>
+        <td><div class="dot-row">${dots}</div></td>
+        <td style="color:#6B6B6B;font-size:11px">${meaning}</td>
+      `;
+      tb.appendChild(tr);
+    });
+})();
+</script>
+</body>
+</html>
