@@ -3,469 +3,1082 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uppipe — Creative Intelligence Engine</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Creative Demand Intelligence — Uppipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --cobalt:#1A56FF;--cobalt-deep:#0D3FBF;--cobalt-tint:#E8EFFE;
-  --lime:#C8FF00;--lime-mid:#A8D900;
+  --lime:#C8FF00;--lime-dark:#A0CC00;
   --cream:#FDFBF7;--white:#FFFFFF;
-  --dark:#2D2D2D;--mid:#6B6B6B;--lt:#AFAFAF;
-  --border:#E8E8E8;--success:#10B981;--warn:#F59E0B;--danger:#EF4444;
-  --g-hero:radial-gradient(ellipse 72% 64% at 14% 88%,#F5C6D8 0%,transparent 62%),
-           radial-gradient(ellipse 58% 52% at 86% 18%,#C8FF00 0%,transparent 58%),
-           radial-gradient(ellipse 62% 56% at 52% 52%,#B8AAFF 0%,transparent 64%),
-           radial-gradient(ellipse 52% 46% at 82% 78%,#5B8BFF 0%,transparent 58%),
-           linear-gradient(138deg,#F5C6D8 0%,#C4AAFF 38%,#4870FF 70%,#C8FF00 100%);
-  --g-pastel:radial-gradient(ellipse 72% 52% at 28% 72%,#F5C6D8 0%,transparent 58%),
-             radial-gradient(ellipse 52% 62% at 82% 28%,#E0ECFF 0%,transparent 54%),
-             radial-gradient(ellipse 48% 48% at 55% 45%,rgba(184,170,255,0.35) 0%,transparent 55%),
-             linear-gradient(128deg,#FDE8F1 0%,#F5C6D8 38%,#E8EFFE 100%);
+  --dark:#1A1A2E;--mid:#6B7280;--lt:#AFAFAF;
+  --border:#E5E7EB;
+  --g-hero:radial-gradient(ellipse 80% 60% at 10% 90%,rgba(200,255,0,0.18) 0%,transparent 55%),
+           radial-gradient(ellipse 60% 50% at 90% 10%,rgba(26,86,255,0.12) 0%,transparent 55%),
+           radial-gradient(ellipse 50% 70% at 50% 50%,rgba(26,86,255,0.04) 0%,transparent 70%),
+           linear-gradient(160deg,#F0F4FF 0%,#FDFBF7 50%,#F5FFF0 100%);
 }
-body{font-family:'Montserrat',sans-serif;background:var(--g-pastel);background-attachment:fixed;color:var(--dark);min-height:100vh;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--dark);min-height:100vh;overflow-x:hidden;}
 
-.nav{padding:16px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba(255,255,255,0.65);border-bottom:1px solid rgba(255,255,255,0.8);}
-.logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--cobalt-deep);}
-.logo em{font-style:normal;color:var(--cobalt);}
-.nav-badge{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;background:rgba(200,255,0,0.3);color:#5A8A00;padding:4px 12px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(253,251,247,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--cobalt-deep);text-decoration:none;display:flex;align-items:center;gap:10px;}
+.nav-logo span{color:var(--cobalt);}
+.nav-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:var(--lime);color:#2D5A00;padding:4px 12px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+.nav-back{font-size:12px;font-weight:700;color:var(--cobalt);text-decoration:none;display:flex;align-items:center;gap:6px;opacity:0.7;transition:opacity 0.2s;}
+.nav-back:hover{opacity:1;}
 
-.hero{background:var(--g-hero);padding:72px 48px 80px;position:relative;overflow:hidden;}
-.hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.08);}
-.hero-inner{position:relative;z-index:1;max-width:900px;}
-.hero-pill{font-size:8px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;background:rgba(255,255,255,0.9);color:var(--cobalt);padding:5px 16px;border-radius:100px;margin-bottom:20px;display:inline-block;}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(40px,6vw,72px);font-weight:800;color:#0D3FBF;line-height:1.0;letter-spacing:-2px;margin-bottom:16px;}
-.hero h1 em{font-style:normal;color:var(--cobalt-deep);}
-.hero p{font-size:14px;color:#0D3FBF;opacity:0.75;line-height:1.8;max-width:560px;font-weight:500;margin-bottom:40px;}
-.stats-row{display:flex;gap:16px;flex-wrap:wrap;}
-.stat{background:rgba(255,255,255,0.6);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:14px;padding:18px 24px;min-width:120px;}
-.stat-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--cobalt-deep);letter-spacing:-1px;line-height:1;}
-.stat-lbl{font-size:9px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-top:4px;font-weight:700;}
+/* ── HERO ── */
+.hero{background:var(--g-hero);padding:80px 48px 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.12) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:760px;position:relative;z-index:1;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--border);padding:6px 16px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--cobalt);margin-bottom:24px;}
+.hero-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(0.8);}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5.5vw,64px);font-weight:800;line-height:1.0;letter-spacing:-2px;color:var(--dark);margin-bottom:20px;}
+.hero h1 em{font-style:normal;color:var(--cobalt);}
+.hero-sub{font-size:15px;line-height:1.8;color:var(--mid);max-width:580px;margin-bottom:40px;font-weight:500;}
+.data-proof{display:flex;gap:32px;flex-wrap:wrap;}
+.proof-stat{display:flex;flex-direction:column;}
+.proof-num{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--cobalt-deep);letter-spacing:-1px;line-height:1;}
+.proof-lbl{font-size:9px;font-weight:700;color:var(--mid);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px;}
 
-.main{display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin:0 auto;padding:48px;gap:24px;}
-@media(max-width:768px){.main{grid-template-columns:1fr;}}
+/* ── MAIN LAYOUT ── */
+.main{max-width:1100px;margin:0 auto;padding:60px 48px 100px;}
+@media(max-width:768px){.main{padding:40px 24px 80px;}.nav{padding:0 24px;}.hero{padding:60px 24px 40px;}}
 
-.gcard{backdrop-filter:blur(20px);background:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.85);border-radius:20px;box-shadow:0 8px 32px rgba(26,86,255,0.08),inset 0 1px 0 rgba(255,255,255,0.95);padding:36px;}
+/* ── STEP INDICATOR ── */
+.steps-bar{display:flex;align-items:center;gap:0;margin-bottom:48px;background:var(--white);border:1.5px solid var(--border);border-radius:100px;padding:6px;width:fit-content;}
+.step-item{display:flex;align-items:center;gap:8px;padding:8px 20px;border-radius:100px;cursor:pointer;transition:all 0.25s;font-size:11px;font-weight:700;color:var(--lt);white-space:nowrap;}
+.step-item.active{background:var(--cobalt);color:var(--white);}
+.step-item.done{color:var(--cobalt);}
+.step-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:rgba(0,0,0,0.08);flex-shrink:0;}
+.step-item.active .step-num{background:rgba(255,255,255,0.25);}
+.step-item.done .step-num{background:var(--cobalt-tint);color:var(--cobalt);}
 
-.section-label{font-size:8px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:28px;display:flex;align-items:center;gap:10px;}
-.section-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--cobalt);background:rgba(26,86,255,0.1);padding:2px 8px;border-radius:4px;}
+/* ── CARD ── */
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:24px;padding:48px;box-shadow:0 4px 24px rgba(26,86,255,0.05);}
+.card + .card{margin-top:20px;}
 
-.field{margin-bottom:20px;}
-.field label{display:block;font-size:9px;font-weight:800;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
-.field-hint{font-size:9px;color:var(--lt);margin-top:5px;font-style:italic;}
-select{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(255,255,255,0.9);color:var(--dark);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;padding:12px 16px;border-radius:12px;outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 2px 8px rgba(26,86,255,0.06);}
-select:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26,86,255,0.12);}
+.card-label{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.card-label-num{font-family:'JetBrains Mono',monospace;color:var(--cobalt);background:var(--cobalt-tint);padding:2px 8px;border-radius:4px;}
+.card-title{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--dark);letter-spacing:-0.5px;margin-bottom:8px;line-height:1.15;}
+.card-sub{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:36px;max-width:600px;}
 
-.rush-toggle{display:flex;gap:8px;}
-.rush-btn{flex:1;padding:12px;background:rgba(255,255,255,0.6);border:1.5px solid rgba(255,255,255,0.9);color:var(--mid);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;border-radius:12px;cursor:pointer;transition:all 0.2s;text-align:center;}
-.rush-btn.active{background:var(--cobalt);border-color:var(--cobalt);color:white;box-shadow:0 4px 12px rgba(26,86,255,0.3);}
-.rush-btn.active-rush{background:#EF4444;border-color:#EF4444;color:white;box-shadow:0 4px 12px rgba(239,68,68,0.3);}
+/* ── FIELDS ── */
+.field{margin-bottom:28px;}
+.field label{display:block;font-size:10px;font-weight:800;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.field-hint{font-size:10px;color:var(--lt);margin-top:6px;font-weight:500;}
 
-.predict-btn{width:100%;padding:16px;background:var(--cobalt);border:none;color:white;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.5px;border-radius:100px;cursor:pointer;margin-top:8px;transition:all 0.2s;box-shadow:0 4px 16px rgba(26,86,255,0.3);display:flex;align-items:center;justify-content:center;gap:8px;}
-.predict-btn:hover{background:var(--cobalt-deep);transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,86,255,0.35);}
+select,input[type=text],input[type=email],input[type=number]{
+  width:100%;background:var(--cream);border:1.5px solid var(--border);color:var(--dark);
+  font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;
+  padding:14px 18px;border-radius:14px;outline:none;appearance:none;
+  transition:border-color 0.2s,box-shadow 0.2s;
+}
+select:focus,input:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26,86,255,0.1);background:var(--white);}
 
-.result-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px;text-align:center;gap:12px;}
-.result-empty .icon{width:52px;height:52px;border-radius:50%;background:rgba(26,86,255,0.08);display:flex;align-items:center;justify-content:center;font-size:24px;}
-.result-empty p{font-size:12px;line-height:1.8;max-width:220px;color:var(--mid);}
+/* ── TOGGLE CHIPS ── */
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{padding:10px 18px;background:var(--cream);border:1.5px solid var(--border);border-radius:100px;font-size:12px;font-weight:700;color:var(--mid);cursor:pointer;transition:all 0.2s;user-select:none;}
+.chip:hover{border-color:var(--cobalt);color:var(--cobalt);}
+.chip.active{background:var(--cobalt);border-color:var(--cobalt);color:var(--white);}
+.chip.active-lime{background:var(--lime);border-color:var(--lime-dark);color:#2D5A00;}
 
-.result-content{display:none;}
-.result-content.visible{display:block;animation:fadeUp 0.4s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* ── GRID 2 COL ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:600px){.grid2{grid-template-columns:1fr;}}
 
-.res-header{margin-bottom:20px;}
-.res-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--cobalt);background:rgba(26,86,255,0.08);padding:3px 10px;border-radius:100px;margin-bottom:6px;display:inline-block;}
-.res-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);letter-spacing:-0.5px;}
-.res-subtitle{font-size:11px;color:var(--mid);margin-top:4px;font-weight:500;}
+/* ── BUTTONS ── */
+.btn-primary{width:100%;padding:18px 32px;background:var(--cobalt);border:none;color:var(--white);font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;letter-spacing:0.5px;border-radius:100px;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(26,86,255,0.3);display:flex;align-items:center;justify-content:center;gap:10px;}
+.btn-primary:hover{background:var(--cobalt-deep);transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,86,255,0.4);}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;transform:none;}
+.btn-secondary{padding:14px 28px;background:transparent;border:1.5px solid var(--border);color:var(--mid);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--cobalt);color:var(--cobalt);}
+.btn-row{display:flex;gap:12px;align-items:center;margin-top:8px;}
 
-/* CONFIDENCE BADGE */
-.confidence{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:9px;font-weight:800;margin-top:8px;}
+/* ── PROGRESS BAR ── */
+.progress-wrap{background:var(--border);border-radius:100px;height:4px;margin-bottom:48px;overflow:hidden;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--cobalt),var(--lime));border-radius:100px;transition:width 0.5s ease;}
+
+/* ── RESULT SECTION ── */
+.result-hero{background:linear-gradient(135deg,var(--cobalt-deep) 0%,var(--cobalt) 100%);border-radius:24px;padding:48px;color:var(--white);margin-bottom:24px;position:relative;overflow:hidden;}
+.result-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(200,255,0,0.15);}
+.result-hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,0.05);}
+.result-hero-inner{position:relative;z-index:1;}
+.result-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:rgba(200,255,0,0.2);color:var(--lime);padding:4px 12px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;display:inline-block;}
+.result-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:8px;}
+.result-title em{font-style:normal;color:var(--lime);}
+.result-sub{font-size:14px;opacity:0.75;line-height:1.7;max-width:500px;margin-bottom:32px;}
+
+.hours-range{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
+.hours-box{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:20px 24px;flex:1;min-width:120px;}
+.hours-val{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-2px;color:var(--white);line-height:1;}
+.hours-val.recommended{color:var(--lime);}
+.hours-lbl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:0.6;margin-top:6px;}
+
+.result-cta{display:flex;gap:12px;flex-wrap:wrap;}
+.result-btn{padding:14px 28px;border-radius:100px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:all 0.2s;border:none;display:inline-flex;align-items:center;gap:8px;}
+.result-btn.primary{background:var(--lime);color:#1A3300;}
+.result-btn.primary:hover{background:#D4FF20;transform:translateY(-1px);}
+.result-btn.secondary{background:rgba(255,255,255,0.15);color:var(--white);border:1px solid rgba(255,255,255,0.3);}
+.result-btn.secondary:hover{background:rgba(255,255,255,0.25);}
+
+/* ── METRIC CARDS ── */
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+@media(max-width:600px){.metric-grid{grid-template-columns:1fr 1fr;}}
+.metric-card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:24px;}
+.metric-card.highlight{border-color:rgba(26,86,255,0.3);background:var(--cobalt-tint);}
+.metric-val{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--dark);line-height:1;margin-bottom:4px;}
+.metric-card.highlight .metric-val{color:var(--cobalt-deep);}
+.metric-lbl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);}
+.metric-sub{font-size:10px;color:var(--lt);margin-top:4px;}
+
+/* ── TASK MIX BARS ── */
+.mix-title{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:16px;}
+.mix-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.mix-bar-label{font-size:11px;font-weight:700;color:var(--dark);width:130px;flex-shrink:0;}
+.mix-bar-track{flex:1;height:8px;background:var(--border);border-radius:100px;overflow:hidden;}
+.mix-bar-fill{height:100%;border-radius:100px;transition:width 0.8s ease;}
+.mix-bar-pct{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--mid);width:36px;text-align:right;flex-shrink:0;}
+
+/* ── INSIGHT BOX ── */
+.insight{background:linear-gradient(135deg,#F0F9FF,#E8EFFE);border:1.5px solid rgba(26,86,255,0.15);border-radius:16px;padding:24px;margin-top:20px;}
+.insight-icon{font-size:20px;margin-bottom:8px;}
+.insight-title{font-size:13px;font-weight:800;color:var(--cobalt-deep);margin-bottom:6px;}
+.insight-body{font-size:12px;line-height:1.7;color:var(--mid);}
+
+/* ── TIER SELECTOR ── */
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0;}
+@media(max-width:700px){.tier-grid{grid-template-columns:1fr 1fr;}}
+.tier-card{border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all 0.2s;text-align:center;}
+.tier-card:hover{border-color:var(--cobalt);}
+.tier-card.recommended{border-color:var(--cobalt);background:var(--cobalt-tint);}
+.tier-card.recommended .tier-badge{display:inline-block;}
+.tier-badge{display:none;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:var(--lime);color:#2D5A00;padding:3px 10px;border-radius:100px;margin-bottom:8px;}
+.tier-hours{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--dark);letter-spacing:-1px;line-height:1;}
+.tier-card.recommended .tier-hours{color:var(--cobalt-deep);}
+.tier-name{font-size:11px;font-weight:800;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin:4px 0;}
+.tier-desc{font-size:10px;color:var(--lt);line-height:1.5;}
+
+/* ── EMAIL GATE ── */
+.email-gate{
+  background: linear-gradient(145deg, #0D3FBF 0%, #1A56FF 60%, #1a3fa8 100%);
+  border-radius:28px;
+  padding:56px 48px 48px;
+  text-align:center;
+  max-width:520px;
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+  box-shadow: 0 24px 64px rgba(26,86,255,0.35), 0 4px 16px rgba(0,0,0,0.15);
+}
+.email-gate::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,255,0,0.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.email-gate::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.gate-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(200,255,0,0.15);border:1px solid rgba(200,255,0,0.3);
+  padding:5px 14px;border-radius:100px;
+  font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--lime);margin-bottom:20px;position:relative;z-index:1;
+}
+.gate-eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite;}
+.gate-icon{
+  width:72px;height:72px;border-radius:20px;
+  background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;font-size:30px;position:relative;z-index:1;
+}
+.gate-title{
+  font-family:'Syne',sans-serif;font-size:30px;font-weight:800;
+  letter-spacing:-0.8px;color:#FFFFFF;margin-bottom:10px;
+  position:relative;z-index:1;line-height:1.1;
+}
+.gate-title span{color:var(--lime);}
+.gate-sub{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px;position:relative;z-index:1;}
+.gate-form{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1;}
+.gate-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.gate-form input{
+  width:100%;background:rgba(255,255,255,0.1);
+  border:1.5px solid rgba(255,255,255,0.2);
+  color:#FFFFFF;border-radius:12px;
+  padding:14px 16px;font-size:13px;font-weight:500;
+  font-family:'Montserrat',sans-serif;
+  box-sizing:border-box;
+  transition:all 0.2s;
+}
+.gate-form input::placeholder{color:rgba(255,255,255,0.45);}
+.gate-form input:focus{
+  outline:none;
+  border-color:var(--lime);
+  background:rgba(255,255,255,0.15);
+  box-shadow:0 0 0 3px rgba(200,255,0,0.15);
+}
+.gate-form .btn-primary{
+  background:var(--lime);color:#1A3A00;
+  border:none;border-radius:12px;
+  padding:16px 24px;font-size:14px;font-weight:800;
+  letter-spacing:0.3px;cursor:pointer;
+  transition:all 0.2s;margin-top:4px;
+  font-family:'Montserrat',sans-serif;
+  box-shadow:0 4px 16px rgba(200,255,0,0.3);
+}
+.gate-form .btn-primary:hover{background:#d4ff1a;transform:translateY(-1px);box-shadow:0 8px 24px rgba(200,255,0,0.4);}
+.gate-form .btn-primary:disabled{opacity:0.6;transform:none;}
+.gate-stats{
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  margin-top:28px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  position:relative;z-index:1;
+}
+.gate-stat{text-align:center;}
+.gate-stat-num{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#FFFFFF;letter-spacing:-0.5px;}
+.gate-stat-lbl{font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.gate-stat-div{width:1px;height:32px;background:rgba(255,255,255,0.15);}
+
+.gate-what-you-get{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;text-align:left;}
+.gate-item{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;}
+.gate-item-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.gate-item-text{font-size:12px;color:rgba(255,255,255,0.82);line-height:1.6;font-weight:500;}
+.gate-item-text strong{color:#FFFFFF;}
+.gate-legal{font-size:10px;color:rgba(255,255,255,0.4);margin-top:16px;line-height:1.6;position:relative;z-index:1;}
+
+/* ── STEP PANELS ── */
+.step-panel{display:none;animation:fadeUp 0.35s ease;}
+.step-panel.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── CONFIDENCE BADGE ── */
+.conf-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:100px;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
 .conf-high{background:#D1FAE5;color:#065F46;}
 .conf-med{background:#FEF3C7;color:#92400E;}
-.conf-low{background:#F3F4F6;color:#6B7280;}
 
-.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
-.metric{background:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.9);border-radius:14px;padding:16px;}
-.metric-val{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:2px;color:var(--dark);}
-.metric-lbl{font-size:9px;font-weight:700;color:var(--mid);letter-spacing:1px;text-transform:uppercase;}
-.metric-sub{font-size:9px;color:var(--lt);margin-top:2px;}
-.metric.primary{border-color:rgba(26,86,255,0.3);background:rgba(26,86,255,0.05);}
-.metric.primary .metric-val{color:var(--cobalt-deep);}
-.metric.warn-m .metric-val{color:#B45309;}
-.metric.danger-m .metric-val{color:#B91C1C;}
-.metric.ok-m .metric-val{color:#065F46;}
+/* ── FOOTER ── */
+.page-footer{text-align:center;padding:48px;border-top:1px solid var(--border);font-size:11px;color:var(--lt);}
+.page-footer a{color:var(--cobalt);text-decoration:none;}
+.page-footer strong{color:var(--mid);}
 
-.rounds-section{margin:16px 0;}
-.rounds-label{font-size:9px;font-weight:800;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
-.rounds-visual{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
-.round-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;}
-.round-initial{background:var(--cobalt);color:white;}
-.round-adj{background:rgba(245,158,11,0.2);color:#92400E;border:1.5px solid rgba(245,158,11,0.3);}
-.round-final{background:#D1FAE5;color:#065F46;}
-.rounds-legend{font-size:10px;color:var(--mid);margin-top:8px;line-height:1.6;}
-
-.insight{background:rgba(26,86,255,0.05);border:1.5px solid rgba(26,86,255,0.12);border-left:4px solid var(--cobalt);border-radius:12px;padding:16px;font-size:11px;color:var(--mid);line-height:1.8;font-weight:500;}
-.insight strong{color:var(--dark);}
-
-.fallback-note{font-family:var(--font-mono);font-size:9px;color:var(--color-text-tertiary);margin-top:12px;padding:8px 12px;background:rgba(0,0,0,0.03);border-radius:8px;}
-
-/* TABLE SECTION */
-.table-section{grid-column:1/-1;background:rgba(255,255,255,0.5);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.85);border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(26,86,255,0.06);}
-.table-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);letter-spacing:-0.5px;margin-bottom:6px;}
-.table-sub{font-size:11px;color:var(--mid);margin-bottom:28px;font-weight:500;}
-table{width:100%;border-collapse:collapse;font-size:12px;}
-th{text-align:left;font-size:8px;font-weight:800;color:var(--mid);letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border-bottom:1.5px solid rgba(0,0,0,0.06);}
-td{padding:12px 16px;border-bottom:1px solid rgba(0,0,0,0.04);font-weight:600;}
-tr:hover td{background:rgba(26,86,255,0.03);}
-.pill-g{display:inline-block;padding:3px 10px;border-radius:100px;font-size:9px;font-weight:800;}
-.pg-green{background:#D1FAE5;color:#065F46;}
-.pg-warn{background:#FEF3C7;color:#92400E;}
-.pg-red{background:#FEE2E2;color:#991B1B;}
-
-.dot-row{display:flex;gap:4px;align-items:center;}
-.dot{width:10px;height:10px;border-radius:50%;}
-
-footer{background:rgba(10,12,28,0.88);padding:20px 48px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);}
-footer p{font-size:9px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;}
-footer .accent{color:var(--lime);}
+/* Scrollbar */
+::-webkit-scrollbar{width:6px;} ::-webkit-scrollbar-track{background:transparent;} ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
-  <div class="logo">up<em>pipe</em></div>
-  <div class="nav-badge">Intelligence Preview · v0.2</div>
+  <a href="/" class="nav-logo">up<span>pipe</span></a>
+  <div class="nav-badge">Creative Intelligence</div>
+  <a href="/" class="nav-back">← Back to uppipe.co</a>
 </nav>
 
-<div class="hero">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-inner">
-    <div class="hero-pill">Powered by 7 years of real creative production data</div>
-    <h1>Predict the full<br><em>asset lifecycle.</em></h1>
-    <p>Enter an asset type and client. Uppipe predicts total delivery time, expected revision rounds, and confidence level — before a designer touches the brief.</p>
-    <div class="stats-row">
-      <div class="stat"><div class="stat-num">871</div><div class="stat-lbl">Real assets tracked</div></div>
-      <div class="stat"><div class="stat-num">481K+</div><div class="stat-lbl">Project actions logged</div></div>
-      <div class="stat"><div class="stat-num">7 yrs</div><div class="stat-lbl">Production history</div></div>
-      <div class="stat"><div class="stat-num">9</div><div class="stat-lbl">Industries</div></div>
+    <div class="hero-pill"><span class="hero-pill-dot"></span> AI-Powered Demand Engine</div>
+    <h1>How many creative hours<br>does your team <em>actually</em> need?</h1>
+    <p class="hero-sub">Stop guessing. This model is built on real creative production data — actual briefs, revision cycles, asset types, rush rates, and delivery times logged across 9+ years of client work. Not benchmarks. Not surveys. The real thing.</p>
+    <div class="data-proof">
+      <div class="proof-stat">
+        <div class="proof-num">+82,168</div>
+        <div class="proof-lbl">Real data points & counting</div>
+      </div>
+      <div class="proof-stat">
+        
+      </div>
+      <div class="proof-stat">
+        <div class="proof-num">+6</div>
+        <div class="proof-lbl">Industries modeled</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-num">+9 yrs</div>
+        <div class="proof-lbl">Production history</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="main">
+<!-- MAIN -->
+<main class="main">
 
-  <!-- PREDICTOR -->
-  <div class="gcard">
-    <div class="section-label"><span class="section-num">01</span> What are you producing?</div>
+  <!-- PROGRESS -->
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:25%"></div></div>
 
-    <div class="field">
-      <label>Asset type</label>
-      <select id="assetType">
-        <option value="">Select the asset you need...</option>
-        <optgroup label="Social Media">
-          <option value="Insta Story">Insta Story</option>
-          <option value="Instagram (Image  ONLY, NO Text)">Instagram Image</option>
-          <option value="Facebook Carrousel">Facebook Carousel</option>
-          <option value="Facebook Share Image (Square)">Facebook Share Image (Square)</option>
-          <option value="Facebook Share Image (Vertical)">Facebook Share Image (Vertical)</option>
-          <option value="Facebook Share Image (Horizontal)">Facebook Share Image (Horizontal)</option>
-          <option value="Paid Facebook Ad (Square)">Paid Facebook Ad (Square)</option>
-          <option value="Paid Facebook Ad">Paid Facebook Ad</option>
-          <option value="Banner Filtro">Banner Filtro</option>
-          <option value="Banner Home">Banner Home</option>
-          <option value="InApp">In-App Banner</option>
-          <option value="Collection 1 vertical">Collection 1 Vertical</option>
-          <option value="Collection 3 cuadrados">Collection 3 Squares</option>
-        </optgroup>
-        <optgroup label="Print">
-          <option value="A4 Flyer - One Sided">A4 Flyer — One Sided</option>
-          <option value="A4 Flyer - Two Sided">A4 Flyer — Two Sided</option>
-          <option value="A3 Poster - One Sided">A3 Poster — One Sided</option>
-          <option value="A1 Poster - One Sided">A1 Poster — One Sided</option>
-          <option value="A5 Flyer - Two Sided">A5 Flyer — Two Sided</option>
-          <option value="A6 Print Card - Two Sided">A6 Print Card — Two Sided</option>
-          <option value="4x6 Promo Card - One Sided">4x6 Promo Card — One Sided</option>
-          <option value="4x6 Promo Card - Two Sided">4x6 Promo Card — Two Sided</option>
-          <option value="11x17 Poster - One Sided">11x17 Poster — One Sided</option>
-        </optgroup>
-        <optgroup label="Digital">
-          <option value="Email Body Image">Email Body Image</option>
-          <option value="Email Header">Email Header</option>
-          <option value="Blog Interior Image">Blog Interior Image</option>
-          <option value="Header">Header</option>
-          <option value="Cover">Cover</option>
-        </optgroup>
-        <optgroup label="Other">
-          <option value="Other">Custom / Other Asset</option>
-        </optgroup>
-      </select>
+  <!-- STEP INDICATOR -->
+  <div class="steps-bar">
+    <div class="step-item active" id="si1"><span class="step-num">1</span> Your industry</div>
+    <div class="step-item" id="si2"><span class="step-num">2</span> Production rhythm</div>
+    <div class="step-item" id="si3"><span class="step-num">3</span> Your situation</div>
+    <div class="step-item" id="si4"><span class="step-num">4</span> Your results</div>
+  </div>
+
+  <!-- ── STEP 1: INDUSTRY ── -->
+  <div class="step-panel active" id="step1">
+    <div class="card">
+      <div class="card-label"><span class="card-label-num">01</span> Tell us about your business</div>
+      <h2 class="card-title">What industry are you in?</h2>
+      <p class="card-sub">We'll match you against real production benchmarks from similar companies. Each industry has very different creative demand patterns.</p>
+
+      <div class="field">
+        <label>Industry</label>
+        <div class="chips" id="industryChips">
+          <div class="chip" data-val="Tech / Mobility" onclick="selectChip(this,'industry')">🚀 Tech / SaaS</div>
+          <div class="chip" data-val="Food & Beverage" onclick="selectChip(this,'industry')">🍃 Food & Beverage / CPG</div>
+          <div class="chip" data-val="Real Estate / Coworking" onclick="selectChip(this,'industry')">🏢 Real Estate</div>
+          <div class="chip" data-val="Retail / E-commerce" onclick="selectChip(this,'industry')">🛍️ Retail / E-commerce</div>
+          <div class="chip" data-val="Agency / Creative Services" onclick="selectChip(this,'industry')">🎨 Agency / Services</div>
+          <div class="chip" data-val="Manufacturing / Industrial" onclick="selectChip(this,'industry')">⚙️ Manufacturing / B2B</div>
+          <div class="chip" data-val="Other" onclick="selectChip(this,'industry')">📊 Other</div>
+        </div>
+        <div class="field-hint">Model trained on real data for highlighted industries. Others use cross-industry benchmarks.</div>
+      </div>
+
+      <div class="field">
+        <label>Team size</label>
+        <div class="chips" id="teamChips">
+          <div class="chip" data-val="solo" onclick="selectChip(this,'team')">Solo founder / 1 marketer</div>
+          <div class="chip" data-val="small" onclick="selectChip(this,'team')">2–5 person team</div>
+          <div class="chip" data-val="mid" onclick="selectChip(this,'team')">6–15 people</div>
+          <div class="chip" data-val="large" onclick="selectChip(this,'team')">15+ people</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Active marketing channels (select all that apply)</label>
+        <div class="chips" id="channelChips">
+          <div class="chip" data-val="social" onclick="toggleChip(this,'channels')">Social media</div>
+          <div class="chip" data-val="paid" onclick="toggleChip(this,'channels')">Paid ads</div>
+          <div class="chip" data-val="email" onclick="toggleChip(this,'channels')">Email / CRM</div>
+          <div class="chip" data-val="web" onclick="toggleChip(this,'channels')">Website / landing pages</div>
+          <div class="chip" data-val="video" onclick="toggleChip(this,'channels')">Video / motion</div>
+          <div class="chip" data-val="print" onclick="toggleChip(this,'channels')">Print / OOH</div>
+          <div class="chip" data-val="events" onclick="toggleChip(this,'channels')">Events / activations</div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="goStep(2)" id="btn1">
+          Continue <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <label>Client</label>
-      <select id="client">
-        <option value="">Select client (optional)...</option>
-        <option value="Vanti">Vanti — Energy</option>
-        <option value="Galgo">Galgo — Fintech</option>
-        <option value="Alpina">Alpina — Food & Beverage</option>
-        <option value="Rappi">Rappi — Tech / Delivery</option>
-        <option value="AAICO">AAICO — Real Estate</option>
-        <option value="BrandNew">BrandNew — Agency</option>
-        <option value="Wanderloop">Wanderloop — Travel</option>
-        <option value="Gifted Breads">Gifted Breads — Food</option>
-        <option value="CONACO">CONACO — Construction</option>
-        <option value="Sugati Coaching">Sugati Coaching — Services</option>
-        <option value="400 Grados">400 Grados — F&B</option>
-      </select>
-      <div class="field-hint">If your client isn't listed, we'll use industry benchmarks instead.</div>
+  <!-- ── STEP 2: PRODUCTION RHYTHM ── -->
+  <div class="step-panel" id="step2">
+    <div class="card">
+      <div class="card-label"><span class="card-label-num">02</span> Production rhythm</div>
+      <h2 class="card-title">How much do you produce?</h2>
+      <p class="card-sub">This is where most teams underestimate. Every channel multiplies asset volume. Let's get the real picture.</p>
+
+      <div class="grid2">
+        <div class="field">
+          <label>Campaigns per month</label>
+          <div class="chips" id="campaignChips">
+            <div class="chip" data-val="1" onclick="selectChip(this,'campaigns')">1 campaign</div>
+            <div class="chip" data-val="2.5" onclick="selectChip(this,'campaigns')">2–3 campaigns</div>
+            <div class="chip" data-val="5" onclick="selectChip(this,'campaigns')">4–6 campaigns</div>
+            <div class="chip" data-val="8" onclick="selectChip(this,'campaigns')">7+ campaigns</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Assets per campaign (avg)</label>
+          <div class="chips" id="assetsChips">
+            <div class="chip" data-val="3" onclick="selectChip(this,'assets')">1–5 assets</div>
+            <div class="chip" data-val="8" onclick="selectChip(this,'assets')">6–10 assets</div>
+            <div class="chip" data-val="15" onclick="selectChip(this,'assets')">11–20 assets</div>
+            <div class="chip" data-val="25" onclick="selectChip(this,'assets')">20+ assets</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you have demand peaks?</label>
+        <div class="chips" id="peakChips">
+          <div class="chip" data-val="none" onclick="selectChip(this,'peaks')">Steady year-round</div>
+          <div class="chip" data-val="seasonal" onclick="selectChip(this,'peaks')">Seasonal peaks (Q4, summer…)</div>
+          <div class="chip" data-val="launches" onclick="selectChip(this,'peaks')">Product launches</div>
+          <div class="chip" data-val="both" onclick="selectChip(this,'peaks')">Both peaks and launches</div>
+        </div>
+        <div class="field-hint">Peaks can 2–4× your baseline creative demand. We'll factor this in.</div>
+      </div>
+
+      <div class="field">
+        <label>Urgency (rush requests)</label>
+        <div class="chips" id="rushChips">
+          <div class="chip" data-val="5" onclick="selectChip(this,'rush_pct')">Rarely (&lt;10%)</div>
+          <div class="chip" data-val="20" onclick="selectChip(this,'rush_pct')">Sometimes (10–30%)</div>
+          <div class="chip" data-val="40" onclick="selectChip(this,'rush_pct')">Often (30–50%)</div>
+          <div class="chip" data-val="60" onclick="selectChip(this,'rush_pct')">Constantly (&gt;50%)</div>
+        </div>
+        <div class="field-hint">Rush requests in our dataset average 40% more hours than standard. Our data shows tech companies run 28% rush rate.</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="goStep(1)">← Back</button>
+        <button class="btn-primary" onclick="goStep(3)">
+          Continue <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <label>Urgency</label>
-      <div class="rush-toggle">
-        <button class="rush-btn active" id="rushNo" onclick="setRush('No')">Standard delivery</button>
-        <button class="rush-btn" id="rushToday" onclick="setRush('Today')">🔴 Rush — same day</button>
+  <!-- ── STEP 3: SITUATION ── -->
+  <div class="step-panel" id="step3">
+    <div class="card">
+      <div class="card-label"><span class="card-label-num">03</span> Your current situation</div>
+      <h2 class="card-title">How do you produce today?</h2>
+      <p class="card-sub">This helps us calculate how much operational waste you currently have — and what the real efficiency gain looks like.</p>
+
+      <div class="field">
+        <label>How do you currently produce creative assets?</label>
+        <div class="chips" id="currentChips">
+          <div class="chip" data-val="agency" onclick="selectChip(this,'current')">Traditional agency</div>
+          <div class="chip" data-val="freelance" onclick="selectChip(this,'current')">Freelancers</div>
+          <div class="chip" data-val="inhouse" onclick="selectChip(this,'current')">In-house team</div>
+          <div class="chip" data-val="mix" onclick="selectChip(this,'current')">Mix of all</div>
+          <div class="chip" data-val="none" onclick="selectChip(this,'current')">Nothing structured yet</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label>Average revision rounds per asset</label>
+          <div class="chips" id="revChips">
+            <div class="chip" data-val="0" onclick="selectChip(this,'revisions')">0–1 rounds</div>
+            <div class="chip" data-val="2" onclick="selectChip(this,'revisions')">2–3 rounds</div>
+            <div class="chip" data-val="4" onclick="selectChip(this,'revisions')">4–5 rounds</div>
+            <div class="chip" data-val="6" onclick="selectChip(this,'revisions')">6+ rounds</div>
+          </div>
+          <div class="field-hint">Industry avg is 2.1 rounds. Each round adds ~0.75h to total delivery time.</div>
+        </div>
+
+        <div class="field">
+          <label>Expected delivery time per asset</label>
+          <div class="chips" id="deliveryChips">
+            <div class="chip" data-val="fast" onclick="selectChip(this,'delivery')">24–48 hours</div>
+            <div class="chip" data-val="normal" onclick="selectChip(this,'delivery')">3–5 days</div>
+            <div class="chip" data-val="slow" onclick="selectChip(this,'delivery')">1–2 weeks</div>
+            <div class="chip" data-val="very_slow" onclick="selectChip(this,'delivery')">2+ weeks</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Is this your first time using a CreativeOps model?</label>
+        <div class="chips" id="firsttimeChips">
+          <div class="chip" data-val="yes" onclick="selectChip(this,'firsttime')">Yes — new to this</div>
+          <div class="chip" data-val="no" onclick="selectChip(this,'firsttime')">No — I've used subscription creative before</div>
+        </div>
+        <div class="field-hint">New clients get a 30% hour buffer in month 1 — it's our onboarding investment, not a price increase.</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="goStep(2)">← Back</button>
+        <button class="btn-primary" onclick="goStep(4)">
+          Calculate my demand <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: EMAIL GATE + RESULTS ── -->
+  <div class="step-panel" id="step4">
+
+    <!-- EMAIL GATE (shown first) -->
+    <div id="emailGate">
+      <div class="email-gate">
+        <div class="gate-eyebrow"><span class="gate-eyebrow-dot"></span>Creative Intelligence</div>
+        <div class="gate-icon">🧠</div>
+        <h2 class="gate-title">This is just the<br><span>tip of the iceberg.</span></h2>
+        <p class="gate-sub">Imagine everything your marketing team needs — with this intelligence behind it. More assets. Fewer revisions. Zero fixed headcount. Creative capacity that scales up and down with your demand.</p>
+
+        <div class="gate-what-you-get">
+          <div class="gate-item">
+            <div class="gate-item-icon">📊</div>
+            <div class="gate-item-text">Your hours estimate and recommended tier — built on 82,168 real data points, not guesswork</div>
+          </div>
+          <div class="gate-item">
+            <div class="gate-item-icon">🏭</div>
+            <div class="gate-item-text">Your industry benchmark — how your creative demand compares to similar companies</div>
+          </div>
+          <div class="gate-item">
+            <div class="gate-item-icon">⚡</div>
+            <div class="gate-item-text">A tailored CreativeOps proposal — senior LATAM creatives + AI, no overhead, no idle time</div>
+          </div>
+        </div>
+
+        <div class="gate-form">
+          <div class="gate-row">
+            <input type="text" id="gateFirstName" placeholder="First name" />
+            <input type="text" id="gateLastName" placeholder="Last name" />
+          </div>
+          <input type="email" id="gateEmail" placeholder="Work email *" required />
+          <div id="gateError" style="display:none;color:#C8FF00;font-size:12px;font-weight:600;padding:4px 0;text-align:left;"></div>
+          <button class="btn-primary" id="gateSubmitBtn" onclick="submitEmail()">
+            See my estimate and proposal →
+          </button>
+        </div>
+        <p class="gate-legal">No spam. We use this to send your report and, if you want, a personalized proposal. Opt out anytime.</p>
       </div>
     </div>
 
-    <button class="predict-btn" onclick="predict()">
-      <span>Predict this asset</span>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div>
+    <!-- RESULTS (shown after email) -->
+    <div id="resultsPanel" style="display:none;">
 
-  <!-- RESULTS -->
-  <div class="gcard">
-    <div class="section-label"><span class="section-num">02</span> Asset intelligence</div>
+      <!-- HERO RESULT -->
+      <div class="result-hero">
+        <div class="result-hero-inner">
+          <div class="result-tag" id="resIndustryTag">Tech / SaaS</div>
+          <div class="result-title">You need <em id="resHoursRec">—</em> hours/month.</div>
+          <p class="result-sub" id="resSubtitle">Based on your profile and real production data from similar companies.</p>
 
-    <div class="result-empty" id="emptyState">
-      <div class="icon">◎</div>
-      <p>Select an asset type and run the prediction to see the full delivery estimate.</p>
-    </div>
+          <div class="hours-range">
+            <div class="hours-box">
+              <div class="hours-val" id="resMin">—</div>
+              <div class="hours-lbl">Minimum viable</div>
+            </div>
+            <div class="hours-box">
+              <div class="hours-val recommended" id="resRec">—</div>
+              <div class="hours-lbl">✦ Recommended</div>
+            </div>
+            <div class="hours-box">
+              <div class="hours-val" id="resPeak">—</div>
+              <div class="hours-lbl">Peak-ready</div>
+            </div>
+          </div>
 
-    <div class="result-content" id="resultContent">
-      <div class="res-header">
-        <div class="res-tag" id="resTag"></div>
-        <div class="res-title" id="resTitle"></div>
-        <div class="res-subtitle" id="resSubtitle"></div>
-        <div id="confidenceBadge"></div>
+          <div class="result-cta">
+            <a href="https://uppipe.co/#pricing" class="result-btn primary">Start with a 30h Sprint →</a>
+            <a href="https://uppipe.co/#book" class="result-btn secondary">Talk to us first</a>
+          </div>
+        </div>
       </div>
 
+      <!-- METRICS -->
       <div class="metric-grid">
-        <div class="metric primary">
-          <div class="metric-val" id="resTotal">—</div>
-          <div class="metric-lbl">Total delivery time</div>
-          <div class="metric-sub">from brief to approval</div>
+        <div class="metric-card highlight">
+          <div class="metric-val" id="metRequests">—</div>
+          <div class="metric-lbl">Estimated requests/mo</div>
+          <div class="metric-sub">Based on your campaign volume</div>
         </div>
-        <div class="metric" id="rushMetric">
-          <div class="metric-val" id="resRush">—</div>
-          <div class="metric-lbl">Under rush</div>
-          <div class="metric-sub">same-day urgency</div>
+        <div class="metric-card">
+          <div class="metric-val" id="metHoursPerReq">—</div>
+          <div class="metric-lbl">Avg hours / request</div>
+          <div class="metric-sub" id="metHoursPerReqSub">Industry benchmark</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="metRevBurden">—</div>
+          <div class="metric-lbl">Revision overhead</div>
+          <div class="metric-sub">Of your total hours are re-work</div>
         </div>
       </div>
 
-      <div class="rounds-section">
-        <div class="rounds-label">Typical revision journey</div>
-        <div class="rounds-visual" id="roundsVisual"></div>
-        <div class="rounds-legend" id="roundsLegend"></div>
+      <!-- TASK MIX -->
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-label"><span class="card-label-num">→</span> How your hours break down</div>
+        <div class="mix-title">Hour allocation by task type — <span id="mixIndustryLabel">your industry</span></div>
+        <div id="mixBars"></div>
+        <div class="insight">
+          <div class="insight-icon">💡</div>
+          <div class="insight-title" id="insightTitle">Insight</div>
+          <div class="insight-body" id="insightBody">—</div>
+        </div>
       </div>
 
-      <div class="insight" id="insightBox"></div>
-      <div class="fallback-note" id="fallbackNote"></div>
+      <!-- SUBSCRIPTION TIERS -->
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-label"><span class="card-label-num">→</span> Choose your plan</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Subscription tiers</h3>
+        <p style="font-size:13px;color:var(--mid);margin-bottom:0;">All-inclusive per hour. No platform fees. No rush surcharges in public pricing.</p>
+        <div class="tier-grid" id="tierGrid"></div>
+        <p style="font-size:11px;color:var(--lt);margin-top:12px;">* First month includes 30% additional hours as a learning curve investment — not a price increase.</p>
+      </div>
+
+      <!-- BENCHMARK COMPARISON -->
+      <div class="card">
+        <div class="card-label"><span class="card-label-num">→</span> How you compare</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:24px;">Industry benchmark</h3>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val" id="benchMedian">—</div>
+            <div class="metric-lbl">Median hours/mo</div>
+            <div class="metric-sub" id="benchIndustry">Your industry</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val" id="benchRush">—</div>
+            <div class="metric-lbl">Rush rate</div>
+            <div class="metric-sub">In your industry</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val" id="benchConfidence">High</div>
+            <div class="metric-lbl">Model confidence</div>
+            <div class="metric-sub" id="benchDataPoints">Based on real entries</div>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding:20px;background:var(--cobalt-tint);border-radius:14px;">
+          <p style="font-size:12px;color:var(--cobalt-deep);line-height:1.7;font-weight:600;">
+            <strong>This estimate is based on real Uppipe production data</strong> — 82,168 real data points from Brandnew Studio's 15+ years serving similar companies. Not industry surveys. Not guesses. Real hours, real tasks, real revision cycles.
+          </p>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://uppipe.co/#pricing" class="btn-primary" style="text-decoration:none;display:inline-flex;width:auto;padding:14px 28px;">Start with a 30h Sprint →</a>
+          <a href="https://uppipe.co" class="btn-secondary" style="text-decoration:none;display:inline-flex;padding:14px 28px;">Learn about Uppipe</a>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- CLIENT REVISION TABLE -->
-  <div class="table-section">
-    <div class="table-title">Client revision patterns</div>
-    <div class="table-sub">How many adjustment rounds each client typically requests per asset. Based on real production history.</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Client</th>
-          <th>Typical rounds</th>
-          <th>Average rounds</th>
-          <th>Pattern</th>
-          <th>What this means</th>
-        </tr>
-      </thead>
-      <tbody id="riskTbody"></tbody>
-    </table>
-  </div>
+</main>
 
-</div>
-
-<footer>
-  <p>Uppipe Creative Intelligence — <span class="accent">trained on real assets, not assumptions</span></p>
-  <p>© 2026 Uppipe · uppipe.io</p>
+<footer class="page-footer">
+  <p><strong>Uppipe Creative Intelligence</strong> — trained on <strong>70,152 time entries + 12,016 Trello cards</strong>, not assumptions.</p>
+  <p style="margin-top:8px;">© 2026 Uppipe · <a href="https://uppipe.co">uppipe.co</a> · <a href="/cdn-cgi/l/email-protection#523a373e3e3d122722223b22377c313d"><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29da8adadb4adb8f3beb2">[email&#160;protected]</span></a></p>
 </footer>
 
-<script>
-const MODEL = {"L1":{"11x17 Poster - One Sided|Vanti":{"median":0.82,"mean":3.0,"adj_rounds":1.0,"count":5},"4x6 Promo Card - One Sided|Gifted Breads":{"median":2.25,"mean":2.25,"adj_rounds":3.0,"count":1},"4x6 Promo Card - Two Sided|Gifted Breads":{"median":1.81,"mean":1.81,"adj_rounds":4.0,"count":1},"A1 Poster - One Sided|Vanti":{"median":1.55,"mean":1.51,"adj_rounds":1.0,"count":4},"A3 Poster - One Sided|Gifted Breads":{"median":11.37,"mean":11.37,"adj_rounds":8.0,"count":1},"A3 Poster - One Sided|Vanti":{"median":0.19,"mean":0.24,"adj_rounds":1.0,"count":3},"A4 Flyer - One Sided|BrandNew":{"median":2.29,"mean":2.29,"adj_rounds":0.5,"count":2},"A4 Flyer - One Sided|Gifted Breads":{"median":0.27,"mean":0.27,"adj_rounds":0.0,"count":1},"A4 Flyer - One Sided|Vanti":{"median":1.52,"mean":2.13,"adj_rounds":1.0,"count":20},"A4 Flyer - Two Sided|Gifted Breads":{"median":2.8,"mean":2.8,"adj_rounds":0.0,"count":1},"A5 Flyer - Two Sided|BrandNew":{"median":1.2,"mean":1.2,"adj_rounds":1.0,"count":1},"A5 Flyer - Two Sided|Vanti":{"median":0.76,"mean":0.76,"adj_rounds":1.0,"count":1},"A6 Print Card - Two Sided|Galgo":{"median":0.78,"mean":0.78,"adj_rounds":0.0,"count":1},"Banner Filtro|Galgo":{"median":0.09,"mean":0.15,"adj_rounds":0.0,"count":10},"Banner Filtro|Rappi":{"median":0.12,"mean":0.31,"adj_rounds":1.0,"count":11},"Banner Home|Galgo":{"median":0.72,"mean":0.79,"adj_rounds":1.0,"count":28},"Banner Home|Rappi":{"median":0.45,"mean":0.84,"adj_rounds":1.0,"count":12},"Banner Home|Vanti":{"median":0.71,"mean":1.26,"adj_rounds":0.0,"count":18},"Blog Interior Image|BrandNew":{"median":2.44,"mean":2.44,"adj_rounds":1.0,"count":1},"Blog Interior Image|Galgo":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"Blog Interior Image|Vanti":{"median":1.81,"mean":1.81,"adj_rounds":1.0,"count":2},"Collection 1 vertical|Galgo":{"median":0.11,"mean":0.11,"adj_rounds":0.0,"count":1},"Collection 1 vertical|Vanti":{"median":2.07,"mean":2.07,"adj_rounds":2.0,"count":2},"Collection 3 cuadrados|BrandNew":{"median":0.93,"mean":0.93,"adj_rounds":1.0,"count":2},"Collection 3 cuadrados|Vanti":{"median":3.13,"mean":3.13,"adj_rounds":2.0,"count":1},"Cover|Galgo":{"median":0.01,"mean":0.01,"adj_rounds":0.0,"count":1},"Email Body Image|BrandNew":{"median":2.33,"mean":2.33,"adj_rounds":0.0,"count":1},"Email Body Image|Vanti":{"median":0.38,"mean":0.47,"adj_rounds":1.0,"count":3},"Email Header|Alpina":{"median":0.32,"mean":0.32,"adj_rounds":1.0,"count":1},"Facebook Carrousel|BrandNew":{"median":1.33,"mean":1.33,"adj_rounds":0.0,"count":1},"Facebook Carrousel|Galgo":{"median":0.79,"mean":1.38,"adj_rounds":0.0,"count":20},"Facebook Carrousel|Vanti":{"median":1.97,"mean":2.33,"adj_rounds":1.0,"count":3},"Facebook Share Image (Horizontal)|AAICO":{"median":0.33,"mean":0.33,"adj_rounds":0.0,"count":1},"Facebook Share Image (Horizontal)|Galgo":{"median":5.9,"mean":5.9,"adj_rounds":1.0,"count":2},"Facebook Share Image (Square)|Galgo":{"median":1.65,"mean":1.31,"adj_rounds":0.0,"count":3},"Facebook Share Image (Square)|Vanti":{"median":3.4,"mean":3.4,"adj_rounds":0.0,"count":1},"Facebook Share Image (Vertical)|Galgo":{"median":0.13,"mean":1.18,"adj_rounds":1.0,"count":4},"Header|Galgo":{"median":0.02,"mean":0.02,"adj_rounds":0.0,"count":1},"Header|Vanti":{"median":0.8,"mean":0.8,"adj_rounds":0.0,"count":1},"InApp|Rappi":{"median":0.06,"mean":0.26,"adj_rounds":1.0,"count":10},"InApp|Vanti":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"Insta Story|Galgo":{"median":0.6,"mean":0.81,"adj_rounds":0.0,"count":56},"Insta Story|Rappi":{"median":0.04,"mean":0.21,"adj_rounds":1.0,"count":11},"Insta Story|Vanti":{"median":1.25,"mean":1.65,"adj_rounds":0.0,"count":35},"Insta Story|Wanderloop":{"median":2.02,"mean":2.02,"adj_rounds":2.0,"count":2},"Instagram (Image  ONLY, NO Text)|BrandNew":{"median":1.27,"mean":1.27,"adj_rounds":0.5,"count":2},"Instagram (Image  ONLY, NO Text)|Galgo":{"median":0.67,"mean":1.31,"adj_rounds":0.0,"count":21},"Instagram (Image  ONLY, NO Text)|Vanti":{"median":1.41,"mean":2.36,"adj_rounds":0.5,"count":30},"Instagram (Image  ONLY, NO Text)|Wanderloop":{"median":1.18,"mean":1.18,"adj_rounds":2.0,"count":1},"Other|400 Grados":{"median":8.33,"mean":8.33,"adj_rounds":2.0,"count":1},"Other|AAICO":{"median":5.33,"mean":10.26,"adj_rounds":0.5,"count":18},"Other|Alpina":{"median":3.41,"mean":5.83,"adj_rounds":1.0,"count":24},"Other|BrandNew":{"median":6.55,"mean":32.08,"adj_rounds":0.0,"count":84},"Other|CONACO":{"median":8.7,"mean":8.7,"adj_rounds":5.0,"count":1},"Other|Catalina Perez":{"median":5.48,"mean":5.48,"adj_rounds":1.0,"count":1},"Other|Galgo":{"median":1.53,"mean":2.43,"adj_rounds":0.0,"count":159},"Other|Maria Elena Interiores":{"median":0.45,"mean":0.45,"adj_rounds":0.0,"count":1},"Other|Rappi":{"median":0.33,"mean":0.33,"adj_rounds":1.0,"count":2},"Other|Sugati Coaching":{"median":5.4,"mean":4.88,"adj_rounds":1.0,"count":3},"Other|Vanti":{"median":1.75,"mean":3.48,"adj_rounds":1.0,"count":228},"Other|Wanderloop":{"median":2.81,"mean":2.88,"adj_rounds":2.0,"count":4},"Paid Facebook Ad|Galgo":{"median":0.06,"mean":0.06,"adj_rounds":0.0,"count":2},"Paid Facebook Ad (Square)|Galgo":{"median":0.1,"mean":1.59,"adj_rounds":0.0,"count":4}},"L2":{"11x17 Poster - One Sided|Energy":{"median":0.82,"mean":3.0,"adj_rounds":1.0,"count":5},"4x6 Promo Card - One Sided|Food & Beverage":{"median":2.25,"mean":2.25,"adj_rounds":3.0,"count":1},"4x6 Promo Card - Two Sided|Food & Beverage":{"median":1.81,"mean":1.81,"adj_rounds":4.0,"count":1},"A1 Poster - One Sided|Energy":{"median":1.55,"mean":1.51,"adj_rounds":1.0,"count":4},"A3 Poster - One Sided|Energy":{"median":0.19,"mean":0.24,"adj_rounds":1.0,"count":3},"A3 Poster - One Sided|Food & Beverage":{"median":11.37,"mean":11.37,"adj_rounds":8.0,"count":1},"A4 Flyer - One Sided|Agency":{"median":2.29,"mean":2.29,"adj_rounds":0.5,"count":2},"A4 Flyer - One Sided|Energy":{"median":1.52,"mean":2.13,"adj_rounds":1.0,"count":20},"A4 Flyer - One Sided|Food & Beverage":{"median":0.27,"mean":0.27,"adj_rounds":0.0,"count":1},"A4 Flyer - Two Sided|Food & Beverage":{"median":2.8,"mean":2.8,"adj_rounds":0.0,"count":1},"A5 Flyer - Two Sided|Agency":{"median":1.2,"mean":1.2,"adj_rounds":1.0,"count":1},"A5 Flyer - Two Sided|Energy":{"median":0.76,"mean":0.76,"adj_rounds":1.0,"count":1},"A6 Print Card - Two Sided|Fintech":{"median":0.78,"mean":0.78,"adj_rounds":0.0,"count":1},"Banner Filtro|Fintech":{"median":0.09,"mean":0.15,"adj_rounds":0.0,"count":10},"Banner Filtro|Tech / Delivery":{"median":0.12,"mean":0.31,"adj_rounds":1.0,"count":11},"Banner Home|Energy":{"median":0.71,"mean":1.26,"adj_rounds":0.0,"count":18},"Banner Home|Fintech":{"median":0.72,"mean":0.79,"adj_rounds":1.0,"count":28},"Banner Home|Tech / Delivery":{"median":0.45,"mean":0.84,"adj_rounds":1.0,"count":12},"Blog Interior Image|Agency":{"median":2.44,"mean":2.44,"adj_rounds":1.0,"count":1},"Blog Interior Image|Energy":{"median":1.81,"mean":1.81,"adj_rounds":1.0,"count":2},"Blog Interior Image|Fintech":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"Collection 1 vertical|Energy":{"median":2.07,"mean":2.07,"adj_rounds":2.0,"count":2},"Collection 1 vertical|Fintech":{"median":0.11,"mean":0.11,"adj_rounds":0.0,"count":1},"Collection 3 cuadrados|Agency":{"median":0.93,"mean":0.93,"adj_rounds":1.0,"count":2},"Collection 3 cuadrados|Energy":{"median":3.13,"mean":3.13,"adj_rounds":2.0,"count":1},"Cover|Fintech":{"median":0.01,"mean":0.01,"adj_rounds":0.0,"count":1},"Email Body Image|Agency":{"median":2.33,"mean":2.33,"adj_rounds":0.0,"count":1},"Email Body Image|Energy":{"median":0.38,"mean":0.47,"adj_rounds":1.0,"count":3},"Email Header|Food & Beverage":{"median":0.32,"mean":0.32,"adj_rounds":1.0,"count":1},"Facebook Carrousel|Agency":{"median":1.33,"mean":1.33,"adj_rounds":0.0,"count":1},"Facebook Carrousel|Energy":{"median":1.97,"mean":2.33,"adj_rounds":1.0,"count":3},"Facebook Carrousel|Fintech":{"median":0.79,"mean":1.38,"adj_rounds":0.0,"count":20},"Facebook Share Image (Horizontal)|Fintech":{"median":5.9,"mean":5.9,"adj_rounds":1.0,"count":2},"Facebook Share Image (Horizontal)|Real Estate":{"median":0.33,"mean":0.33,"adj_rounds":0.0,"count":1},"Facebook Share Image (Square)|Energy":{"median":3.4,"mean":3.4,"adj_rounds":0.0,"count":1},"Facebook Share Image (Square)|Fintech":{"median":1.65,"mean":1.31,"adj_rounds":0.0,"count":3},"Facebook Share Image (Vertical)|Fintech":{"median":0.13,"mean":1.18,"adj_rounds":1.0,"count":4},"Header|Energy":{"median":0.8,"mean":0.8,"adj_rounds":0.0,"count":1},"Header|Fintech":{"median":0.02,"mean":0.02,"adj_rounds":0.0,"count":1},"InApp|Energy":{"median":0.53,"mean":0.53,"adj_rounds":1.0,"count":1},"InApp|Tech / Delivery":{"median":0.06,"mean":0.26,"adj_rounds":1.0,"count":10},"Insta Story|Energy":{"median":1.25,"mean":1.65,"adj_rounds":0.0,"count":35},"Insta Story|Fintech":{"median":0.6,"mean":0.81,"adj_rounds":0.0,"count":56},"Insta Story|Tech / Delivery":{"median":0.04,"mean":0.21,"adj_rounds":1.0,"count":11},"Insta Story|Travel":{"median":2.02,"mean":2.02,"adj_rounds":2.0,"count":2},"Instagram (Image  ONLY, NO Text)|Agency":{"median":1.27,"mean":1.27,"adj_rounds":0.5,"count":2},"Instagram (Image  ONLY, NO Text)|Energy":{"median":1.41,"mean":2.36,"adj_rounds":0.5,"count":30},"Instagram (Image  ONLY, NO Text)|Fintech":{"median":0.67,"mean":1.31,"adj_rounds":0.0,"count":21},"Instagram (Image  ONLY, NO Text)|Travel":{"median":1.18,"mean":1.18,"adj_rounds":2.0,"count":1},"Other|Agency":{"median":6.55,"mean":32.08,"adj_rounds":0.0,"count":84},"Other|Construction":{"median":8.7,"mean":8.7,"adj_rounds":5.0,"count":1},"Other|Energy":{"median":1.75,"mean":3.48,"adj_rounds":1.0,"count":228},"Other|Fintech":{"median":1.53,"mean":2.43,"adj_rounds":0.0,"count":159},"Other|Food & Beverage":{"median":3.47,"mean":5.93,"adj_rounds":1.0,"count":25},"Other|Real Estate":{"median":5.22,"mean":9.75,"adj_rounds":0.0,"count":19},"Other|Services":{"median":5.44,"mean":5.03,"adj_rounds":1.0,"count":4},"Other|Tech / Delivery":{"median":0.33,"mean":0.33,"adj_rounds":1.0,"count":2},"Other|Travel":{"median":2.81,"mean":2.88,"adj_rounds":2.0,"count":4},"Paid Facebook Ad|Fintech":{"median":0.06,"mean":0.06,"adj_rounds":0.0,"count":2},"Paid Facebook Ad (Square)|Fintech":{"median":0.1,"mean":1.59,"adj_rounds":0.0,"count":4}},"L3":{"11x17 Poster - One Sided":{"median":0.82,"mean":3.0,"adj_rounds":1.0,"count":5},"4x6 Promo Card - One Sided":{"median":2.25,"mean":2.25,"adj_rounds":3.0,"count":1},"4x6 Promo Card - Two Sided":{"median":1.81,"mean":1.81,"adj_rounds":4.0,"count":1},"A1 Poster - One Sided":{"median":1.55,"mean":1.51,"adj_rounds":1.0,"count":4},"A3 Poster - One Sided":{"median":0.34,"mean":3.02,"adj_rounds":1.0,"count":4},"A4 Flyer - One Sided":{"median":1.47,"mean":2.06,"adj_rounds":1.0,"count":23},"A4 Flyer - Two Sided":{"median":2.8,"mean":2.8,"adj_rounds":0.0,"count":1},"A5 Flyer - Two Sided":{"median":0.98,"mean":0.98,"adj_rounds":1.0,"count":2},"A6 Print Card - Two Sided":{"median":0.78,"mean":0.78,"adj_rounds":0.0,"count":1},"Banner Filtro":{"median":0.12,"mean":0.24,"adj_rounds":1.0,"count":21},"Banner Home":{"median":0.7,"mean":0.95,"adj_rounds":1.0,"count":58},"Blog Interior Image":{"median":1.81,"mean":1.65,"adj_rounds":1.0,"count":4},"Collection 1 vertical":{"median":1.37,"mean":1.42,"adj_rounds":0.0,"count":3},"Collection 3 cuadrados":{"median":1.22,"mean":1.67,"adj_rounds":1.0,"count":3},"Cover":{"median":0.01,"mean":0.01,"adj_rounds":0.0,"count":1},"Email Body Image":{"median":0.56,"mean":0.94,"adj_rounds":0.5,"count":4},"Email Header":{"median":0.32,"mean":0.32,"adj_rounds":1.0,"count":1},"Facebook Carrousel":{"median":1.07,"mean":1.5,"adj_rounds":0.0,"count":24},"Facebook Share Image (Horizontal)":{"median":2.93,"mean":4.04,"adj_rounds":0.0,"count":3},"Facebook Share Image (Square)":{"median":1.86,"mean":1.83,"adj_rounds":0.0,"count":4},"Facebook Share Image (Vertical)":{"median":0.13,"mean":1.18,"adj_rounds":1.0,"count":4},"Header":{"median":0.41,"mean":0.41,"adj_rounds":0.0,"count":2},"InApp":{"median":0.06,"mean":0.28,"adj_rounds":1.0,"count":11},"Insta Story":{"median":0.65,"mean":1.05,"adj_rounds":0.0,"count":104},"Instagram (Image  ONLY, NO Text)":{"median":1.24,"mean":1.89,"adj_rounds":0.0,"count":54},"Other":{"median":2.17,"mean":8.08,"adj_rounds":0.0,"count":526},"Paid Facebook Ad":{"median":0.06,"mean":0.06,"adj_rounds":0.0,"count":2},"Paid Facebook Ad (Square)":{"median":0.1,"mean":1.59,"adj_rounds":0.0,"count":4}},"rush_mod":{"11x17 Poster - One Sided":6.55,"A4 Flyer - One Sided":1.24,"Banner Home":0.7,"Facebook Carrousel":0.46,"Insta Story":0.9,"Instagram (Image  ONLY, NO Text)":1.5,"Other":1.09},"rev_risk":{"400 Grados":{"mean_rounds":2.0,"median_rounds":2.0},"AAICO":{"mean_rounds":0.74,"median_rounds":0.0},"Alpina":{"mean_rounds":1.6,"median_rounds":1.0},"BrandNew":{"mean_rounds":1.39,"median_rounds":0.0},"CONACO":{"mean_rounds":5.0,"median_rounds":5.0},"Catalina Perez":{"mean_rounds":1.0,"median_rounds":1.0},"Galgo":{"mean_rounds":0.45,"median_rounds":0.0},"Gifted Breads":{"mean_rounds":3.0,"median_rounds":3.0},"Maria Elena Interiores":{"mean_rounds":0.0,"median_rounds":0.0},"Rappi":{"mean_rounds":1.2,"median_rounds":1.0},"Sugati Coaching":{"mean_rounds":1.0,"median_rounds":1.0},"Vanti":{"mean_rounds":0.85,"median_rounds":1.0},"Wanderloop":{"mean_rounds":2.14,"median_rounds":2.0}},"industry_map":{"Vanti ":"Energy","Vanti":"Energy","Galgo":"Fintech","Alpina":"Food & Beverage","Rappi":"Tech / Delivery","AAICO":"Real Estate","BrandNew":"Agency","Wanderloop":"Travel","Gifted Breads":"Food & Beverage","CONACO":"Construction","Sugati Coaching":"Services","400 Grados":"Food & Beverage","Catalina Perez":"Services","Maria Elena Interiores":"Real Estate"},"assets":["11x17 Poster - One Sided","4x6 Promo Card - One Sided","4x6 Promo Card - Two Sided","A1 Poster - One Sided","A3 Poster - One Sided","A4 Flyer - One Sided","A4 Flyer - Two Sided","A5 Flyer - Two Sided","A6 Print Card - Two Sided","Banner Filtro","Banner Home","Blog Interior Image","Collection 1 vertical","Collection 3 cuadrados","Cover","Email Body Image","Email Header","Facebook Carrousel","Facebook Share Image (Horizontal)","Facebook Share Image (Square)","Facebook Share Image (Vertical)","Header","InApp","Insta Story","Instagram (Image  ONLY, NO Text)","Other","Paid Facebook Ad","Paid Facebook Ad (Square)"],"clients":["400 Grados","AAICO","Alpina","BrandNew","CONACO","Catalina Perez","Galgo","Gifted Breads","Maria Elena Interiores","Rappi","Sugati Coaching","Vanti","Wanderloop"],"industries":["Agency","Construction","Energy","Fintech","Food & Beverage","Real Estate","Services","Tech / Delivery","Travel"]};
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── DATA MODEL (trained on 70,152 real entries + 12,016 Trello cards, 330 client files, 2016–2025) ──
+const MODEL = {
+  meta: { records: 70152, files: 330, trello_cards: 12016, total_data_points: 82168 },
+  rush_trend_by_year: {"2016":9.5,"2017":19.5,"2018":26.3,"2019":16.8,"2020":23.2,"2021":38.5,"2022":38.9,"2023":46.6,"2024":35.2,"2025":25.1},
+  task_benchmarks: {
+    "Design":        { count:7101, mean:1.603, median:1.192, p25:0.601, p75:2.180 },
+    "Adjustments":   { count:5467, mean:0.755, median:0.475, p25:0.248, p75:0.918 },
+    "Rush Design":   { count:4475, mean:0.970, median:0.675, p25:0.299, p75:1.263 },
+    "Final Artwork": { count:972,  mean:0.545, median:0.280, p25:0.175, p75:0.557 },
+    "Copywriting":   { count:168,  mean:1.779, median:0.925, p25:0.527, p75:2.489 },
+    "Presentations": { count:109,  mean:1.235, median:1.086, p25:0.593, p75:1.657 },
+    "Meetings":      { count:160,  mean:0.853, median:0.679, p25:0.543, p75:0.853 },
+    "Other":         { count:442,  mean:1.528, median:0.950, p25:0.583, p75:1.861 },
+  },
+  industry_profiles: {
+    // Tech/Mobility: 44,136 timesheet entries + 4,749 Trello cards — Uber (all countries), Rappi, Glovo, Ramsay, PayU, Elibom, Flexport
+    "Tech / Mobility": {
+      label:"Tech / SaaS / Mobility", icon:"🚀",
+      task_mix: {"Design":39.5,"Rush Design":27.2,"Adjustments":26.5,"Final Artwork":4.3,"Other":1.2,"Presentations":0.7,"Meetings":0.5},
+      hours_per_request: { count:7229, mean:1.113, median:0.700, p25:0.317, p75:1.467 },
+      hours_per_month:   { count:74,   mean:99.7,  median:37.3,  p25:17.6,  p75:76.1 },
+      revision_pct:26.5, rush_pct:23.9,
+      asset_mix: {"General Design":59.0,"Web/App/UX":6.1,"Print/OOH":6.0,"Social Media Post":5.5,"Key Visual/Campaign":3.9,"Packaging":2.9,"Branding/ID":2.7,"Video/Motion":2.5,"Event/Experiential":2.0,"Presentation/Deck":1.7,"Email/Newsletter":1.6,"Photography":1.2,"Toolkit/Templates":1.1,"Banner Digital":1.0,"Merchandising":0.9,"GIF":0.6,"Illustration":0.5},
+      trello_cards: 4749,
+      volume_by_year: {"2016":159,"2017":875,"2018":1633,"2019":961,"2020":108,"2021":271,"2024":693,"2025":8},
+      rush_by_year: {"2016":8.8,"2017":19.3,"2018":28.7,"2019":20.0,"2020":3.7,"2021":17.0,"2024":33.6,"2025":37.5}
+    },
+    // Food & Beverage: 9,378 timesheet entries + 4,689 Trello cards — Alpina, Natura, Powerful Yogurt, Arcos Dorados
+    "Food & Beverage": {
+      label:"Food & Beverage / CPG", icon:"🍃",
+      task_mix: {"Design":32.2,"Adjustments":30.7,"Rush Design":16.9,"Final Artwork":8.9,"Other":6.1,"Meetings":2.3,"Presentations":1.3,"Copywriting":1.1},
+      hours_per_request: { count:1445, mean:1.204, median:0.850, p25:0.371, p75:1.662 },
+      hours_per_month:   { count:12,  mean:52.8,  median:27.7,  p25:9.3,   p75:70.6 },
+      revision_pct:30.8, rush_pct:45.8,
+      asset_mix: {"General Design":60.9,"Print/OOH":9.3,"Web/App/UX":4.9,"Ciclo/Catálogo":4.8,"Key Visual/Campaign":4.6,"Social Media Post":3.1,"Banner Digital":2.5,"Toolkit/Templates":2.2,"Packaging":1.9,"Event/Experiential":1.4,"Branding/ID":1.4,"Video/Motion":0.8,"Presentation/Deck":0.8,"Email/Newsletter":0.5},
+      trello_cards: 4689,
+      volume_by_year: {"2017":48,"2018":271,"2019":37,"2020":500,"2021":741,"2022":643,"2023":1660,"2024":747,"2025":42},
+      rush_by_year: {"2017":2.1,"2018":19.2,"2019":29.7,"2020":45.8,"2021":51.7,"2022":47.7,"2023":49.8,"2024":44.7,"2025":9.5}
+    },
+    // Real Estate / Coworking: 2,065 timesheet entries + 91 Trello cards — Casa Legado, WeWork, Baia Kristal, Amarilo
+    "Real Estate / Coworking": {
+      label:"Real Estate / Coworking", icon:"🏢",
+      task_mix: {"Design":39.3,"Adjustments":31.3,"Copywriting":8.0,"Other":5.3,"Final Artwork":5.4,"Meetings":5.3,"Presentations":2.8,"Rush Design":2.6},
+      hours_per_request: { count:99, mean:1.539, median:1.317, p25:0.510, p75:2.243 },
+      hours_per_month:   { count:6,  mean:25.4,  median:24.5,  p25:15.1,  p75:33.8 },
+      revision_pct:31.3, rush_pct:2.6,
+      asset_mix: {"General Design":78.0,"Social Media Post":6.6,"Branding/ID":5.5,"Copy/Content":4.4,"Presentation/Deck":2.2,"Web/App/UX":2.2,"Toolkit/Templates":1.1},
+      trello_cards: 91,
+      volume_by_year: {"2020":91},
+      rush_by_year: {"2020":0.0}
+    },
+    // Retail / E-commerce: 243 timesheet entries — Amazon, e-commerce clients
+    "Retail / E-commerce": {
+      label:"Retail / E-commerce", icon:"🛍️",
+      task_mix: {"Adjustments":38.6,"Design":37.7,"Meetings":11.1,"Final Artwork":9.0,"Rush Design":3.7},
+      hours_per_request: { count:5, mean:4.01, median:3.43, p25:2.95, p75:5.53 },
+      hours_per_month:   { count:1, mean:20.1,  median:20.1, p25:20.1, p75:20.1 },
+      revision_pct:38.6, rush_pct:3.7,
+      asset_mix: {"General Design":60.0,"Banner Digital":15.0,"Social Media Post":10.0,"Email/Newsletter":8.0,"Photography":7.0},
+      trello_cards: 0,
+      volume_by_year: {},
+      rush_by_year: {}
+    },
+    // Agency / Creative Services: 8,048 timesheet entries + 2,487 Trello cards — Brandnew, Edelman, AED, Straik, Seijiro
+    "Agency / Creative Services": {
+      label:"Agency / Creative Services", icon:"🎨",
+      task_mix: {"Design":34.9,"Adjustments":28.2,"Other":18.3,"Rush Design":8.6,"Meetings":5.9,"Final Artwork":2.9,"Presentations":0.8,"Copywriting":0.4},
+      hours_per_request: { count:1342, mean:1.466, median:1.068, p25:0.420, p75:2.100 },
+      hours_per_month:   { count:2,  mean:9.6,   median:9.6,   p25:9.1,   p75:10.0 },
+      revision_pct:28.2, rush_pct:11.9,
+      asset_mix: {"General Design":56.1,"Branding/ID":7.3,"Print/OOH":6.2,"Presentation/Deck":5.7,"Web/App/UX":5.4,"Social Media Post":3.1,"Packaging":2.6,"Merchandising":2.3,"Email/Newsletter":2.2,"Video/Motion":2.0,"Toolkit/Templates":1.6,"Event/Experiential":1.3,"Banner Digital":1.1,"Key Visual/Campaign":1.0,"Copy/Content":0.6},
+      trello_cards: 2487,
+      volume_by_year: {"2016":136,"2017":196,"2018":263,"2019":472,"2020":350,"2021":120,"2022":150,"2023":124,"2024":271,"2025":405},
+      rush_by_year: {"2016":10.3,"2017":19.9,"2018":11.8,"2019":7.4,"2020":2.9,"2021":5.8,"2022":1.3,"2023":9.7,"2024":13.3,"2025":26.9}
+    },
+    // Manufacturing/Industrial: 2,158 timesheet entries — Gran Tierra, Geopark, Climatec, Laminados
+    "Manufacturing / Industrial": {
+      label:"Manufacturing / B2B Industrial", icon:"⚙️",
+      task_mix: {"Design":56.3,"Adjustments":34.8,"Other":4.7,"Final Artwork":1.3,"Rush Design":1.8,"Meetings":1.1},
+      hours_per_request: { count:348, mean:1.793, median:1.413, p25:0.735, p75:2.552 },
+      hours_per_month:   { count:2,  mean:79.5,  median:79.5,  p25:62.8,  p75:96.2 },
+      revision_pct:34.8, rush_pct:6.7,
+      asset_mix: {"Web/App/UX":36.7,"General Design":26.7,"Presentation/Deck":10.0,"Video/Motion":10.0,"Key Visual/Campaign":3.3,"Toolkit/Templates":3.3,"Branding/ID":3.3,"Illustration":3.3,"Event/Experiential":3.3},
+      trello_cards: 0,
+      volume_by_year: {},
+      rush_by_year: {}
+    },
+    "Other": {
+      label:"Other industries", icon:"📊",
+      task_mix: {"Design":40.0,"Adjustments":28.0,"Rush Design":14.0,"Final Artwork":10.0,"Other":8.0},
+      hours_per_request: { count:50, mean:1.5, median:0.9, p25:0.4, p75:2.0 },
+      hours_per_month:   { count:10, mean:45.0, median:35.0, p25:20.0, p75:60.0 },
+      revision_pct:28.0, rush_pct:14.0,
+      asset_mix: {"General Design":65.0,"Social Media Post":10.0,"Print/OOH":8.0,"Video/Motion":5.0,"Branding/ID":5.0,"Other":7.0},
+      trello_cards: 0, volume_by_year: {}, rush_by_year: {}
+    }
+  },
+  tiers: [
+    { name:"Starter",    hours:40,  desc:"1–2 campaigns/month" },
+    { name:"Growth",     hours:80,  desc:"3–5 campaigns/month" },
+    { name:"Scale",      hours:160, desc:"6+ campaigns, multi-channel" },
+    { name:"Enterprise", hours:320, desc:"Full creative ops replacement" },
+  ]
+};
+  task_benchmarks: {
+    "Design":        { count:6701, mean:1.618, median:1.203, p25:0.601, p75:2.204 },
+    "Adjustments":   { count:5229, mean:0.756, median:0.472, p25:0.249, p75:0.916 },
+    "Rush Design":   { count:4226, mean:0.972, median:0.673, p25:0.298, p75:1.265 },
+    "Final Artwork": { count:939,  mean:0.543, median:0.273, p25:0.171, p75:0.552 },
+    "Copywriting":   { count:168,  mean:1.779, median:0.925, p25:0.527, p75:2.489 },
+    "Presentations": { count:101,  mean:1.230, median:1.093, p25:0.590, p75:1.602 },
+    "Meetings":      { count:152,  mean:0.851, median:0.666, p25:0.528, p75:0.845 },
+    "Other":         { count:436,  mean:1.538, median:0.951, p25:0.582, p75:1.873 },
+  },
+  industry_profiles: {
+    // Tech/Mobility: timesheet entries + 4,749 Trello cards — Uber, Rappi, Glovo, Ramsay
+    "Tech / Mobility": {
+      label:"Tech / SaaS / Mobility", icon:"🚀",
+      task_mix: {"Design":46.8,"Rush Design":27.8,"Adjustments":21.2,"Final Artwork":2.5,"Other":0.9,"Copywriting":0.5,"Presentations":0.3},
+      hours_per_request: { count:7229, mean:1.113, median:0.700, p25:0.317, p75:1.467 },
+      hours_per_month:   { count:74,   mean:99.7,  median:37.3,  p25:17.6,  p75:76.1 },
+      revision_pct:21.2, rush_pct:23.9,
+      asset_mix: {"General Design":59.0,"Web/App/UX":6.1,"Print/OOH":6.0,"Social Media Post":5.5,"Key Visual/Campaign":3.9,"Packaging":2.9,"Branding/ID":2.7,"Video/Motion":2.5,"Event/Experiential":2.0,"Presentation/Deck":1.7,"Email/Newsletter":1.6,"Photography":1.2,"Toolkit/Templates":1.1,"Banner Digital":1.0,"Merchandising":0.9,"GIF":0.6,"Illustration":0.5},
+      trello_cards: 4749,
+      volume_by_year: {"2016":159,"2017":875,"2018":1633,"2019":961,"2020":108,"2021":271,"2024":693,"2025":8},
+      rush_by_year: {"2016":8.8,"2017":19.3,"2018":28.7,"2019":20.0,"2020":3.7,"2021":17.0,"2024":33.6,"2025":37.5}
+    },
+    // Food & Beverage: timesheet entries + 4,689 Trello cards — Alpina, Natura, Powerful Yogurt, Arcos Dorados
+    "Food & Beverage": {
+      label:"Food & Beverage / CPG", icon:"🍃",
+      task_mix: {"Design":51.1,"Adjustments":23.6,"Rush Design":10.3,"Final Artwork":5.3,"Copywriting":2.7,"Meetings":2.1,"Presentations":1.7,"Workshops":1.5,"Other":1.4},
+      hours_per_request: { count:1445, mean:1.204, median:0.850, p25:0.371, p75:1.662 },
+      hours_per_month:   { count:12,  mean:52.8,  median:27.7,  p25:9.3,   p75:70.6 },
+      revision_pct:23.8, rush_pct:45.8,
+      asset_mix: {"General Design":60.9,"Print/OOH":9.3,"Web/App/UX":4.9,"Ciclo/Catálogo":4.8,"Key Visual/Campaign":4.6,"Social Media Post":3.1,"Banner Digital":2.5,"Toolkit/Templates":2.2,"Packaging":1.9,"Event/Experiential":1.4,"Branding/ID":1.4,"Video/Motion":0.8,"Presentation/Deck":0.8,"Email/Newsletter":0.5},
+      trello_cards: 4689,
+      volume_by_year: {"2017":48,"2018":271,"2019":37,"2020":500,"2021":741,"2022":643,"2023":1660,"2024":747,"2025":42},
+      rush_by_year: {"2017":2.1,"2018":19.2,"2019":29.7,"2020":45.8,"2021":51.7,"2022":47.7,"2023":49.8,"2024":44.7,"2025":9.5}
+    },
+    // Real Estate / Coworking: timesheet entries + 91 Trello cards — Casa Legado, WeWork, Conaco, Baia Kristal
+    "Real Estate / Coworking": {
+      label:"Real Estate / Coworking", icon:"🏢",
+      task_mix: {"Design":42.6,"Adjustments":23.6,"Copywriting":18.2,"Presentations":5.6,"Meetings":4.4,"Final Artwork":3.5,"Rush Design":1.4,"Other":0.6},
+      hours_per_request: { count:99, mean:1.539, median:1.317, p25:0.510, p75:2.243 },
+      hours_per_month:   { count:6,  mean:25.4,  median:24.5,  p25:15.1,  p75:33.8 },
+      revision_pct:23.6, rush_pct:1.4,
+      asset_mix: {"General Design":78.0,"Social Media Post":6.6,"Branding/ID":5.5,"Copy/Content":4.4,"Presentation/Deck":2.2,"Web/App/UX":2.2,"Toolkit/Templates":1.1},
+      trello_cards: 91,
+      volume_by_year: {"2020":91},
+      rush_by_year: {"2020":0.0}
+    },
+    // Retail / E-commerce: timesheet entries only
+    "Retail / E-commerce": {
+      label:"Retail / E-commerce", icon:"🛍️",
+      task_mix: {"Design":51.7,"Adjustments":31.9,"Final Artwork":16.4},
+      hours_per_request: { count:5, mean:4.01, median:3.43, p25:2.95, p75:5.53 },
+      hours_per_month:   { count:1, mean:20.1,  median:20.1, p25:20.1, p75:20.1 },
+      revision_pct:31.9, rush_pct:3.7,
+      asset_mix: {"General Design":60.0,"Banner Digital":15.0,"Social Media Post":10.0,"Email/Newsletter":8.0,"Photography":7.0},
+      trello_cards: 0, volume_by_year: {}, rush_by_year: {}
+    },
+    // Agency / Creative Services: timesheet entries + 2,487 Trello cards — Brandnew, AED, Straik, Seijiro
+    "Agency / Creative Services": {
+      label:"Agency / Creative Services", icon:"🎨",
+      task_mix: {"Adjustments":34.7,"Design":32.0,"Other":12.3,"Rush Design":12.5,"Final Artwork":5.0,"Meetings":2.4,"Presentations":0.6,"Copywriting":0.4},
+      hours_per_request: { count:1342, mean:1.466, median:1.068, p25:0.420, p75:2.100 },
+      hours_per_month:   { count:2,  mean:9.6,   median:9.6,   p25:9.1,   p75:10.0 },
+      revision_pct:34.7, rush_pct:11.9,
+      asset_mix: {"General Design":56.1,"Branding/ID":7.3,"Print/OOH":6.2,"Presentation/Deck":5.7,"Web/App/UX":5.4,"Social Media Post":3.1,"Packaging":2.6,"Merchandising":2.3,"Email/Newsletter":2.2,"Video/Motion":2.0,"Toolkit/Templates":1.6,"Event/Experiential":1.3,"Banner Digital":1.1,"Key Visual/Campaign":1.0,"Copy/Content":0.6},
+      trello_cards: 2487,
+      volume_by_year: {"2016":136,"2017":196,"2018":263,"2019":472,"2020":350,"2021":120,"2022":150,"2023":124,"2024":271,"2025":405},
+      rush_by_year: {"2016":10.3,"2017":19.9,"2018":11.8,"2019":7.4,"2020":2.9,"2021":5.8,"2022":1.3,"2023":9.7,"2024":13.3,"2025":26.9}
+    },
+    // Manufacturing / Industrial: timesheet entries + 0 Trello cards — Gran Tierra, Geopark, Climatec
+    "Manufacturing / Industrial": {
+      label:"Manufacturing / B2B Industrial", icon:"⚙️",
+      task_mix: {"Design":58.7,"Adjustments":25.0,"Rush Design":5.1,"Final Artwork":4.4,"Other":4.2,"Meetings":1.3,"Presentations":1.3},
+      hours_per_request: { count:348, mean:1.793, median:1.413, p25:0.735, p75:2.552 },
+      hours_per_month:   { count:2,  mean:79.5,  median:79.5,  p25:62.8,  p75:96.2 },
+      revision_pct:25.0, rush_pct:6.7,
+      asset_mix: {"Web/App/UX":36.7,"General Design":26.7,"Presentation/Deck":10.0,"Video/Motion":10.0,"Key Visual/Campaign":3.3,"Toolkit/Templates":3.3,"Branding/ID":3.3,"Illustration":3.3,"Event/Experiential":3.3},
+      trello_cards: 0,
+      volume_by_year: {},
+      rush_by_year: {}
+    },
+    "Other": {
+      label:"Other industries", icon:"📊",
+      task_mix: {"Design":42.0,"Adjustments":26.0,"Rush Design":14.0,"Final Artwork":10.0,"Other":8.0},
+      hours_per_request: { count:50, mean:1.5, median:0.9, p25:0.4, p75:2.0 },
+      hours_per_month:   { count:10, mean:45.0, median:35.0, p25:20.0, p75:60.0 },
+      revision_pct:26.0, rush_pct:14.0,
+      asset_mix: {"General Design":65.0,"Social Media Post":10.0,"Print/OOH":8.0,"Video/Motion":5.0,"Branding/ID":5.0,"Other":7.0},
+      trello_cards: 0, volume_by_year: {}, rush_by_year: {}
+    }
+  },
+  tiers: [
+    { name:"Starter",    hours:40,  desc:"1–2 campaigns/month" },
+    { name:"Growth",     hours:80,  desc:"3–5 campaigns/month" },
+    { name:"Scale",      hours:160, desc:"6+ campaigns, multi-channel" },
+    { name:"Enterprise", hours:320, desc:"Full creative ops replacement" },
+  ]
+};
 
-let rush = 'No';
-function setRush(v){
-  rush=v;
-  document.getElementById('rushNo').className='rush-btn'+(v==='No'?' active':'');
-  document.getElementById('rushToday').className='rush-btn'+(v==='Today'?' active-rush':'');
+// ── STATE ──
+const STATE = {
+  industry: null, team: null, channels: [],
+  campaigns: null, assets: null, peaks: null, rush_pct: null,
+  current: null, revisions: null, delivery: null, firsttime: null,
+  email: null, name: null, company: null,
+};
+
+// ── CHIP HANDLERS ──
+function selectChip(el, key) {
+  const parent = el.parentElement;
+  parent.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  STATE[key] = el.dataset.val;
+}
+function toggleChip(el, key) {
+  el.classList.toggle('active');
+  const vals = Array.from(el.parentElement.querySelectorAll('.chip.active')).map(c=>c.dataset.val);
+  STATE[key] = vals;
 }
 
-function fmt(h){
-  if(!h||isNaN(h)) return '—';
-  if(h<1) return Math.round(h*60)+'m';
-  const hrs=Math.floor(h), mins=Math.round((h-hrs)*60);
-  return mins?`${hrs}h ${mins}m`:`${hrs}h`;
+// ── STEP NAV ──
+function goStep(n) {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(`step${n}`).classList.add('active');
+  ['si1','si2','si3','si4'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if(i+1 === n) el.classList.add('active');
+    else if(i+1 < n) el.classList.add('done');
+  });
+  document.getElementById('progressBar').style.width = (n*25)+'%';
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
-function getIndustry(client){
-  return MODEL.industry_map[client] || MODEL.industry_map[client+' '] || null;
-}
+// ── EMAIL SUBMIT ──
+// ── HubSpot Forms API config ──
+// Replace these two values with your real HubSpot Portal ID and Form ID
+const HS_PORTAL_ID = '50708869';
+const HS_FORM_ID   = 'd37744bd-e923-4cb9-ac4e-f613894649dc';
 
-function lookup(asset, client){
-  // L1: exact asset + client
-  let d = MODEL.L1[`${asset}|${client}`] || MODEL.L1[`${asset}|${client} `];
-  if(d) return {...d, level:'exact', label:`Based on ${d.count} ${asset} jobs for ${client}`};
+async function submitEmail() {
+  const emailEl   = document.getElementById('gateEmail');
+  const errorEl   = document.getElementById('gateError');
+  const submitBtn = document.getElementById('gateSubmitBtn');
 
-  // L2: asset + industry
-  const industry = getIndustry(client);
-  if(industry){
-    d = MODEL.L2[`${asset}|${industry}`];
-    if(d) return {...d, level:'industry', label:`Based on ${d.count} ${asset} jobs in ${industry} industry`};
-  }
+  const email   = emailEl.value.trim();
+  const name    = (document.getElementById('gateFirstName').value.trim() + ' ' + document.getElementById('gateLastName').value.trim()).trim();
+  const company = document.getElementById('gateCompany').value.trim();
 
-  // L3: asset global
-  d = MODEL.L3[asset];
-  if(d) return {...d, level:'global', label:`Based on ${d.count} ${asset} jobs across all clients`};
-
-  // Final fallback: Other global
-  d = MODEL.L3['Other'];
-  if(d) return {...d, level:'fallback', label:`No exact data for this asset — using general benchmark (${d.count} jobs)`};
-
-  return null;
-}
-
-function buildRoundsVisual(adjRounds, asset){
-  const rounds = Math.round(adjRounds);
-  const visual = document.getElementById('roundsVisual');
-  const legend = document.getElementById('roundsLegend');
-  visual.innerHTML = '';
-
-  // Initial design dot
-  const d0 = document.createElement('div');
-  d0.className='round-dot round-initial';
-  d0.title='Initial design';
-  d0.textContent='D';
-  visual.appendChild(d0);
-
-  // Adjustment rounds
-  for(let i=0;i<rounds;i++){
-    const arrow = document.createElement('span');
-    arrow.style.cssText='color:#AFAFAF;font-size:12px;';
-    arrow.textContent='→';
-    visual.appendChild(arrow);
-    const dot = document.createElement('div');
-    dot.className='round-dot round-adj';
-    dot.title=`Revision round ${i+1}`;
-    dot.textContent=`R${i+1}`;
-    visual.appendChild(dot);
-  }
-
-  // Final approval
-  const arrow2 = document.createElement('span');
-  arrow2.style.cssText='color:#AFAFAF;font-size:12px;';
-  arrow2.textContent='→';
-  visual.appendChild(arrow2);
-  const dF = document.createElement('div');
-  dF.className='round-dot round-final';
-  dF.title='Final approval';
-  dF.textContent='✓';
-  visual.appendChild(dF);
-
-  legend.innerHTML = `<strong>D</strong> = Initial design &nbsp;·&nbsp; <strong>R</strong> = Revision round &nbsp;·&nbsp; <strong>✓</strong> = Approved<br>This asset typically needs <strong>${rounds} revision round${rounds!==1?'s':''}</strong> before approval.`;
-}
-
-function predict(){
-  const asset = document.getElementById('assetType').value;
-  const client = document.getElementById('client').value;
-  if(!asset){alert('Please select an asset type.');return;}
-
-  const result = lookup(asset, client);
-  if(!result){
-    document.getElementById('insightBox').innerHTML = '<strong>Not enough data yet.</strong> This combination is new. As more jobs are tracked, the model will learn it.';
+  // Validate
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    errorEl.textContent = 'Please enter a valid work email.';
+    errorEl.style.display = 'block';
+    emailEl.focus();
     return;
   }
+  errorEl.style.display = 'none';
 
-  // Rush adjustment
-  const rushMod = MODEL.rush_mod[asset] || 1.0;
-  const rushTotal = result.median * rushMod;
-  const rushDiff = rushMod > 1 ? `+${Math.round((rushMod-1)*100)}% slower` : rushMod < 0.98 ? `${Math.round((1-rushMod)*100)}% faster` : 'No significant change';
-  const rushClass = rushMod > 1.05 ? 'warn-m' : rushMod < 0.95 ? 'ok-m' : '';
+  // Save to state
+  STATE.email   = email;
+  STATE.name    = name;
+  STATE.company = company;
 
-  // Client revision risk
-  const clientKey = client.trim();
-  const riskData = MODEL.rev_risk[clientKey];
-  const adjRounds = riskData ? riskData.median_rounds : result.adj_rounds;
+  // Loading state
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Calculating… <span style="opacity:0.6;font-size:12px;">just a sec</span>';
 
-  // Confidence
-  const confClass = result.level==='exact' ? 'conf-high' : result.level==='industry' ? 'conf-med' : 'conf-low';
-  const confLabel = result.level==='exact' ? '✓ High confidence' : result.level==='industry' ? '~ Industry estimate' : '○ General benchmark';
-
-  // Build insight
-  let insight = '';
-  if(adjRounds >= 3) insight = `<strong>⚠ This asset typically needs several rounds.</strong> ${client||'Clients'} usually request ${adjRounds} revision round${adjRounds!==1?'s':''} on this type of asset. A very detailed brief with clear references will save significant time.`;
-  else if(adjRounds >= 1) insight = `<strong>Plan for at least one revision round.</strong> This is normal for this asset type. Make sure the brief includes format specs, brand references, and copy before starting.`;
-  else insight = `<strong>This asset tends to get approved quickly.</strong> Based on ${result.count} similar jobs, most deliveries go through with minimal back-and-forth. A clear brief should be enough.`;
-
-  if(rush==='Today'){
-    if(rushMod > 1.05) insight += ` Under rush, expect this to take about ${fmt(rushTotal)} — briefs under urgency tend to arrive incomplete.`;
-    else if(rushMod < 0.95) insight += ` Interestingly, this asset type actually finishes slightly faster under rush — scope tends to get simplified.`;
+  // ── HubSpot Forms API submission ──
+  try {
+    if (HS_PORTAL_ID !== 'YOUR_PORTAL_ID') {
+      const hoursEstimate = Math.round(STATE.result_hours || 0);
+      const tierName      = STATE.result_tier || '';
+      const payload = {
+        fields: [
+          { name: 'firstname',                       value: name },
+          { name: 'lastname',                        value: (document.getElementById('gateLastName')||{value:''}).value.trim() },
+          { name: 'email',                           value: email },
+          // Lead properties — map calculator outputs
+          { name: 'industry_segment',                value: STATE.industry || '' },
+          { name: 'intelligence_recommended_tier',   value: tierName },
+          { name: 'estimated_monthly_volume',        value: String(STATE.campaigns || '') },
+          { name: 'creative_team_size',              value: STATE.team || '' },
+          { name: 'urgency',                         value: STATE.rush_pct > 30 ? 'High' : STATE.rush_pct > 15 ? 'Medium' : 'Low' },
+          { name: 'uppipe_lead_source',              value: 'Intelligence Calculator' },
+          { name: 'landing_page',                    value: window.location.href },
+        ],
+        context: {
+          pageUri:  window.location.href,
+          pageName: 'Creative Demand Intelligence — Uppipe'
+        },
+        legalConsentOptions: {
+          consent: {
+            consentToProcess: true,
+            text: 'I agree to allow Uppipe to store and process my personal data.',
+            communications: [{ value: true, subscriptionTypeId: 999, text: 'I agree to receive marketing communications.' }]
+          }
+        }
+      };
+      await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL_ID}/${HS_FORM_ID}`,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }
+      );
+    } else {
+      // Dev mode — log to console until Portal/Form IDs are configured
+      console.log('[Uppipe Intelligence] Lead (dev mode):', { email, name, company, industry: STATE.industry });
+    }
+  } catch (err) {
+    // Non-blocking: show results even if HubSpot call fails
+    console.warn('[Uppipe Intelligence] HubSpot submission error:', err);
   }
 
-  // Update UI
-  document.getElementById('resTag').textContent = (client || 'All clients') + ' · ' + (rush==='Today' ? '🔴 RUSH' : 'Standard');
-  document.getElementById('resTitle').textContent = asset;
-  document.getElementById('resSubtitle').textContent = rush==='Today' ? `Estimated: ${fmt(rushTotal)} under rush` : `Estimated: ${fmt(result.median)} typical delivery`;
-  document.getElementById('confidenceBadge').innerHTML = `<span class="confidence ${confClass}">${confLabel}</span>`;
-  document.getElementById('resTotal').textContent = fmt(result.median);
-  document.getElementById('resRush').textContent = rush==='Today' ? fmt(rushTotal) : rushDiff;
-  document.getElementById('rushMetric').className = 'metric ' + (rush==='Today' ? (rushMod>1.05?'warn-m':'ok-m') : '');
-  document.getElementById('insightBox').innerHTML = insight;
-  document.getElementById('fallbackNote').textContent = result.label;
-
-  buildRoundsVisual(adjRounds, asset);
-
-  document.getElementById('emptyState').style.display='none';
-  const rc = document.getElementById('resultContent');
-  rc.classList.remove('visible');
-  setTimeout(()=>rc.classList.add('visible'),10);
+  // Show results regardless of HubSpot outcome
+  document.getElementById('emailGate').style.display = 'none';
+  document.getElementById('resultsPanel').style.display = 'block';
+  renderResults();
 }
 
-// Build revision table
-(function(){
-  const tb = document.getElementById('riskTbody');
-  Object.entries(MODEL.rev_risk)
-    .sort((a,b)=>b[1].mean_rounds - a[1].mean_rounds)
-    .forEach(([client,r])=>{
-      const med = r.median_rounds;
-      const avg = r.mean_rounds;
-      const cls = med <= 0 ? 'pg-green' : med <= 1 ? 'pg-warn' : 'pg-red';
-      const label = med <= 0 ? 'Smooth' : med <= 1 ? 'Normal' : 'Complex';
-      const dots = Array.from({length: Math.min(Math.round(avg)+1, 6)}, (_,i) =>
-        `<div class="dot" style="background:${i===0?'#1A56FF':i<=Math.round(avg)?'#F59E0B':'#D1FAE5'}"></div>`
-      ).join('');
-      const meaning = med <= 0 ? 'Approves on first delivery most of the time'
-        : med === 1 ? 'Usually one round of changes, then approval'
-        : med <= 2 ? 'Expect 2 rounds — plan brief time accordingly'
-        : 'High revision volume — invest heavily in brief quality';
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td style="font-weight:700">${client.trim()}</td>
-        <td style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${med}</td>
-        <td><span class="pill-g ${cls}">${label}</span></td>
-        <td><div class="dot-row">${dots}</div></td>
-        <td style="color:#6B6B6B;font-size:11px">${meaning}</td>
-      `;
-      tb.appendChild(tr);
-    });
-})();
-</script>
-</body>
-</html>
+// ── CALCULATE ──
+function calculate() {
+  const ind = STATE.industry || 'Tech / Mobility';
+  const profile = MODEL.industry_profiles[ind] || MODEL.industry_profiles['Other'];
+  
+  const campaigns = parseFloat(STATE.campaigns || 2.5);
+  const assetsPerCampaign = parseFloat(STATE.assets || 8);
+  const revisionRounds = parseFloat(STATE.revisions || 2);
+  const userRushPct = parseFloat(STATE.rush_pct || 20) / 100;
+  const peakFactor = STATE.peaks === 'both' ? 1.4 : STATE.peaks === 'launches' ? 1.25 : STATE.peaks === 'seasonal' ? 1.2 : 1.0;
+  const teamFactor = STATE.team === 'large' ? 1.3 : STATE.team === 'mid' ? 1.1 : STATE.team === 'small' ? 1.0 : 0.8;
+  const channelCount = Array.isArray(STATE.channels) ? Math.max(STATE.channels.length, 1) : 1;
+  const channelFactor = 1 + (channelCount - 1) * 0.12;
+  const firstTimeFactor = STATE.firsttime === 'yes' ? 1.30 : 1.0;
+  
+  const hoursPerReq = profile.hours_per_request.median;
+  const totalRequests = campaigns * assetsPerCampaign;
+  const baseHours = totalRequests * hoursPerReq;
+  const revisionAdder = revisionRounds * 0.75 * totalRequests;
+  const rushAdder = baseHours * userRushPct * 0.4;
+  
+  const rawHours = (baseHours + revisionAdder + rushAdder) * channelFactor * teamFactor;
+  
+  const min = Math.round(rawHours * 0.75 / 10) * 10;
+  const rec = Math.round(rawHours / 10) * 10;
+  const peak = Math.round(rawHours * peakFactor * firstTimeFactor / 10) * 10;
+  
+  return { min, rec, peak, totalRequests, hoursPerReq, profile, ind, firstTimeFactor };
+}
+
+// ── RENDER RESULTS ──
+function renderResults() {
+  const { min, rec, peak, totalRequests, hoursPerReq, profile, ind, firstTimeFactor } = calculate();
+  
+  // Hero
+  document.getElementById('resIndustryTag').textContent = profile.label;
+  document.getElementById('resHoursRec').textContent = rec + 'h';
+  document.getElementById('resMin').textContent = min + 'h';
+  document.getElementById('resRec').textContent = rec + 'h';
+  document.getElementById('resPeak').textContent = peak + 'h';
+  
+  const name = STATE.name ? `, ${STATE.name}` : '';
+  document.getElementById('resSubtitle').textContent = 
+    `Based on your campaign volume (${Math.round(totalRequests)} estimated requests/month), ${profile.label.toLowerCase()} benchmarks, and ${MODEL.meta.records.toLocaleString()} real time entries.`;
+  
+  // Metrics
+  document.getElementById('metRequests').textContent = Math.round(totalRequests);
+  document.getElementById('metHoursPerReq').textContent = hoursPerReq.toFixed(1) + 'h';
+  document.getElementById('metHoursPerReqSub').textContent = `From ${profile.hours_per_request.count} real requests`;
+  document.getElementById('metRevBurden').textContent = profile.revision_pct.toFixed(0) + '%';
+  
+  // Task mix bars
+  const colors = {
+    'Design':'#1A56FF','Adjustments':'#F59E0B','Rush Design':'#EF4444',
+    'Final Artwork':'#10B981','Copywriting':'#8B5CF6','Presentations':'#06B6D4',
+    'Copywriting':'#8B5CF6','Workshops':'#EC4899','Other':'#9CA3AF','Meetings':'#6B7280','Naming':'#F97316'
+  };
+  const mixEl = document.getElementById('mixBars');
+  mixEl.innerHTML = '';
+  document.getElementById('mixIndustryLabel').textContent = profile.label;
+  Object.entries(profile.task_mix).sort((a,b)=>b[1]-a[1]).forEach(([task,pct]) => {
+    mixEl.innerHTML += `
+      <div class="mix-bar-row">
+        <div class="mix-bar-label">${task}</div>
+        <div class="mix-bar-track"><div class="mix-bar-fill" style="width:${pct}%;background:${colors[task]||'#9CA3AF'}"></div></div>
+        <div class="mix-bar-pct">${pct}%</div>
+      </div>`;
+  });
+  
+  // Insight
+  let insightTitle = '', insightBody = '';
+  if(profile.revision_pct > 35) {
+    insightTitle = '⚠️ High revision overhead in your industry';
+    insightBody = `${profile.revision_pct}% of your hours go to adjustments — above the 20% benchmark. This means your briefs need to be exceptionally detailed before work starts. Uppipe's AI brief builder captures 87% of critical info upfront, cutting revision rounds significantly.`;
+  } else if(profile.rush_pct > 20) {
+    insightTitle = '🔴 Rush requests dominate your industry';
+    insightBody = `${profile.rush_pct}% of requests in your sector are marked rush. Rush jobs average 40% more hours than standard delivery. Investing in a larger subscription buffer (Scale tier) protects you from surge costs and gives your team breathing room.`;
+  } else if(firstTimeFactor > 1) {
+    insightTitle = '📈 Month 1 includes a 30% learning buffer';
+    insightBody = `First-time clients get 30% additional hours in month 1 — this covers onboarding, brand familiarization, and workflow calibration. It's an investment we make, not a price increase. From month 2 onward, your team runs at full speed.`;
+  } else {
+    insightTitle = '✅ Your demand profile is well-modeled';
+    insightBody = `Your industry has strong data coverage in our model (${profile.hours_per_request.count} real requests analyzed). This estimate is statistically reliable. The recommended tier gives you enough capacity for peaks without over-committing.`;
+  }
+  document.getElementById('insightTitle').textContent = insightTitle;
+  document.getElementById('insightBody').textContent = insightBody;
+  
+  // Store results in STATE for HubSpot submission
+  STATE.result_hours = rec;
+  const recTier = MODEL.tiers.find(t => t.hours >= rec * 0.9 && t.hours <= rec * 1.5);
+  STATE.result_tier = recTier ? recTier.name : '';
+
+  // Tiers
+  const tierEl = document.getElementById('tierGrid');
+  tierEl.innerHTML = '';
+  MODEL.tiers.forEach(t => {
+    const isRec = t.hours >= rec * 0.9 && t.hours <= rec * 1.5;
+    tierEl.innerHTML += `
+      <div class="tier-card ${isRec?'recommended':''}">
+        <div class="tier-badge">✦ Recommended</div>
+        <div class="tier-hours">${t.hours}h</div>
+        <div class="tier-name">${t.name}</div>
+        <div class="tier-desc">${t.desc}</div>
+      </div>`;
+  });
+  
+  // Benchmarks
+  document.getElementById('benchMedian').textContent = profile.hours_per_month.median + 'h';
+  document.getElementById('benchIndustry').textContent = profile.label;
+  document.getElementById('benchRush').textContent = profile.rush_pct + '%';
+  const confLevel = profile.hours_per_request.count > 100 ? 'High' : profile.hours_per_request.count > 20 ? 'Me
