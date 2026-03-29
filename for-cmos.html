@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uppipe for CMOs — Creative capacity that scales with your startup</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cobalt:#1A56FF;--cobalt-deep:#0D3FBF;--cobalt-tint:#E8EFFE;
+  --lime:#C8FF00;--lime-deep:#8CB800;
+  --cream:#FDFBF7;--white:#FFFFFF;
+  --dark:#2D2D2D;--mid:#6B6B6B;--lt:#AFAFAF;
+  --border:#E8E8E8;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1100px;}
+.nav-inner{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.9);border-radius:12px;padding:7px 24px;display:flex;flex-direction:column;box-shadow:0 4px 24px rgba(26,86,255,0.08);}
+.nav-top{display:flex;align-items:center;justify-content:space-between;}
+.nav-logo svg{display:block;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:13px;font-weight:600;color:var(--dark);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--cobalt);}
+.nav-cta{display:flex;gap:10px;align-items:center;}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+.sec-label{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cobalt);margin-bottom:12px;}
+.sec-title{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;line-height:1.1;letter-spacing:-1px;}
+.sec-sub{font-size:16px;color:var(--mid);line-height:1.7;margin-top:14px;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 20%, rgba(200,255,0,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(26,86,255,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245,198,216,0.3) 0%, transparent 70%),
+    var(--cream);
+  padding:120px 0 80px;
+  position:relative;overflow:hidden;
+}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--border);padding:6px 16px;border-radius:100px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--cobalt);margin-bottom:28px;}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.hero-headline{font-family:'Syne',sans-serif;font-size:clamp(42px,6vw,76px);font-weight:800;line-height:1.0;letter-spacing:-2.5px;color:var(--dark);margin-bottom:24px;}
+.hero-headline em{font-style:normal;color:var(--cobalt);}
+.hero-headline .strike{position:relative;color:var(--lt);}
+.hero-headline .strike::after{content:'';position:absolute;left:0;top:50%;width:100%;height:3px;background:var(--cobalt);transform:rotate(-2deg);}
+.hero-sub{font-size:17px;line-height:1.8;color:var(--mid);max-width:520px;margin-bottom:40px;font-weight:500;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px;}
+.btn-lime{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#1A3A00;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:16px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.btn-lime:hover{background:#d4ff1a;transform:translateY(-1px);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:15px 28px;border-radius:100px;text-decoration:none;border:2px solid var(--cobalt);transition:all 0.2s;white-space:nowrap;}
+.btn-outline:hover{background:var(--cobalt-tint);}
+
+/* hero proof pills */
+.hero-proof{display:flex;gap:12px;flex-wrap:wrap;}
+.proof-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.7);border:1px solid var(--border);backdrop-filter:blur(10px);border-radius:100px;padding:8px 16px;font-size:11px;font-weight:700;color:var(--dark);}
+.proof-pill-num{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--cobalt);}
+
+/* ── AUDIENCE BIFURCATION ── */
+.audience-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0;}
+.audience-inner{display:grid;grid-template-columns:1fr 1fr;max-width:1100px;margin:0 auto;}
+.audience-option{padding:28px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;text-decoration:none;transition:background 0.2s;}
+.audience-option:first-child{border-right:1px solid var(--border);}
+.audience-option.active,.audience-option:hover{background:var(--cobalt-tint);}
+.audience-option.active .aud-arrow{color:var(--cobalt);}
+.aud-label{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lt);margin-bottom:4px;}
+.aud-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--dark);}
+.aud-sub{font-size:12px;color:var(--mid);margin-top:4px;}
+.aud-arrow{font-size:20px;color:var(--border);transition:color 0.2s;}
+.audience-option.active .aud-title,.audience-option:hover .aud-title{color:var(--cobalt);}
+
+/* ── PAIN SECTION ── */
+.pain-section{background:var(--dark);padding:100px 0;position:relative;overflow:hidden;}
+.pain-section::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.06) 0%,transparent 65%);pointer-events:none;}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:56px;}
+.pain-list{display:flex;flex-direction:column;gap:24px;}
+.pain-item{display:flex;gap:16px;align-items:flex-start;}
+.pain-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--lime);min-width:24px;margin-top:2px;}
+.pain-text-title{font-size:15px;font-weight:800;color:#FFFFFF;margin-bottom:4px;}
+.pain-text-sub{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;}
+.pain-visual{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:40px;}
+
+/* ── HOW IT WORKS ── */
+.how-section{background:var(--cream);padding:100px 0;}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+.how-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:32px;}
+.how-card-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--cobalt);background:var(--cobalt-tint);padding:4px 10px;border-radius:100px;display:inline-block;margin-bottom:16px;}
+.how-card-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--dark);margin-bottom:10px;letter-spacing:-0.3px;}
+.how-card-body{font-size:13px;color:var(--mid);line-height:1.7;}
+
+/* ── METRICS ── */
+.metrics-section{background:var(--cobalt-deep);padding:100px 0;position:relative;overflow:hidden;}
+.metrics-section::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.1) 0%,transparent 65%);pointer-events:none;}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;margin-top:56px;}
+.metric-block{background:var(--cobalt-deep);padding:36px 28px;}
+.metric-num{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:var(--lime);letter-spacing:-2px;line-height:1;}
+.metric-label{font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);margin-top:8px;line-height:1.4;}
+.metric-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;}
+
+/* ── WHAT YOU GET ── */
+.what-section{background:var(--cream);padding:100px 0;}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px;}
+.what-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:32px;position:relative;overflow:hidden;}
+.what-card.featured{background:var(--dark);border-color:rgba(200,255,0,0.2);}
+.what-card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;}
+.what-card-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.what-card.featured .what-card-title{color:#FFFFFF;}
+.what-card-body{font-size:13px;color:var(--mid);line-height:1.7;}
+.what-card.featured .what-card-body{color:rgba(255,255,255,0.55);}
+.what-tag{display:inline-flex;align-items:center;gap:6px;background:var(--cobalt-tint);color:var(--cobalt);font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:14px;}
+.what-card.featured .what-tag{background:rgba(200,255,0,0.12);color:var(--lime);}
+
+/* ── DEMAND BRIDGE ── */
+.bridge-section{background:var(--white);padding:100px 0;}
+.bridge-inner{background:linear-gradient(135deg,var(--cobalt) 0%,var(--cobalt-deep) 100%);border-radius:28px;padding:72px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;position:relative;overflow:hidden;}
+.bridge-inner::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.15) 0%,transparent 65%);pointer-events:none;}
+.bridge-eyebrow{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:16px;}
+.bridge-title{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:#FFFFFF;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;}
+.bridge-sub{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.7;}
+.bridge-cta-group{display:flex;flex-direction:column;gap:10px;align-items:center;flex-shrink:0;position:relative;z-index:1;}
+.bridge-btn{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#1A3A00;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;padding:20px 36px;border-radius:14px;text-decoration:none;white-space:nowrap;box-shadow:0 8px 32px rgba(200,255,0,0.3);transition:all 0.2s;}
+.bridge-btn:hover{background:#d4ff1a;transform:translateY(-2px);}
+.bridge-note{font-size:10px;color:rgba(255,255,255,0.35);text-align:center;}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{background:var(--cream);padding:100px 0;}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+.testimonial-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:28px;}
+.testimonial-quote{font-size:14px;color:var(--dark);line-height:1.7;margin-bottom:20px;font-style:italic;}
+.testimonial-author{display:flex;align-items:center;gap:12px;}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;background:var(--cobalt-tint);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--cobalt);}
+.testimonial-name{font-size:12px;font-weight:800;color:var(--dark);}
+.testimonial-role{font-size:11px;color:var(--lt);}
+
+/* ── PILOT ── */
+.pilot-section{background:var(--cobalt-deep);padding:100px 0;text-align:center;position:relative;overflow:hidden;}
+.pilot-section::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.08) 0%,transparent 65%);pointer-events:none;}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:40px 0;text-align:center;}
+footer p{font-size:11px;color:rgba(255,255,255,0.3);}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;}
+
+/* ── ANIMATIONS ── */
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp 0.6s ease both;}
+.fade-up-2{animation:fadeUp 0.6s 0.1s ease both;}
+.fade-up-3{animation:fadeUp 0.6s 0.2s ease both;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none;}
+  .hero-headline{font-size:38px;letter-spacing:-1.5px;}
+  .audience-inner{grid-template-columns:1fr;}
+  .audience-option:first-child{border-right:none;border-bottom:1px solid var(--border);}
+  .pain-grid,.how-grid,.what-grid,.testimonials-grid{grid-template-columns:1fr;}
+  .metrics-grid{grid-template-columns:1fr 1fr;}
+  .bridge-inner{grid-template-columns:1fr;padding:40px;}
+  .sec-title{font-size:30px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-top">
+      <a href="/" style="text-decoration:none;">
+        <svg width="110" viewBox="88 298 844 436" fill="none">
+          <rect fill="#1A56FF" x="525.84" y="549.52" width="33.58" height="82.76"/>
+          <rect fill="#1A56FF" x="525.84" y="508.85" width="33.58" height="24.88"/>
+          <path fill="#1A56FF" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/>
+          <path fill="#1A56FF" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+          <path fill="#1A56FF" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+          <path fill="#1A56FF" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/>
+          <path fill="#1A56FF" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/>
+        </svg>
+      </a>
+      <div class="nav-links">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/intelligence">Calculate Creative Demand</a>
+      </div>
+      <div class="nav-cta">
+        <a href="https://uppipe.io/log_in" target="_blank" style="font-size:12px;font-weight:700;color:var(--lt);text-decoration:none;">Log in</a>
+        <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:inline-flex;align-items:center;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;padding:8px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;">Book a call</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div style="max-width:680px;">
+      <div class="hero-eyebrow fade-up">
+        <span class="hero-eyebrow-dot"></span>
+        For CMOs at scaling startups
+      </div>
+      <h1 class="hero-headline fade-up-2">
+        Your team<br>can't keep up.<br>
+        <em>Your pipeline won't wait.</em>
+      </h1>
+      <p class="hero-sub fade-up-3">You have a creative team. They're good. But the volume of what scaling demands — campaigns, launches, content, assets — keeps outpacing what any fixed team can produce. Uppipe is the elastic layer that closes that gap.</p>
+      <div class="hero-ctas fade-up-3">
+        <a href="/intelligence" class="btn-lime">
+          <span style="width:6px;height:6px;border-radius:50%;background:#1A3A00;display:inline-block;"></span>
+          Calculate Creative Demand →
+        </a>
+        <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" class="btn-outline">Book a 15-min call</a>
+      </div>
+      <div class="hero-proof fade-up-3">
+        <div class="proof-pill"><span class="proof-pill-num">83%</span> less than hiring in-house</div>
+        <div class="proof-pill"><span class="proof-pill-num">3 days</span> avg delivery cycle</div>
+        <div class="proof-pill"><span class="proof-pill-num">58%</span> first-time right rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE BIFURCATION BAR -->
+<div class="audience-bar">
+  <div class="audience-inner">
+    <a href="/for-cmos" class="audience-option active">
+      <div>
+        <div class="aud-label">You're in the right place</div>
+        <div class="aud-title">I run marketing at a startup</div>
+        <div class="aud-sub">CMO, VP Marketing, Head of Growth</div>
+      </div>
+      <div class="aud-arrow">→</div>
+    </a>
+    <a href="/for-founders" class="audience-option">
+      <div>
+        <div class="aud-label">Different page</div>
+        <div class="aud-title">I'm a founder or investor</div>
+        <div class="aud-sub">CEO, COO, VC, Portfolio Manager</div>
+      </div>
+      <div class="aud-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="container">
+    <div class="sec-label" style="color:var(--lime);">The real problem</div>
+    <h2 class="sec-title" style="color:#FFFFFF;max-width:620px;">You're not understaffed.<br><span style="color:rgba(255,255,255,0.4);">You're under-scaled.</span></h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.55);max-width:520px;">Your team handles the strategy, the brand, the relationships. But the volume of execution that a scaling startup demands is a different beast entirely.</p>
+
+    <div class="pain-grid">
+      <div class="pain-list">
+        <div class="pain-item">
+          <div class="pain-num">01</div>
+          <div>
+            <div class="pain-text-title">Q4 campaign. Product launch. Investor deck. All at once.</div>
+            <div class="pain-text-sub">Demand isn't flat — it spikes. Your fixed team hits a wall right when you need them most.</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-num">02</div>
+          <div>
+            <div class="pain-text-title">You hire freelancers. Quality is inconsistent. Briefing takes forever.</div>
+            <div class="pain-text-sub">Every new freelancer is a new ramp-up. You spend more time managing than producing.</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-num">03</div>
+          <div>
+            <div class="pain-text-title">Agencies are too slow and too expensive for your pace.</div>
+            <div class="pain-text-sub">7–10 days per cycle. Fixed retainers regardless of output. Zero operational data to show your CEO.</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-num">04</div>
+          <div>
+            <div class="pain-text-title">You can't justify headcount for what you actually need.</div>
+            <div class="pain-text-sub">A full-time senior designer costs $80–120k/year. For burst capacity, that math doesn't work.</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-num">05</div>
+          <div>
+            <div class="pain-text-title">Your internal team is burned out — and it shows.</div>
+            <div class="pain-text-sub">When the same people absorb every spike, quality drops, deadlines slip, and your best creatives start looking for the exit. Overloading a small team is a retention crisis waiting to happen.</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-num">06</div>
+          <div>
+            <div class="pain-text-title">Senior creative talent is scarce, slow to hire, and expensive to keep.</div>
+            <div class="pain-text-sub">Finding a senior art director or motion designer who's available, affordable, and a brand fit can take 3–6 months. By then, your campaign window is gone.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual: cost comparison -->
+      <div class="pain-visual">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:24px;">Annual creative capacity cost</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);">In-house team (3 designers)</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#EF4444;">$240k–360k</span>
+            </div>
+            <div style="height:8px;background:rgba(239,68,68,0.2);border-radius:4px;overflow:hidden;">
+              <div style="height:100%;width:100%;background:#EF4444;border-radius:4px;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);">Agency retainer</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#F59E0B;">$120k–180k</span>
+            </div>
+            <div style="height:8px;background:rgba(245,158,11,0.2);border-radius:4px;overflow:hidden;">
+              <div style="height:100%;width:60%;background:#F59E0B;border-radius:4px;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);">Uppipe (equivalent output)</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--lime);">~$38k–60k</span>
+            </div>
+            <div style="height:8px;background:rgba(200,255,0,0.15);border-radius:4px;overflow:hidden;">
+              <div style="height:100%;width:22%;background:var(--lime);border-radius:4px;"></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;padding:16px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.15);border-radius:12px;">
+          <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--lime);letter-spacing:-1px;">83% less</div>
+          <div style="font-size:11px;font-weight:700;color:rgba(200,255,0,0.6);margin-top:4px;">vs. equivalent in-house team — with elastic capacity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="container">
+    <div class="sec-label">How Uppipe works for your team</div>
+    <h2 class="sec-title" style="max-width:560px;">From brief to delivered.<br><span style="color:var(--cobalt);">In 24–48 hours.</span></h2>
+    <p class="sec-sub" style="max-width:520px;">Your team keeps doing what they're good at. Uppipe handles the execution volume — structured, tracked, and delivered on time.</p>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-card-num">Step 01</div>
+        <div class="how-card-title">Submit a structured brief</div>
+        <div class="how-card-body">Your team submits requests through a structured intake system. AI-assisted briefing captures 87% of critical information upfront — no back-and-forth, no guesswork. Takes 3 minutes.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-num">Step 02</div>
+        <div class="how-card-title">Senior CITL gets matched & starts</div>
+        <div class="how-card-body">A vetted senior creative who knows your brand gets assigned. First delivery in 24–48h. Not a junior with a template — a senior who understands strategy and executes with precision.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-num">Step 03</div>
+        <div class="how-card-title">Review, approve, and track everything</div>
+        <div class="how-card-body">Your dashboard shows every request, status, hours consumed, and revision cycles in real time. Your CEO asks about creative ROI — you have the answer in 30 seconds.</div>
+      </div>
+    </div>
+
+    <!-- CITL explanation -->
+    <div style="margin-top:40px;background:var(--cobalt-tint);border:1.5px solid rgba(26,86,255,0.15);border-radius:20px;padding:36px;display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;">
+        <div style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--cobalt);margin-bottom:10px;">What is CITL?</div>
+        <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--dark);margin-bottom:10px;">Creatives In The Loop</div>
+        <div style="font-size:13px;color:var(--mid);line-height:1.7;">AI handles routing, briefing, and workflow intelligence. Senior LATAM creatives handle the actual production — with brand judgment, strategic context, and craft. The AI makes them faster. It doesn't replace them.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;min-width:240px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--cobalt);flex-shrink:0;"></div>
+          <span style="font-size:13px;font-weight:600;color:var(--dark);">Senior-only network — no juniors</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--cobalt);flex-shrink:0;"></div>
+          <span style="font-size:13px;font-weight:600;color:var(--dark);">US timezone overlap — LATAM based</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--cobalt);flex-shrink:0;"></div>
+          <span style="font-size:13px;font-weight:600;color:var(--dark);">Brand-trained from day one</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--cobalt);flex-shrink:0;"></div>
+          <span style="font-size:13px;font-weight:600;color:var(--dark);">Elastic — scales with your demand</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics-section">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="sec-label" style="color:var(--lime);">The numbers that matter to you</div>
+    <h2 class="sec-title" style="color:#FFFFFF;max-width:560px;">Not promises.<br><span style="color:rgba(255,255,255,0.4);">Operational outcomes.</span></h2>
+    <div class="metrics-grid">
+      <div class="metric-block">
+        <div class="metric-num">83%</div>
+        <div class="metric-label">Lower cost vs in-house team</div>
+        <div class="metric-sub">Equivalent output. Fraction of the cost.</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num">3 days</div>
+        <div class="metric-label">Average full cycle delivery</div>
+        <div class="metric-sub">vs. 7–10 days with a traditional agency</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num">58%</div>
+        <div class="metric-label">First-time right rate</div>
+        <div class="metric-sub">Assets approved without revision on first pass</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num">10x</div>
+        <div class="metric-label">Asset throughput vs fixed team</div>
+        <div class="metric-sub">Under optimized Uppipe workflow</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:16px;text-align:center;">Based on +82,168 real production data points across 9+ years of client work.</p>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="what-section">
+  <div class="container">
+    <div class="sec-label">Everything included in your subscription</div>
+    <h2 class="sec-title" style="max-width:560px;">One rate.<br><span style="color:var(--cobalt);">Everything your team needs.</span></h2>
+    <p class="sec-sub" style="max-width:480px;">No platform fee. No rush surcharges. No PM fees. One all-inclusive hourly rate that scales with your volume.</p>
+
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-card-icon" style="background:var(--cobalt-tint);">🎨</div>
+        <div class="what-tag">Included</div>
+        <div class="what-card-title">Senior CITL execution</div>
+        <div class="what-card-body">Vetted senior creatives across 15 disciplines — motion, branding, social, print, web, photography, illustration, and more. All brand-trained. All senior-level.</div>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon" style="background:rgba(200,255,0,0.15);">🧠</div>
+        <div class="what-tag">Included</div>
+        <div class="what-card-title">AI-powered brief system</div>
+        <div class="what-card-body">Pipe, our AI brief agent, structures every request before it reaches a creative. Eliminates missing info, reduces revisions, and routes work to the right person automatically.</div>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon" style="background:rgba(16,185,129,0.1);">📊</div>
+        <div class="what-tag">Included</div>
+        <div class="what-card-title">Real-time operations dashboard</div>
+        <div class="what-card-body">See every request, delivery time, revision cycle, hour balance, and FTR rate in real time. The visibility your CEO expects and your VC will appreciate.</div>
+      </div>
+      <div class="what-card featured">
+        <div class="what-card-icon" style="background:rgba(200,255,0,0.12);">⚡</div>
+        <div class="what-tag">Included</div>
+        <div class="what-card-title" style="color:#FFFFFF;">Dedicated PM + elastic capacity</div>
+        <div class="what-card-body">A dedicated Project Manager coordinates everything. Scale up for Q4 or product launches. Scale back in quiet quarters. No severance. No retainer lock-in. No headcount conversations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMAND BRIDGE -->
+<section class="bridge-section">
+  <div class="container">
+    <div class="bridge-inner">
+      <div style="position:relative;z-index:1;">
+        <div class="bridge-eyebrow">The question that unlocks everything</div>
+        <h2 class="bridge-title">How many creative hours<br>does your team actually need?</h2>
+        <p class="bridge-sub">Most CMOs at scaling startups underestimate by 40%. Our model — built on +82,168 real production data points — gives you the number before you talk to anyone. No guesswork. No sales call required.</p>
+      </div>
+      <div class="bridge-cta-group">
+        <a href="/intelligence" class="bridge-btn">Calculate Creative Demand →</a>
+        <div class="bridge-note">Free · 2 minutes · No signup</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="sec-label">What CMOs say</div>
+    <h2 class="sec-title" style="max-width:500px;">Teams that stopped<br><span style="color:var(--cobalt);">managing creative chaos.</span></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"We were drowning in freelancer management. Uppipe replaced that entire layer — now we just submit and it gets done. The quality is consistently senior-level."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">G</div>
+          <div>
+            <div class="testimonial-name">CMO, Galgo</div>
+            <div class="testimonial-role">Fintech · Series B</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"The dashboard changed how I report to our CEO. I can show cost-per-asset, revision rates, and delivery time in one view. That data didn't exist before Uppipe."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Marketing Lead, Alpina</div>
+            <div class="testimonial-role">Food & Beverage · Growth stage</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"We scaled output 3x during our product launch without adding a single headcount. The elastic model is exactly what a startup in growth mode needs."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div>
+            <div class="testimonial-name">Head of Marketing, Rappi</div>
+            <div class="testimonial-role">Tech / Mobility · Scale stage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT CTA -->
+<section class="pilot-section">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="sec-label" style="color:var(--lime);">No commitment · No sales pitch</div>
+    <h2 class="sec-title" style="color:#FFFFFF;margin-bottom:16px;">Let's see if we're<br><span style="color:var(--lime);">the right fit.</span></h2>
+    <p style="font-size:16px;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 40px;line-height:1.7;">A 15-minute honest conversation about your creative ops. We'll tell you exactly how Uppipe fits your team — and if it doesn't, we'll tell you that too.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#1A3A00;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;padding:18px 36px;border-radius:14px;text-decoration:none;box-shadow:0 8px 32px rgba(200,255,0,0.2);">Book a 15-min call →</a>
+      <a href="/intelligence" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.7);font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;padding:17px 36px;border-radius:14px;text-decoration:none;border:2px solid rgba(255,255,255,0.15);">Calculate Creative Demand first</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 Uppipe · A Brandnew Studio SAS Division · <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uppipe Portfolio — 15 creative disciplines, one structured system</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cobalt:#1A56FF;--cobalt-deep:#0D3FBF;--cobalt-tint:#E8EFFE;
+  --lime:#C8FF00;--lime-deep:#8CB800;
+  --cream:#FDFBF7;--white:#FFFFFF;
+  --dark:#2D2D2D;--mid:#6B6B6B;--lt:#AFAFAF;
+  --border:#E8E8E8;--success:#10B981;--violet:#8B5CF6;
+  --g-hero:  radial-gradient(ellipse 72% 64% at 14% 88%,#F5C6D8 0%,transparent 62%),radial-gradient(ellipse 58% 52% at 86% 18%,#C8FF00 0%,transparent 58%),radial-gradient(ellipse 62% 56% at 52% 52%,#B8AAFF 0%,transparent 64%),radial-gradient(ellipse 52% 46% at 82% 78%,#5B8BFF 0%,transparent 58%),linear-gradient(138deg,#F5C6D8 0%,#C4AAFF 38%,#4870FF 70%,#C8FF00 100%);
+  --g-pastel:radial-gradient(ellipse 72% 52% at 28% 72%,#F5C6D8 0%,transparent 58%),radial-gradient(ellipse 52% 62% at 82% 28%,#E0ECFF 0%,transparent 54%),radial-gradient(ellipse 48% 48% at 55% 45%,rgba(184,170,255,0.35) 0%,transparent 55%),linear-gradient(128deg,#FDE8F1 0%,#F5C6D8 38%,#E8EFFE 100%);
+  --g-lime:  radial-gradient(ellipse 68% 68% at 78% 18%,#C8FF00 0%,transparent 54%),radial-gradient(ellipse 52% 52% at 18% 82%,#E8EFFE 0%,transparent 54%),linear-gradient(148deg,#E8EFFE 0%,#EEFFC0 52%,#C8FF00 100%);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1100px;}
+.nav-inner{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.9);border-radius:12px;padding:7px 24px;display:flex;flex-direction:column;box-shadow:0 4px 24px rgba(26,86,255,0.08);}
+.nav-top{display:flex;align-items:center;justify-content:space-between;}
+.nav-top{display:flex;align-items:center;justify-content:space-between;}
+.nav-logo svg{display:block;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:13px;font-weight:600;color:var(--dark);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--cobalt);}
+.nav-links a.active{color:var(--cobalt);font-weight:700;}
+.nav-cta{display:flex;gap:10px;align-items:center;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:800;border:none;border-radius:100px;cursor:pointer;text-decoration:none;transition:all 0.15s;}
+.btn-primary{background:var(--cobalt);color:white;font-size:13px;padding:13px 28px;}
+.btn-primary:hover{background:var(--cobalt-deep);}
+.btn-ghost{background:rgba(255,255,255,0.7);color:var(--cobalt);font-size:13px;padding:11px 28px;border:1.5px solid rgba(26,86,255,0.25);backdrop-filter:blur(10px);}
+.btn-ghost:hover{background:rgba(255,255,255,0.9);}
+.btn-white{background:white;color:var(--cobalt-deep);font-size:13px;padding:13px 28px;}
+.btn-sm{font-size:11px;padding:7px 16px;}
+
+/* ── GLASS CARD ── */
+.glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.8);border-radius:20px;box-shadow:0 8px 32px rgba(26,86,255,0.08),inset 0 1px 0 rgba(255,255,255,0.95);}
+.glass-lime{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.85);border-radius:20px;box-shadow:0 8px 32px rgba(140,184,0,0.12),inset 0 1px 0 rgba(255,255,255,0.95);}
+
+/* ── SECTION WRAPPERS ── */
+section{position:relative;}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+.sec-label{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cobalt);margin-bottom:12px;}
+.sec-title{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;line-height:1.1;letter-spacing:-1px;}
+.sec-sub{font-size:16px;color:var(--mid);line-height:1.7;margin-top:14px;}
+
+/* ── HERO ── */
+#hero{background:var(--g-hero);min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;}
+.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.hero-content{max-width:580px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:100px;padding:7px 18px;margin-bottom:28px;}
+.hero-eyebrow span{font-size:11px;font-weight:700;color:var(--cobalt-deep);}
+.hero-h1{font-family:'Syne',sans-serif;font-size:60px;font-weight:800;line-height:1.02;letter-spacing:-2px;color:var(--cobalt-deep);}
+.hero-h1 em{font-style:normal;color:var(--dark);position:relative;display:inline-block;}
+.hero-h1 em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:5px;background:var(--lime);border-radius:3px;}
+.hero-sub{font-size:17px;color:var(--dark);line-height:1.75;margin:28px 0 40px;opacity:0.8;max-width:500px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:44px;}
+.social-proof{display:flex;align-items:center;gap:14px;}
+.avatars{display:flex;}
+.av{width:30px;height:30px;border-radius:50%;border:2px solid white;margin-right:-8px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;}
+.hero-stats{display:flex;flex-direction:column;gap:16px;}
+.stat-card{padding:22px 26px;min-width:200px;}
+.stat-label{font-size:8px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--lt);margin-bottom:6px;}
+.stat-value{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;color:var(--cobalt);line-height:1;}
+.stat-delta{font-size:10px;font-weight:700;color:var(--success);margin-top:4px;}
+
+/* ── LOGOS BAR ── */
+#logos{background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.6);padding:20px 0;overflow:hidden;}
+.logos-track{display:flex;align-items:center;gap:56px;width:max-content;animation:marquee 28s linear infinite;}
+.logos-track:hover{animation-play-state:paused;}
+.logos-track img{height:38px;object-fit:contain;opacity:0.45;filter:grayscale(1);flex-shrink:0;transition:opacity 0.2s;}
+.logos-track img:hover{opacity:0.85;}
+.logos-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--lt);white-space:nowrap;flex-shrink:0;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.logo-item{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:rgba(13,63,191,0.35);letter-spacing:-0.5px;}
+
+/* ── PROBLEM ── */
+#problem{background:var(--g-pastel);padding:100px 0;}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:56px;}
+.problem-list{display:flex;flex-direction:column;gap:16px;}
+.prob-item{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;background:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.8);border-radius:14px;backdrop-filter:blur(10px);}
+.prob-icon{width:40px;height:40px;border-radius:10px;background:#FEE2E2;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prob-title{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px;}
+.prob-body{font-size:11px;color:var(--mid);line-height:1.6;}
+.chaos-tax{padding:32px;background:rgba(255,255,255,0.55);border-radius:20px;backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.8);}
+.chaos-number{font-family:'JetBrains Mono',monospace;font-size:72px;font-weight:700;color:#E9756B;line-height:1;}
+.chaos-label{font-size:13px;font-weight:700;color:var(--dark);margin:8px 0 4px;}
+.chaos-sub{font-size:11px;color:var(--mid);line-height:1.6;}
+.chaos-items{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+.chaos-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(255,255,255,0.6);border-radius:9px;}
+.chaos-row-label{font-size:11px;font-weight:600;color:var(--dark);}
+.chaos-row-val{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#E9756B;}
+
+/* ── HOW IT WORKS ── */
+#how{background:var(--white);padding:100px 0;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px;}
+.step{padding:28px 24px;background:var(--cream);border-radius:16px;border:1px solid var(--border);position:relative;}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--cobalt);background:var(--cobalt-tint);padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:16px;}
+.step-icon{width:48px;height:48px;border-radius:12px;background:var(--cobalt-tint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.step-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;}
+.step-body{font-size:11px;color:var(--mid);line-height:1.7;}
+.step-connector{position:absolute;right:-12px;top:40px;width:24px;height:2px;background:var(--cobalt-tint);z-index:1;}
+
+/* ── METRICS ── */
+#metrics{background:var(--g-pastel);padding:100px 0;}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px;}
+.metric-card{padding:32px 28px;}
+.metric-vs{display:flex;gap:24px;margin-top:16px;}
+.metric-col{flex:1;}
+.metric-col-label{font-size:8px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--lt);margin-bottom:6px;}
+.metric-val{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;line-height:1;}
+.metric-desc{font-size:10px;color:var(--mid);margin-top:4px;}
+.metric-bar{height:6px;border-radius:100px;margin-top:10px;}
+
+/* ── FOR WHO ── */
+#forwho{background:var(--white);padding:100px 0;}
+.audience-tabs{display:flex;gap:10px;margin-bottom:40px;flex-wrap:wrap;}
+.tab{padding:10px 22px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);color:var(--mid);transition:all 0.2s;}
+.tab.active{background:var(--cobalt);color:white;border-color:var(--cobalt);}
+.audience-content{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.benefit-list{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+.benefit-item{display:flex;gap:12px;align-items:flex-start;}
+.benefit-check{width:22px;height:22px;border-radius:6px;background:var(--cobalt-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.benefit-title{font-size:13px;font-weight:700;margin-bottom:2px;}
+.benefit-body{font-size:11px;color:var(--mid);line-height:1.6;}
+.metric-highlight{padding:28px;background:var(--cream);border-radius:16px;border:1px solid var(--border);}
+.mh-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);}
+.mh-row:last-child{border-bottom:none;}
+.mh-label{font-size:11px;font-weight:600;color:var(--mid);}
+.mh-from{font-family:'JetBrains Mono',monospace;font-size:11px;color:#E9756B;font-weight:700;text-decoration:line-through;opacity:0.6;}
+.mh-to{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cobalt);font-weight:700;}
+
+/* ── COMPETITIVE ── */
+#competitive{background:var(--g-pastel);padding:100px 0;}
+.comp-table-wrap{overflow-x:auto;margin-top:48px;}
+.comp-table{width:100%;border-collapse:separate;border-spacing:0;}
+.comp-table th{font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:14px 20px;background:rgba(255,255,255,0.7);border-bottom:2px solid var(--border);}
+.comp-table th:first-child{border-radius:12px 0 0 0;}
+.comp-table th:last-child{border-radius:0 12px 0 0;}
+.comp-table th.highlight{background:var(--cobalt);color:white;}
+.comp-table td{font-size:12px;padding:14px 20px;background:rgba(255,255,255,0.5);border-bottom:1px solid rgba(255,255,255,0.6);}
+.comp-table td.highlight{background:rgba(26,86,255,0.06);font-weight:700;color:var(--cobalt);}
+.comp-table tr:last-child td:first-child{border-radius:0 0 0 12px;}
+.comp-table tr:last-child td:last-child{border-radius:0 0 12px 0;}
+.tick{color:var(--success);font-weight:700;}
+.cross{color:#E9756B;opacity:0.5;}
+.partial{color:#FCD34D;}
+
+/* ── HOW AI WORKS ── */
+#ai{background:radial-gradient(ellipse 52% 62% at 92% 8%,rgba(26,86,255,0.38) 0%,transparent 54%),linear-gradient(138deg,#0A0C1C 0%,#161A38 52%,#0D3FBF 100%);padding:100px 0;}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:56px;}
+.ai-steps{display:flex;flex-direction:column;gap:16px;}
+.ai-step{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;}
+.ai-step-num{width:32px;height:32px;border-radius:8px;background:rgba(26,86,255,0.4);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;flex-shrink:0;}
+.ai-step-title{font-size:13px;font-weight:700;color:white;margin-bottom:4px;}
+.ai-step-body{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;}
+.ai-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:32px;backdrop-filter:blur(20px);}
+.ai-metric{margin-bottom:20px;}
+.ai-metric-label{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.ai-metric-val{font-family:'JetBrains Mono',monospace;font-size:42px;font-weight:700;line-height:1;}
+.ai-metric-delta{font-size:10px;font-weight:700;color:var(--lime);margin-top:4px;}
+.ai-bar{background:rgba(255,255,255,0.1);border-radius:100px;height:6px;margin-top:8px;overflow:hidden;}
+.ai-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--cobalt),var(--violet));}
+
+/* ── PRICING ── */
+#pricing{background:var(--g-lime);padding:100px 0;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
+.plan{padding:32px 28px;border-radius:20px;position:relative;}
+.plan-popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 16px;border-radius:100px;white-space:nowrap;}
+.plan-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:4px;}
+.plan-desc{font-size:11px;color:var(--mid);margin-bottom:20px;line-height:1.5;}
+.plan-price{font-family:'JetBrains Mono',monospace;font-size:42px;font-weight:700;color:var(--cobalt);line-height:1;}
+.plan-price span{font-size:14px;color:var(--lt);font-weight:400;}
+.plan-hours{font-size:11px;color:var(--mid);margin:8px 0 24px;}
+.plan-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.plan-feature{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--dark);}
+.plan-feature svg{flex-shrink:0;}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--white);padding:100px 0;}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.testimonial{padding:28px;background:var(--cream);border-radius:16px;border:1px solid var(--border);}
+.testimonial-quote{font-size:14px;line-height:1.7;color:var(--dark);margin-bottom:20px;font-style:italic;}
+.testimonial-author{display:flex;align-items:center;gap:12px;}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;flex-shrink:0;}
+.testimonial-name{font-size:12px;font-weight:700;}
+.testimonial-role{font-size:10px;color:var(--lt);}
+
+/* ── PILOT CTA ── */
+#pilot{background:var(--g-lime);padding:100px 0;}
+.pilot-inner{display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;}
+.pilot-text{max-width:560px;}
+.pilot-card{min-width:240px;}
+
+/* ── FOOTER ── */
+footer{background:#0A0C1C;padding:64px 0 32px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px;}
+.footer-brand p{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:16px;max-width:260px;}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;}
+.footer-col a{display:block;font-size:12px;color:rgba(255,255,255,0.55);text-decoration:none;margin-bottom:8px;transition:color 0.15s;}
+.footer-col a:hover{color:white;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-bottom p{font-size:10px;color:rgba(255,255,255,0.3);}
+
+/* ── LANG TOGGLE ── */
+.lang-toggle{display:flex;align-items:center;gap:6px;}
+.lang-toggle span{font-size:10px;font-weight:700;color:var(--lt);cursor:pointer;transition:color 0.15s;user-select:none;letter-spacing:0.5px;}
+.lang-toggle span.active{color:var(--dark);}
+.lang-switch{position:relative;width:26px;height:14px;cursor:pointer;}
+.lang-switch input{opacity:0;width:0;height:0;}
+.lang-slider{position:absolute;inset:0;background:var(--border);border-radius:100px;transition:0.2s;}
+.lang-slider::before{content:'';position:absolute;width:10px;height:10px;left:2px;top:2px;background:var(--mid);border-radius:50%;transition:0.2s;}
+.lang-switch input:checked + .lang-slider::before{transform:translateX(12px);}
+
+/* ── ICON HELPER ── */
+.ic{display:inline-flex;align-items:center;justify-content:center;}
+
+/* ── HAMBURGER & MOBILE NAV ── */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;outline:none;cursor:pointer;padding:6px;margin-left:8px;width:36px;height:36px;}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--cobalt);border-radius:2px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+/* Mobile menu — expands as part of the glass nav card */
+.nav-mobile{display:none;flex-direction:column;gap:0;padding:0;margin-top:8px;border-top:1px solid rgba(26,86,255,0.1);}
+.nav-mobile a{font-size:15px;font-weight:700;color:var(--dark);text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(26,86,255,0.07);display:block;transition:color 0.15s;letter-spacing:-0.2px;}
+.nav-mobile a:hover{color:var(--cobalt);}
+.nav-mobile.open{display:flex;}
+.nav-mobile-actions{padding:14px 0 4px;display:flex;flex-direction:column;gap:8px;}
+.nav-mobile-lang{padding:10px 0 4px;display:flex;justify-content:center;gap:20px;}
+/* When menu is open, expand the nav-inner to show everything */
+.nav-inner.menu-open{border-radius:12px;}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET (max 900px)
+══════════════════════════════════════ */
+@media (max-width:900px){
+  .nav-links,.nav-cta{display:none!important;}
+  .nav-hamburger{display:flex;}
+  nav{width:calc(100% - 32px);}
+
+  .hero-layout{grid-template-columns:1fr;gap:32px;}
+  .hero-h1{font-size:42px;letter-spacing:-1px;}
+  .hero-sub{font-size:15px;}
+  #hero{padding:150px 0 60px;}
+
+  .sec-title{font-size:30px;letter-spacing:-0.5px;}
+  .sec-sub{font-size:14px;}
+
+  .problem-grid{grid-template-columns:1fr;gap:32px;}
+  .metrics-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .steps{grid-template-columns:1fr 1fr;gap:16px;}
+  #how .container > div[style*="repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;}
+  /* Diagrams 3-col → 1-col on tablet */
+  #diagrams > .container > div[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  /* Pricing 2-col → 1-col on tablet */
+  #pricing > .container > div[style*="1fr 1.6fr"]{grid-template-columns:1fr!important;}
+  /* Network diagram 3-col → 1-col + CITL cards → 2-col grid */
+  div[style*="1fr 300px 1fr"]{grid-template-columns:1fr!important;}
+  #network div[style*="flex-direction:column;gap:7px"]{
+    display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;
+  }
+  #network-grid > div:nth-child(2){text-align:center;margin:24px auto 0;}
+  #network-grid > div:nth-child(3){margin-top:0;}
+  .metrics-grid{grid-template-columns:1fr!important;gap:12px;}
+  .audience-content{grid-template-columns:1fr;gap:24px;}
+  .ai-grid{grid-template-columns:1fr;}
+  .testimonial-grid{grid-template-columns:1fr;}
+  /* Portfolio → 3 cols on tablet */
+  #portfolio div[style*="repeat(5,1fr)"]{grid-template-columns:repeat(3,1fr)!important;gap:10px!important;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .pilot-inner{flex-direction:column;}
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE (max 600px)
+══════════════════════════════════════ */
+@media (max-width:600px){
+  nav{top:8px;width:calc(100% - 24px);}
+  .nav-inner{padding:6px 14px;}
+
+  #hero{padding:150px 0 48px;}
+  .hero-layout{grid-template-columns:1fr;gap:24px;}
+  .hero-h1{font-size:32px;letter-spacing:-0.5px;}
+  .hero-sub{font-size:14px;margin:18px 0 28px;}
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn{width:100%;justify-content:center;}
+  .hero-stats{min-height:260px!important;border-radius:16px!important;}
+
+  .sec-title{font-size:24px;}
+  .sec-sub{font-size:13px;}
+  .container{padding:0 16px;}
+
+  section{padding-top:64px!important;padding-bottom:64px!important;}
+  #how{padding:64px 0!important;}
+
+  .steps{grid-template-columns:1fr;}
+  #how .container > div[style*="repeat(4,1fr)"]{grid-template-columns:1fr!important;}
+  /* Diagrams → single column */
+  #diagrams > .container > div[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  #diagrams > .container > div[style*="1fr 1.4fr"]{grid-template-columns:1fr!important;}
+  /* Pricing → single column */
+  #pricing > .container > div[style*="1fr 1.6fr"]{grid-template-columns:1fr!important;}
+  /* Network → single column + CITL cards → 2-col */
+  div[style*="1fr 300px 1fr"]{grid-template-columns:1fr!important;}
+  #network div[style*="flex-direction:column;gap:7px"]{
+    display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;
+  }
+  .step-connector{display:none;}
+
+  .problem-grid{grid-template-columns:1fr;gap:24px;}
+
+  .comp-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .comp-table th,.comp-table td{font-size:10px;padding:8px 10px;white-space:nowrap;}
+
+  .audience-tabs{gap:6px;}
+  .tab{font-size:11px;padding:8px 14px;}
+
+  .testimonial-grid{grid-template-columns:1fr;}
+  /* Portfolio → 2 cols on mobile */
+  #portfolio div[style*="repeat(5,1fr)"]{grid-template-columns:repeat(2,1fr)!important;gap:8px!important;}
+  .footer-grid{grid-template-columns:1fr;gap:24px;}
+  .footer-bottom{flex-direction:column;text-align:center;gap:8px;}
+
+  .pilot-inner{flex-direction:column;gap:32px;}
+  .pilot-card{width:100%;}
+  .pilot-card .glass-lime{min-width:unset!important;width:100%;}
+}
+
+.port-hero{padding:140px 0 80px;background:radial-gradient(ellipse 72% 64% at 14% 88%,#F5C6D8 0%,transparent 62%),radial-gradient(ellipse 58% 52% at 86% 18%,#C8FF00 0%,transparent 58%),radial-gradient(ellipse 62% 56% at 52% 52%,#B8AAFF 0%,transparent 64%),radial-gradient(ellipse 52% 46% at 82% 78%,#5B8BFF 0%,transparent 58%),linear-gradient(138deg,#F5C6D8 0%,#C4AAFF 38%,#4870FF 70%,#C8FF00 100%);position:relative;overflow:hidden;}
+/* g-hero gradient used — no overlay needed */
+.filter-bar{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:90;}
+.filter-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;}
+.filter-inner::-webkit-scrollbar{display:none;}
+.filter-chip{display:inline-flex;align-items:center;padding:7px 16px;border-radius:100px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;border:1.5px solid var(--border);background:var(--cream);color:var(--mid);transition:all 0.15s;user-select:none;}
+.filter-chip:hover{border-color:var(--cobalt);color:var(--cobalt);}
+.filter-chip.active{background:var(--cobalt);border-color:var(--cobalt);color:#FFFFFF;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-top">
+      <a href="/" style="text-decoration:none;"><svg width="130" viewBox="88 298 844 436" fill="none">
+        <rect fill="#1A56FF" x="525.84" y="549.52" width="33.58" height="82.76"/>
+        <rect fill="#1A56FF" x="525.84" y="508.85" width="33.58" height="24.88"/>
+        <path fill="#1A56FF" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/>
+        <path fill="#1A56FF" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/>
+      </svg></a>
+      <div class="nav-links">
+        <a href="/for-cmos">For CMOs</a>
+        <a href="/for-founders">For Founders</a>
+        <a href="/intelligence">Calculate Demand</a>
+      </div>
+      <div class="nav-cta">
+        <a href="https://uppipe.io/log_in" target="_blank" style="font-size:12px;font-weight:700;color:var(--lt);text-decoration:none;">Log in</a>
+        <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:inline-flex;align-items:center;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;padding:8px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;">Work with this team</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="port-hero">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="sec-label">Portfolio &amp; Creative Team</div>
+    <h1 style="font-family:'Syne',sans-serif;font-size:clamp(40px,5.5vw,68px);font-weight:800;color:var(--dark);letter-spacing:-2px;line-height:1.0;margin-bottom:20px;max-width:700px;">15 disciplines.<br><span style="color:var(--cobalt);">One structured system.</span></h1>
+    <p style="font-size:17px;color:var(--mid);max-width:520px;line-height:1.8;margin-bottom:48px;">From motion design to product photography — every format your marketing team needs, produced by senior LATAM creatives who understand brand strategy.</p>
+    <div style="display:flex;gap:32px;flex-wrap:wrap;">
+      <div><div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--dark);letter-spacing:-1px;">15+</div><div style="font-size:10px;font-weight:700;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">Creative disciplines</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+      <div><div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--dark);letter-spacing:-1px;">Senior only</div><div style="font-size:10px;font-weight:700;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">No juniors, ever</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+      <div><div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--dark);letter-spacing:-1px;">LATAM</div><div style="font-size:10px;font-weight:700;color:var(--mid);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">US timezone overlap</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-chip active" onclick="filterWork('all',this)">All work</span>
+    <span class="filter-chip" onclick="filterWork('motion',this)">Motion &amp; Video</span>
+    <span class="filter-chip" onclick="filterWork('digital',this)">Digital &amp; Social</span>
+    <span class="filter-chip" onclick="filterWork('brand',this)">Branding &amp; Editorial</span>
+    <span class="filter-chip" onclick="filterWork('print',this)">Print &amp; OOH</span>
+    <span class="filter-chip" onclick="filterWork('product',this)">Product &amp; Packaging</span>
+    <span class="filter-chip" onclick="filterWork('ux',this)">UX &amp; Web</span>
+  </div>
+</div>
+
+<section style="background:var(--white);padding:80px 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;" id="portfolioGrid">
+      <div class="port-item" data-cat="motion" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/JUMP_1-ezgif.com-video-to-gif-converter.gif" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Motion Design</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="ux" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Iphone_app-ni%C3%B1os.webp" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">UI / UX</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="digital" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/WL_triada-IG-01.webp" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Social</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="motion" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Acceso_01-ezgif.com-video-to-gif-converter.gif" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Ads</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="product" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/IMG_4516.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Packaging</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="print" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/IMG_4518.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Outdoor</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="brand" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/OFySG7eh.webp" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Editorial</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="brand" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Free%2BiPad%2BMockup.webp" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Events</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="motion" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Animation.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Characters</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="digital" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Internal%20Comms.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Internal Comms</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="digital" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/KeyVisuals.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Key Visuals</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="digital" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Newsletters%20and%20Emails.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Newsletters</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="product" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Product%20Shots%20y%20Renders.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Product Shots</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="product" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Swag.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Swag Design</div>
+        </div>
+      </div>
+      <div class="port-item" data-cat="brand" style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Editorial%202.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Reports</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;">
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;padding:14px 28px;border-radius:100px;text-decoration:none;">See work for your industry →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CITL NETWORK -->
+<section id="network" style="background:radial-gradient(ellipse 72% 52% at 28% 72%,#F5C6D8 0%,transparent 58%),radial-gradient(ellipse 52% 62% at 82% 28%,#E0ECFF 0%,transparent 54%),radial-gradient(ellipse 48% 48% at 55% 45%,rgba(184,170,255,0.35) 0%,transparent 55%),linear-gradient(128deg,#FDE8F1 0%,#F5C6D8 38%,#E8EFFE 100%);padding:100px 0;">
+  <div class="container">
+    <div class="sec-label" data-en="The talent network" data-es="La red de talento">The talent network</div>
+    <h2 class="sec-title" style="color:var(--cobalt-deep);" data-en="LATAM's finest Senior Creatives-In-The-Loop.<br><span style='color:var(--dark);'>Connected to your workflow.</span>" data-es="Los mejores Senior Creatives-In-The-Loop de LATAM.<br><span style='color:var(--dark);'>Conectados a tu flujo de trabajo.</span>">LATAM's finest Senior Creatives-In-The-Loop.<br><span style="color:var(--dark);">Connected to your workflow.</span></h2>
+    <p class="sec-sub" style="max-width:560px;" data-en="Every CITL in the network is senior-level, vetted, and operates under a structured CreativeOps model. They work in your timezone, understand your market, and deliver assertive sketches — not guesswork." data-es="Cada CITL de la red es senior, verificado y opera bajo un modelo CreativeOps estructurado. Trabajan en tu zona horaria, entienden tu mercado y entregan bocetos asertivos — no suposiciones.">Every CITL (Creative-in-the-Loop) in the network is senior-level, vetted, and operates under a structured CreativeOps model. They work in your timezone, understand your market, and deliver assertive sketches — not guesswork.</p>
+
+    <div style="margin-top:56px;position:relative;">
+      <!-- Connection diagram -->
+      <div style="display:grid;grid-template-columns:1fr 300px 1fr;gap:0;align-items:center;position:relative;" id="network-grid">
+
+        <!-- Left: Designer cards -->
+        <div style="display:flex;flex-direction:column;gap:7px;">
+
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:8px;">
+            <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/citl1.png" alt="CITL 1" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(26,86,255,0.15);"/>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:11px;font-weight:700;color:var(--dark);">Camila M.</div>
+              <div style="font-size:9px;color:var(--mid);margin-top:1px;">Brand Design · Bogotá</div>
+            </div>
+            <div style="background:var(--cobalt-tint);border-radius:100px;padding:2px 7px;font-size:7px;font-weight:700;color:var(--cobalt);white-space:nowrap;flex-shrink:0;">FTR 94%</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:8px;">
+            <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/citl2.png" alt="CITL 2" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(26,86,255,0.15);"/>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:11px;font-weight:700;color:var(--dark);">Jorge R.</div>
+              <div style="font-size:9px;color:var(--mid);margin-top:1px;">Motion · Medellín</div>
+            </div>
+            <div style="background:var(--cobalt-tint);border-radius:100px;padding:2px 7px;font-size:7px;font-weight:700;color:var(--cobalt);white-space:nowrap;flex-shrink:0;">FTR 91%</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:8px;">
+            <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/citl3.png" alt="CITL 3" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(26,86,255,0.15);"/>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:11px;font-weight:700;color:var(--dark);">Ana L.</div>
+              <div style="font-size:9px;color:var(--mid);margin-top:1px;">UX/UI · Cali</div>
+            </div>
+            <div style="background:var(--cobalt-tint);border-radius:100px;padding:2px 7px;font-size:7px;font-weight:700;color:var(--cobalt);white-space:nowrap;flex-shrink:0;">FTR 96%</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:8px;">
+            <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/citl4.png" alt="CITL 4" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(26,86,255,0.15);"/>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:11px;font-weight:700;color:var(--dark);">Santiago M.</div>
+              <div style="font-size:9px;color:var(--mid);margin-top:1px;">Performance Ads · CDMX</div>
+            </div>
+            <div style="background:var(--cobalt-tint);border-radius:100px;padding:2px 7px;font-size:7px;font-weight:700;color:var(--cobalt);white-space:nowrap;flex-shrink:0;">FTR 89%</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:8px;">
+            <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/citl5.png" alt="CITL 5" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(26,86,255,0.15);"/>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:11px;font-weight:700;color:var(--dark);">Valentina C.</div>
+              <div style="font-size:9px;color:var(--mid);margin-top:1px;">Art Direction · Bogotá</div>
+            </div>
+            <div style="background:var(--cobalt-tint);border-radius:100px;padding:2px 7px;font-size:7px;font-weight:700;color:var(--cobalt);white-space:nowrap;flex-shrink:0;">FTR 93%</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:8px;">
+            <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/citl6.png" alt="CITL 6" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(26,86,255,0.15);"/>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:11px;font-weight:700;color:var(--dark);">Mateo R.</div>
+              <div style="font-size:9px;color:var(--mid);margin-top:1px;">Illustration · Medellín</div>
+            </div>
+            <div style="background:var(--cobalt-tint);border-radius:100px;padding:2px 7px;font-size:7px;font-weight:700;color:var(--cobalt);white-space:nowrap;flex-shrink:0;">FTR 90%</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9);border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:8px;">
+            <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/citl7.png" alt="CITL 7" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(26,86,255,0.15);"/>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:11px;font-weight:700;color:var(--dark);">Daniela F.</div>
+              <div style="font-size:9px;color:var(--mid);margin-top:1px;">Social Creative · Cali</div>
+            </div>
+            <div style="background:var(--cobalt-tint);border-radius:100px;padding:2px 7px;font-size:7px;font-weight:700;color:var(--cobalt);white-space:nowrap;flex-shrink:0;">FTR 92%</div>
+          </div>
+
+        </div>
+
+        <!-- Center: UpPipe Hub image -->
+        <div style="padding:0 16px;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:2;">
+          <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/hub.png?v=2" alt="UpPipe Hub" style="width:260px;height:260px;object-fit:contain;filter:drop-shadow(0 8px 40px rgba(26,86,255,0.3));"/>
+          <div style="background:var(--cobalt);border-radius:100px;padding:5px 16px;font-size:8px;font-weight:800;color:white;text-align:center;white-space:nowrap;letter-spacing:0.1em;text-transform:uppercase;">UpPipe Hub</div>
+        </div>
+
+        <!-- Right: Client benefits -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px;">
+            <div style="width:36px;height:36px;border-radius:9px;background:var(--cobalt-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A56FF" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div><div style="font-size:11px;font-weight:700;" data-en="24–48h delivery" data-es="Entrega en 24–48h">24–48h delivery</div><div style="font-size:9px;color:var(--mid);" data-en="From brief to first asset" data-es="Del brief a la primera pieza">From brief to first asset</div></div>
+          </div>
+          <div style="background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px;">
+            <div style="width:36px;height:36px;border-radius:9px;background:#F0E8FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div><div style="font-size:11px;font-weight:700;" data-en="87% FTR guaranteed" data-es="87% FTR garantizado">87% FTR guaranteed</div><div style="font-size:9px;color:var(--mid);" data-en="Senior talent, assertive sketching" data-es="Talento senior, propuestas asertivas">Senior talent, assertive sketching</div></div>
+          </div>
+          <div style="background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px;">
+            <div style="width:36px;height:36px;border-radius:9px;background:#D1FAE5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div><div style="font-size:11px;font-weight:700;" data-en="Full KPI dashboard" data-es="Dashboard completo de KPIs">Full KPI dashboard</div><div style="font-size:9px;color:var(--mid);" data-en="Hours, FTR, cost-per-asset" data-es="Horas, FTR, costo por pieza">Hours, FTR, cost-per-asset</div></div>
+          </div>
+          <div style="background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px;">
+            <div style="width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A8A00" stroke-width="2" stroke-linecap="round"><path d="M12 2L4 5v6c0 5.25 3.5 10.15 8 11.5C16.5 21.15 20 16.25 20 11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div><div style="font-size:11px;font-weight:700;" data-en="US timezone · LATAM talent" data-es="Zona horaria US · Talento LATAM">US timezone · LATAM talent</div><div style="font-size:9px;color:var(--mid);">40–60% less than US hiring</div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom stats bar -->
+      <div style="margin-top:32px;background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.8);border-radius:14px;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+        <div style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--cobalt);">40+</div>
+          <div style="font-size:10px;color:var(--mid);">Senior Creatives-In-The-Loop</div>
+        </div>
+        <div style="width:1px;height:40px;background:var(--border);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--cobalt);">15</div>
+          <div style="font-size:10px;color:var(--mid);">creative disciplines</div>
+        </div>
+        <div style="width:1px;height:40px;background:var(--border);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--cobalt);">EST</div>
+          <div style="font-size:10px;color:var(--mid);">timezone aligned</div>
+        </div>
+        <div style="width:1px;height:40px;background:var(--border);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--cobalt);">87%</div>
+          <div style="font-size:10px;color:var(--mid);">avg network FTR</div>
+        </div>
+        <div style="width:1px;height:40px;background:var(--border);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--cobalt);">COL · MX · AR</div>
+          <div style="font-size:10px;color:var(--mid);">talent locations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);padding:100px 0;text-align:center;">
+  <div class="container">
+    <div class="sec-label">Ready to work with this team?</div>
+    <h2 class="sec-title" style="margin-bottom:16px;">Know your capacity.<br><span style="color:var(--cobalt);">Start in days.</span></h2>
+    <p style="font-size:16px;color:var(--mid);max-width:460px;margin:0 auto 40px;line-height:1.7;">Calculate exactly how many hours your team needs — then we match you with the right CITLs for your industry and brand.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/intelligence" style="display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#1A3A00;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:16px 32px;border-radius:100px;text-decoration:none;"><span style="width:6px;height:6px;border-radius:50%;background:#1A3A00;"></span>Calculate Creative Demand →</a>
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:inline-flex;align-items:center;background:transparent;color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:15px 32px;border-radius:100px;text-decoration:none;border:2px solid var(--cobalt);">Book a call</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--dark);padding:40px 0;text-align:center;">
+  <div class="container"><p style="font-size:11px;color:rgba(255,255,255,0.3);">© 2026 Uppipe · A Brandnew Studio SAS Division</p></div>
+</footer>
+
+<script>
+
+
+/* ── MOBILE NAV TOGGLE ── */
+function toggleMobileNav() {
+  const m = document.getElementById('nav-mobile');
+  const btn = document.getElementById('nav-hamburger');
+  m.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+/* ── AUDIENCE TABS ── */
+function switchAudience(id, el) {
+  document.querySelectorAll('.audience-content').forEach(d => d.style.display = 'none');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('aud-' + id).style.display = 'grid';
+  el.classList.add('active');
+}
+
+/* ── STICKY NAV ── */
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav-inner');
+  if (nav) {
+    if (window.scrollY > 40) {
+      nav.style.boxShadow = '0 8px 32px rgba(26,86,255,0.14)';
+    } else {
+      nav.style.boxShadow = '0 4px 24px rgba(26,86,255,0.08)';
+    }
+  }
+});
+
+/* ── LANGUAGE TOGGLE ── */
+const translations = {
+  en: {
+    /* NAV */
+    'nav-how':        'How it works',
+    'nav-results':    'Results',
+    'nav-forwho':     'For who',
+    'nav-work':       'Work',
+    'nav-pricing':    'Pricing',
+    'nav-login':      'Log in',
+    'nav-trial':      'Calculate Creative Demand →',
+    /* HERO */
+    'hero-eyebrow':   'CreativeOps Infrastructure · Series A–C ready',
+    'hero-h1':        'Creative chaos<br>costs you <em>growth.</em>',
+    'hero-sub':       "UpPipe replaces your fragmented creative process with structured workflows, LATAM's finest Senior Creatives-In-The-Loop, and AI-powered briefing — so your team ships 3× more without growing headcount.",
+    'hero-cta1':      'Calculate Creative Demand →',
+    'hero-cta2':      'See how it works',
+    'hero-proof':     'Trusted by 40+ marketing teams scaling fast',
+    /* LOGOS */
+    'logos-label':    'Trusted by teams at',
+    /* PROBLEM */
+    'prob-label':     'The problem',
+    'prob-h2':        'Your creative process is burning<br><span style="color:var(--dark);">50% of your marketing budget.</span>',
+    'prob-1-title':   'Requests scattered across Slack, email & WhatsApp',
+    'prob-1-body':    'No structured intake means every project starts with guesswork. Designers wait for information. Managers chase approvals. Time dies in email threads.',
+    'prob-2-title':   '4–5 revision rounds per asset',
+    'prob-2-body':    'Incomplete briefs create 3–5 revision rounds per piece. Each round adds 2–3 days. A campaign that should take a week takes a month.',
+    'prob-3-title':   'Zero visibility into creative ROI',
+    'prob-3-body':    "CMOs can't see cost-per-asset, rework ratios or team throughput. Creative spend looks like a black hole. VCs see it too — and worry.",
+    'prob-4-title':   'Agencies are slow and opaque',
+    'prob-4-body':    'Traditional agencies take 7–10 days per cycle, charge retainers regardless of output, and never give you the operational data to justify the spend.',
+    /* HOW */
+    'how-label':      'How UpPipe works',
+    'how-h2':         'From request to delivery.<br><span style="color:var(--cobalt);">Structured end-to-end.</span>',
+    'how-sub':        'Every creative request moves through a defined system — from AI-structured brief to LATAM\'s finest Senior Creative-In-The-Loop execution to measurable delivery. No guesswork. No waiting.',
+    'step1-title':    'AI-Structured Brief',
+    'step1-body':     'Our AI intake system captures 87% of critical project information — vs 38% in manual processes. No more back-and-forth. Designers start with everything they need.',
+    'step2-title':    'Senior Creative-In-The-Loop Assigned',
+    'step2-body':     "Matched to one of LATAM's finest Senior Creatives-In-The-Loop — someone who understands brand strategy, not just execution. Assertive sketching means the first version already hits the business goal.",
+    'step3-title':    '24–48h Delivery',
+    'step3-body':     'From brief submission to first delivery in 24–48 hours. No weekly standups, no agency retainer conversations. Just assets, on time, every time.',
+    'step4-title':    'Full Operational Visibility',
+    'step4-body':     'Track hours, throughput, FTR rate, lead time, and cost-per-asset in your dashboard. Finally, creative production with the same metrics as your sales pipeline.',
+    /* PRICING */
+    'pricing-label':  'Pricing 2026',
+    'pricing-h2':     'Two subscriptions.<br><span style="color:var(--cobalt);">Pay for what you need.</span>',
+    'pricing-sub':    "Both include LATAM's finest Senior Creatives-In-The-Loop, a dedicated PM, AI-assisted production, and full dashboard. No hidden fees, no platform surcharge.",
+    'flex-badge':     'Flex Subscription · Month-to-Month',
+    'flex-name':      'Flex',
+    'flex-sub':       'Scale up or down every month. No long-term commitment.',
+    'flex-f1':        'Minimum 10 hrs/month',
+    'flex-f2':        'Up to 40 hrs/month',
+    'flex-f3':        'Adjust hours each month',
+    'flex-f4':        'Hours expire monthly',
+    'flex-cta':       'Start Flex subscription',
+    'scale-badge':    'Scale Subscription · Best Value',
+    'scale-name':     'Scale',
+    'scale-sub':      'Better rates at volume. Unused hours accumulate — never lose what you paid for.',
+    'scale-cta':      'Calculate Creative Demand →',
+    /* PILOT */
+    'pilot-label':    'Start today',
+    'pilot-h2':       'Stop managing chaos.<br><span style="color:var(--dark);">Start shipping.</span>',
+    'pilot-sub': "See exactly how many hours your team needs — built on real production data.",
+    'pilot-cta':      'Calculate Creative Demand →',
+    'pilot-fine':     'Powered by +82,168 real data points.',
+    'pilot-card-label': 'Your CreativeOps estimate',
+    'pilot-card-body': 'more creative output<br>in 30 days',
+    'pilot-card-note': 'Average result across<br>all UpPipe pilots',
+    /* FOOTER */
+    'footer-desc':    "CreativeOps Infrastructure for scaling marketing teams. LATAM's finest Senior Creatives-In-The-Loop, AI-powered briefing, and full operational visibility — in a single subscription.",
+    'footer-copy':    '© 2026 UpPipe. CreativeOps Infrastructure. All rights reserved.',
+    'footer-privacy': 'Privacy Policy · Terms of Service',
+  },
+  es: {
+    /* NAV */
+    'nav-how':        'Cómo funciona',
+    'nav-results':    'Resultados',
+    'nav-forwho':     'Para quién',
+    'nav-work':       'Trabajo',
+    'nav-pricing':    'Precios',
+    'nav-login':      'Ingresar',
+    'nav-trial':      '30 horas gratis →',
+    /* HERO */
+    'hero-eyebrow':   'Infraestructura CreativeOps · Lista para Series A–C',
+    'hero-h1':        'El caos creativo<br>te cuesta <em>crecimiento.</em>',
+    'hero-sub':       'UpPipe reemplaza tu proceso creativo fragmentado con flujos estructurados, los mejores Senior Creatives-In-The-Loop de LATAM y briefing con IA — para que tu equipo produzca 3× más sin crecer el equipo.',
+    'hero-cta1':      'Empieza con 30 horas gratis →',
+    'hero-cta2':      'Ver cómo funciona',
+    'hero-proof':     'Con la confianza de más de 40 equipos de marketing',
+    /* LOGOS */
+    'logos-label':    'Con la confianza de',
+    /* PROBLEM */
+    'prob-label':     'El problema',
+    'prob-h2':        'Tu proceso creativo está quemando<br><span style="color:var(--dark);">el 50% de tu presupuesto de marketing.</span>',
+    'prob-1-title':   'Solicitudes dispersas en Slack, email y WhatsApp',
+    'prob-1-body':    'Sin un sistema de ingesta, cada proyecto empieza con suposiciones. Los diseñadores esperan información. Los managers persiguen aprobaciones. El tiempo muere en hilos de correo.',
+    'prob-2-title':   '4–5 rondas de revisión por pieza',
+    'prob-2-body':    'Los briefs incompletos generan 3–5 rondas de revisión por pieza. Cada ronda suma 2–3 días. Una campaña que debería tomar una semana toma un mes.',
+    'prob-3-title':   'Cero visibilidad sobre el ROI creativo',
+    'prob-3-body':    'Los CMOs no pueden ver el costo por pieza, los ratios de retrabajo ni el throughput del equipo. El gasto creativo parece un agujero negro. Los VCs también lo ven — y se preocupan.',
+    'prob-4-title':   'Las agencias son lentas y opacas',
+    'prob-4-body':    'Las agencias tradicionales tardan 7–10 días por ciclo, cobran retainers independientemente del output y nunca te dan los datos operativos para justificar el gasto.',
+    /* HOW */
+    'how-label':      'Cómo funciona UpPipe',
+    'how-h2':         'De la solicitud a la entrega.<br><span style="color:var(--cobalt);">Estructurado de principio a fin.</span>',
+    'how-sub':        'Cada solicitud creativa pasa por un sistema definido — desde el brief estructurado con IA hasta la ejecución del Senior Creative-In-The-Loop hasta la entrega medible. Sin suposiciones. Sin esperas.',
+    'step1-title':    'Brief Estructurado con IA',
+    'step1-body':     'Nuestro sistema de ingesta con IA captura el 87% de la información crítica del proyecto — vs 38% en procesos manuales. Sin más ida y vuelta. Los creativos empiezan con todo lo que necesitan.',
+    'step2-title':    'Senior Creative-In-The-Loop Asignado',
+    'step2-body':     'Conectado con uno de los mejores Senior Creatives-In-The-Loop de LATAM — alguien que entiende la estrategia de marca, no solo la ejecución. El boceto asertivo garantiza que la primera versión ya cumple el objetivo.',
+    'step3-title':    'Entrega en 24–48h',
+    'step3-body':     'Desde el brief hasta la primera entrega en 24–48 horas. Sin standups semanales, sin conversaciones de retainer. Solo piezas, a tiempo, siempre.',
+    'step4-title':    'Visibilidad Operacional Total',
+    'step4-body':     'Monitorea horas, throughput, tasa FTR, lead time y costo por pieza en tu dashboard. Por fin, producción creativa con las mismas métricas que tu pipeline de ventas.',
+    /* PRICING */
+    'pricing-label':  'Precios 2026',
+    'pricing-h2':     'Dos suscripciones.<br><span style="color:var(--cobalt);">Paga por lo que necesitas.</span>',
+    'pricing-sub':    'Ambas incluyen los mejores Senior Creatives-In-The-Loop de LATAM, un PM dedicado, producción asistida por IA y dashboard completo. Sin cargos ocultos.',
+    'flex-badge':     'Suscripción Flex · Mes a Mes',
+    'flex-name':      'Flex',
+    'flex-sub':       'Sube o baja cada mes. Sin compromisos a largo plazo.',
+    'flex-f1':        'Mínimo 10 hrs/mes',
+    'flex-f2':        'Hasta 40 hrs/mes',
+    'flex-f3':        'Ajusta las horas cada mes',
+    'flex-f4':        'Las horas vencen mensualmente',
+    'flex-cta':       'Iniciar suscripción Flex',
+    'scale-badge':    'Suscripción Scale · Mejor Valor',
+    'scale-name':     'Scale',
+    'scale-sub':      'Mejores tarifas por volumen. Las horas no usadas acumulan — nunca pierdes lo que pagaste.',
+    'scale-cta':      'Obtener 30 horas gratis →',
+    /* PILOT */
+    'pilot-label':    'Empieza hoy',
+    'pilot-h2':       'Deja de gestionar el caos.<br><span style="color:var(--dark);">Empieza a entregar.</span>',
+    'pilot-sub':      '30 horas gratis para probar el sistema. Luego 30% de descuento en tu primer mes con contrato anual mientras la infraestructura se adapta a tu demanda. Los mejores Senior Creatives-In-The-Loop de LATAM desde el primer día.',
+    'pilot-cta':      'Obtener 30 horas gratis — agendar auditoría →',
+    'pilot-fine':     '30 horas gratis · 30% dcto primer mes · contrato anual',
+    'pilot-card-label': 'Resultado en 30 horas gratis',
+    'pilot-card-body': 'más output creativo<br>en 30 días',
+    'pilot-card-note': 'Resultado promedio en<br>todos los pilotos de UpPipe',
+    /* FOOTER */
+    'footer-desc':    'Infraestructura CreativeOps para equipos de marketing en crecimiento. Los mejores Senior Creatives-In-The-Loop de LATAM, briefing con IA y visibilidad operacional total — en una sola suscripción.',
+    'footer-copy':    '© 2026 UpPipe. Infraestructura CreativeOps. Todos los derechos reservados.',
+    'footer-privacy': 'Política de Privacidad · Términos de Servicio',
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  // Toggle UI state — desktop
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+  document.getElementById('lang-checkbox').checked = (lang === 'es');
+  // Toggle UI state — mobile
+  const enM = document.getElementById('lang-en-m');
+  const esM = document.getElementById('lang-es-m');
+  if(enM) { enM.style.color = lang==='en' ? 'var(--cobalt)' : 'var(--lt)'; }
+  if(esM) { esM.style.color = lang==='es' ? 'var(--cobalt)' : 'var(--lt)'; }
+
+  // Update ALL elements that have both data-en and data-es
+  document.querySelectorAll('[data-en][data-es]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.innerHTML = val;
+  });
+
+  // Page title
+  document.title = lang === 'es'
+    ? 'UpPipe — Infraestructura CreativeOps para Empresas en Crecimiento'
+    : 'UpPipe — CreativeOps Infrastructure for Scaling Companies';
+}
+
+function filterWork(cat, el) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.port-item').forEach(item => {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>
