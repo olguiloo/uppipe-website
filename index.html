@@ -522,25 +522,77 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     <div style="text-align:center;margin-bottom:72px;">
       <div class="sec-label" style="text-align:center;" data-en="What is Uppipe?" data-es="¿Qué es Uppipe?">What is Uppipe?</div>
       <h2 style="font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;color:var(--dark);letter-spacing:-1.5px;line-height:1.05;margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto;">Three systems. One subscription.<br><span style="color:var(--cobalt);">Running together.</span></h2>
-      <p style="font-size:16px;color:var(--mid);line-height:1.8;max-width:640px;margin:0 auto;">Brief Intelligence structures every request before a creative touches it. The Client Board gives you real-time visibility across every asset in production. Creative Intelligence turns your output into metrics you can act on. None of this exists inside a traditional agency retainer.</p>
+      <!-- Dynamic pillar description -->
+      <div id="pillarDesc" style="font-size:16px;color:var(--mid);line-height:1.8;max-width:640px;margin:0 auto;min-height:80px;transition:opacity 0.2s;">
+        Brief Intelligence structures every request before a creative touches it. The Client Board gives you real-time visibility across every asset in production. Creative Intelligence turns your outpu<!-- THREE PILLARS -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;margin-bottom:80px;">
+
+      <!-- Pillar 1: CITL -->
+      <div id="pillar-citl"
+        style="background:var(--white);padding:36px 32px;text-align:center;cursor:pointer;transition:background 0.2s;"
+        onmouseenter="activatePillar('citl')"
+        onclick="activatePillar('citl')">
+        <div style="font-size:36px;margin-bottom:16px;">🧠</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--dark);margin-bottom:8px;">Creatives In The Loop</div>
+        <div style="font-size:13px;color:var(--mid);line-height:1.7;">Senior LATAM creatives trained on your brand. Not freelancers. Not a pool. A vetted network that operates inside your workflow.</div>
+      </div>
+
+      <!-- Pillar 2: AI — active by default -->
+      <div id="pillar-ai"
+        style="background:var(--cobalt);padding:36px 32px;text-align:center;cursor:pointer;transition:background 0.2s;"
+        onmouseenter="activatePillar('ai')"
+        onclick="activatePillar('ai')">
+        <div style="font-size:36px;margin-bottom:16px;">⚡</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#FFFFFF;margin-bottom:8px;">AI-Powered Operations</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;">Pipe, our AI brief agent, structures every request before a creative touches it. No incomplete briefs. No guesswork. No wasted hours.</div>
+      </div>
+
+      <!-- Pillar 3: Visibility -->
+      <div id="pillar-visibility"
+        style="background:var(--white);padding:36px 32px;text-align:center;cursor:pointer;transition:background 0.2s;"
+        onmouseenter="activatePillar('visibility')"
+        onclick="activatePillar('visibility')">
+        <div style="font-size:36px;margin-bottom:16px;">📊</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--dark);margin-bottom:8px;">Full Operational Visibility</div>
+        <div style="font-size:13px;color:var(--mid);line-height:1.7;">Real-time dashboard. Cost per asset. FTR rate. Revision cycles. Hours remaining. Every number your CMO and VC want to see.</div>
+      </div>
+
     </div>
 
-    <!-- THREE PILLARS -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;margin-bottom:80px;">
-      <div style="background:var(--white);padding:36px 32px;text-align:center;">
-        <div style="font-size:36px;margin-bottom:16px;">🧠</div>
-        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--dark);margin-bottom:8px;" data-en="Creatives In The Loop" data-es="Creatives In The Loop">Creatives In The Loop</div>
-        <div style="font-size:13px;color:var(--mid);line-height:1.7;" data-en="Senior LATAM creatives trained on your brand. Not freelancers. Not a pool. A vetted network that operates inside your workflow." data-es="Creativos seniors LATAM entrenados en tu marca. No freelancers. No un pool. Una red verificada que opera dentro de tu flujo de trabajo.">Senior LATAM creatives trained on your brand. Not freelancers. Not a pool. A vetted network that operates inside your workflow.</div>
-      </div>
-      <div style="background:var(--cobalt);padding:36px 32px;text-align:center;">
-        <div style="font-size:36px;margin-bottom:16px;">⚡</div>
-        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#FFFFFF;margin-bottom:8px;" data-en="AI-Powered Operations" data-es="Operaciones con IA">AI-Powered Operations</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;" data-en="Pipe, our AI brief agent, structures every request before a creative touches it. No incomplete briefs. No guesswork. No wasted hours." data-es="Pipe, nuestro agente de brief con IA, estructura cada request antes de que un creativo lo toque. Sin briefs incompletos. Sin suposiciones.">Pipe, our AI brief agent, structures every request before a creative touches it. No incomplete briefs. No guesswork. No wasted hours.</div>
-      </div>
-      <div style="background:var(--white);padding:36px 32px;text-align:center;">
-        <div style="font-size:36px;margin-bottom:16px;">📊</div>
-        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--dark);margin-bottom:8px;" data-en="Full Operational Visibility" data-es="Visibilidad Operacional Total">Full Operational Visibility</div>
-        <div style="font-size:13px;color:var(--mid);line-height:1.7;" data-en="Real-time dashboard. Cost per asset. FTR rate. Revision cycles. Hours remaining. Every number your CMO and VC want to see." data-es="Dashboard en tiempo real. Costo por asset. Tasa FTR. Ciclos de revisión. Horas restantes. Cada número que tu CMO y tu VC quieren ver.">Real-time dashboard. Cost per asset. FTR rate. Revision cycles. Hours remaining. Every number your CMO and VC want to see.</div>
+    <script>
+    const pillarData = {
+      citl: "Your brand needs more than a freelancer who shows up once. Every CITL is senior (5+ years), AI-fluent, and trained on your brand guidelines before touching a single brief. They don't need managing. They need a brief — and that's exactly what Pipe delivers.",
+      ai: "Brief Intelligence structures every request before a creative touches it. The Client Board gives you real-time visibility across every asset in production. Creative Intelligence turns your output into metrics you can act on. None of this exists inside a traditional agency retainer.",
+      visibility: "Real-time dashboard. Cost per asset. FTR rate. Lead time. Hours remaining. Every number that tells you if your creative operation is healthy — updated live, exportable, and filterable by client, time period, and team. Finally: creative spend with the same clarity as your sales pipeline."
+    };
+    let activePillar = 'ai';
+    function activatePillar(key) {
+      if (activePillar === key) return;
+      activePillar = key;
+      // Update description
+      const desc = document.getElementById('pillarDesc');
+      desc.style.opacity = '0';
+      setTimeout(() => {
+        desc.textContent = pillarData[key];
+        desc.style.opacity = '1';
+      }, 150);
+      // Update pillar backgrounds
+      ['citl','ai','visibility'].forEach(k => {
+        const el = document.getElementById('pillar-' + k);
+        const titleEl = el.querySelector('div:nth-child(2)');
+        const bodyEl = el.querySelector('div:nth-child(3)');
+        if (k === key) {
+          el.style.background = 'var(--cobalt)';
+          titleEl.style.color = '#FFFFFF';
+          bodyEl.style.color = 'rgba(255,255,255,0.7)';
+        } else {
+          el.style.background = 'var(--white)';
+          titleEl.style.color = 'var(--dark)';
+          bodyEl.style.color = 'var(--mid)';
+        }
+      });
+    }
+    </script>t. FTR rate. Revision cycles. Hours remaining. Every number your CMO and VC want to see.</div>
       </div>
     </div>
 
