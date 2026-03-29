@@ -821,7 +821,7 @@ async function submitEmail() {
 
   const email   = emailEl.value.trim();
   const name    = (document.getElementById('gateFirstName').value.trim() + ' ' + document.getElementById('gateLastName').value.trim()).trim();
-  const company = document.getElementById('gateCompany').value.trim();
+  const company = (document.getElementById('gateCompany') || {value:''}).value.trim();
 
   // Validate
   if (!email || !email.includes('@') || !email.includes('.')) {
@@ -849,7 +849,7 @@ async function submitEmail() {
       const payload = {
         fields: [
           { name: 'firstname',                       value: name },
-          { name: 'lastname',                        value: (document.getElementById('gateLastName')||{value:''}).value.trim() },
+          { name: 'lastname',                        value: STATE.name ? STATE.name.split(' ').slice(1).join(' ') : '' },
           { name: 'email',                           value: email },
           // Lead properties — map calculator outputs
           { name: 'industry_segment',                value: STATE.industry || '' },
