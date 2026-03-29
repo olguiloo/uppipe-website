@@ -114,9 +114,13 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;}
 <style>
 nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:1000;width:calc(100% - 48px);max-width:1100px;}
 .nav-inner{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.9);border-radius:12px;padding:7px 24px;display:flex;flex-direction:column;box-shadow:0 4px 24px rgba(26,86,255,0.08);}
-.nav-top{display:flex;align-items:center;justify-content:space-between;}
+.nav-top{display:flex;align-items:center;justify-content:space-between;gap:32px;}
+.nav-logo{flex-shrink:0;}
 .nav-links{display:flex;gap:24px;align-items:center;}
-.nav-cta{display:flex;gap:10px;align-items:center;}
+.nav-links a{font-size:13px;font-weight:600;color:#2D2D2D;text-decoration:none !important;white-space:nowrap;transition:color 0.15s;}
+.nav-links a:hover{color:#1A56FF;}
+.nav-cta{display:flex;gap:10px;align-items:center;flex-shrink:0;}
+nav a{text-decoration:none !important;}
 @media(max-width:900px){.nav-links,.nav-cta{display:none!important;}#nav-hamburger{display:flex!important;}nav{width:calc(100% - 32px);}}
 @media(max-width:600px){nav{top:8px;width:calc(100% - 24px);}.nav-inner{padding:6px 14px;}}
 </style>
@@ -138,11 +142,11 @@ nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:1000;wid
       </svg>
     </a>
     <div class="nav-links">
-      <a href="/#platform">CreativeOps Platform</a>
-      <a href="/intelligence">Creative Intelligence</a>
       <a href="/portfolio">Talent &amp; Portfolio</a>
+      <a href="/#platform">CreativeOps Platform</a>
+      <a href="/#intelligence">Creative Intelligence</a>
       <a href="/work-with-us">Apply as CITL</a>
-      <a href="https://uppipe.io/log_in" target="_blank" rel="noopener" style="font-size:11px;font-weight:600;color:#AFAFAF;text-decoration:none;white-space:nowrap;">Log in</a>
+      <a href="https://uppipe.io/log_in" target="_blank" rel="noopener" style="font-size:11px;font-weight:600;color:#AFAFAF;text-decoration:none !important;white-space:nowrap;">Log in</a>
     </div>
     <div class="nav-cta">
       <a href="/intelligence" style="display:inline-flex;align-items:center;gap:6px;background:#C8FF00;color:#1A3A00;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;padding:8px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;"><span style="width:5px;height:5px;border-radius:50%;background:#1A3A00;display:inline-block;"></span>Calculate Creative Demand</a>
@@ -150,7 +154,7 @@ nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:1000;wid
         <span id="lang-en" style="font-size:11px;font-weight:700;color:#1A56FF;cursor:pointer;" onclick="setLang('en')">EN</span>
         <label style="position:relative;display:inline-block;width:28px;height:16px;">
           <input type="checkbox" id="lang-checkbox" onchange="setLang(this.checked?'es':'en')" style="opacity:0;width:0;height:0;">
-          <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#E8E8E8;border-radius:100px;transition:0.3s;"><span id="lang-knob" style="position:absolute;content:'';height:10px;width:10px;left:3px;bottom:3px;background:#1A56FF;border-radius:50%;transition:0.3s;display:block;"></span></span>
+          <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#E8E8E8;border-radius:100px;transition:0.3s;"><span id="lang-knob" style="position:absolute;height:10px;width:10px;left:3px;bottom:3px;background:#1A56FF;border-radius:50%;transition:0.3s;display:block;"></span></span>
         </label>
         <span id="lang-es" style="font-size:11px;font-weight:700;color:#AFAFAF;cursor:pointer;" onclick="setLang('es')">ES</span>
       </div>
@@ -163,9 +167,9 @@ nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:1000;wid
     </button>
     </div>
   <div id="nav-mobile" style="display:none;flex-direction:column;border-top:1px solid rgba(26,86,255,0.1);margin-top:8px;padding-top:4px;">
-    <a href="/#platform" style="font-size:15px;font-weight:700;color:#2D2D2D;text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(26,86,255,0.07);display:block;">CreativeOps Platform</a>
-    <a href="/intelligence" style="font-size:15px;font-weight:700;color:#2D2D2D;text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(26,86,255,0.07);display:block;">Creative Intelligence</a>
     <a href="/portfolio" style="font-size:15px;font-weight:700;color:#2D2D2D;text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(26,86,255,0.07);display:block;">Talent &amp; Portfolio</a>
+    <a href="/#platform" style="font-size:15px;font-weight:700;color:#2D2D2D;text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(26,86,255,0.07);display:block;">CreativeOps Platform</a>
+    <a href="/#intelligence" style="font-size:15px;font-weight:700;color:#2D2D2D;text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(26,86,255,0.07);display:block;">Creative Intelligence</a>
     <a href="/work-with-us" style="font-size:15px;font-weight:700;color:#2D2D2D;text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(26,86,255,0.07);display:block;">Apply as CITL</a>
     <div style="padding:14px 0 4px;display:flex;flex-direction:column;gap:8px;">
       <a href="/intelligence" style="display:flex;align-items:center;justify-content:center;width:100%;background:#C8FF00;color:#1A3A00;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:14px 24px;border-radius:100px;text-decoration:none;">Calculate Creative Demand</a>
@@ -178,7 +182,6 @@ nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:1000;wid
 <script>
 function toggleMobileNav(){
   var m=document.getElementById('nav-mobile');
-  var b=document.getElementById('nav-hamburger');
   var open=m.style.display==='flex';
   m.style.display=open?'none':'flex';
 }
