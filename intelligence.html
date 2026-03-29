@@ -81,7 +81,7 @@ select:focus,input:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26
 
 /* ── TOGGLE CHIPS ── */
 .chips{display:flex;flex-wrap:wrap;gap:8px;}
-.chip{padding:10px 18px;background:var(--cream);border:1.5px solid var(--border);border-radius:100px;font-size:12px;font-weight:700;color:var(--mid);cursor:pointer;transition:all 0.2s;user-select:none;position:relative;z-index:2;-webkit-tap-highlight-color:rgba(26,86,255,0.2);}
+.chip{padding:10px 18px;background:var(--cream);border:1.5px solid var(--border);border-radius:100px;font-size:12px;font-weight:700;color:var(--mid);cursor:pointer;transition:all 0.2s;user-select:none;position:relative;z-index:2;}
 .chip:hover{border-color:var(--cobalt);color:var(--cobalt);}
 .chip.active{background:var(--cobalt);border-color:var(--cobalt);color:var(--white);}
 .chip.active-lime{background:var(--lime);border-color:var(--lime-dark);color:#2D5A00;}
@@ -601,10 +601,10 @@ select:focus,input:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26
       <!-- SUBSCRIPTION TIERS -->
       <div class="card" style="margin-bottom:20px;">
         <div class="card-label"><span class="card-label-num">→</span> Choose your plan</div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Subscription tiers</h3>
-        <p style="font-size:13px;color:var(--mid);margin-bottom:0;">All-inclusive per hour. No platform fees. No rush surcharges in public pricing.</p>
-        <div class="tier-grid" id="tierGrid"></div>
-        <p style="font-size:11px;color:var(--lt);margin-top:12px;">* First month includes 30% additional hours as a learning curve investment — not a price increase.</p>
+        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Your recommended plan</h3>
+        <p style="font-size:13px;color:var(--mid);margin-bottom:0;">Based on your estimated hours — here's what Uppipe costs you. <span id="recHoursInline" style="color:var(--cobalt);font-weight:700;"></span></p>
+        <div id="tierGrid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:16px;margin-top:24px;"></div>
+        <p style="font-size:11px;color:var(--lt);margin-top:16px;">* First month includes 30% additional hours as learning curve investment. Prices in USD + IVA.</p>
       </div>
 
       <!-- BENCHMARK COMPARISON -->
@@ -775,25 +775,6 @@ function toggleChip(el, key) {
   STATE[key] = vals;
 }
 
-// Event delegation fallback — catches clicks that inline handlers miss
-document.addEventListener('click', function(e) {
-  const chip = e.target.closest('.chip');
-  if (!chip) return;
-  const container = chip.parentElement;
-  const key = container.id.replace('Chips','').replace('chips','').toLowerCase();
-  if (chip.getAttribute('onclick') && chip.getAttribute('onclick').includes('toggleChip')) {
-    chip.classList.toggle('active');
-    const vals = Array.from(container.querySelectorAll('.chip.active')).map(c=>c.dataset.val);
-    STATE[key] = vals;
-  } else if (chip.getAttribute('onclick') && chip.getAttribute('onclick').includes('selectChip')) {
-    container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    const val = chip.dataset.val;
-    const match = chip.getAttribute('onclick').match(/'([^']+)'\)/);
-    if (match) STATE[match[1]] = val;
-  }
-});
-
 // ── STEP NAV ──
 function goStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
@@ -849,7 +830,7 @@ async function submitEmail() {
       const payload = {
         fields: [
           { name: 'firstname',                       value: name },
-          { name: 'lastname',                        value: STATE.name ? STATE.name.split(' ').slice(1).join(' ') : '' },
+          { name: 'lastname',                        value: (document.getElementById('gateLastName')||{value:''}).value.trim() },
           { name: 'email',                           value: email },
           // Lead properties — map calculator outputs
           { name: 'industry_segment',                value: STATE.industry || '' },
@@ -983,19 +964,51 @@ function renderResults() {
   const recTier = MODEL.tiers.find(t => t.hours >= rec * 0.9 && t.hours <= rec * 1.5);
   STATE.result_tier = recTier ? recTier.name : '';
 
-  // Tiers
+  // Tiers — Flex vs Scale with real rates
   const tierEl = document.getElementById('tierGrid');
   tierEl.innerHTML = '';
-  MODEL.tiers.forEach(t => {
-    const isRec = t.hours >= rec * 0.9 && t.hours <= rec * 1.5;
-    tierEl.innerHTML += `
-      <div class="tier-card ${isRec?'recommended':''}">
-        <div class="tier-badge">✦ Recommended</div>
-        <div class="tier-hours">${t.hours}h</div>
-        <div class="tier-name">${t.name}</div>
-        <div class="tier-desc">${t.desc}</div>
-      </div>`;
-  });
+  const annualHrs = rec * 12;
+  let scaleRate, scaleTierLabel;
+  if      (annualHrs <= 480)  { scaleRate = 32;   scaleTierLabel = '120–480 hrs/yr'; }
+  else if (annualHrs <= 960)  { scaleRate = 30.5; scaleTierLabel = '481–960 hrs/yr'; }
+  else if (annualHrs <= 1440) { scaleRate = 29;   scaleTierLabel = '961–1,440 hrs/yr'; }
+  else if (annualHrs <= 1920) { scaleRate = 27.5; scaleTierLabel = '1,441–1,920 hrs/yr'; }
+  else if (annualHrs <= 2400) { scaleRate = 26;   scaleTierLabel = '1,921–2,400 hrs/yr'; }
+  else                         { scaleRate = 24;   scaleTierLabel = '2,401+ hrs · Enterprise'; }
+  const flexMonthly  = Math.round(rec * 35);
+  const scaleMonthly = Math.round(rec * scaleRate);
+  const scaleSaving  = Math.round(flexMonthly - scaleMonthly);
+  const scaleIsBetter = scaleSaving > 150;
+  const checkSVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"><path d=\"M20 6L9 17l-5-5\"/></svg>';
+  const warnSVG  = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E9756B" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+  tierEl.innerHTML += `
+    <div style="border:2px solid ${!scaleIsBetter?'var(--cobalt)':'var(--border)'};border-radius:20px;padding:28px;position:relative;${!scaleIsBetter?'background:rgba(26,86,255,0.04);':''}">
+      ${!scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ Best fit</div>' : ''}
+      <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,86,255,0.1);color:var(--cobalt);margin-bottom:14px;">Flex · Month-to-month</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:8px;">Flex</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$35<span style="font-size:14px;font-weight:400;color:var(--mid);">/hr</span></div>
+      <div style="font-size:10px;color:var(--mid);margin-bottom:14px;">No long-term commitment</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${flexMonthly.toLocaleString()}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mo</span></div>
+      <div style="font-size:10px;color:var(--mid);margin-bottom:16px;">${rec}h × $35</div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Scale up or down monthly</div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${warnSVG} Hours expire monthly</div>
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:block;text-align:center;margin-top:18px;border:1.5px solid var(--cobalt);color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:10px;border-radius:100px;text-decoration:none;">Start Flex →</a>
+    </div>`;
+  tierEl.innerHTML += `
+    <div style="border:${scaleIsBetter?'2.5px':'2px'} solid ${scaleIsBetter?'var(--cobalt)':'var(--border)'};border-radius:20px;padding:28px;position:relative;${scaleIsBetter?'background:linear-gradient(135deg,rgba(26,86,255,0.04),rgba(200,255,0,0.06));':''}">
+      ${scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ Best value for your volume</div>' : ''}
+      <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(200,255,0,0.25);color:#4A7A00;margin-bottom:14px;">Scale · Annual · Hours roll over</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:8px;">Scale</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$${scaleRate}<span style="font-size:14px;font-weight:400;color:var(--mid);">/hr</span></div>
+      <div style="font-size:10px;color:var(--mid);margin-bottom:14px;">${scaleTierLabel}</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${scaleMonthly.toLocaleString()}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mo</span></div>
+      <div style="font-size:10px;color:var(--mid);margin-bottom:12px;">${rec}h × $${scaleRate}</div>
+      ${scaleSaving > 0 ? `<div style="background:rgba(200,255,0,0.2);border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;color:#3A6A00;margin-bottom:12px;">You save ~$${scaleSaving.toLocaleString()}/mo vs Flex</div>` : ''}
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Unused hours accumulate all year</div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} 30% OFF first month</div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Priority access + dedicated PM</div>
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:block;text-align:center;margin-top:18px;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:10px;border-radius:100px;text-decoration:none;">Book a call →</a>
+    </div>`;
   
   // Benchmarks
   document.getElementById('benchMedian').textContent = profile.hours_per_month.median + 'h';
@@ -1003,7 +1016,28 @@ function renderResults() {
   document.getElementById('benchRush').textContent = profile.rush_pct + '%';
   const confLevel = profile.hours_per_request.count > 100 ? 'High' : profile.hours_per_request.count > 20 ? 'Medium' : 'Low';
   document.getElementById('benchConf').textContent = confLevel;
+
+  // Update inline hours label
+  const inlineEl = document.getElementById('recHoursInline');
+  if (inlineEl) inlineEl.textContent = rec + 'h';
 }
+
+// Event delegation fallback for chips
+document.addEventListener('click', function(e) {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  const oc = chip.getAttribute('onclick') || '';
+  if (oc.includes('toggleChip')) {
+    chip.classList.toggle('active');
+    const key = oc.match(/'([^']+)'\)/)[1];
+    STATE[key] = Array.from(chip.parentElement.querySelectorAll('.chip.active')).map(c=>c.dataset.val);
+  } else if (oc.includes('selectChip')) {
+    chip.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    const key = oc.match(/'([^']+)'\)/)[1];
+    STATE[key] = chip.dataset.val;
+  }
+});
 
 </script>
 </body>
