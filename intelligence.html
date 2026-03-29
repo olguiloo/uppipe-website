@@ -81,7 +81,7 @@ select:focus,input:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26
 
 /* ── TOGGLE CHIPS ── */
 .chips{display:flex;flex-wrap:wrap;gap:8px;}
-.chip{padding:10px 18px;background:var(--cream);border:1.5px solid var(--border);border-radius:100px;font-size:12px;font-weight:700;color:var(--mid);cursor:pointer;transition:all 0.2s;user-select:none;}
+.chip{padding:10px 18px;background:var(--cream);border:1.5px solid var(--border);border-radius:100px;font-size:12px;font-weight:700;color:var(--mid);cursor:pointer;transition:all 0.2s;user-select:none;position:relative;z-index:2;-webkit-tap-highlight-color:rgba(26,86,255,0.2);}
 .chip:hover{border-color:var(--cobalt);color:var(--cobalt);}
 .chip.active{background:var(--cobalt);border-color:var(--cobalt);color:var(--white);}
 .chip.active-lime{background:var(--lime);border-color:var(--lime-dark);color:#2D5A00;}
@@ -774,6 +774,25 @@ function toggleChip(el, key) {
   const vals = Array.from(el.parentElement.querySelectorAll('.chip.active')).map(c=>c.dataset.val);
   STATE[key] = vals;
 }
+
+// Event delegation fallback — catches clicks that inline handlers miss
+document.addEventListener('click', function(e) {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  const container = chip.parentElement;
+  const key = container.id.replace('Chips','').replace('chips','').toLowerCase();
+  if (chip.getAttribute('onclick') && chip.getAttribute('onclick').includes('toggleChip')) {
+    chip.classList.toggle('active');
+    const vals = Array.from(container.querySelectorAll('.chip.active')).map(c=>c.dataset.val);
+    STATE[key] = vals;
+  } else if (chip.getAttribute('onclick') && chip.getAttribute('onclick').includes('selectChip')) {
+    container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const val = chip.dataset.val;
+    const match = chip.getAttribute('onclick').match(/'([^']+)'\)/);
+    if (match) STATE[match[1]] = val;
+  }
+});
 
 // ── STEP NAV ──
 function goStep(n) {
