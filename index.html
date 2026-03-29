@@ -53,16 +53,14 @@ section{position:relative;}
 .sec-sub{font-size:16px;color:var(--mid);line-height:1.7;margin-top:14px;}
 
 /* ── HERO ── */
-#hero{background:var(--g-hero);min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;}
-.hero-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;}
+#hero{background:var(--g-hero);min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;}
+.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .hero-content{max-width:580px;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:100px;padding:7px 18px;margin-bottom:28px;}
 .hero-eyebrow span{font-size:11px;font-weight:700;color:var(--cobalt-deep);}
 .hero-h1{font-family:'Syne',sans-serif;font-size:60px;font-weight:800;line-height:1.02;letter-spacing:-2px;color:var(--cobalt-deep);}
-.hero-h1 em,.hero-h1-wrap em{font-style:normal;color:var(--dark);position:relative;display:inline-block;}
-.hero-h1 em::after,.hero-h1-wrap em::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:5px;background:var(--lime);border-radius:3px;}
-#hero h1 em{font-style:normal;color:var(--dark);position:relative;display:inline-block;}
-#hero h1 em::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:5px;background:var(--lime);border-radius:3px;}
+.hero-h1 em{font-style:normal;color:var(--dark);position:relative;display:inline-block;}
+.hero-h1 em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:5px;background:var(--lime);border-radius:3px;}
 .hero-sub{font-size:17px;color:var(--dark);line-height:1.75;margin:28px 0 40px;opacity:0.8;max-width:500px;}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:44px;}
 .social-proof{display:flex;align-items:center;gap:14px;}
@@ -411,16 +409,15 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
             <defs><linearGradient id="sp" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4080FF"/><stop offset="100%" stop-color="#0D3FBF"/></linearGradient></defs>
             <path d="M12 2C12 2,13.5 8.5,22 12C13.5 15.5,12 22,12 22C12 22,10.5 15.5,2 12C10.5 8.5,12 2,12 2Z" fill="url(#sp)"/>
           </svg>
-          <span data-en="The CreativeOps system for businesses that are scaling." data-es="El sistema CreativeOps para negocios que están escalando.">The CreativeOps system for businesses that are scaling.</span>
+          <span data-en="The CreativeOps system for businesses that are scaling." data-es="El sistema CreativeOps para negocios que están escalando.">For CMOs who scale fast</span>
         </div>
         <h1 style="font-family:'Syne',sans-serif;font-weight:800;line-height:0.93;margin-bottom:0;">
-          <span style="display:block;font-size:clamp(32px,4vw,56px);color:var(--cobalt-deep);letter-spacing:-2px;" data-en="Your creative" data-es="Tu operación">Your creative</span>
-          <span style="display:block;font-size:clamp(32px,4vw,56px);color:var(--cobalt-deep);letter-spacing:-2px;" data-en="operation." data-es="creativa.">operation.</span>
-          <span style="display:block;font-size:clamp(22px,2.6vw,38px);color:#2D2D2D;letter-spacing:-1px;margin-top:12px;opacity:0.28;" data-en="Fully managed." data-es="Completamente gestionada.">Fully managed.</span>
-          <span style="display:block;font-size:clamp(22px,2.6vw,38px);color:#2D2D2D;letter-spacing:-1px;opacity:0.28;" data-en="Fully visible." data-es="Completamente visible.">Fully visible.</span>
-          <span style="display:block;font-size:clamp(22px,2.6vw,38px);color:#2D2D2D;letter-spacing:-1px;opacity:1;" data-en="Fully <em>elastic.</em>" data-es="Completamente <em>elástica.</em>">Fully <em>elastic.</em></span>
+          <span style="display:block;font-size:clamp(44px,6.8vw,88px);color:#2D2D2D;letter-spacing:-3px;" data-en="Your team" data-es="Tu equipo">Your team</span>
+          <span style="display:block;font-size:clamp(44px,6.8vw,88px);color:#2D2D2D;letter-spacing:-3px;" data-en="can't keep up." data-es="no da abasto.">can't keep up.</span>
+          <span style="display:block;font-size:clamp(44px,6.8vw,88px);color:var(--cobalt);letter-spacing:-3px;margin-top:4px;" data-en="Your pipeline" data-es="Tu pipeline">Your pipeline</span>
+          <span style="display:block;font-size:clamp(44px,6.8vw,88px);color:var(--cobalt);letter-spacing:-3px;" data-en="won't wait." data-es="no espera.">won't wait.</span>
         </h1>
-        <p class="hero-sub" style="margin-top:24px;" data-en="Senior LATAM creatives. AI-powered briefing. Full operational visibility. One subscription that replaces the fragmented process costing your team 50% of every creative budget." data-es="Creativos seniors LATAM. Briefing con IA. Visibilidad operacional total. Una suscripción que reemplaza el proceso fragmentado que consume el 50% de cada presupuesto creativo.">Senior LATAM creatives. AI-powered briefing. Full operational visibility. One subscription that replaces the fragmented process costing your team 50% of every creative budget.</p>
+        <p class="hero-sub" style="font-size:14px;line-height:1.6;opacity:0.62;margin-top:18px;" data-en="You have a creative team. They're good. But the volume scaling demands — campaigns, launches, assets — keeps outpacing what any fixed team can produce. Uppipe is the elastic layer that closes that gap: senior LATAM creatives, AI-powered briefing, and a full operational platform so you always know what's in production, what it costs, and how fast it's moving." data-es="Uppipe no es un servicio de diseño. Es una infraestructura CreativeOps — creativos seniors LATAM, briefing con IA y una plataforma operacional que te da visibilidad y control total sobre cada asset.">You have a creative team. They're good. But the volume scaling demands — campaigns, launches, assets — keeps outpacing what any fixed team can produce. Uppipe is the elastic layer that closes that gap: senior LATAM creatives, AI-powered briefing, and a full operational platform so you always know what's in production, what it costs, and how fast it's moving.</p>
         <div class="hero-ctas">
           <a href="/intelligence" class="btn btn-primary" data-en="Calculate Creative Demand →" data-es="Calcular Demanda Creativa →">Calculate Creative Demand
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -437,38 +434,39 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
       </div>
 
       <!-- RIGHT: video with floating KPI cards -->
-      <div class="hero-stats" style="position:relative;border-radius:24px;overflow:hidden;min-height:520px;">
+      <div class="hero-stats" style="position:relative;border-radius:24px;overflow:hidden;min-height:680px;">
 
         <!-- Video -->
-        <video autoplay muted loop playsinline style="width:100%;height:100%;min-height:520px;object-fit:cover;display:block;border-radius:24px;transform:scaleX(-1);">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;border-radius:24px;min-height:680px;transform:scaleX(-1);">
           <source src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/freepik_latina-graphic-designer-sitting-at-a-pink-imac-des_minimax_768p_16-9_24fps_97467.mp4" type="video/mp4">
         </video>
 
         <!-- Floating KPI cards — bottom strip -->
         <div style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px;background:linear-gradient(to top,rgba(10,12,28,0.75) 0%,transparent 100%);">
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
-            <div style="backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
+            <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
               <div style="font-size:6px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:3px;">Quality</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#fff;line-height:1;">58<span style="font-size:11px;font-family:'Montserrat';font-weight:700;color:rgba(255,255,255,0.6);">%</span></div>
-              <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.7);margin-top:2px;" data-en="First Time Right" data-es="Primera vez correcta">First Time Right</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#fff;line-height:1;">58<span style="font-size:11px;color:rgba(255,255,255,0.6);">%</span></div>
+              <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.7);margin-top:2px;">First Time Right</div>
             </div>
-            <div style="backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
-              <div style="font-size:6px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:3px;" data-en="Quantity" data-es="Volumen">Quantity</div>
+            <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
+              <div style="font-size:6px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:3px;">Quantity</div>
               <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#C8FF00;line-height:1;">200</div>
               <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.7);margin-top:2px;">assets/mo</div>
             </div>
-            <div style="backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
+            <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
               <div style="font-size:6px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:3px;">Speed</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#fff;line-height:1;">24<span style="font-size:11px;font-family:'Montserrat';font-weight:700;color:rgba(255,255,255,0.6);">h</span></div>
-              <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.7);margin-top:2px;" data-en="Lead Time avg" data-es="Lead Time prom">Lead Time avg</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#fff;line-height:1;">24<span style="font-size:11px;color:rgba(255,255,255,0.6);">h</span></div>
+              <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.7);margin-top:2px;">Lead Time avg</div>
             </div>
-            <div style="backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
+            <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px 10px;text-align:center;">
               <div style="font-size:6px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:3px;">Cost</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#C8FF00;line-height:1;">-83<span style="font-size:11px;font-family:'Montserrat';font-weight:700;color:rgba(255,255,255,0.6);">%</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#C8FF00;line-height:1;">-83<span style="font-size:11px;color:rgba(255,255,255,0.6);">%</span></div>
               <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.7);margin-top:2px;">vs. in-house</div>
             </div>
           </div>
         </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to top,rgba(253,251,247,0.6),transparent);border-radius:0 0 24px 24px;pointer-events:none;"></div>
 
       </div>
 
@@ -513,39 +511,7 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
   </div>
 </div>
 
-<!-- ── AUDIENCE BIFURCATION ── -->
-<div style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;max-width:1100px;margin:0 auto;">
 
-    <a href="/for-cmos" style="padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;border-right:1px solid var(--border);transition:background 0.2s;" onmouseover="this.style.background='var(--cobalt-tint)'" onmouseout="this.style.background='transparent'">
-      <div>
-        <div style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lt);margin-bottom:4px;">I run marketing</div>
-        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--dark);">For CMOs & Marketing Leads</div>
-        <div style="font-size:12px;color:var(--mid);margin-top:3px;">Complement your team. Scale without hiring.</div>
-      </div>
-      <span style="font-size:18px;color:var(--border);">→</span>
-    </a>
-
-    <a href="/for-founders" style="padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;border-right:1px solid var(--border);transition:background 0.2s;" onmouseover="this.style.background='var(--cobalt-tint)'" onmouseout="this.style.background='transparent'">
-      <div>
-        <div style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lt);margin-bottom:4px;">I'm building a startup</div>
-        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--dark);">For Founders & Investors</div>
-        <div style="font-size:12px;color:var(--mid);margin-top:3px;">Replace the team. Protect the runway.</div>
-      </div>
-      <span style="font-size:18px;color:var(--border);">→</span>
-    </a>
-
-    <a href="/portfolio" style="padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--cobalt-tint)'" onmouseout="this.style.background='transparent'">
-      <div>
-        <div style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lt);margin-bottom:4px;">See the work</div>
-        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--dark);">Portfolio & Creative Team</div>
-        <div style="font-size:12px;color:var(--mid);margin-top:3px;">15 disciplines. Senior LATAM CITLs.</div>
-      </div>
-      <span style="font-size:18px;color:var(--border);">→</span>
-    </a>
-
-  </div>
-</div>
 
 
 <!-- ── INTRO + WHAT IS UPPIPE ── -->
@@ -555,8 +521,8 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     <!-- ONE LINE DEFINITION -->
     <div style="text-align:center;margin-bottom:72px;">
       <div class="sec-label" style="text-align:center;" data-en="What is Uppipe?" data-es="¿Qué es Uppipe?">What is Uppipe?</div>
-      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;color:var(--dark);letter-spacing:-1.5px;line-height:1.05;margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto;" data-en="Three systems. One subscription.<br><span style='color:var(--cobalt);'>Running together.</span>" data-es="Tres sistemas. Una suscripción.<br><span style='color:var(--cobalt);'>Operando juntos.</span>">Three systems. One subscription.<br><span style="color:var(--cobalt);">Running together.</span></h2>
-      <p style="font-size:17px;color:var(--mid);line-height:1.8;max-width:640px;margin:0 auto;" data-en="Brief Intelligence structures every request before a creative touches it. The Client Board gives you real-time visibility across every asset in production. Creative Intelligence turns your output into metrics you can act on. None of this exists inside a traditional agency retainer." data-es="Brief Intelligence estructura cada request antes de que un creativo lo toque. El Client Board da visibilidad en tiempo real sobre cada asset en producción. Creative Intelligence convierte tu output en métricas accionables. Nada de esto existe en un retainer de agencia.">Brief Intelligence structures every request before a creative touches it. The Client Board gives you real-time visibility across every asset in production. Creative Intelligence turns your output into metrics you can act on. None of this exists inside a traditional agency retainer.</p>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;color:var(--dark);letter-spacing:-1.5px;line-height:1.05;margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto;">Three systems. One subscription.<br><span style="color:var(--cobalt);">Running together.</span></h2>
+      <p style="font-size:16px;color:var(--mid);line-height:1.8;max-width:640px;margin:0 auto;">Brief Intelligence structures every request before a creative touches it. The Client Board gives you real-time visibility across every asset in production. Creative Intelligence turns your output into metrics you can act on. None of this exists inside a traditional agency retainer.</p>
     </div>
 
     <!-- THREE PILLARS -->
@@ -579,107 +545,83 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     </div>
 
     <!-- AGENCY VS UPPIPE — two columns -->
-    <div class="sec-label" data-en="Why not just hire an agency?" data-es="¿Por qué no contratar simplemente una agencia?">Why not just hire an agency?</div>
-    <h2 class="sec-title" style="max-width:640px;margin-bottom:48px;" data-en="An agency delivers work.<br><span style='color:var(--cobalt);'>Uppipe runs your operation.</span>" data-es="Una agencia entrega trabajo.<br><span style='color:var(--cobalt);'>Uppipe gestiona tu operación.</span>">An agency delivers work.<br><span style="color:var(--cobalt);">Uppipe runs your operation.</span></h2>
+  </div>
+</section>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+<!-- ── PROBLEM SECTION ── -->
+<section id="problem" style="background:var(--cobalt-deep);padding:100px 0;overflow:hidden;position:relative;">
+  <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(26,86,255,0.1) 0%,transparent 65%);pointer-events:none;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
 
-      <!-- LEFT: Agency -->
-      <div style="background:#FFF5F5;border:1.5px solid #FECACA;border-radius:24px;padding:40px;">
-        <div style="display:inline-flex;align-items:center;gap:8px;background:#FEE2E2;border-radius:100px;padding:6px 14px;margin-bottom:28px;">
-          <span style="width:6px;height:6px;border-radius:50%;background:#EF4444;display:inline-block;"></span>
-          <span style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#EF4444;" data-en="Traditional Agency" data-es="Agencia tradicional">Traditional Agency</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:18px;">
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:#EF4444;font-size:16px;flex-shrink:0;margin-top:1px;">✕</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:3px;" data-en="Fixed retainer — paid regardless of output" data-es="Retainer fijo — pagas sin importar el output">Fixed retainer — paid regardless of output</div>
-              <div style="font-size:12px;color:var(--mid);line-height:1.5;" data-en="You're billed $10k–15k/month whether you produce 5 assets or 50." data-es="Te cobran $10k–15k/mes produzcan 5 assets o 50.">You're billed $10k–15k/month whether you produce 5 assets or 50.</div>
-            </div>
+      <!-- LEFT: 6 pain points -->
+      <div>
+        <div style="font-size:9px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--lime);margin-bottom:20px;" data-en="The real problem" data-es="El problema real">The real problem</div>
+        <h2 style="font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;line-height:0.95;letter-spacing:-1.5px;margin-bottom:24px;">
+          <span style="display:block;color:white;" data-en="You're not understaffed." data-es="No estás sin personal.">You're not understaffed.</span>
+          <span style="display:block;color:rgba(255,255,255,0.25);" data-en="You're under-scaled." data-es="Estás sub-escalado.">You're under-scaled.</span>
+        </h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:48px;max-width:420px;">Your team handles the strategy, the brand, the relationships. But the volume of execution that a scaling startup demands is a different beast entirely.</p>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--lime);background:rgba(200,255,0,0.1);padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;">01</span>
+            <div><div style="font-size:14px;font-weight:800;color:white;margin-bottom:4px;">Q4 campaign. Product launch. Investor deck. All at once.</div><div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;">Demand isn't flat — it spikes. Your fixed team hits a wall right when you need them most.</div></div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:#EF4444;font-size:16px;flex-shrink:0;margin-top:1px;">✕</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:3px;" data-en="7–10 day delivery cycles" data-es="Ciclos de entrega de 7–10 días">7–10 day delivery cycles</div>
-              <div style="font-size:12px;color:var(--mid);line-height:1.5;" data-en="By the time the asset is ready, your campaign window may be gone." data-es="Para cuando el asset está listo, la ventana de tu campaña puede haber pasado.">By the time the asset is ready, your campaign window may be gone.</div>
-            </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--lime);background:rgba(200,255,0,0.1);padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;">02</span>
+            <div><div style="font-size:14px;font-weight:800;color:white;margin-bottom:4px;">You hire freelancers. Quality is inconsistent. Briefing takes forever.</div><div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;">Every new freelancer is a new ramp-up. You spend more time managing than producing.</div></div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:#EF4444;font-size:16px;flex-shrink:0;margin-top:1px;">✕</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:3px;" data-en="Zero operational visibility" data-es="Cero visibilidad operacional">Zero operational visibility</div>
-              <div style="font-size:12px;color:var(--mid);line-height:1.5;" data-en="You don't know cost per asset, revision rates, or what's happening inside their process." data-es="No sabes el costo por asset, las tasas de revisión ni qué está pasando dentro de su proceso.">You don't know cost per asset, revision rates, or what's happening inside their process.</div>
-            </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--lime);background:rgba(200,255,0,0.1);padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;">03</span>
+            <div><div style="font-size:14px;font-weight:800;color:white;margin-bottom:4px;">Agencies are slow, expensive — and a complete black hole. <span style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:rgba(239,68,68,0.2);color:#EF4444;padding:2px 8px;border-radius:100px;">black hole</span></div><div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;">7–10 days per cycle. Fixed retainers regardless of output. Zero operational data. You never know what's happening inside — or why it costs what it does.</div></div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:#EF4444;font-size:16px;flex-shrink:0;margin-top:1px;">✕</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:3px;" data-en="3+ months to know your brand" data-es="3+ meses para conocer tu marca">3+ months to know your brand</div>
-              <div style="font-size:12px;color:var(--mid);line-height:1.5;" data-en="Onboarding is slow, knowledge lives with their account manager, and when they leave — it goes with them." data-es="El onboarding es lento, el conocimiento vive con su ejecutivo de cuenta, y cuando se va — se va con él.">Onboarding is slow, knowledge lives with their account manager, and when they leave — it goes with them.</div>
-            </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--lime);background:rgba(200,255,0,0.1);padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;">04</span>
+            <div><div style="font-size:14px;font-weight:800;color:white;margin-bottom:4px;">You can't justify headcount for what you actually need.</div><div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;">A full-time senior designer costs $80–120k/year. For burst capacity, that math doesn't work.</div></div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:#EF4444;font-size:16px;flex-shrink:0;margin-top:1px;">✕</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:3px;" data-en="Scope creep and opaque billing" data-es="Scope creep y facturación opaca">Scope creep and opaque billing</div>
-              <div style="font-size:12px;color:var(--mid);line-height:1.5;" data-en="Every extra revision, every rush request, every additional asset — a surprise invoice." data-es="Cada revisión extra, cada request urgente, cada asset adicional — una factura sorpresa.">Every extra revision, every rush request, every additional asset — a surprise invoice.</div>
-            </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--lime);background:rgba(200,255,0,0.1);padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;">05</span>
+            <div><div style="font-size:14px;font-weight:800;color:white;margin-bottom:4px;">Your internal team is burned out — and it shows.</div><div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;">When the same people absorb every spike, quality drops, deadlines slip, and your best creatives start looking for the exit.</div></div>
           </div>
-        </div>
-        <div style="margin-top:28px;padding:18px;background:#FEE2E2;border-radius:14px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:#EF4444;">$120k–180k/yr</div>
-          <div style="font-size:11px;font-weight:700;color:#DC2626;margin-top:4px;" data-en="Typical agency retainer — fixed cost, variable output" data-es="Retainer típico de agencia — costo fijo, output variable">Typical agency retainer — fixed cost, variable output</div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--lime);background:rgba(200,255,0,0.1);padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;">06</span>
+            <div><div style="font-size:14px;font-weight:800;color:white;margin-bottom:4px;">Senior creative talent is scarce, slow to hire, and expensive to keep.</div><div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;">Finding a senior art director or motion designer who's available, affordable, and a brand fit can take 3–6 months. By then, your campaign window is gone.</div></div>
+          </div>
         </div>
       </div>
 
-      <!-- RIGHT: Uppipe -->
-      <div style="background:var(--dark);border:1.5px solid rgba(200,255,0,0.2);border-radius:24px;padding:40px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,0.1) 0%,transparent 70%);pointer-events:none;"></div>
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(200,255,0,0.12);border-radius:100px;padding:6px 14px;margin-bottom:28px;position:relative;z-index:1;">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--lime);display:inline-block;animation:pulse 2s infinite;"></span>
-          <span style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);" data-en="Uppipe CreativeOps" data-es="Uppipe CreativeOps">Uppipe CreativeOps</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:18px;position:relative;z-index:1;">
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:var(--lime);font-size:16px;flex-shrink:0;margin-top:1px;">✓</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:#FFFFFF;margin-bottom:3px;" data-en="Pay only for what you use" data-es="Pagas solo por lo que usas">Pay only for what you use</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;" data-en="Hours-based subscription. Use 200 hours, pay for 200 hours. Scale up for launches, down for quiet months." data-es="Suscripción por horas. Usa 200 horas, paga 200 horas. Escala para lanzamientos, reduce en meses tranquilos.">Hours-based subscription. Use 200 hours, pay for 200 hours. Scale up for launches, down for quiet months.</div>
+      <!-- RIGHT: Cost comparison -->
+      <div style="position:sticky;top:120px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:36px;">
+          <div style="font-size:9px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:24px;">Annual creative capacity cost</div>
+          <div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">In-house team (3 designers)</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#EF4444;">$240k–360k</span>
             </div>
+            <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden;"><div style="width:100%;height:100%;background:linear-gradient(90deg,#EF4444,#DC2626);border-radius:100px;"></div></div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:var(--lime);font-size:16px;flex-shrink:0;margin-top:1px;">✓</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:#FFFFFF;margin-bottom:3px;" data-en="First delivery in 24–48h. Full cycle in 3 days." data-es="Primera entrega en 24–48h. Ciclo completo en 3 días.">First delivery in 24–48h. Full cycle in 3 days.</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;" data-en="Structured intake + AI routing means work starts immediately. No kick-off calls. No scope documents." data-es="Intake estructurado + routing con IA significa que el trabajo empieza de inmediato. Sin reuniones de kick-off. Sin documentos de scope.">Structured intake + AI routing means work starts immediately. No kick-off calls. No scope documents.</div>
+          <div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <div><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Agency retainer</span><span style="display:inline-block;margin-left:8px;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:rgba(239,68,68,0.15);color:#EF4444;padding:2px 8px;border-radius:100px;">black hole</span></div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#F59E0B;">$120k–180k</span>
             </div>
+            <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden;"><div style="width:62%;height:100%;background:linear-gradient(90deg,#F59E0B,#D97706);border-radius:100px;"></div></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;">Fixed cost. No visibility. No metrics. No idea what you're paying for.</div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:var(--lime);font-size:16px;flex-shrink:0;margin-top:1px;">✓</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:#FFFFFF;margin-bottom:3px;" data-en="Real-time visibility into everything" data-es="Visibilidad en tiempo real de todo">Real-time visibility into everything</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;" data-en="Cost per asset, FTR rate, revision rounds, hours consumed — live, exportable, and yours." data-es="Costo por asset, tasa FTR, rondas de revisión, horas consumidas — en vivo, exportable, y tuyo.">Cost per asset, FTR rate, revision rounds, hours consumed — live, exportable, and yours.</div>
+          <div style="margin-bottom:28px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <div><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Uppipe</span><span style="display:inline-block;margin-left:8px;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:rgba(200,255,0,0.15);color:var(--lime);padding:2px 8px;border-radius:100px;">full visibility</span></div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--lime);">~$38k–60k</span>
             </div>
+            <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden;"><div style="width:22%;height:100%;background:linear-gradient(90deg,var(--lime),#A8D900);border-radius:100px;"></div></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;">Elastic capacity. Real-time dashboard. Cost per asset. FTR rate. Full control.</div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:var(--lime);font-size:16px;flex-shrink:0;margin-top:1px;">✓</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:#FFFFFF;margin-bottom:3px;" data-en="Brand-trained from day one. Forever." data-es="Entrenado en tu marca desde el día uno. Para siempre.">Brand-trained from day one. Forever.</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;" data-en="Brand knowledge lives in the system — not in a person. When a creative leaves the project, the next one picks up seamlessly." data-es="El conocimiento de marca vive en el sistema — no en una persona. Cuando un creativo sale del proyecto, el siguiente retoma sin interrupciones.">Brand knowledge lives in the system — not in a person. When a creative leaves, the next one picks up seamlessly.</div>
-            </div>
+          <div style="background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);border-radius:16px;padding:24px;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:48px;font-weight:700;color:var(--lime);line-height:1;letter-spacing:-2px;">83%</div>
+            <div style="font-size:11px;font-weight:700;color:var(--lime);opacity:0.7;margin-top:6px;">less than equivalent in-house team — with elastic capacity</div>
           </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <span style="color:var(--lime);font-size:16px;flex-shrink:0;margin-top:1px;">✓</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:#FFFFFF;margin-bottom:3px;" data-en="All-inclusive rate. No surprises." data-es="Tarifa all-inclusive. Sin sorpresas.">All-inclusive rate. No surprises.</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;" data-en="One hourly rate covers everything — senior creative, PM, AI tooling, revisions, rush handling. What you see is what you pay." data-es="Una tarifa por hora cubre todo — creativo senior, PM, herramientas AI, revisiones, manejo de urgentes. Lo que ves es lo que pagas.">One hourly rate covers everything — senior creative, PM, AI tooling, revisions, rush handling. What you see is what you pay.</div>
-            </div>
-          </div>
-        </div>
-        <div style="margin-top:28px;padding:18px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.15);border-radius:14px;position:relative;z-index:1;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--lime);">~$38k–60k/yr</div>
-          <div style="font-size:11px;font-weight:700;color:rgba(200,255,0,0.6);margin-top:4px;" data-en="Equivalent output — elastic cost, full visibility" data-es="Output equivalente — costo elástico, visibilidad total">Equivalent output — elastic cost, full visibility</div>
         </div>
       </div>
 
@@ -687,7 +629,7 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
   </div>
 </section>
 
-<!-- ── PLATFORM ── -->
+<!-- ── PORTFOLIO ── -->
 <section id="platform" style="background:var(--white);padding:100px 0;">
   <div class="container">
 
@@ -728,7 +670,7 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
       </div>
       <!-- Screenshot: Brief Intelligence / Pipe -->
       <div style="border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(26,86,255,0.12),0 4px 16px rgba(0,0,0,0.06);border:1px solid var(--border);">
-        <img src="/screenshots/brief-intelligence.png" alt="Pipe — Brief Intelligence" style="width:100%;display:block;"/>
+        <img src="/screenshots/brief-intelligence.png" alt="Pipe — Brief Intelligence" style="width:100%;display:block;" onerror="this.style.background='var(--cobalt-tint)';this.style.minHeight='400px';this.alt='Brief Intelligence screenshot'"/>
       </div>
     </div>
 
@@ -736,7 +678,7 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     <div style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
       <!-- Screenshot: Client Board -->
       <div style="border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(26,86,255,0.12),0 4px 16px rgba(0,0,0,0.06);border:1px solid var(--border);">
-        <img src="/screenshots/client-board.png" alt="Client Board" style="width:100%;display:block;"/>
+        <img src="/screenshots/client-board.png" alt="Client Board" style="width:100%;display:block;" onerror="this.style.background='var(--cobalt-tint)';this.style.minHeight='400px'"/>
       </div>
       <div>
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.08);border-radius:100px;padding:6px 14px;margin-bottom:20px;">
@@ -782,18 +724,18 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
             <div style="font-size:9px;font-weight:700;color:var(--cobalt);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">FTR Rate</div>
           </div>
           <div style="background:rgba(16,185,129,0.08);border-radius:12px;padding:14px;text-align:center;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#10B981;letter-spacing:-0.5px;">3.2d</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#10B981;letter-spacing:-0.5px;">2d</div>
             <div style="font-size:9px;font-weight:700;color:#10B981;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Lead Time</div>
           </div>
           <div style="background:rgba(245,158,11,0.08);border-radius:12px;padding:14px;text-align:center;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#D97706;letter-spacing:-0.5px;">$125</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:#D97706;letter-spacing:-0.5px;">$14</div>
             <div style="font-size:9px;font-weight:700;color:#D97706;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Cost/Asset</div>
           </div>
         </div>
       </div>
       <!-- Screenshot: Creative Intelligence Dashboard -->
       <div style="border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(26,86,255,0.12),0 4px 16px rgba(0,0,0,0.06);border:1px solid var(--border);">
-        <img src="/screenshots/creative-intelligence.png" alt="Creative Intelligence Dashboard" style="width:100%;display:block;"/>
+        <img src="/screenshots/creative-intelligence.png" alt="Creative Intelligence Dashboard" style="width:100%;display:block;" onerror="this.style.background='var(--cobalt-tint)';this.style.minHeight='400px'"/>
       </div>
     </div>
 
@@ -801,7 +743,7 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     <div style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
       <!-- Screenshot: Reports -->
       <div style="border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(26,86,255,0.12),0 4px 16px rgba(0,0,0,0.06);border:1px solid var(--border);">
-        <img src="/screenshots/reports.png" alt="Reports & Analytics" style="width:100%;display:block;"/>
+        <img src="/screenshots/reports.png" alt="Reports & Analytics" style="width:100%;display:block;" onerror="this.style.background='var(--cobalt-tint)';this.style.minHeight='400px'"/>
       </div>
       <div>
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.08);border-radius:100px;padding:6px 14px;margin-bottom:20px;">
@@ -842,16 +784,39 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
   </div>
 </section>
 
-<!-- ── PORTFOLIO ── -->
-<section id="portfolio" style="background:var(--white);padding:100px 0;">
+
+<section id="portfolio" style="background:radial-gradient(ellipse 72% 52% at 28% 72%,#F5C6D8 0%,transparent 58%),radial-gradient(ellipse 52% 62% at 82% 28%,#E0ECFF 0%,transparent 54%),radial-gradient(ellipse 48% 48% at 55% 45%,rgba(184,170,255,0.35) 0%,transparent 55%),linear-gradient(128deg,#FDE8F1 0%,#F5C6D8 38%,#E8EFFE 100%);padding:100px 0;">
   <div class="container">
-    <div class="sec-label" data-en="Our work" data-es="Nuestro trabajo">Our work</div>
-    <h2 class="sec-title" data-en="15 creative disciplines.<br><span style='color:var(--cobalt);'>One structured system.</span>" data-es="15 disciplinas creativas.<br><span style='color:var(--cobalt);'>Un sistema estructurado.</span>">15 creative disciplines.<br><span style="color:var(--cobalt);">One structured system.</span></h2>
-    <p class="sec-sub" style="max-width:560px;" data-en="From motion design to product shots — UpPipe delivers across every format your marketing team needs." data-es="De motion design a product shots — UpPipe entrega en todos los formatos que tu equipo necesita.">From motion design to product shots — UpPipe delivers across every format your marketing team needs.</p>
 
-    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+    <!-- Header -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:72px;">
+      <div>
+        <div class="sec-label" data-en="Creatives In The Loop" data-es="Creatives In The Loop">Creatives In The Loop</div>
+        <h2 class="sec-title" data-en="Not a pool of freelancers.<br><span style='color:var(--cobalt);'>A vetted network that operates inside your workflow.</span>" data-es="No es un pool de freelancers.<br><span style='color:var(--cobalt);'>Una red verificada que opera dentro de tu flujo.</span>">Not a pool of freelancers.<br><span style="color:var(--cobalt);">A vetted network that operates inside your workflow.</span></h2>
+      </div>
+      <div>
+        <p style="font-size:16px;color:var(--mid);line-height:1.8;margin-bottom:24px;" data-en="Every CITL is senior (5+ years), AI-fluent, and trained on your brand before they touch a single brief. They don't need managing — they need a brief. That's what Pipe handles." data-es="Cada CITL es senior (5+ años), fluido en IA y entrenado en tu marca antes de tocar un solo brief. No necesitan gestión — necesitan un brief. De eso se encarga Pipe.">Every CITL is senior (5+ years), AI-fluent, and trained on your brand before they touch a single brief. They don't need managing — they need a brief. That's what Pipe handles.</p>
+        <!-- 3 CITL standards -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0;"></div>
+            <span style="font-size:13px;font-weight:700;color:var(--dark);" data-en="Top 1% of applicants — vetted through 4-stage process" data-es="Top 1% de aplicantes — verificados en proceso de 4 etapas">Top 1% of applicants — vetted through 4-stage process</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0;"></div>
+            <span style="font-size:13px;font-weight:700;color:var(--dark);" data-en="AI fluency required — Midjourney, Runway, Adobe Firefly" data-es="AI fluency requerida — Midjourney, Runway, Adobe Firefly">AI fluency required — Midjourney, Runway, Adobe Firefly</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0;"></div>
+            <span style="font-size:13px;font-weight:700;color:var(--dark);" data-en="15 disciplines — motion, UX, branding, print, ads, and more" data-es="15 disciplinas — motion, UX, branding, print, ads y más">15 disciplines — motion, UX, branding, print, ads, and more</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <!-- MOTION DESIGN -->
+    <!-- Work samples — 5 disciplines preview -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:48px;">
+
       <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
         <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/JUMP_1-ezgif.com-video-to-gif-converter.gif" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
@@ -859,7 +824,6 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
         </div>
       </div>
 
-      <!-- UI/UX -->
       <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
         <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Iphone_app-ni%C3%B1os.webp" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
@@ -867,23 +831,20 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
         </div>
       </div>
 
-      <!-- SOCIAL -->
       <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
         <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/WL_triada-IG-01.webp" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Social</div>
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Social Media</div>
         </div>
       </div>
 
-      <!-- ADS -->
       <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
         <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Acceso_01-ezgif.com-video-to-gif-converter.gif" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Ads</div>
+          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Performance Ads</div>
         </div>
       </div>
 
-      <!-- PACKAGING -->
       <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
         <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/IMG_4516.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
@@ -891,92 +852,16 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
         </div>
       </div>
 
-      <!-- OUTDOOR -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/IMG_4518.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Outdoor</div>
-        </div>
-      </div>
-
-      <!-- EDITORIAL -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/OFySG7eh.webp" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Editorial</div>
-        </div>
-      </div>
-
-      <!-- EVENTS -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Free%2BiPad%2BMockup.webp" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Events</div>
-        </div>
-      </div>
-
-      <!-- CHARACTERS -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Animation.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Characters</div>
-        </div>
-      </div>
-
-      <!-- INTERNAL COMMS -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Internal%20Comms.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Internal Comms</div>
-        </div>
-      </div>
-
-      <!-- KEY VISUALS -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/KeyVisuals.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Key Visuals</div>
-        </div>
-      </div>
-
-      <!-- NEWSLETTERS -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Newsletters%20and%20Emails.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Newsletters</div>
-        </div>
-      </div>
-
-      <!-- PRODUCT SHOTS -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Product%20Shots%20y%20Renders.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Product Shots</div>
-        </div>
-      </div>
-
-      <!-- SWAG -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Swag.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Swag Design</div>
-        </div>
-      </div>
-
-      <!-- REPORTS -->
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:1/1;position:relative;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="https://50708869.fs1.hubspotusercontent-na1.net/hubfs/50708869/Editorial%202.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,28,0.85),transparent);padding:14px 12px 10px;">
-          <div style="font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:white;">Reports</div>
-        </div>
-      </div>
-
     </div>
 
-    <div style="text-align:center;margin-top:40px;">
-      <a href="/intelligence" class="btn btn-primary" style="font-size:14px;padding:14px 36px;" data-en="Calculate Creative Demand →" data-es="Calcular Demanda Creativa →">Calculate Creative Demand →</a>
-      <p style="font-size:11px;color:var(--mid);margin-top:12px;" data-en="Find out exactly how many hours your team needs — built on real production data." data-es="Descubre exactamente cuántas horas necesita tu equipo — con datos reales de producción.">Find out exactly how many hours your team needs — built on real production data.</p>
+    <!-- CTA -->
+    <div style="text-align:center;padding:40px;background:rgba(255,255,255,0.7);backdrop-filter:blur(20px);border-radius:20px;border:1px solid rgba(255,255,255,0.9);box-shadow:0 8px 32px rgba(245,198,216,0.2);">
+      <div style="font-size:9px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--cobalt);margin-bottom:12px;" data-en="15 creative disciplines" data-es="15 disciplinas creativas">15 creative disciplines</div>
+      <h3 style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--dark);letter-spacing:-0.5px;margin-bottom:10px;" data-en="See the full portfolio and meet the CITL network." data-es="Conoce el portfolio completo y la red de CITLs.">See the full portfolio and meet the CITL network.</h3>
+      <p style="font-size:14px;color:var(--mid);margin-bottom:24px;" data-en="Motion, branding, UX, editorial, key visuals, product shots, outdoor — all from senior LATAM creatives." data-es="Motion, branding, UX, editorial, key visuals, product shots, outdoor — todo con creativos seniors LATAM.">Motion, branding, UX, editorial, key visuals, product shots, outdoor — all from senior LATAM creatives.</p>
+      <a href="/portfolio" style="display:inline-flex;align-items:center;gap:8px;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;padding:14px 32px;border-radius:100px;text-decoration:none;transition:background 0.15s;" onmouseover="this.style.background='var(--cobalt-deep)'" onmouseout="this.style.background='var(--cobalt)'" data-en="View full portfolio & CITL network →" data-es="Ver portfolio completo y red CITL →">View full portfolio &amp; CITL network →</a>
     </div>
+
   </div>
 </section>
 <!-- ── CREATIVE INTELLIGENCE ── -->
@@ -1564,7 +1449,6 @@ function setLang(lang) {
     : 'UpPipe — CreativeOps Infrastructure for Scaling Companies';
 }
 </script>
-
 
 <!-- ── LEGAL MODALS ── -->
 <style>
