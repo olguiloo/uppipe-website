@@ -649,7 +649,7 @@ select:focus,input:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26
   <p style="margin-top:8px;">© 2026 Uppipe · <a href="https://uppipe.co">uppipe.co</a> · <a href="/cdn-cgi/l/email-protection#523a373e3e3d122722223b22377c313d"><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29da8adadb4adb8f3beb2">[email&#160;protected]</span></a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── DATA MODEL (trained on 70,152 real entries + 12,016 Trello cards, 330 client files, 2016–2025) ──
 const MODEL = {
   meta: { records: 70152, files: 330, trello_cards: 12016, total_data_points: 82168 },
@@ -754,105 +754,6 @@ const MODEL = {
     { name:"Enterprise", hours:320, desc:"Full creative ops replacement" },
   ]
 };
-  task_benchmarks: {
-    "Design":        { count:6701, mean:1.618, median:1.203, p25:0.601, p75:2.204 },
-    "Adjustments":   { count:5229, mean:0.756, median:0.472, p25:0.249, p75:0.916 },
-    "Rush Design":   { count:4226, mean:0.972, median:0.673, p25:0.298, p75:1.265 },
-    "Final Artwork": { count:939,  mean:0.543, median:0.273, p25:0.171, p75:0.552 },
-    "Copywriting":   { count:168,  mean:1.779, median:0.925, p25:0.527, p75:2.489 },
-    "Presentations": { count:101,  mean:1.230, median:1.093, p25:0.590, p75:1.602 },
-    "Meetings":      { count:152,  mean:0.851, median:0.666, p25:0.528, p75:0.845 },
-    "Other":         { count:436,  mean:1.538, median:0.951, p25:0.582, p75:1.873 },
-  },
-  industry_profiles: {
-    // Tech/Mobility: timesheet entries + 4,749 Trello cards — Uber, Rappi, Glovo, Ramsay
-    "Tech / Mobility": {
-      label:"Tech / SaaS / Mobility", icon:"🚀",
-      task_mix: {"Design":46.8,"Rush Design":27.8,"Adjustments":21.2,"Final Artwork":2.5,"Other":0.9,"Copywriting":0.5,"Presentations":0.3},
-      hours_per_request: { count:7229, mean:1.113, median:0.700, p25:0.317, p75:1.467 },
-      hours_per_month:   { count:74,   mean:99.7,  median:37.3,  p25:17.6,  p75:76.1 },
-      revision_pct:21.2, rush_pct:23.9,
-      asset_mix: {"General Design":59.0,"Web/App/UX":6.1,"Print/OOH":6.0,"Social Media Post":5.5,"Key Visual/Campaign":3.9,"Packaging":2.9,"Branding/ID":2.7,"Video/Motion":2.5,"Event/Experiential":2.0,"Presentation/Deck":1.7,"Email/Newsletter":1.6,"Photography":1.2,"Toolkit/Templates":1.1,"Banner Digital":1.0,"Merchandising":0.9,"GIF":0.6,"Illustration":0.5},
-      trello_cards: 4749,
-      volume_by_year: {"2016":159,"2017":875,"2018":1633,"2019":961,"2020":108,"2021":271,"2024":693,"2025":8},
-      rush_by_year: {"2016":8.8,"2017":19.3,"2018":28.7,"2019":20.0,"2020":3.7,"2021":17.0,"2024":33.6,"2025":37.5}
-    },
-    // Food & Beverage: timesheet entries + 4,689 Trello cards — Alpina, Natura, Powerful Yogurt, Arcos Dorados
-    "Food & Beverage": {
-      label:"Food & Beverage / CPG", icon:"🍃",
-      task_mix: {"Design":51.1,"Adjustments":23.6,"Rush Design":10.3,"Final Artwork":5.3,"Copywriting":2.7,"Meetings":2.1,"Presentations":1.7,"Workshops":1.5,"Other":1.4},
-      hours_per_request: { count:1445, mean:1.204, median:0.850, p25:0.371, p75:1.662 },
-      hours_per_month:   { count:12,  mean:52.8,  median:27.7,  p25:9.3,   p75:70.6 },
-      revision_pct:23.8, rush_pct:45.8,
-      asset_mix: {"General Design":60.9,"Print/OOH":9.3,"Web/App/UX":4.9,"Ciclo/Catálogo":4.8,"Key Visual/Campaign":4.6,"Social Media Post":3.1,"Banner Digital":2.5,"Toolkit/Templates":2.2,"Packaging":1.9,"Event/Experiential":1.4,"Branding/ID":1.4,"Video/Motion":0.8,"Presentation/Deck":0.8,"Email/Newsletter":0.5},
-      trello_cards: 4689,
-      volume_by_year: {"2017":48,"2018":271,"2019":37,"2020":500,"2021":741,"2022":643,"2023":1660,"2024":747,"2025":42},
-      rush_by_year: {"2017":2.1,"2018":19.2,"2019":29.7,"2020":45.8,"2021":51.7,"2022":47.7,"2023":49.8,"2024":44.7,"2025":9.5}
-    },
-    // Real Estate / Coworking: timesheet entries + 91 Trello cards — Casa Legado, WeWork, Conaco, Baia Kristal
-    "Real Estate / Coworking": {
-      label:"Real Estate / Coworking", icon:"🏢",
-      task_mix: {"Design":42.6,"Adjustments":23.6,"Copywriting":18.2,"Presentations":5.6,"Meetings":4.4,"Final Artwork":3.5,"Rush Design":1.4,"Other":0.6},
-      hours_per_request: { count:99, mean:1.539, median:1.317, p25:0.510, p75:2.243 },
-      hours_per_month:   { count:6,  mean:25.4,  median:24.5,  p25:15.1,  p75:33.8 },
-      revision_pct:23.6, rush_pct:1.4,
-      asset_mix: {"General Design":78.0,"Social Media Post":6.6,"Branding/ID":5.5,"Copy/Content":4.4,"Presentation/Deck":2.2,"Web/App/UX":2.2,"Toolkit/Templates":1.1},
-      trello_cards: 91,
-      volume_by_year: {"2020":91},
-      rush_by_year: {"2020":0.0}
-    },
-    // Retail / E-commerce: timesheet entries only
-    "Retail / E-commerce": {
-      label:"Retail / E-commerce", icon:"🛍️",
-      task_mix: {"Design":51.7,"Adjustments":31.9,"Final Artwork":16.4},
-      hours_per_request: { count:5, mean:4.01, median:3.43, p25:2.95, p75:5.53 },
-      hours_per_month:   { count:1, mean:20.1,  median:20.1, p25:20.1, p75:20.1 },
-      revision_pct:31.9, rush_pct:3.7,
-      asset_mix: {"General Design":60.0,"Banner Digital":15.0,"Social Media Post":10.0,"Email/Newsletter":8.0,"Photography":7.0},
-      trello_cards: 0, volume_by_year: {}, rush_by_year: {}
-    },
-    // Agency / Creative Services: timesheet entries + 2,487 Trello cards — Brandnew, AED, Straik, Seijiro
-    "Agency / Creative Services": {
-      label:"Agency / Creative Services", icon:"🎨",
-      task_mix: {"Adjustments":34.7,"Design":32.0,"Other":12.3,"Rush Design":12.5,"Final Artwork":5.0,"Meetings":2.4,"Presentations":0.6,"Copywriting":0.4},
-      hours_per_request: { count:1342, mean:1.466, median:1.068, p25:0.420, p75:2.100 },
-      hours_per_month:   { count:2,  mean:9.6,   median:9.6,   p25:9.1,   p75:10.0 },
-      revision_pct:34.7, rush_pct:11.9,
-      asset_mix: {"General Design":56.1,"Branding/ID":7.3,"Print/OOH":6.2,"Presentation/Deck":5.7,"Web/App/UX":5.4,"Social Media Post":3.1,"Packaging":2.6,"Merchandising":2.3,"Email/Newsletter":2.2,"Video/Motion":2.0,"Toolkit/Templates":1.6,"Event/Experiential":1.3,"Banner Digital":1.1,"Key Visual/Campaign":1.0,"Copy/Content":0.6},
-      trello_cards: 2487,
-      volume_by_year: {"2016":136,"2017":196,"2018":263,"2019":472,"2020":350,"2021":120,"2022":150,"2023":124,"2024":271,"2025":405},
-      rush_by_year: {"2016":10.3,"2017":19.9,"2018":11.8,"2019":7.4,"2020":2.9,"2021":5.8,"2022":1.3,"2023":9.7,"2024":13.3,"2025":26.9}
-    },
-    // Manufacturing / Industrial: timesheet entries + 0 Trello cards — Gran Tierra, Geopark, Climatec
-    "Manufacturing / Industrial": {
-      label:"Manufacturing / B2B Industrial", icon:"⚙️",
-      task_mix: {"Design":58.7,"Adjustments":25.0,"Rush Design":5.1,"Final Artwork":4.4,"Other":4.2,"Meetings":1.3,"Presentations":1.3},
-      hours_per_request: { count:348, mean:1.793, median:1.413, p25:0.735, p75:2.552 },
-      hours_per_month:   { count:2,  mean:79.5,  median:79.5,  p25:62.8,  p75:96.2 },
-      revision_pct:25.0, rush_pct:6.7,
-      asset_mix: {"Web/App/UX":36.7,"General Design":26.7,"Presentation/Deck":10.0,"Video/Motion":10.0,"Key Visual/Campaign":3.3,"Toolkit/Templates":3.3,"Branding/ID":3.3,"Illustration":3.3,"Event/Experiential":3.3},
-      trello_cards: 0,
-      volume_by_year: {},
-      rush_by_year: {}
-    },
-    "Other": {
-      label:"Other industries", icon:"📊",
-      task_mix: {"Design":42.0,"Adjustments":26.0,"Rush Design":14.0,"Final Artwork":10.0,"Other":8.0},
-      hours_per_request: { count:50, mean:1.5, median:0.9, p25:0.4, p75:2.0 },
-      hours_per_month:   { count:10, mean:45.0, median:35.0, p25:20.0, p75:60.0 },
-      revision_pct:26.0, rush_pct:14.0,
-      asset_mix: {"General Design":65.0,"Social Media Post":10.0,"Print/OOH":8.0,"Video/Motion":5.0,"Branding/ID":5.0,"Other":7.0},
-      trello_cards: 0, volume_by_year: {}, rush_by_year: {}
-    }
-  },
-  tiers: [
-    { name:"Starter",    hours:40,  desc:"1–2 campaigns/month" },
-    { name:"Growth",     hours:80,  desc:"3–5 campaigns/month" },
-    { name:"Scale",      hours:160, desc:"6+ campaigns, multi-channel" },
-    { name:"Enterprise", hours:320, desc:"Full creative ops replacement" },
-  ]
-};
-
 // ── STATE ──
 const STATE = {
   industry: null, team: null, channels: [],
@@ -1081,4 +982,10 @@ function renderResults() {
   document.getElementById('benchMedian').textContent = profile.hours_per_month.median + 'h';
   document.getElementById('benchIndustry').textContent = profile.label;
   document.getElementById('benchRush').textContent = profile.rush_pct + '%';
-  const confLevel = profile.hours_per_request.count > 100 ? 'High' : profile.hours_per_request.count > 20 ? 'Me
+  const confLevel = profile.hours_per_request.count > 100 ? 'High' : profile.hours_per_request.count > 20 ? 'Medium' : 'Low';
+  document.getElementById('benchConf').textContent = confLevel;
+}
+
+</script>
+</body>
+</html>
