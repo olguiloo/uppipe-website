@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y Condiciones — UpPipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cobalt:#1A56FF;
+  --lime:#C8FF00;
+  --cream:#FDFBF7;
+  --dark:#2D2D2D;
+  --mid:#6B6B6B;
+  --lt:#AFAFAF;
+  --border:#E8E8E8;
+  --sand:#F5F1E8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  line-height: 1.7;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--dark);
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--lime); }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
+}
+.lang-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4);
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-btn.active {
+  background: var(--cobalt);
+  color: #fff;
+}
+.lang-btn:hover:not(.active) {
+  color: rgba(255,255,255,0.8);
+}
+/* hide/show by lang */
+[data-lang] { display: none; }
+body.lang-es [data-lang="es"] { display: block; }
+body.lang-en [data-lang="en"] { display: block; }
+/* inline spans */
+span[data-lang] { display: none; }
+body.lang-es span[data-lang="es"] { display: inline; }
+body.lang-en span[data-lang="en"] { display: inline; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--dark);
+  padding: 64px 48px 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--lime);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.hero h1 em { color: var(--lime); font-style: normal; }
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  max-width: 560px;
+  line-height: 1.7;
+}
+.hero-meta {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.hero-meta-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-meta-item::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+
+/* ── LAYOUT ── */
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 48px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── SIDEBAR NAV ── */
+.sidebar {
+  position: sticky;
+  top: 88px;
+}
+.sidebar-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lt);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sidebar nav a {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mid);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.sidebar nav a:hover {
+  color: var(--cobalt);
+  background: rgba(26,86,255,0.05);
+  border-left-color: var(--cobalt);
+}
+
+/* ── CONTENT ── */
+.content { min-width: 0; }
+
+.section {
+  margin-bottom: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 8px;
+}
+.section h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+.section p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.section p:last-child { margin-bottom: 0; }
+
+/* Lists */
+.section ul, .section ol {
+  padding-left: 0;
+  list-style: none;
+  margin-top: 12px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.section ul li, .section ol li {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+  counter-increment: list;
+}
+.section ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--cobalt);
+  font-size: 12px;
+  top: 3px;
+}
+.section ol { counter-reset: list; }
+.section ol li::before {
+  content: counter(list) '.';
+  position: absolute;
+  left: 0;
+  color: var(--cobalt);
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  top: 3px;
+}
+
+/* Callout box */
+.callout {
+  background: var(--sand);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--cobalt);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+.callout p {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+  line-height: 1.7;
+}
+.callout strong { color: var(--dark); }
+
+/* Dark callout */
+.callout-dark {
+  background: var(--dark);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 20px 0;
+}
+.callout-dark p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+  line-height: 1.75;
+}
+.callout-dark strong { color: var(--lime); }
+
+/* Two-col list */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.col-card {
+  background: var(--sand);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.col-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.col-card ul {
+  margin: 0;
+  gap: 6px;
+}
+.col-card ul li {
+  font-size: 13px;
+}
+
+/* ── CIERRE ── */
+.closing {
+  background: var(--dark);
+  margin: 0 -48px -64px;
+  padding: 48px 48px;
+  border-radius: 0;
+}
+.closing p {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+}
+.closing p em { color: var(--lime); font-style: normal; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .footer-brand {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: #fff;
+  font-size: 15px;
+}
+footer .footer-brand span { color: var(--lime); }
+footer .footer-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .header { padding: 0 24px; }
+  .hero { padding: 48px 24px 40px; }
+  .layout { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
+  .sidebar { position: static; display: none; }
+  .two-col { grid-template-columns: 1fr; }
+  .closing { margin: 0 -24px -40px; padding: 40px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="/" class="logo">Up<span>Pipe</span></a>
+  <div class="header-right">
+    <div class="header-meta">
+      <span data-lang="es">Términos y Condiciones · 2026</span>
+      <span data-lang="en">Terms & Conditions · 2026</span>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Legal · Brandnew Studio S.A.S.</div>
+  <h1>
+    <span data-lang="es">Términos y<br><em>Condiciones</em></span>
+    <span data-lang="en">Terms &amp;<br><em>Conditions</em></span>
+  </h1>
+  <p class="hero-sub">
+    <span data-lang="es">Al contratar el servicio UpPipe, el cliente acepta los siguientes términos que rigen la relación comercial y operativa con Brandnew Studio S.A.S.</span>
+    <span data-lang="en">By contracting UpPipe services, the client accepts the following terms governing the commercial and operational relationship with Brandnew Studio S.A.S.</span>
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span data-lang="es">Versión 2026</span><span data-lang="en">Version 2026</span></div>
+    <div class="hero-meta-item"><span data-lang="es">Actualizado: Marzo 2026</span><span data-lang="en">Updated: March 2026</span></div>
+    <div class="hero-meta-item"><span data-lang="es">Aplica a todos los planes</span><span data-lang="en">Applies to all plans</span></div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title"><span data-lang="es">Contenido</span><span data-lang="en">Contents</span></div>
+    <nav>
+      <a href="#s1"><span data-lang="es">1. Naturaleza del servicio</span><span data-lang="en">1. Nature of Service</span></a>
+      <a href="#s2"><span data-lang="es">2. Modelo de contratación</span><span data-lang="en">2. Contract Model</span></a>
+      <a href="#s3"><span data-lang="es">3. Alcance del servicio</span><span data-lang="en">3. Scope of Service</span></a>
+      <a href="#s4"><span data-lang="es">4. Flujo operativo</span><span data-lang="en">4. Operational Flow</span></a>
+      <a href="#s5"><span data-lang="es">5. Métricas SLA</span><span data-lang="en">5. SLA Metrics</span></a>
+      <a href="#s6"><span data-lang="es">6. Roles y accesos</span><span data-lang="en">6. Roles & Access</span></a>
+      <a href="#s7"><span data-lang="es">7. Facturación y pagos</span><span data-lang="en">7. Billing & Payments</span></a>
+      <a href="#s8"><span data-lang="es">8. Duración y renovación</span><span data-lang="en">8. Term & Renewal</span></a>
+      <a href="#s9"><span data-lang="es">9. Propiedad intelectual</span><span data-lang="en">9. Intellectual Property</span></a>
+      <a href="#s10"><span data-lang="es">10. Confidencialidad</span><span data-lang="en">10. Confidentiality</span></a>
+      <a href="#s11"><span data-lang="es">11. Limitaciones</span><span data-lang="en">11. Limitations</span></a>
+      <a href="#s12"><span data-lang="es">12. Responsabilidades</span><span data-lang="en">12. Responsibilities</span></a>
+      <a href="#s13"><span data-lang="es">13. Cambios y retrabajo</span><span data-lang="en">13. Changes & Rework</span></a>
+      <a href="#s14"><span data-lang="es">14. Uso de IA</span><span data-lang="en">14. AI Usage</span></a>
+      <a href="#s15"><span data-lang="es">15. Relación laboral</span><span data-lang="en">15. Labor Relations</span></a>
+      <a href="#s16"><span data-lang="es">16. Terminación</span><span data-lang="en">16. Termination</span></a>
+      <a href="#s17"><span data-lang="es">17. Limitación de responsabilidad</span><span data-lang="en">17. Liability Limitation</span></a>
+      <a href="#s18"><span data-lang="es">18. Modificaciones</span><span data-lang="en">18. Modifications</span></a>
+    </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- 1 -->
+    <div class="section" id="s1">
+      <div class="section-number"><span data-lang="es">Artículo 01</span><span data-lang="en">Article 01</span></div>
+      <h2><span data-lang="es">Naturaleza del Servicio</span><span data-lang="en">Nature of Service</span></h2>
+      <div data-lang="es">
+        <p>UpPipe es una plataforma de <strong>Creative Operations (CreativeOps)</strong> operada por <strong>Brandnew Studio S.A.S.</strong>, sociedad colombiana legalmente constituida. Conecta equipos de marketing con talento creativo senior mediante un modelo de capacidad por horas bajo demanda.</p>
+        <div class="callout-dark"><p>UpPipe <strong>no es una agencia tradicional</strong>, no es un marketplace freelance y no es un proveedor de talento independiente. Es un sistema operativo creativo con procesos, métricas y tecnología propietaria cuyo objetivo es transformar la producción creativa en un sistema <strong>medible, eficiente y escalable</strong>.</p></div>
+        <p>La plataforma tecnológica, los flujos operativos, la metodología <strong>CITL (Creatives In The Loop)</strong> y el equipo creativo son de propiedad exclusiva de Brandnew Studio S.A.S. El cliente adquiere acceso al servicio durante la vigencia de su suscripción — no una licencia sobre la plataforma ni sobre ninguno de sus componentes. Queda prohibida la copia, reproducción, ingeniería inversa o uso no autorizado de cualquier elemento de la plataforma.</p>
+      </div>
+      <div data-lang="en">
+        <p>UpPipe is a <strong>Creative Operations (CreativeOps)</strong> platform operated by <strong>Brandnew Studio S.A.S.</strong>, a legally incorporated Colombian company. It connects marketing teams with senior creative talent through an on-demand hour-based capacity model.</p>
+        <div class="callout-dark"><p>UpPipe is <strong>not a traditional agency</strong>, not a freelance marketplace, and not an independent talent provider. It is a creative operating system with proprietary processes, metrics, and technology whose goal is to transform creative production into a <strong>measurable, efficient, and scalable</strong> system.</p></div>
+        <p>The technology platform, operational flows, <strong>CITL (Creatives In The Loop)</strong> methodology, and creative team are the exclusive property of Brandnew Studio S.A.S. The client acquires access to the service during the term of their subscription — not a license to the platform or any of its components. Copying, reproducing, reverse engineering, or unauthorized use of any platform element is strictly prohibited.</p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="section" id="s2">
+      <div class="section-number"><span data-lang="es">Artículo 02</span><span data-lang="en">Article 02</span></div>
+      <h2><span data-lang="es">Modelo de Contratación</span><span data-lang="en">Contract Model</span></h2>
+      <div data-lang="es">
+        <p>El servicio se presta bajo un modelo de <strong>bolsa de horas (hour bank)</strong> en dos modalidades:</p>
+        <div class="two-col">
+          <div class="col-card"><div class="col-card-label">Plan Flex — Sin permanencia</div><ul><li>40 horas / mes (mínimo)</li><li>Facturación mensual anticipada</li><li>Horas vencen al cierre del ciclo mensual</li><li>Sin penalidad por cancelación</li><li>Cancelación con aviso previo al siguiente ciclo</li></ul></div>
+          <div class="col-card"><div class="col-card-label">Plan Anual — Mejor tarifa</div><ul><li>40 horas / mes, pagadas mes a mes</li><li>Horas no usadas se acumulan durante el año</li><li>Permanencia de 12 meses</li><li>Tarifa preferencial por compromiso anual</li><li>Renovación automática salvo aviso previo</li></ul></div>
+        </div>
+        <p>Las horas contratadas se activan en el sistema al momento de radicar la factura electrónica correspondiente, sin necesidad de pago previo.</p>
+      </div>
+      <div data-lang="en">
+        <p>The service is provided under an <strong>hour bank</strong> model in two modalities:</p>
+        <div class="two-col">
+          <div class="col-card"><div class="col-card-label">Flex Plan — No commitment</div><ul><li>40 hours / month (minimum)</li><li>Monthly advance billing</li><li>Unused hours expire at month end</li><li>Cancel anytime, no penalty</li><li>Cancellation notice before next cycle</li></ul></div>
+          <div class="col-card"><div class="col-card-label">Annual Plan — Best rate</div><ul><li>40 hours / month, billed monthly</li><li>Unused hours accumulate throughout the year</li><li>12-month commitment</li><li>Preferential rate for annual commitment</li><li>Auto-renewal unless notified</li></ul></div>
+        </div>
+        <p>Contracted hours are activated in the system upon submission of the corresponding electronic invoice, without requiring prior payment.</p>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="section" id="s3">
+      <div class="section-number"><span data-lang="es">Artículo 03</span><span data-lang="en">Article 03</span></div>
+      <h2><span data-lang="es">Alcance del Servicio</span><span data-lang="en">Scope of Service</span></h2>
+      <div data-lang="es">
+        <p>UpPipe ofrece los siguientes servicios dentro de la bolsa de horas contratada:</p>
+        <ul><li>Diseño gráfico y comunicación visual</li><li>Adaptaciones y versiones de piezas existentes</li><li>Desarrollo creativo bajo lineamientos de marca establecidos</li><li>Apoyo a equipos internos de marketing (creative overflow)</li><li>Ejecución bajo briefs estructurados vía plataforma</li><li>Producción de piezas para pauta digital, redes sociales y medios</li></ul>
+        <div class="callout"><p><strong>No incluye</strong> (salvo acuerdo explícito por escrito): estrategia de marca profunda, investigación de mercado, desarrollo conceptual de identidad desde cero (branding), fotografía o producción audiovisual en locación.</p></div>
+      </div>
+      <div data-lang="en">
+        <p>UpPipe offers the following services within the contracted hour bank:</p>
+        <ul><li>Graphic design and visual communication</li><li>Adaptations and versions of existing assets</li><li>Creative development under established brand guidelines</li><li>Internal marketing team support (creative overflow)</li><li>Execution under structured briefs via platform</li><li>Production of assets for digital advertising, social media, and media</li></ul>
+        <div class="callout"><p><strong>Not included</strong> (unless explicitly agreed in writing): deep brand strategy, market research, brand identity development from scratch (branding), photography or on-location audiovisual production.</p></div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="section" id="s4">
+      <div class="section-number"><span data-lang="es">Artículo 04</span><span data-lang="en">Article 04</span></div>
+      <h2><span data-lang="es">Flujo Operativo</span><span data-lang="en">Operational Flow</span></h2>
+      <div data-lang="es">
+        <p>El servicio opera bajo un sistema estructurado de ingesta y entrega:</p>
+        <ol><li>El cliente envía un requerimiento (request) vía plataforma UpPipe</li><li>El sistema construye un brief estructurado con asistencia de IA</li><li>Se asigna el talento creativo senior correspondiente</li><li>Se ejecuta la pieza bajo el brief aprobado</li><li>Se entrega en los tiempos definidos</li><li>Se registran horas consumidas y métricas operativas</li></ol>
+        <div class="callout"><p><strong>Tiempos de entrega estándar:</strong> 24 a 48 horas desde la aprobación del brief. Entregas rush sujetas a disponibilidad y tarifa adicional según plan contratado.</p></div>
+      </div>
+      <div data-lang="en">
+        <p>The service operates under a structured intake and delivery system:</p>
+        <ol><li>Client submits a request via the UpPipe platform</li><li>The system builds a structured brief with AI assistance</li><li>The appropriate senior creative talent is assigned</li><li>The asset is executed under the approved brief</li><li>Delivered within defined timeframes</li><li>Hours consumed and operational metrics are recorded</li></ol>
+        <div class="callout"><p><strong>Standard delivery times:</strong> 24 to 48 hours from brief approval. Rush deliveries subject to availability and additional fee per contracted plan.</p></div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="section" id="s5">
+      <div class="section-number"><span data-lang="es">Artículo 05</span><span data-lang="en">Article 05</span></div>
+      <h2><span data-lang="es">Métricas Operativas (SLA del Sistema)</span><span data-lang="en">Operational Metrics (System SLA)</span></h2>
+      <div data-lang="es">
+        <p>UpPipe opera bajo indicadores de eficiencia que el cliente puede monitorear en tiempo real desde su dashboard:</p>
+        <ul><li><strong>FTR (First Time Right):</strong> tasa de aprobación sin ajustes en primera entrega</li><li><strong>Lead Time / TAT:</strong> tiempo total desde la solicitud hasta la entrega</li><li><strong>Rondas de ajuste:</strong> número de iteraciones por pieza</li><li><strong>Costo por activo:</strong> eficiencia del gasto creativo</li><li><strong>Consumo de horas:</strong> seguimiento del banco de horas en tiempo real</li></ul>
+        <p>Estas métricas permiten visibilidad y control total del gasto creativo, reemplazando la opacidad de los modelos de retainer tradicional.</p>
+      </div>
+      <div data-lang="en">
+        <p>UpPipe operates under efficiency indicators the client can monitor in real time from their dashboard:</p>
+        <ul><li><strong>FTR (First Time Right):</strong> approval rate without revisions on first delivery</li><li><strong>Lead Time / TAT:</strong> total time from request to delivery</li><li><strong>Revision rounds:</strong> number of iterations per asset</li><li><strong>Cost per asset:</strong> creative spend efficiency</li><li><strong>Hour consumption:</strong> real-time hour bank tracking</li></ul>
+        <p>These metrics provide full visibility and control over creative spend, replacing the opacity of traditional retainer models.</p>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="section" id="s6">
+      <div class="section-number"><span data-lang="es">Artículo 06</span><span data-lang="en">Article 06</span></div>
+      <h2><span data-lang="es">Roles y Accesos a la Plataforma</span><span data-lang="en">Platform Roles & Access</span></h2>
+      <div data-lang="es">
+        <div class="two-col">
+          <div class="col-card"><div class="col-card-label">Cliente Admin</div><ul><li>Gestión de requerimientos</li><li>Acceso a facturación y consumo</li><li>Gestión de usuarios del equipo</li><li>Acceso al dashboard completo</li></ul></div>
+          <div class="col-card"><div class="col-card-label">Cliente Staff</div><ul><li>Envío y seguimiento de requerimientos</li><li>Aprobación de entregas</li><li>Sin acceso a facturación</li></ul></div>
+        </div>
+        <p>UpPipe se reserva el derecho de gestión operativa, asignación de talento, control de calidad y administración de métricas. El acceso a la plataforma es personal e intransferible. Queda prohibida la cesión de credenciales a terceros no autorizados.</p>
+      </div>
+      <div data-lang="en">
+        <div class="two-col">
+          <div class="col-card"><div class="col-card-label">Client Admin</div><ul><li>Request management</li><li>Billing and consumption access</li><li>Team user management</li><li>Full dashboard access</li></ul></div>
+          <div class="col-card"><div class="col-card-label">Client Staff</div><ul><li>Request submission and tracking</li><li>Delivery approval</li><li>No billing access</li></ul></div>
+        </div>
+        <p>UpPipe reserves the right to operational management, talent assignment, quality control, and metrics administration. Platform access is personal and non-transferable. Sharing credentials with unauthorized third parties is strictly prohibited.</p>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="section" id="s7">
+      <div class="section-number"><span data-lang="es">Artículo 07</span><span data-lang="en">Article 07</span></div>
+      <h2><span data-lang="es">Facturación y Pagos</span><span data-lang="en">Billing & Payments</span></h2>
+      <div data-lang="es">
+        <p>La facturación es mensual y anticipada por el paquete de horas contratado. Las tarifas se expresan en pesos colombianos (COP) más IVA.</p>
+        <ul><li>Las horas se activan al momento de radicar la factura electrónica — no al pago</li><li>El pago se realiza máximo a <strong>45 días calendario</strong> desde la fecha de radicación, conforme a la <strong>Ley 2024 de 2020 — Ley de Pago en Plazos Justos</strong></li><li>Medios de pago aceptados: tarjeta de crédito (cargo automático mensual) o transferencia bancaria</li><li>Horas adicionales al paquete contratado se facturan según tarifa top-up vigente</li></ul>
+        <div class="callout"><p><strong>Mora:</strong> el incumplimiento del plazo de pago puede generar la suspensión temporal del servicio y el cobro de intereses de mora a la tasa legal vigente en Colombia.</p></div>
+      </div>
+      <div data-lang="en">
+        <p>Billing is monthly and in advance for the contracted hour package. Rates are expressed in Colombian pesos (COP) plus VAT.</p>
+        <ul><li>Hours are activated upon electronic invoice submission — not upon payment</li><li>Payment is due within a maximum of <strong>45 calendar days</strong> from invoice submission, per <strong>Law 2024 of 2020 — Fair Payment Terms Law</strong></li><li>Accepted payment methods: credit card (automatic monthly charge) or bank transfer</li><li>Additional hours beyond the contracted package are billed at the current top-up rate</li></ul>
+        <div class="callout"><p><strong>Late payment:</strong> failure to pay within the established term may result in temporary service suspension and late payment interest charges at the current legal rate in Colombia.</p></div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="section" id="s8">
+      <div class="section-number"><span data-lang="es">Artículo 08</span><span data-lang="en">Article 08</span></div>
+      <h2><span data-lang="es">Duración y Renovación</span><span data-lang="en">Term & Renewal</span></h2>
+      <div data-lang="es">
+        <p><strong>Plan Flex:</strong> mes a mes, sin permanencia. Cancelable en cualquier momento con aviso previo antes del inicio del siguiente ciclo de facturación. Sin penalidad.</p>
+        <p><strong>Plan Anual:</strong> vigencia de 12 meses desde la activación. Renovación automática al vencimiento salvo notificación escrita de no renovación con al menos 30 días de anticipación.</p>
+      </div>
+      <div data-lang="en">
+        <p><strong>Flex Plan:</strong> month-to-month, no commitment. Cancellable at any time with prior notice before the start of the next billing cycle. No penalty.</p>
+        <p><strong>Annual Plan:</strong> 12-month term from activation. Automatically renews upon expiration unless written notice of non-renewal is provided at least 30 days in advance.</p>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="section" id="s9">
+      <div class="section-number"><span data-lang="es">Artículo 09</span><span data-lang="en">Article 09</span></div>
+      <h2><span data-lang="es">Propiedad Intelectual</span><span data-lang="en">Intellectual Property</span></h2>
+      <div data-lang="es">
+        <p>Todo entregable creativo producido y pagado en su totalidad es propiedad del cliente.</p>
+        <p>UpPipe y Brandnew Studio S.A.S. conservan en todo momento la propiedad exclusiva de:</p>
+        <ul><li>La plataforma tecnológica UpPipe y todos sus componentes</li><li>La metodología CITL (Creatives In The Loop)</li><li>Los procesos, frameworks y sistemas operativos propietarios</li><li>Los modelos de datos, algoritmos y herramientas de IA integradas</li></ul>
+        <div class="callout"><p>Queda expresamente prohibido: la copia, reproducción, ingeniería inversa, reventa o uso no autorizado de la plataforma. El contacto directo con el talento creativo de UpPipe por fuera de la plataforma, con fines de contratación directa, constituye una violación de estos términos.</p></div>
+      </div>
+      <div data-lang="en">
+        <p>All creative deliverables produced and fully paid for are the property of the client.</p>
+        <p>UpPipe and Brandnew Studio S.A.S. retain exclusive ownership at all times of:</p>
+        <ul><li>The UpPipe technology platform and all its components</li><li>The CITL (Creatives In The Loop) methodology</li><li>Proprietary processes, frameworks, and operating systems</li><li>Data models, algorithms, and integrated AI tools</li></ul>
+        <div class="callout"><p>Expressly prohibited: copying, reproducing, reverse engineering, reselling, or unauthorized use of the platform. Direct contact with UpPipe's creative talent outside the platform for direct hiring purposes constitutes a violation of these terms.</p></div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="s10">
+      <div class="section-number"><span data-lang="es">Artículo 10</span><span data-lang="en">Article 10</span></div>
+      <h2><span data-lang="es">Confidencialidad</span><span data-lang="en">Confidentiality</span></h2>
+      <div data-lang="es">
+        <p>Ambas partes acuerdan mantener la más estricta confidencialidad sobre la información intercambiada en el marco de la relación comercial:</p>
+        <ul><li>Protección de información sensible de marca, estrategia y operaciones</li><li>No divulgación de materiales, procesos, datos o métricas a terceros</li><li>Uso exclusivo de la información para los fines del servicio contratado</li><li>Esta obligación se mantiene vigente por 2 años tras la terminación del contrato</li></ul>
+      </div>
+      <div data-lang="en">
+        <p>Both parties agree to maintain strict confidentiality over information exchanged within the commercial relationship:</p>
+        <ul><li>Protection of sensitive brand, strategy, and operational information</li><li>Non-disclosure of materials, processes, data, or metrics to third parties</li><li>Exclusive use of information for contracted service purposes</li><li>This obligation remains in effect for 2 years after contract termination</li></ul>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="s11">
+      <div class="section-number"><span data-lang="es">Artículo 11</span><span data-lang="en">Article 11</span></div>
+      <h2><span data-lang="es">Limitaciones del Servicio</span><span data-lang="en">Service Limitations</span></h2>
+      <div data-lang="es">
+        <div class="two-col">
+          <div class="col-card"><div class="col-card-label">UpPipe NO garantiza</div><ul><li>Resultados comerciales (ventas, conversiones)</li><li>Performance de campañas de pauta</li><li>Métricas de negocio del cliente</li></ul></div>
+          <div class="col-card"><div class="col-card-label">UpPipe SÍ garantiza</div><ul><li>Ejecución operativa eficiente</li><li>Calidad técnica y creativa</li><li>Cumplimiento de briefs aprobados</li><li>Tiempos de entrega definidos</li></ul></div>
+        </div>
+      </div>
+      <div data-lang="en">
+        <div class="two-col">
+          <div class="col-card"><div class="col-card-label">UpPipe does NOT guarantee</div><ul><li>Commercial results (sales, conversions)</li><li>Ad campaign performance</li><li>Client business metrics</li></ul></div>
+          <div class="col-card"><div class="col-card-label">UpPipe DOES guarantee</div><ul><li>Efficient operational execution</li><li>Technical and creative quality</li><li>Compliance with approved briefs</li><li>Defined delivery timeframes</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="s12">
+      <div class="section-number"><span data-lang="es">Artículo 12</span><span data-lang="en">Article 12</span></div>
+      <h2><span data-lang="es">Responsabilidades del Cliente</span><span data-lang="en">Client Responsibilities</span></h2>
+      <div data-lang="es">
+        <p>Para el correcto funcionamiento del servicio, el cliente se compromete a:</p>
+        <ul><li>Proveer información clara, completa y oportuna en cada requerimiento</li><li>Dar feedback en los tiempos acordados para no bloquear la producción</li><li>Respetar el alcance definido en el brief aprobado</li><li>No generar cambios estructurales de brief una vez iniciada la ejecución sin acuerdo previo</li><li>Designar un contacto principal (Admin) con capacidad de aprobación</li></ul>
+      </div>
+      <div data-lang="en">
+        <p>For the proper functioning of the service, the client commits to:</p>
+        <ul><li>Provide clear, complete, and timely information in each request</li><li>Give feedback within agreed timeframes to avoid blocking production</li><li>Respect the scope defined in the approved brief</li><li>Not generate structural brief changes once execution has begun without prior agreement</li><li>Designate a primary contact (Admin) with approval authority</li></ul>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="section" id="s13">
+      <div class="section-number"><span data-lang="es">Artículo 13</span><span data-lang="en">Article 13</span></div>
+      <h2><span data-lang="es">Cambios y Retrabajo</span><span data-lang="en">Changes & Rework</span></h2>
+      <div data-lang="es">
+        <p>Los ajustes menores dentro del alcance del brief están incluidos en las horas cotizadas. Los cambios que impliquen modificación estructural del brief generan consumo adicional de horas y deben acordarse antes de proceder.</p>
+        <p>El retrabajo es un costo operativo que el sistema busca minimizar a través del proceso de brief estructurado. UpPipe mide y reporta las rondas de ajuste como métrica de eficiencia.</p>
+      </div>
+      <div data-lang="en">
+        <p>Minor adjustments within the brief scope are included in the quoted hours. Changes involving structural modification of the brief generate additional hour consumption and must be agreed upon before proceeding.</p>
+        <p>Rework is an operational cost the system aims to minimize through the structured brief process. UpPipe measures and reports revision rounds as an efficiency metric.</p>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="section" id="s14">
+      <div class="section-number"><span data-lang="es">Artículo 14</span><span data-lang="en">Article 14</span></div>
+      <h2><span data-lang="es">Uso de Inteligencia Artificial</span><span data-lang="en">AI Usage</span></h2>
+      <div data-lang="es">
+        <p>UpPipe puede utilizar herramientas de inteligencia artificial para aumentar la velocidad de producción, reducir tareas repetitivas y optimizar la calidad de los entregables. El uso de IA está siempre bajo supervisión humana y criterio creativo senior — nunca reemplaza al talento humano, lo potencia.</p>
+        <p>Los entregables finales son revisados y aprobados por un Senior Creative-In-The-Loop antes de su entrega al cliente.</p>
+      </div>
+      <div data-lang="en">
+        <p>UpPipe may use artificial intelligence tools to increase production speed, reduce repetitive tasks, and optimize deliverable quality. AI use is always under human supervision and senior creative judgment — it never replaces human talent, it enhances it.</p>
+        <p>Final deliverables are reviewed and approved by a Senior Creative-In-The-Loop before delivery to the client.</p>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="section" id="s15">
+      <div class="section-number"><span data-lang="es">Artículo 15</span><span data-lang="en">Article 15</span></div>
+      <h2><span data-lang="es">Relación Laboral</span><span data-lang="en">Labor Relations</span></h2>
+      <div data-lang="es">
+        <p>No existe ninguna relación laboral entre el cliente y el talento creativo asignado por UpPipe. El talento opera bajo contrato independiente con Brandnew Studio S.A.S. UpPipe es el único responsable de la gestión, pago y relación con el equipo creativo.</p>
+        <p>El cliente no podrá contratar directamente al talento creativo con quien haya interactuado a través de UpPipe durante la vigencia del contrato y por un período de 12 meses tras su terminación.</p>
+      </div>
+      <div data-lang="en">
+        <p>No employment relationship exists between the client and the creative talent assigned by UpPipe. Talent operates under an independent contract with Brandnew Studio S.A.S. UpPipe is solely responsible for managing, compensating, and maintaining the relationship with the creative team.</p>
+        <p>The client may not directly hire creative talent they have interacted with through UpPipe during the contract term and for a period of 12 months after its termination.</p>
+      </div>
+    </div>
+
+    <!-- 16 -->
+    <div class="section" id="s16">
+      <div class="section-number"><span data-lang="es">Artículo 16</span><span data-lang="en">Article 16</span></div>
+      <h2><span data-lang="es">Terminación</span><span data-lang="en">Termination</span></h2>
+      <div data-lang="es">
+        <p>El contrato puede darse por terminado anticipadamente por cualquiera de las siguientes causas:</p>
+        <ul><li>Incumplimiento reiterado en el pago de facturas</li><li>Uso indebido de la plataforma o del servicio</li><li>Violación de los acuerdos de confidencialidad</li><li>Contacto directo no autorizado con el talento creativo</li><li>Cualquier acción que afecte la reputación o propiedad intelectual de UpPipe</li></ul>
+        <p>En caso de terminación por incumplimiento del cliente, las horas no consumidas no serán reembolsables.</p>
+      </div>
+      <div data-lang="en">
+        <p>The contract may be terminated early for any of the following reasons:</p>
+        <ul><li>Repeated failure to pay invoices</li><li>Misuse of the platform or service</li><li>Breach of confidentiality agreements</li><li>Unauthorized direct contact with creative talent</li><li>Any action affecting UpPipe's reputation or intellectual property</li></ul>
+        <p>In case of termination due to client breach, unconsumed hours are non-refundable.</p>
+      </div>
+    </div>
+
+    <!-- 17 -->
+    <div class="section" id="s17">
+      <div class="section-number"><span data-lang="es">Artículo 17</span><span data-lang="en">Article 17</span></div>
+      <h2><span data-lang="es">Limitación de Responsabilidad</span><span data-lang="en">Limitation of Liability</span></h2>
+      <div data-lang="es">
+        <p>Brandnew Studio S.A.S. / UpPipe no será responsable por daños indirectos, pérdida de ingresos, daño emergente o lucro cesante derivados del uso o imposibilidad de uso del servicio. La responsabilidad máxima de UpPipe frente al cliente se limita al valor de las horas facturadas y no consumidas en el periodo en disputa.</p>
+      </div>
+      <div data-lang="en">
+        <p>Brandnew Studio S.A.S. / UpPipe shall not be liable for indirect damages, loss of revenue, consequential damages, or lost profits arising from the use or inability to use the service. UpPipe's maximum liability to the client is limited to the value of billed and unconsumed hours in the disputed period.</p>
+      </div>
+    </div>
+
+    <!-- 18 -->
+    <div class="section" id="s18">
+      <div class="section-number"><span data-lang="es">Artículo 18</span><span data-lang="en">Article 18</span></div>
+      <h2><span data-lang="es">Modificaciones</span><span data-lang="en">Modifications</span></h2>
+      <div data-lang="es">
+        <p>UpPipe se reserva el derecho de actualizar estos términos y condiciones. Cualquier modificación será notificada al cliente con al menos 30 días de anticipación por correo electrónico. Los cambios aplicarán a partir del siguiente ciclo de facturación o renovación de contrato. El uso continuado del servicio tras la notificación implica la aceptación de los nuevos términos.</p>
+      </div>
+      <div data-lang="en">
+        <p>UpPipe reserves the right to update these terms and conditions. Any modification will be notified to the client at least 30 days in advance via email. Changes will apply from the next billing cycle or contract renewal. Continued use of the service after notification implies acceptance of the new terms.</p>
+      </div>
+
+      <div class="closing">
+        <p data-lang="es">UpPipe no vende diseño.<br>Vende <em>eficiencia operativa creativa.</em></p>
+        <p data-lang="en">UpPipe doesn't sell design.<br>It sells <em>creative operational efficiency.</em></p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Up<span>Pipe</span></div>
+  <div class="footer-note">© 2026 Brandnew Studio S.A.S. · NIT: 900.538.863-4 · Bogotá, Colombia · uppipe.co/terminos</div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('uppipe-lang', lang);
+}
+// Init
+const saved = localStorage.getItem('uppipe-lang') || 'es';
+setLang(saved);
+</script>
+
+</body>
+</html>
