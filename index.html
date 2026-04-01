@@ -279,6 +279,50 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
   #portfolio div[style*="repeat(5,1fr)"]{grid-template-columns:repeat(3,1fr)!important;gap:10px!important;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
   .pilot-inner{flex-direction:column;}
+
+  /* ── PROBLEM: 2-col → stacked on tablet ── */
+  #problem .container > div[style*="1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  #problem div[style*="position:sticky"] {
+    position: static !important;
+  }
+
+  /* ── WHAT IS UPPIPE pillars: 3-col → 1-col on tablet ── */
+  #what div[style*="repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  #pillarDesc { display: none !important; }
+
+  /* ── PLATFORM features: 2-col → 1-col on tablet ── */
+  #platform div[style*="grid-template-columns:1fr 1fr"],
+  #platform div[style*="margin-top:100px;display:grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .platform-feature { display: flex !important; flex-direction: column !important; gap: 32px !important; }
+  .platform-feature .pf-text { order: 1 !important; }
+  .platform-feature .pf-img  { order: 2 !important; }
+  #platform img { width: 100% !important; }
+
+  /* ── CITL 2-col → 1-col on tablet ── */
+  #citl div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* ── INTELLIGENCE 2-col → 1-col on tablet ── */
+  #intelligence div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* stat bar → 3 columns on tablet (fits fine) */
+  /* 3 data cards → 1 col on tablet */
+  #intelligence div[style*="repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
 }
 
 /* ══════════════════════════════════════
@@ -334,6 +378,88 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
   .pilot-inner{flex-direction:column;gap:32px;}
   .pilot-card{width:100%;}
   .pilot-card .glass-lime{min-width:unset!important;width:100%;}
+
+  /* ── WHAT IS UPPIPE: hide dynamic description on mobile ── */
+  #pillarDesc { display: none !important; }
+
+  /* ── WHAT IS UPPIPE: 3 pillars → stacked ── */
+  #what div[style*="repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 2px !important;
+  }
+
+  /* ── PROBLEM: 2-col → stacked, remove sticky ── */
+  #problem .container > div[style*="1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  #problem div[style*="position:sticky"] {
+    position: static !important;
+    top: auto !important;
+  }
+
+  /* ── CITL: left/right 2-col layout → stacked ── */
+  #citl .container > div[style*="1fr 1fr"],
+  #citl .container > div[style*="45% 1fr"],
+  #citl div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* ── PLATFORM screenshots: 2-col → stacked, image below title ── */
+  #platform div[style*="grid-template-columns:1fr 1fr"],
+  #platform div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* text always first, image always second */
+  .platform-feature { display: flex !important; flex-direction: column !important; gap: 32px !important; }
+  .platform-feature .pf-text { order: 1 !important; }
+  .platform-feature .pf-img  { order: 2 !important; }
+  /* screenshots full width */
+  #platform img { width: 100% !important; border-radius: 12px !important; }
+
+  /* ── CREATIVE INTELLIGENCE section: 2-col → stacked ── */
+  #intelligence .container > div[style*="1fr 1fr"],
+  #intelligence div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  /* stat numbers smaller on mobile */
+  #intelligence div[style*="font-size:42px"] {
+    font-size: 28px !important;
+    letter-spacing: -1px !important;
+  }
+  /* stat bar → 3 col compact on mobile */
+  #intelligence div[style*="display:flex;align-items:center;gap:0"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 0 !important;
+  }
+  #intelligence div[style*="padding:28px 40px"] {
+    padding: 16px 12px !important;
+    border-right: 1px solid rgba(255,255,255,0.08) !important;
+    border-bottom: none !important;
+    width: 100% !important;
+  }
+  #intelligence div[style*="padding:28px 40px"]:last-child {
+    border-right: none !important;
+  }
+  /* 3 data cards → 1 col */
+  #intelligence div[style*="repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  /* CTA banner → stack */
+  #intelligence div[style*="display:flex;align-items:center;justify-content:space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* metric chips 3-col → 3-col smaller */
+  div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
 }
 </style>
 </head>
@@ -694,7 +820,7 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:64px;">
       <div>
         <div class="sec-label" data-en="Creatives In The Loop · CITL" data-es="Creatives In The Loop · CITL">Creatives In The Loop · CITL</div>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,46px);letter-spacing:-1.5px;line-height:1.08;" data-en="Not a pool of freelancers.<br>A vetted network inside<br><span style='color:var(--cobalt);'>your workflow.</span>" data-es="No un pool de freelancers.<br>Una red validada dentro<br><span style='color:var(--cobalt);'>de tu workflow.</span>">Not a pool of freelancers.<br>A vetted network inside<br><span style="color:var(--cobalt);">your workflow.</span></h2>
+        <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,46px);letter-spacing:-1.5px;line-height:1.08;" data-en="Not a pool of freelancers.<br>Not a traditional agency.<br><span style='color:var(--cobalt);'>A vetted senior AI-powered CITL Network inside your creative operations workflow.</span>" data-es="No un pool de freelancers.<br>No una agencia tradicional.<br><span style='color:var(--cobalt);'>Una CITL Network senior con IA dentro de tu workflow de CreativeOps.</span>">Not a pool of freelancers.<br>Not a traditional agency.<br><span style="color:var(--cobalt);">A vetted senior AI-powered CITL Network inside your creative operations workflow.</span></h2>
       </div>
       <div style="padding-bottom:8px;">
         <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
@@ -786,8 +912,8 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     </p>
 
     <!-- FEATURE 1: PIPE / BRIEF INTELLIGENCE -->
-    <div style="margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
-      <div>
+    <div class="platform-feature" style="margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+      <div class="pf-text">
         <div style="display:inline-flex;align-items:center;gap:8px;background:var(--cobalt-tint);border-radius:100px;padding:6px 14px;margin-bottom:20px;">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--cobalt);display:inline-block;"></span>
           <span style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--cobalt);" data-en="Feature 01 · Brief Intelligence" data-es="Función 01 · Brief Intelligence">Feature 01 · Brief Intelligence</span>
@@ -812,21 +938,18 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
         </div>
       </div>
       <!-- Screenshot: Brief Intelligence / Pipe -->
-      <div style="border-radius:0;overflow:hidden;">
+      <div class="pf-img" style="border-radius:0;overflow:hidden;">
         <img src="/screenshots/BriefIntelligence.png" alt="Pipe — Brief Intelligence" style="width:100%;display:block;" />
       </div>
     </div>
 
     <!-- FEATURE 2: CLIENT BOARD -->
-    <div style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+    <div class="platform-feature" style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
       <!-- Screenshot: Client Board -->
-      <div style="border-radius:0;overflow:hidden;">
+      <div class="pf-img" style="border-radius:0;overflow:hidden;">
         <img src="/screenshots/boards.png" alt="Client Board" style="width:100%;display:block;" />
       </div>
-      <div>
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.08);border-radius:100px;padding:6px 14px;margin-bottom:20px;">
-          <span style="width:8px;height:8px;border-radius:50%;background:#8B5CF6;display:inline-block;"></span>
-          <span style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B5CF6;" data-en="Feature 02 · Client Board" data-es="Función 02 · Client Board">Feature 02 · Client Board</span>
+      <div class="pf-text">
         </div>
         <h3 style="font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--dark);letter-spacing:-0.5px;margin-bottom:16px;line-height:1.15;" data-en="Full visibility.<br>Every request. Every asset." data-es="Visibilidad total.<br>Cada request. Cada asset.">Full visibility.<br>Every request. Every asset.</h3>
         <p style="font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:28px;" data-en="Your team sees every request moving through production — To Do, In Production, In Review, Approved. No Slack threads. No email chains. No 'what's the status?' meetings. Everything is exactly where it should be, tracked in real time." data-es="Tu equipo ve cada request moviéndose en producción — Por hacer, En producción, En revisión, Aprobado. Sin hilos de Slack. Sin cadenas de email. Sin reuniones de 'cuál es el estado'.">
@@ -850,8 +973,8 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
     </div>
 
     <!-- FEATURE 3: CREATIVE INTELLIGENCE DASHBOARD -->
-    <div style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
-      <div>
+    <div class="platform-feature" style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+      <div class="pf-text">
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.08);border-radius:100px;padding:6px 14px;margin-bottom:20px;">
           <span style="width:8px;height:8px;border-radius:50%;background:#10B981;display:inline-block;"></span>
           <span style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#10B981;" data-en="Feature 03 · Creative Intelligence" data-es="Función 03 · Creative Intelligence">Feature 03 · Creative Intelligence</span>
@@ -877,18 +1000,18 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
         </div>
       </div>
       <!-- Screenshot: Creative Intelligence Dashboard -->
-      <div style="border-radius:0;overflow:hidden;">
+      <div class="pf-img" style="border-radius:0;overflow:hidden;">
         <img src="/screenshots/creativeintelligence.png" alt="Creative Intelligence Dashboard" style="width:100%;display:block;" />
       </div>
     </div>
 
     <!-- FEATURE 4: REPORTS & BENCHMARKS -->
-    <div style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+    <div class="platform-feature" style="margin-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
       <!-- Screenshot: Reports -->
-      <div style="border-radius:0;overflow:hidden;">
+      <div class="pf-img" style="border-radius:0;overflow:hidden;">
         <img src="/screenshots/Reportsandanalytics.png" alt="Reports & Analytics" style="width:100%;display:block;" />
       </div>
-      <div>
+      <div class="pf-text">
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.08);border-radius:100px;padding:6px 14px;margin-bottom:20px;">
           <span style="width:8px;height:8px;border-radius:50%;background:#D97706;display:inline-block;"></span>
           <span style="font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#D97706;" data-en="Feature 04 · Reports & Benchmarks" data-es="Función 04 · Reports & Benchmarks">Feature 04 · Reports &amp; Benchmarks</span>
