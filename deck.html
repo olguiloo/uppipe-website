@@ -405,41 +405,45 @@ h3{font-family:'Syne',sans-serif;font-weight:700;}
   .fin-strip{flex-direction:column;}
 }
 <script src="https://t.contentsquare.net/uxa/37d405ce6ae0d.js"></script>
+<style>
+body.gate-active{overflow:hidden!important;}
+#gate{position:fixed!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;z-index:2147483647!important;background:var(--g-hero)!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:24px!important;box-sizing:border-box!important;}
+</style>
 </head>
 <body>
 
 <!-- ══ EMAIL GATE ══ -->
-<div id="gate" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;background:var(--g-hero);display:flex;align-items:center;justify-content:center;padding:24px;">
-  <div style="max-width:480px;width:100%;text-align:center;">
-    <svg style="height:60px;width:auto;margin-bottom:36px;" xmlns="http://www.w3.org/2000/svg" viewBox="209 402 665 245"><defs><style>.gl{fill:#1A56FF;}</style></defs><rect class="gl" x="525.84" y="549.52" width="33.58" height="82.76"/><rect class="gl" x="525.84" y="508.85" width="33.58" height="24.88"/><path class="gl" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/><path class="gl" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/></svg>
+<div id="gate" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:var(--g-hero);display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;overflow-y:auto;">
+  <div style="max-width:480px;width:100%;text-align:center;margin:auto;padding:20px 0;">
+    <svg style="height:52px;width:auto;margin-bottom:24px;" xmlns="http://www.w3.org/2000/svg" viewBox="209 402 665 245"><defs><style>.gl{fill:#1A56FF;}</style></defs><rect class="gl" x="525.84" y="549.52" width="33.58" height="82.76"/><rect class="gl" x="525.84" y="508.85" width="33.58" height="24.88"/><path class="gl" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/><path class="gl" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/></svg>
 
-    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--cobalt);margin-bottom:16px;font-weight:700;">AI DESIGN. HUMAN POWERED.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--cobalt);margin-bottom:12px;font-weight:700;">AI DESIGN. HUMAN POWERED.</div>
 
-    <h1 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,5vw,42px);letter-spacing:-2px;color:var(--cobalt-deep);line-height:1.05;margin-bottom:12px;">
+    <h1 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,4vw,38px);letter-spacing:-1.5px;color:var(--cobalt-deep);line-height:1.05;margin-bottom:10px;">
       The future of creative ops<br>is waiting for you.
     </h1>
-    <p style="font-size:14px;color:var(--mid);line-height:1.75;margin-bottom:32px;">
+    <p style="font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:24px;">
       Enter your email to access the UpPipe deck — how AI Design meets Human expertise to transform creative production.
     </p>
 
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <input id="gateEmail" type="email" placeholder="your@email.com" style="width:100%;padding:16px 20px;border-radius:100px;border:1.5px solid rgba(26,86,255,0.25);font-family:'Montserrat',sans-serif;font-size:14px;color:var(--dark);background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);outline:none;text-align:center;" />
-      <button onclick="submitGate()" style="width:100%;padding:16px 20px;border-radius:100px;background:var(--cobalt);color:white;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;border:none;cursor:pointer;letter-spacing:-0.3px;transition:.2s;">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <input id="gateEmail" type="email" placeholder="your@email.com" style="width:100%;padding:14px 20px;border-radius:100px;border:1.5px solid rgba(26,86,255,0.25);font-family:'Montserrat',sans-serif;font-size:14px;color:var(--dark);background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);outline:none;text-align:center;box-sizing:border-box;" />
+      <button onclick="submitGate()" style="width:100%;padding:14px 20px;border-radius:100px;background:var(--cobalt);color:white;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;border:none;cursor:pointer;letter-spacing:-0.3px;">
         See the deck →
       </button>
     </div>
-    <p style="font-size:10px;color:var(--lt);margin-top:16px;font-family:'JetBrains Mono',monospace;">Confidential. For authorized recipients only.</p>
+    <p style="font-size:10px;color:var(--lt);margin-top:14px;font-family:'JetBrains Mono',monospace;">Confidential. For authorized recipients only.</p>
   </div>
 </div>
 
 <script>
+document.body.classList.add('gate-active');
 function submitGate(){
   const email = document.getElementById('gateEmail').value.trim();
   if(!email || !email.includes('@')){
     document.getElementById('gateEmail').style.borderColor='#DC2626';
     return;
   }
-  // Submit to HubSpot
   fetch('https://api.hsforms.com/submissions/v3/integration/submit/50708869/d37744bd-e923-4cb9-ac4e-f613894649dc',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -448,10 +452,11 @@ function submitGate(){
       context:{pageUri:window.location.href,pageName:'UpPipe Deck - Endeavour'}
     })
   }).catch(()=>{});
-  // Hide gate
-  document.getElementById('gate').style.opacity='0';
-  document.getElementById('gate').style.transition='opacity 0.5s';
-  setTimeout(()=>document.getElementById('gate').style.display='none',500);
+  const g = document.getElementById('gate');
+  g.style.transition='opacity 0.5s';
+  g.style.opacity='0';
+  document.body.classList.remove('gate-active');
+  setTimeout(()=>g.style.display='none',500);
 }
 document.getElementById('gateEmail').addEventListener('keydown',e=>{if(e.key==='Enter')submitGate();});
 </script>
