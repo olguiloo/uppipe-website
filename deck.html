@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UpPipe — CreativeOps Infrastructure</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#1A56FF;--cobalt-deep:#0D3FBF;--cobalt-tint:#E8EFFE;
+  --lime:#C8FF00;--lime-deep:#8CB800;
+  --cream:#FDFBF7;--white:#FFFFFF;
+  --dark:#1E1E2E;--mid:#6B6B8A;--lt:#AFAFC8;
+  --g-hero:radial-gradient(ellipse 72% 64% at 14% 88%,#F5C6D8 0%,transparent 62%),radial-gradient(ellipse 58% 52% at 86% 18%,#C8FF00 0%,transparent 58%),radial-gradient(ellipse 62% 56% at 52% 52%,#B8AAFF 0%,transparent 64%),radial-gradient(ellipse 52% 46% at 82% 78%,#5B8BFF 0%,transparent 58%),linear-gradient(138deg,#F5C6D8 0%,#C4AAFF 38%,#4870FF 70%,#C8FF00 100%);
+  --g-pastel:radial-gradient(ellipse 72% 52% at 28% 72%,#F5C6D8 0%,transparent 58%),radial-gradient(ellipse 52% 62% at 82% 28%,#E0ECFF 0%,transparent 54%),linear-gradient(128deg,#FDE8F1 0%,#F5C6D8 38%,#E8EFFE 100%);
+  --g-lime:radial-gradient(ellipse 68% 68% at 78% 18%,#C8FF00 0%,transparent 54%),radial-gradient(ellipse 52% 52% at 18% 82%,#E8EFFE 0%,transparent 54%),linear-gradient(148deg,#E8EFFE 0%,#EEFFC0 52%,#C8FF00 100%);
+  --g-soft:radial-gradient(ellipse 60% 60% at 20% 30%,#E0ECFF 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 70%,#F5C6D8 0%,transparent 55%),linear-gradient(145deg,#F8F6FF 0%,#EEF3FF 50%,#FDF5FF 100%);
+  --g-cobalt:radial-gradient(ellipse 52% 62% at 92% 8%,rgba(26,86,255,0.38) 0%,transparent 54%),linear-gradient(138deg,#0A0C1C 0%,#161A38 52%,#0D3FBF 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(8,10,20,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:2px solid var(--lime);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px 0;}
+.logo-svg{height:48px;width:auto;display:block;}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.ndots{display:flex;gap:6px;align-items:center;}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(26,86,255,0.18);cursor:pointer;transition:.3s;}
+.dot.on{background:var(--cobalt);transform:scale(1.5);}
+.nctr{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--lt);letter-spacing:2px;}
+section{min-height:100vh;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:center;padding:112px 80px 72px;overflow:hidden;}
+.tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--cobalt);text-transform:uppercase;margin-bottom:14px;display:inline-block;}
+.sn{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(26,86,255,0.15);position:absolute;bottom:26px;right:48px;letter-spacing:2px;}
+h1,h2{font-family:'Syne',sans-serif;font-weight:800;}
+h3{font-family:'Syne',sans-serif;font-weight:700;}
+.glass{backdrop-filter:blur(20px);background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.88);border-radius:18px;box-shadow:0 6px 28px rgba(26,86,255,0.07);}
+.fi{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.fi.v{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.45s}
+
+/* ══ S1 COVER ══ */
+#s1{background:var(--g-hero);align-items:center;text-align:center;}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.92);border-radius:100px;padding:7px 20px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cobalt-deep);letter-spacing:2px;margin-bottom:26px;}
+.blink{width:6px;height:6px;border-radius:50%;background:var(--cobalt);animation:bl 1.6s infinite;}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.15}}
+.hero-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,4vw,60px);line-height:.97;letter-spacing:-3px;margin-bottom:22px;color:var(--cobalt-deep);}
+.hero-h .acc{color:var(--cobalt);position:relative;display:inline-block;}
+.hero-h .acc::after{content:'';position:absolute;bottom:-5px;left:0;right:0;height:5px;background:var(--lime);border-radius:3px;}
+.hero-sub{font-size:15px;color:var(--dark);opacity:.68;line-height:1.8;max-width:540px;margin:0 auto 40px;}
+.h3nums{display:flex;gap:16px;justify-content:center;}
+.hn{padding:18px 26px;text-align:center;}
+.hn-v{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:700;color:var(--cobalt);line-height:1;}
+.hn-l{font-size:10px;color:var(--mid);margin-top:5px;font-weight:600;}
+
+/* ══ S2 QUÉ ES CREATIVEOPS ══ */
+#s2{background:var(--white);}
+.co-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:28px;}
+.co-h{font-size:clamp(26px,3.6vw,50px);letter-spacing:-2px;margin-bottom:14px;color:var(--cobalt-deep);line-height:1.05;}
+.co-p{font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:22px;}
+.co-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.co-col{padding:18px;border-radius:14px;background:var(--cream);border:1px solid rgba(26,86,255,0.09);}
+.co-ico{width:38px;height:38px;border-radius:10px;background:var(--cobalt-tint);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;}
+.co-col h4{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:5px;color:var(--cobalt-deep);}
+.co-col p{font-size:11px;color:var(--mid);line-height:1.65;}
+.co-col ul{margin-top:8px;display:flex;flex-direction:column;gap:4px;}
+.co-col ul li{font-size:10px;color:var(--dark);list-style:none;padding-left:12px;position:relative;}
+.co-col ul li::before{content:'✓';position:absolute;left:0;color:var(--cobalt);font-size:9px;font-weight:700;}
+.co-vs{display:flex;flex-direction:column;gap:12px;}
+.vs-card{border-radius:17px;padding:22px;}
+.vs-card.bad{background:#FEF2F2;border:1px solid #FECACA;}
+.vs-card.good{background:linear-gradient(135deg,#EEF3FF,#F0FFC8);border:1px solid rgba(26,86,255,0.2);}
+.vs-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;margin-bottom:8px;font-weight:700;}
+.vs-card.bad .vs-lbl{color:#DC2626;}.vs-card.good .vs-lbl{color:var(--cobalt);}
+.vs-title{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;margin-bottom:9px;}
+.vs-metrics{display:flex;gap:18px;}
+.vm-v{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;}
+.vm-l{font-size:9px;color:var(--mid);margin-top:2px;}
+.vs-card.bad .vm-v{color:#DC2626;}.vs-card.good .vm-v{color:var(--cobalt);}
+.vs-mid{text-align:center;padding:6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cobalt);font-weight:700;}
+.notus{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.notus-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mid);}
+.notus-item .x{color:#DC2626;font-weight:800;font-size:13px;}
+.notus-item .ok{color:var(--cobalt);font-weight:800;font-size:13px;}
+
+/* ══ S3 PROBLEMA ══ */
+#s3{background:var(--g-pastel);}
+.s3-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:24px;}
+.bigh{font-size:clamp(26px,3.4vw,48px);letter-spacing:-2px;margin-bottom:14px;line-height:1.05;color:var(--cobalt-deep);}
+.bigh .rd{color:#DC2626;}
+.subp{font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:20px;}
+.pains{display:flex;flex-direction:column;gap:10px;}
+.pain{display:flex;gap:11px;align-items:flex-start;padding:15px;background:rgba(255,255,255,0.68);border:1px solid rgba(255,255,255,0.88);border-radius:13px;backdrop-filter:blur(10px);}
+.pain-i{width:34px;height:34px;border-radius:9px;background:#FEE2E2;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.pain-t{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;margin-bottom:2px;color:var(--dark);}
+.pain-d{font-size:11px;color:var(--mid);line-height:1.6;}
+.expertise-box{background:rgba(255,255,255,0.7);border:1px solid rgba(26,86,255,0.15);border-radius:15px;padding:20px;backdrop-filter:blur(10px);}
+.eb-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--cobalt);letter-spacing:2px;margin-bottom:12px;font-weight:700;}
+.eb-title{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:var(--cobalt-deep);margin-bottom:10px;}
+.expertise-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+.etag{font-size:10px;padding:5px 11px;border-radius:100px;background:rgba(26,86,255,0.08);color:var(--cobalt-deep);font-weight:700;border:1px solid rgba(26,86,255,0.15);}
+.etag.grey{background:rgba(0,0,0,0.05);color:var(--mid);border-color:rgba(0,0,0,0.08);}
+.eb-insight{background:var(--cobalt-tint);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--cobalt-deep);line-height:1.65;}
+.seg-cards{display:flex;flex-direction:column;gap:12px;margin-top:4px;}
+.seg{border-radius:15px;padding:20px;}
+.seg.fast{background:rgba(255,255,255,0.72);backdrop-filter:blur(10px);border:1px solid rgba(26,86,255,0.22);}
+.seg.corp{background:rgba(255,255,255,0.48);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.82);}
+.sbadge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;padding:3px 9px;border-radius:100px;display:inline-block;margin-bottom:9px;font-weight:700;}
+.seg.fast .sbadge{background:var(--cobalt-tint);color:var(--cobalt);}
+.seg.corp .sbadge{background:rgba(0,0,0,0.05);color:var(--mid);}
+.seg h3{font-size:14px;margin-bottom:6px;color:var(--cobalt-deep);}
+.seg p{font-size:11px;color:var(--mid);line-height:1.65;}
+.stags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
+.stag{font-size:9px;padding:3px 8px;border-radius:100px;background:rgba(26,86,255,0.07);color:var(--cobalt-deep);font-weight:600;}
+
+/* ══ S4 SOLUCIÓN ══ */
+#s4{background:var(--white);}
+.s4h{font-size:clamp(24px,3.6vw,50px);letter-spacing:-2px;margin-bottom:10px;color:var(--cobalt-deep);}
+.s4h span{color:var(--cobalt);}
+.s4sub{font-size:13px;color:var(--mid);margin-bottom:32px;max-width:580px;line-height:1.75;}
+.pillars3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px;}
+.pillar{padding:22px;border-radius:16px;position:relative;overflow:hidden;border:1px solid rgba(26,86,255,0.09);background:var(--cream);transition:.3s;}
+.pillar:hover{border-color:var(--cobalt);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,86,255,0.1);}
+.pnum{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;color:rgba(26,86,255,0.07);position:absolute;top:10px;right:14px;line-height:1;}
+.pico{width:40px;height:40px;border-radius:11px;background:var(--cobalt-tint);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:13px;}
+.pillar h3{font-size:14px;margin-bottom:5px;color:var(--cobalt-deep);}
+.pillar p{font-size:11px;color:var(--mid);line-height:1.7;}
+.pillar ul{margin-top:9px;display:flex;flex-direction:column;gap:4px;}
+.pillar ul li{font-size:10px;color:var(--dark);list-style:none;padding-left:12px;position:relative;}
+.pillar ul li::before{content:'✓';position:absolute;left:0;color:var(--cobalt);font-size:9px;font-weight:700;}
+.ai-strip{background:linear-gradient(135deg,#0A0C1C,#161A38);border-radius:14px;padding:18px 26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:16px;}
+.ai-strip-text h4{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:white;margin-bottom:4px;}
+.ai-strip-text p{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;max-width:500px;}
+.ai-pct{text-align:center;}
+.ai-pct-nums{display:flex;gap:20px;}
+.ai-num{text-align:center;}
+.ai-num-v{font-family:'Syne',sans-serif;font-weight:800;font-size:28px;line-height:1;}
+.ai-num-l{font-size:9px;margin-top:3px;font-weight:600;}
+.pstrip{background:var(--cobalt-tint);border:1px solid rgba(26,86,255,0.14);border-radius:12px;padding:14px 22px;display:flex;align-items:center;flex-wrap:wrap;gap:16px;}
+.ps-i{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--cobalt-deep);font-weight:600;}
+.ps-i::before{content:'✓';color:var(--cobalt);font-weight:800;}
+
+/* ══ S5 BRAND INTELLIGENCE ══ */
+#s5{background:var(--g-soft);}
+.ci-wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:start;margin-top:24px;}
+.cih{font-size:clamp(24px,3.2vw,44px);letter-spacing:-2px;margin-bottom:10px;color:var(--cobalt-deep);line-height:1.05;}
+.cih .lm{color:var(--cobalt);}
+.cidesc{font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:20px;}
+.dstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.ds{background:rgba(255,255,255,0.72);border:1px solid rgba(255,255,255,0.92);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(10px);}
+.ds-v{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt);margin-bottom:3px;}
+.ds-l{font-size:9px;color:var(--mid);line-height:1.4;}
+.cpows{display:flex;flex-direction:column;gap:9px;}
+.cpow{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,0.68);border:1px solid rgba(26,86,255,0.11);border-radius:12px;padding:13px;backdrop-filter:blur(10px);}
+.cpow-ico{font-size:16px;flex-shrink:0;}
+.cpow-t{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;margin-bottom:2px;color:var(--cobalt-deep);}
+.cpow-d{font-size:11px;color:var(--mid);line-height:1.55;}
+.ci-right{display:flex;flex-direction:column;gap:12px;}
+.friction-card{background:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.92);border-radius:17px;padding:22px;backdrop-filter:blur(16px);box-shadow:0 6px 24px rgba(26,86,255,0.06);}
+.fc-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--cobalt);margin-bottom:10px;font-weight:700;}
+.fc-title{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;margin-bottom:3px;color:var(--cobalt-deep);}
+.fc-sub{font-size:11px;color:var(--mid);margin-bottom:12px;}
+.qc-flow{display:flex;flex-direction:column;gap:8px;}
+.qcs{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--dark);}
+.qcs-n{width:20px;height:20px;border-radius:50%;background:var(--cobalt);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:white;flex-shrink:0;margin-top:1px;}
+.qcs-n.ok{background:var(--lime-deep);}
+.result-card{background:rgba(255,255,255,0.72);border:1px solid rgba(255,255,255,0.92);border-radius:14px;padding:18px;backdrop-filter:blur(10px);}
+.rc-h{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;margin-bottom:12px;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;}
+.ind-rows{display:flex;flex-direction:column;gap:8px;}
+.ir{display:flex;align-items:center;gap:9px;font-size:11px;}
+.ir-n{color:var(--mid);width:108px;flex-shrink:0;font-weight:600;font-size:10px;}
+.ir-bw{flex:1;height:5px;border-radius:100px;background:rgba(26,86,255,0.09);}
+.ir-b{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--cobalt),var(--lime-deep));}
+.ir-v{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cobalt);font-weight:700;width:52px;text-align:right;}
+.superside-note{background:linear-gradient(135deg,#EEF3FF,#F0FFC8);border:1px solid rgba(26,86,255,0.14);border-radius:12px;padding:14px 18px;}
+.superside-note p{font-size:11px;color:var(--dark);line-height:1.65;}
+.superside-note strong{color:var(--cobalt-deep);}
+
+/* ══ S6 CÓMO FUNCIONA ══ */
+#s6{background:var(--g-pastel);}
+.s6h{font-size:clamp(24px,3.4vw,48px);letter-spacing:-2px;margin-bottom:32px;color:var(--cobalt-deep);}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:start;margin-bottom:32px;}
+.fs{position:relative;text-align:center;padding:0 4px;}
+.fs:not(:last-child)::after{content:'';position:absolute;top:28px;right:-8%;width:16%;height:2px;background:linear-gradient(90deg,var(--cobalt),rgba(26,86,255,0.1));}
+.fs-ico{width:56px;height:56px;border-radius:14px;margin:0 auto 11px;display:flex;align-items:center;justify-content:center;font-size:21px;background:rgba(255,255,255,0.82);border:1px solid rgba(26,86,255,0.14);box-shadow:0 3px 10px rgba(26,86,255,0.07);}
+.fs h4{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;margin-bottom:4px;color:var(--cobalt-deep);}
+.fs p{font-size:10px;color:var(--mid);line-height:1.6;}
+.ftag{display:inline-block;margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--cobalt);letter-spacing:1px;background:var(--cobalt-tint);border-radius:4px;padding:2px 6px;font-weight:700;}
+.mcards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.mc{background:rgba(255,255,255,0.68);border:1px solid rgba(255,255,255,0.9);border-radius:14px;padding:18px;text-align:center;backdrop-filter:blur(10px);}
+.mc-v{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:30px;color:var(--cobalt);line-height:1;margin-bottom:5px;}
+.mc-l{font-size:10px;color:var(--mid);line-height:1.5;}
+
+/* ══ S7 CASO DE ÉXITO ══ */
+#s7{background:var(--white);}
+.s7-wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:24px;}
+.case-ctx{background:var(--cream);border:1px solid rgba(26,86,255,0.09);border-radius:16px;padding:22px;margin-bottom:12px;}
+.case-ctx h3{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:8px;color:var(--cobalt-deep);}
+.case-ctx p{font-size:12px;color:var(--mid);line-height:1.75;}
+.case-q{border-left:3px solid var(--cobalt);padding-left:14px;margin-top:12px;}
+.case-q p{font-style:italic;font-size:12px;color:var(--dark);line-height:1.7;}
+.chart-w{background:var(--cream);border:1px solid rgba(26,86,255,0.09);border-radius:14px;padding:18px;}
+.chart-w h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:12px;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;}
+.br{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.br-l{font-size:10px;color:var(--mid);width:50px;text-align:right;flex-shrink:0;font-weight:600;}
+.br-t{flex:1;height:6px;border-radius:100px;background:rgba(26,86,255,0.07);overflow:hidden;}
+.br-f{height:100%;border-radius:100px;transition:width 1.3s ease;}
+.br-v{font-family:'JetBrains Mono',monospace;font-size:10px;width:40px;flex-shrink:0;font-weight:700;}
+.kgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:12px;}
+.kpi{background:var(--cream);border:1px solid rgba(26,86,255,0.09);border-radius:13px;padding:18px;text-align:center;}
+.kpi.hl{background:linear-gradient(135deg,var(--cobalt-tint),#F0FFC8);border-color:rgba(26,86,255,0.2);}
+.kpi-v{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:32px;line-height:1;margin-bottom:4px;}
+.kpi.hl .kpi-v{color:var(--cobalt)}.kpi.ok .kpi-v{color:var(--cobalt-deep)}
+.kpi-l{font-size:10px;color:var(--mid);line-height:1.4;}
+.fin-strip{background:var(--cobalt-tint);border:1px solid rgba(26,86,255,0.14);border-radius:12px;padding:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.fsi-v{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt-deep);}
+.fsi-l{font-size:10px;color:var(--mid);margin-top:2px;}
+.nrr-note{margin-top:12px;background:rgba(26,86,255,0.05);border:1px solid rgba(26,86,255,0.12);border-radius:11px;padding:14px;}
+.nrr-note p{font-size:12px;color:var(--dark);line-height:1.65;}
+.nrr-note strong{color:var(--cobalt-deep);}
+
+/* ══ S8 UNIT ECONOMICS ══ */
+#s8{background:var(--g-lime);}
+.ue-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start;margin-top:24px;}
+.ue-sec{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;}
+.cr{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(26,86,255,0.07);}
+.cn{font-size:12px;color:var(--dark);font-weight:600;}
+.cn small{display:block;font-size:10px;color:var(--mid);margin-top:1px;font-weight:400;}
+.cv{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;}
+.cv.r{color:#DC2626}.cv.g{color:var(--cobalt)}.cv.b{color:var(--cobalt-deep)}
+.margin-visual{margin-top:16px;background:rgba(255,255,255,0.75);border:1px solid rgba(26,86,255,0.18);border-radius:14px;padding:18px;backdrop-filter:blur(10px);}
+.mv-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cobalt);letter-spacing:2px;margin-bottom:12px;font-weight:700;}
+.mv-bars{display:flex;flex-direction:column;gap:8px;}
+.mvb{display:flex;align-items:center;gap:10px;}
+.mvb-lbl{font-size:10px;color:var(--mid);width:44px;flex-shrink:0;font-weight:600;}
+.mvb-track{flex:1;height:22px;border-radius:7px;background:rgba(26,86,255,0.07);overflow:hidden;position:relative;}
+.mvb-fill{height:100%;border-radius:7px;display:flex;align-items:center;padding-left:8px;}
+.mvb-fill span{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:white;}
+.pm-insight{background:rgba(255,255,255,0.6);border:1px solid rgba(26,86,255,0.11);border-radius:11px;padding:13px;margin-top:10px;}
+.pm-insight p{font-size:11px;color:var(--dark);line-height:1.65;}
+.pm-insight strong{color:var(--cobalt);}
+.ue-right{display:flex;flex-direction:column;gap:14px;}
+.sc{background:rgba(255,255,255,0.72);border:1px solid rgba(255,255,255,0.92);border-radius:15px;padding:18px;backdrop-filter:blur(10px);}
+.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.sc-top h4{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;color:var(--cobalt-deep);}
+.scb{font-family:'JetBrains Mono',monospace;font-size:8px;padding:3px 8px;border-radius:100px;font-weight:700;}
+.scb.s{background:var(--cobalt-tint);color:var(--cobalt);}.scb.e{background:rgba(200,255,0,0.3);color:var(--lime-deep);}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.scg{text-align:center;}
+.scg-v{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--cobalt);}
+.scg-l{font-size:9px;color:var(--mid);margin-top:1px;}
+.proj-box{background:rgba(255,255,255,0.72);border:1px solid rgba(255,255,255,0.92);border-radius:14px;padding:18px;backdrop-filter:blur(10px);}
+.pbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cobalt);letter-spacing:2px;margin-bottom:12px;font-weight:700;}
+.proj-context{font-size:11px;color:var(--mid);margin-bottom:12px;line-height:1.5;}
+.prow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.pr{text-align:center;}
+.pr-v{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt-deep);}
+.pr-l{font-size:9px;color:var(--mid);margin-top:1px;}
+.pr.highlight .pr-v{color:var(--cobalt);}
+
+/* ══ S9 CITL WIN-WIN ══ */
+#s9{background:var(--g-cobalt);color:white;}
+.ww-layout{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:24px;}
+.ww-h{font-size:clamp(24px,3.4vw,48px);letter-spacing:-2px;margin-bottom:10px;color:white;line-height:1.05;}
+.ww-h span{color:var(--lime);}
+.ww-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:20px;}
+.ww-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--lime);text-transform:uppercase;margin-bottom:12px;display:block;}
+.freelance-pains{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+.fp{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:11px;padding:12px;}
+.fp-ico{font-size:15px;flex-shrink:0;}
+.fp-t{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.fp-t strong{color:white;}
+.internal-cost{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.13);border-radius:13px;padding:16px;}
+.ic-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,200,0,0.8);letter-spacing:2px;margin-bottom:10px;font-weight:700;}
+.ic-rows{display:flex;flex-direction:column;gap:7px;}
+.ic-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.ic-row:last-child{border:none;}
+.ic-name{color:rgba(255,255,255,0.65);}
+.ic-val{font-family:'JetBrains Mono',monospace;font-weight:700;}
+.ic-val.r{color:rgba(255,100,100,0.9);}
+.ic-val.g{color:var(--lime);}
+.ww-benefits{display:flex;flex-direction:column;gap:10px;}
+.wb{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:13px;padding:16px;display:flex;gap:12px;align-items:flex-start;}
+.wb-ico{width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.12);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.wb-t{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:white;margin-bottom:3px;}
+.wb-d{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.55;}
+.academy-band{background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.22);border-radius:13px;padding:16px 20px;margin-top:4px;display:flex;align-items:center;gap:16px;}
+.ab-ico{font-size:24px;flex-shrink:0;}
+.ab-t{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:white;margin-bottom:3px;}
+.ab-d{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5;}
+
+/* ══ S10 MERCADO ══ */
+#s10{background:var(--g-pastel);}
+.s10-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:24px;}
+.tams{display:flex;flex-direction:column;gap:11px;margin-bottom:16px;}
+.tami{border-radius:12px;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);}
+.tami.t{background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.82);}
+.tami.s{background:rgba(255,255,255,0.62);border:1px solid rgba(26,86,255,0.15);}
+.tami.m{background:rgba(255,255,255,0.78);border:1px solid rgba(26,86,255,0.25);}
+.tl{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--cobalt);letter-spacing:2px;margin-bottom:2px;font-weight:700;}
+.tn{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;color:var(--cobalt-deep);}
+.tv{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--cobalt);}
+.whys{display:flex;flex-direction:column;gap:11px;}
+.why{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.88);border-radius:12px;padding:13px;backdrop-filter:blur(8px);}
+.why-ico{font-size:18px;flex-shrink:0;}
+.why-t{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;margin-bottom:2px;color:var(--cobalt-deep);}
+.why-d{font-size:11px;color:var(--mid);line-height:1.6;}
+.ss-note{background:rgba(255,255,255,0.72);border:1px solid rgba(26,86,255,0.16);border-radius:12px;padding:14px;margin-top:12px;backdrop-filter:blur(10px);}
+.ss-note p{font-size:11px;color:var(--dark);line-height:1.7;}
+.ss-note strong{color:var(--cobalt-deep);}
+
+/* ══ S11 TRACCIÓN ══ */
+#s11{background:var(--white);}
+.s11-wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:24px;}
+.s11h3{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;}
+.cpills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px;}
+.cpill{padding:7px 14px;border-radius:100px;font-size:11px;font-family:'Montserrat',sans-serif;font-weight:700;}
+.cpill.a{background:var(--cobalt-tint);border:1px solid rgba(26,86,255,0.2);color:var(--cobalt-deep);}
+.cpill.p{background:rgba(200,255,0,0.18);border:1px solid rgba(140,184,0,0.28);color:var(--lime-deep);}
+.plabel{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cobalt);letter-spacing:2px;margin-bottom:7px;font-weight:700;}
+.wnows{display:flex;flex-direction:column;gap:9px;margin-top:4px;}
+.wn{display:flex;gap:10px;align-items:flex-start;background:var(--cream);border:1px solid rgba(26,86,255,0.09);border-radius:11px;padding:12px;}
+.wn-ico{width:28px;height:28px;border-radius:7px;background:var(--cobalt-tint);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.wn-t{font-size:11px;color:var(--dark);line-height:1.55;}
+.wn-t strong{color:var(--cobalt-deep);}
+.tc{background:var(--cream);border:1px solid rgba(26,86,255,0.09);border-radius:15px;padding:20px;display:flex;gap:14px;align-items:flex-start;margin-bottom:12px;}
+.tc-av{width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,var(--cobalt),#7C3AED);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.tc-name{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;margin-bottom:2px;color:var(--cobalt-deep);}
+.tc-role{font-size:10px;color:var(--cobalt);font-weight:700;margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase;}
+.tc-bio{font-size:11px;color:var(--mid);line-height:1.65;}
+.citl-band{background:linear-gradient(135deg,var(--cobalt-tint),#F0FFC8);border:1px solid rgba(26,86,255,0.16);border-radius:13px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.citl-band h4{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--cobalt-deep);}
+.citl-band p{font-size:11px;color:var(--mid);margin-top:2px;}
+.cs{display:flex;gap:22px;}
+.cs-v{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt);}
+.cs-l{font-size:9px;color:var(--mid);margin-top:1px;}
+
+/* ══ S12 CIERRE ══ */
+#s12{background:var(--g-hero);align-items:center;text-align:center;}
+.close-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,4.8vw,70px);letter-spacing:-3px;margin-bottom:12px;line-height:.95;color:var(--cobalt-deep);}
+.close-h span{color:var(--cobalt);}
+.close-sub{font-size:15px;color:var(--dark);opacity:.62;margin-bottom:36px;line-height:1.78;max-width:500px;}
+.close-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:700px;margin:0 auto 36px;}
+.cstat{background:rgba(255,255,255,0.68);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.92);border-radius:14px;padding:20px;}
+.cstat-v{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:26px;color:var(--cobalt);margin-bottom:6px;}
+.cstat-l{font-size:11px;color:var(--mid);line-height:1.5;}
+.contact-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cbtn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:100px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;text-decoration:none;transition:.25s;}
+.cbtn.pri{background:var(--cobalt);color:#fff;}
+.cbtn.pri:hover{background:var(--cobalt-deep);}
+.cbtn.sec{background:rgba(255,255,255,0.78);border:1px solid rgba(255,255,255,0.92);color:var(--cobalt-deep);backdrop-filter:blur(10px);}
+.url-line{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mid);letter-spacing:1px;}
+.url-line span{color:var(--cobalt);}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .logo-svg{height:20px;}
+  .nctr{display:none;}
+  section{padding:76px 20px 52px;min-height:100svh;}
+  html{scroll-snap-type:y mandatory;}
+  .bigh,.s4h,.co-h,.cih,.ww-h,.s6h,.close-h{letter-spacing:-1.5px;}
+  .h3nums{flex-direction:column;gap:8px;width:100%;max-width:360px;}
+  .hn{padding:12px 18px;}
+  .hn-v{font-size:26px;}
+  .co-layout,.twocol,.s3-layout,.ci-wrap,.s7-wrap,.ue-wrap,.ww-layout,.s10-wrap,.s11-wrap{grid-template-columns:1fr;gap:24px;}
+  .co-cols,.pillars3{grid-template-columns:1fr;gap:10px;}
+  .flow{grid-template-columns:1fr 1fr;gap:12px;}
+  .fs:not(:last-child)::after{display:none;}
+  .fs-ico{width:48px;height:48px;font-size:18px;}
+  .mcards{grid-template-columns:1fr 1fr;gap:10px;}
+  .kgrid{grid-template-columns:1fr 1fr;gap:10px;}
+  .sc-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .ai-strip{flex-direction:column;gap:16px;}
+  .citl-band{flex-direction:column;gap:12px;}
+  .cs{gap:16px;}
+  .close-stats{grid-template-columns:1fr 1fr;max-width:100%;}
+  .contact-row{flex-direction:column;align-items:stretch;}
+  .cbtn{justify-content:center;}
+  .dstats{grid-template-columns:repeat(3,1fr);}
+  .fin-strip{gap:10px;}
+  .tami{flex-direction:column;align-items:flex-start;gap:4px;}
+  .sn{display:none;}
+  .expertise-tags{gap:5px;}
+  .freelance-pains{gap:8px;}
+  .ww-benefits{gap:8px;}
+  .url-line{font-size:10px;}
+}
+@media(max-width:480px){
+  section{padding:72px 16px 44px;}
+  .hero-h{font-size:26px!important;letter-spacing:-1px!important;}
+  .hero-sub{font-size:13px;}
+  .h3nums{max-width:100%;}
+  .hn-v{font-size:22px;}
+  .flow{grid-template-columns:1fr;}
+  .mcards{grid-template-columns:1fr 1fr;}
+  .kgrid{grid-template-columns:1fr 1fr;}
+  .close-stats{grid-template-columns:1fr;}
+  .co-cols{grid-template-columns:1fr;}
+  .dstats{grid-template-columns:1fr 1fr 1fr;}
+  .cbtn{font-size:12px;padding:12px 18px;}
+  .cs{gap:12px;flex-wrap:wrap;}
+  .fin-strip{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ EMAIL GATE ══ -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:var(--g-hero);display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div style="max-width:480px;width:100%;text-align:center;">
+    <svg style="height:60px;width:auto;margin-bottom:36px;" xmlns="http://www.w3.org/2000/svg" viewBox="209 402 665 245"><defs><style>.gl{fill:#1A56FF;}</style></defs><rect class="gl" x="525.84" y="549.52" width="33.58" height="82.76"/><rect class="gl" x="525.84" y="508.85" width="33.58" height="24.88"/><path class="gl" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/><path class="gl" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/><path class="gl" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/></svg>
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--cobalt);margin-bottom:16px;font-weight:700;">AI DESIGN. HUMAN POWERED.</div>
+
+    <h1 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,5vw,42px);letter-spacing:-2px;color:var(--cobalt-deep);line-height:1.05;margin-bottom:12px;">
+      The future of creative ops<br>is waiting for you.
+    </h1>
+    <p style="font-size:14px;color:var(--mid);line-height:1.75;margin-bottom:32px;">
+      Enter your email to access the UpPipe deck — how AI Design meets Human expertise to transform creative production.
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <input id="gateEmail" type="email" placeholder="your@email.com" style="width:100%;padding:16px 20px;border-radius:100px;border:1.5px solid rgba(26,86,255,0.25);font-family:'Montserrat',sans-serif;font-size:14px;color:var(--dark);background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);outline:none;text-align:center;" />
+      <button onclick="submitGate()" style="width:100%;padding:16px 20px;border-radius:100px;background:var(--cobalt);color:white;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;border:none;cursor:pointer;letter-spacing:-0.3px;transition:.2s;">
+        See the deck →
+      </button>
+    </div>
+    <p style="font-size:10px;color:var(--lt);margin-top:16px;font-family:'JetBrains Mono',monospace;">Confidential. For authorized recipients only.</p>
+  </div>
+</div>
+
+<script>
+function submitGate(){
+  const email = document.getElementById('gateEmail').value.trim();
+  if(!email || !email.includes('@')){
+    document.getElementById('gateEmail').style.borderColor='#DC2626';
+    return;
+  }
+  // Submit to HubSpot
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/50708869/d37744bd-e923-4cb9-ac4e-f613894649dc',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      fields:[{name:'email',value:email}],
+      context:{pageUri:window.location.href,pageName:'UpPipe Deck - Endeavour'}
+    })
+  }).catch(()=>{});
+  // Hide gate
+  document.getElementById('gate').style.opacity='0';
+  document.getElementById('gate').style.transition='opacity 0.5s';
+  setTimeout(()=>document.getElementById('gate').style.display='none',500);
+}
+document.getElementById('gateEmail').addEventListener('keydown',e=>{if(e.key==='Enter')submitGate();});
+</script>
+
+<nav>
+  <div class="nav-inner">
+    <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="209 402 665 240" style="height:38px;width:auto;"><defs><style>.cls-1{fill:#c8ff00;}</style></defs><rect class="cls-1" x="525.84" y="549.52" width="33.58" height="82.76"/><rect class="cls-1" x="525.84" y="508.85" width="33.58" height="24.88"/><path class="cls-1" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/><path class="cls-1" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="cls-1" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/><path class="cls-1" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/><path class="cls-1" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/></svg>
+    <div class="nav-right">
+      <div class="ndots" id="ndots"></div>
+      <div class="nctr" id="nctr">01 / 13</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ S1 COVER ══ -->
+<section id="s1" style="background:var(--g-hero);">
+<video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;z-index:0;mix-blend-mode:luminosity;" src="/mnt/user-data/uploads/freepik_latina-graphic-designer-sitting-at-a-pink-imac-des_minimax_768p_16-9_24fps_97467.mp4"></video>
+<div class="sn" style="z-index:2;">01</div>
+<div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;">
+  <div class="pill"><span class="blink"></span>AI DESIGN. HUMAN POWERED.</div>
+  <h1 class="hero-h">
+    Marketing que crece necesita<br>producción creativa que<br>no lo <span class="acc">frene ni lo quiebre</span>.
+  </h1>
+  <p class="hero-sub">UpPipe es CreativeOps Infrastructure — la primera plataforma donde un Senior Creative In The Loop opera la AI con criterio de marca. No es DIY. Es tener un experto al frente de la operación creativa de tu empresa.</p>
+  <div class="h3nums">
+    <div class="hn glass"><div class="hn-v">83%</div><div class="hn-l">Ahorro vs. equipo in-house</div></div>
+    <div class="hn glass"><div class="hn-v">3.2×</div><div class="hn-l">Más producción. Mismo costo.</div></div>
+    <div class="hn glass"><div class="hn-v">24h</div><div class="hn-l">Turnaround promedio</div></div>
+    <div class="hn glass"><div class="hn-v">92%</div><div class="hn-l">First Time Right</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ══ S2 QUÉ ES CREATIVEOPS ══ -->
+<section id="s2">
+<div class="sn">02</div>
+<div class="tag fi">Metodología</div>
+<div class="co-layout">
+  <div class="fi d1">
+    <h2 class="co-h">¿Qué es <span style="color:var(--cobalt);">CreativeOps</span>?</h2>
+    <p class="co-p">Es la aplicación de principios operativos a la producción creativa. Pasar del "diseño como arte sin métricas" al "diseño como sistema predecible". UpPipe es la primera plataforma de CreativeOps en LATAM.</p>
+    <div class="co-cols">
+      <div class="co-col"><div class="co-ico">🏗️</div><h4>Tecnología</h4><p>Plataforma AI centralizada para briefing, routing, aprobación y reportes en tiempo real.</p><ul><li>Brief asertivo con AI</li><li>Workflow automatizado</li><li>Cloud integrado</li></ul></div>
+      <div class="co-col"><div class="co-ico">🧠</div><h4>CITL Network</h4><p>Senior creatives entrenados en AI. No juniors. No outputs de máquina sin criterio estratégico.</p><ul><li>Top 1% verificado</li><li>Elástico on-demand</li><li>Sin nómina fija</li></ul></div>
+      <div class="co-col"><div class="co-ico">📊</div><h4>Brand Intelligence</h4><p>Datos propietarios que predicen horas, optimizan el pipeline y mantienen la inteligencia de marca activa.</p><ul><li>FTR, RR, ROA en vivo</li><li>Benchmarks por industria</li><li>Auto-optimización</li></ul></div>
+    </div>
+    <div class="notus" style="margin-top:16px;">
+      <div class="notus-item"><span class="x">✕</span> No es una agencia tradicional</div>
+      <div class="notus-item"><span class="x">✕</span> No es un marketplace de freelancers</div>
+      <div class="notus-item"><span class="x">✕</span> No es software de AI DIY</div>
+      <div class="notus-item" style="margin-top:6px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);border-radius:8px;padding:8px 12px;"><span class="ok">✓</span> <strong style="color:var(--cobalt-deep);">AI Design. Human Powered.</strong> — Un Senior CITL al frente de la operación creativa, potenciado con AI.</div>
+    </div>
+  </div>
+  <div class="co-vs fi d2">
+    <div class="vs-card bad">
+      <div class="vs-lbl">SIN CREATIVEOPS</div>
+      <div class="vs-title" style="color:#DC2626;">Marketing bloqueado</div>
+      <div class="vs-metrics">
+        <div class="vm"><div class="vm-v">10d</div><div class="vm-l">Tiempo por pieza</div></div>
+        <div class="vm"><div class="vm-v">40%</div><div class="vm-l">FTR promedio</div></div>
+        <div class="vm"><div class="vm-v">50%</div><div class="vm-l">Budget en re-trabajo</div></div>
+      </div>
+    </div>
+    <div class="vs-mid">↓ La transformación</div>
+    <div class="vs-card good">
+      <div class="vs-lbl">CON UPPIPE CREATIVEOPS</div>
+      <div class="vs-title" style="color:var(--cobalt-deep);">Marketing que ejecuta</div>
+      <div class="vs-metrics">
+        <div class="vm"><div class="vm-v">24h</div><div class="vm-l">Turnaround</div></div>
+        <div class="vm"><div class="vm-v">92%</div><div class="vm-l">FTR real</div></div>
+        <div class="vm"><div class="vm-v">$0</div><div class="vm-l">Overhead fijo</div></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:14px;background:rgba(26,86,255,0.05);border-radius:11px;border:1px solid rgba(26,86,255,0.1);font-size:12px;color:var(--dark);line-height:1.7;">
+      UpPipe trabaja <strong style="color:var(--cobalt-deep);">junto a los softwares AI especializados</strong> (Midjourney, Firefly, Runway…) — no los reemplaza. El senior creative usa las mejores herramientas disponibles dentro del sistema operativo de UpPipe.
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ S3 EL PROBLEMA ══ -->
+<section id="s3">
+<div class="sn">03</div>
+<div class="tag fi">El Problema</div>
+<div class="s3-layout">
+  <div class="fi d1">
+    <h2 class="bigh">La producción creativa de marketing está <span class="rd">estructuralmente rota</span>.</h2>
+    <p class="subp">Toda empresa de marketing enfrenta la misma trampa: la demanda creativa es variable, los costos son fijos y el talento disponible nunca es el que se necesita en el momento exacto.</p>
+    <div class="pains">
+      <div class="pain"><div class="pain-i">⚡</div><div><div class="pain-t">Picos y valles con costo fijo</div><div class="pain-d">Nómina fija o retainer mensual pagado igual en campañas peak que en silencio total. Capacidad saturada en Q2/Q4, equipo sobrando en febrero.</div></div></div>
+      <div class="pain"><div class="pain-i">🎲</div><div><div class="pain-t">Freelance: sin ancho de banda ni estructura</div><div class="pain-d">Sin briefing asertivo, sin métricas, sin consistencia de marca. No escalan. Cuando más los necesitas, no están disponibles o entregan mal.</div></div></div>
+      <div class="pain"><div class="pain-i">🔒</div><div><div class="pain-t">Agencias: lentas y con estructura de costo robusta</div><div class="pain-d">7–10 días por asset. Retainers desde $15M COP. Cero visibilidad del pipeline. No pueden hacerse eficientes — su modelo de costos no lo permite.</div></div></div>
+      <div class="pain"><div class="pain-i">🧩</div><div><div class="pain-t">El cuello de botella no es solo de manos — es de expertise</div><div class="pain-d">Si contratan un diseñador "se quedan" con ese perfil. Cuando llega un proyecto de motion, packaging o 3D — no hay quién. El talento fijo no cubre toda la diversidad que el marketing requiere.</div></div></div>
+      <div class="pain" style="background:rgba(255,255,255,0.82);border:1px solid rgba(26,86,255,0.18);"><div class="pain-i" style="background:rgba(26,86,255,0.1);">⚠️</div><div><div class="pain-t" style="color:var(--cobalt-deep);">El nuevo riesgo: el consumidor ya rechaza el contenido AI sin criterio</div><div class="pain-d">Las marcas que producen con AI sin supervisión senior generan contenido genérico, vago y sin soul. Los consumidores lo detectan — y lo asocian directamente a la marca. El daño no es solo estético: es reputacional. La AI sin criterio humano destruye lo que tardó años en construirse.</div></div></div>
+    </div>
+  </div>
+  <div class="fi d2">
+    <div class="expertise-box" style="margin-bottom:14px;">
+      <div class="eb-label">POR QUÉ NO PUEDEN CONTRATAR SOLO SENIOR TALENT</div>
+      <div class="eb-title">El senior in-house cuesta 3–4× más y no abarca todo</div>
+      <div class="expertise-tags">
+        <span class="etag">Branding</span>
+        <span class="etag">Motion</span>
+        <span class="etag">3D / CGI</span>
+        <span class="etag">Social</span>
+        <span class="etag">Packaging</span>
+        <span class="etag">UI / In-App</span>
+        <span class="etag grey">$7–12M COP/mes c/u</span>
+        <span class="etag grey">+ prestaciones</span>
+        <span class="etag grey">+ pasivos laborales</span>
+      </div>
+      <div class="eb-insight">Terminan con un equipo de juniors que genera re-trabajo constante, o con un senior que solo domina un perfil. Nunca tienen todo el expertise que el marketing requiere — y cuando llegan picos de campaña, la operación colapsa.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.68);border:1px solid rgba(26,86,255,0.12);border-radius:15px;padding:22px;backdrop-filter:blur(10px);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cobalt);letter-spacing:2px;margin-bottom:14px;font-weight:700;">EL MERCADO AFECTADO — COLOMBIA + MX</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(26,86,255,0.08);">
+          <span style="font-size:12px;color:var(--dark);font-weight:600;">Empresas activas registradas en Colombia <span style="font-weight:400;color:var(--mid);">¹</span></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cobalt);font-weight:700;">1.74M</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(26,86,255,0.08);">
+          <span style="font-size:12px;color:var(--dark);font-weight:600;">Inversión VC en startups LATAM (2024) <span style="font-weight:400;color:var(--mid);">²</span></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cobalt);font-weight:700;">$4.2B USD</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(26,86,255,0.08);">
+          <span style="font-size:12px;color:var(--dark);font-weight:600;">Empresas colombianas con equipo mkt est. <span style="font-weight:400;color:var(--mid);">³</span></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cobalt);font-weight:700;">~25,000</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;">
+          <span style="font-size:12px;color:var(--dark);font-weight:600;">% presupuesto creativo perdido en re-trabajo <span style="font-weight:400;color:var(--mid);">⁴</span></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#6B7A9F;">hasta 50%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="position:absolute;bottom:14px;left:80px;right:80px;font-size:9px;color:rgba(107,122,159,0.65);font-family:'JetBrains Mono',monospace;line-height:1.6;">
+  ¹ Confecámaras / RUES — Dinámica de Creación de Empresas Colombia 2024 &nbsp;·&nbsp; ² Crunchbase / LAVCA — Latin America Venture Report 2024 &nbsp;·&nbsp; ³ Estimación propia: ~1.5% del total de empresas activas con más de 10 empleados y presencia digital activa (RUES 2024) &nbsp;·&nbsp; ⁴ Estimación basada en datos operativos internos de Brandnew Studio / UpPipe (2019–2025)
+</div>
+</section>
+
+<!-- ══ S4 SOLUCIÓN ══ -->
+<section id="s4">
+<div class="sn">04</div>
+<div class="tag fi">La Solución</div>
+<h2 class="s4h fi d1">UpPipe: el <span>sistema operativo</span><br>de la producción creativa.</h2>
+<p class="s4sub fi d2">Tres capas integradas que convierten la producción creativa de un equipo de marketing en una operación medible, escalable y predecible. Sin agencia. Sin freelancers. Sin sorpresas.</p>
+<div class="ai-strip fi d2" style="background:linear-gradient(135deg,#0A0C1C,#0D1A30);border:1px solid rgba(200,255,0,0.15);">
+  <div class="ai-strip-text">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--lime);letter-spacing:3px;margin-bottom:10px;font-weight:700;">EL POSICIONAMIENTO</div>
+    <h4 style="font-size:20px;margin-bottom:8px;">AI Design. <span style="color:var(--lime);">Human Powered.</span></h4>
+    <p>No es DIY. No es un software que "promete" outputs on-brand. Es tener un <strong style="color:var(--lime);">Senior Creative In The Loop</strong> al frente de la operación creativa de la empresa — operando la AI con criterio de marca, estrategia y contexto real. La AI no reemplaza al senior. El senior le da forma, criterio y control a la AI para que los outputs realmente funcionen para la marca.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;flex-shrink:0;">
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 18px;text-align:center;min-width:130px;">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:rgba(255,255,255,0.3);margin-bottom:4px;">AI sola</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.2);">Rápida. Genérica.<br>Sin criterio de marca.</div>
+    </div>
+    <div style="background:rgba(200,255,0,0.1);border:1px solid rgba(200,255,0,0.3);border-radius:12px;padding:14px 18px;text-align:center;">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--lime);margin-bottom:4px;">CITL + AI</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.65);">Asertiva. On-brand.<br>Estratégica. Medible.</div>
+    </div>
+  </div>
+</div>
+<div class="pillars3 fi d3">
+  <div class="pillar"><div class="pnum">01</div><div class="pico">🧠</div><h3>CITL Network</h3><p>Senior creatives con acceso al historial completo de marca — ajustes, audiencias, proyectos, tipos de pieza. No empiezan de cero cada vez.</p><ul><li>Top 1% verificado LATAM</li><li>Elástico on-demand</li><li>Sin pasivos laborales</li><li>Conectados al Brand Intelligence</li><li>UpPipe Academy (capacitación continua)</li></ul></div>
+  <div class="pillar"><div class="pnum">02</div><div class="pico">⚡</div><h3>Plataforma AI</h3><p>Brief Intelligence, Client Board, Asset Approval con anotaciones on-asset, reportes automáticos. La operación completa visible en tiempo real.</p><ul><li>Brief estructurado con AI</li><li>Kanban en vivo</li><li>Ajustes directos sobre el asset</li><li>Cloud integration automática</li><li>Créditos AI incluidos</li></ul></div>
+  <div class="pillar"><div class="pnum">03</div><div class="pico">📊</div><h3>Brand Intelligence</h3><p>El cerebro propietario de UpPipe. 82,000+ data points reales. Predice horas, detecta scope creep y mantiene activa la inteligencia de marca del cliente.</p><ul><li>FTR, RR, ROA, Lead Time en vivo</li><li>Benchmarks por industria</li><li>Historial de brand, ajustes, audiencias</li><li>Auto-reportes semanales</li></ul></div>
+</div>
+<div class="pstrip fi d4">
+  <div class="ps-i">Brief Intelligence AI</div>
+  <div class="ps-i">Client Board Kanban</div>
+  <div class="ps-i">Asset Approval on-asset</div>
+  <div class="ps-i">Métricas tiempo real</div>
+  <div class="ps-i">Brand Intelligence</div>
+  <div class="ps-i">UpPipe Academy</div>
+  <div class="ps-i">Créditos AI incluidos</div>
+</div>
+</section>
+
+<!-- ══ S5 BRAND INTELLIGENCE — CERO FRICCIÓN ══ -->
+<section id="s5">
+<div class="sn">05</div>
+<div class="tag fi">Ventaja Competitiva</div>
+<div class="ci-wrap">
+  <div class="fi d1">
+    <h2 class="cih">El gancho que cierra ventas:<br><span class="lm">visibilidad desde el primer pitch.</span></h2>
+    <p class="cidesc">El mayor bloqueo en la venta era convertir "producción creativa sin cuantificar" en una suscripción de horas concreta. Brand Intelligence lo resuelve en 2 minutos — y el cliente ya empieza a ver su operación antes de firmar.</p>
+    <div class="dstats">
+      <div class="ds"><div class="ds-v">82K+</div><div class="ds-l">Data points reales de producción</div></div>
+      <div class="ds"><div class="ds-v">15+ años</div><div class="ds-l">Historia operativa propietaria</div></div>
+      <div class="ds"><div class="ds-v">6</div><div class="ds-l">Industrias modeladas con precisión</div></div>
+    </div>
+    <div class="cpows">
+      <div class="cpow"><div class="cpow-ico">🔮</div><div><div class="cpow-t">Cotización de horas en 2 minutos</div><div class="cpow-d">4 preguntas. El modelo predice cuántas horas mensuales necesita el cliente según industria, tamaño y ritmo de producción. De "no sé cuánto necesito" a plan concreto antes de cerrar.</div></div></div>
+      <div class="cpow"><div class="cpow-ico">🧬</div><div><div class="cpow-t">Memoria activa de marca por cliente</div><div class="cpow-d">Historial de ajustes, audiencias actualizadas, nuevos mercados, tipos de pieza, perfiles de contenido. El CITL no empieza de cero — empieza con contexto completo.</div></div></div>
+      <div class="cpow"><div class="cpow-ico">📐</div><div><div class="cpow-t">Benchmarks reales por industria</div><div class="cpow-d">Tech, F&B, Real Estate, Retail, Agencia — cada industria tiene patrones distintos de demanda, rush rate y revisiones. UpPipe los conoce con precisión milimétrica porque los vivió.</div></div></div>
+    </div>
+  </div>
+  <div class="ci-right fi d2">
+    <div class="friction-card">
+      <div class="fc-label">EL MOMENTO QUE CAMBIA LA VENTA</div>
+      <div class="fc-title">El cliente no sabe cuántas horas necesita.</div>
+      <div class="fc-sub">Ningún competidor resuelve esto. UpPipe sí.</div>
+      <div class="qc-flow">
+        <div class="qcs"><div class="qcs-n">1</div>Selecciona su industria</div>
+        <div class="qcs"><div class="qcs-n">2</div>Indica su ritmo de producción mensual</div>
+        <div class="qcs"><div class="qcs-n">3</div>Describe su situación actual (in-house, agencia, freelance)</div>
+        <div class="qcs"><div class="qcs-n ok">✓</div><strong style="color:var(--cobalt-deep);">En 2 minutos: horas recomendadas, benchmark de industria, estimado de piezas/mes y plan sugerido. El cliente ya ve su operación.</strong></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="rc-h">Horas promedio mensual estimadas por industria</div>
+      <div class="ind-rows">
+        <div class="ir"><span class="ir-n">Tech / SaaS</span><div class="ir-bw"><div class="ir-b" style="width:84%"></div></div><span class="ir-v">~68h/mes</span></div>
+        <div class="ir"><span class="ir-n">Retail / E-comm</span><div class="ir-bw"><div class="ir-b" style="width:100%"></div></div><span class="ir-v">~82h/mes</span></div>
+        <div class="ir"><span class="ir-n">Real Estate</span><div class="ir-bw"><div class="ir-b" style="width:71%"></div></div><span class="ir-v">~58h/mes</span></div>
+        <div class="ir"><span class="ir-n">Food & Beverage</span><div class="ir-bw"><div class="ir-b" style="width:77%"></div></div><span class="ir-v">~63h/mes</span></div>
+        <div class="ir"><span class="ir-n">Agencia / B2B</span><div class="ir-bw"><div class="ir-b" style="width:59%"></div></div><span class="ir-v">~48h/mes</span></div>
+      </div>
+    </div>
+    <div class="superside-note">
+      <p><strong>Superside factura $44.9M USD/año (2024)</strong> con el mismo modelo atacando enterprise en USA — con $35M levantados en funding. Acaban de lanzar "Superspace" (brand brain) como producto separado. <strong>Brand Intelligence ya está integrado, operativo y entrenado con datos reales de LATAM.</strong> Ellos van por arriba. Nosotros somos dueños de LATAM y subimos.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ S6 CÓMO FUNCIONA ══ -->
+<section id="s6">
+<div class="sn">06</div>
+<div class="tag fi">Cómo Funciona</div>
+<h2 class="s6h fi d1">Del brief al asset aprobado.<br>En 24 horas. Con datos que mejoran solos.</h2>
+<div class="flow fi d2">
+  <div class="fs"><div class="fs-ico">📝</div><h4>Brief AI</h4><p>El cliente describe. La AI estructura, detecta vacíos, aplica contexto del Brand Intelligence.</p><div class="ftag">BRIEF INTELLIGENCE</div></div>
+  <div class="fs"><div class="fs-ico">🎯</div><h4>Asignación</h4><p>El PM asigna al creative ideal según tipo de pieza y performance histórico del CITL.</p><div class="ftag">WORK MODULE</div></div>
+  <div class="fs"><div class="fs-ico">🎨</div><h4>Producción</h4><p>El creative ejecuta con AI especializada dentro de los guardarraíles de marca activos.</p><div class="ftag">CITL EXECUTION</div></div>
+  <div class="fs"><div class="fs-ico">✅</div><h4>Revisión</h4><p>El cliente anota directamente sobre el asset. Sin emails. Sin pérdida de contexto.</p><div class="ftag">ASSET APPROVAL</div></div>
+  <div class="fs"><div class="fs-ico">📈</div><h4>Inteligencia</h4><p>Cada ciclo actualiza el Brand Intelligence. El sistema mejora solo.</p><div class="ftag">BRAND INTEL</div></div>
+</div>
+<div class="mcards fi d3">
+  <div class="mc"><div class="mc-v">24h</div><div class="mc-l">Turnaround promedio por asset</div></div>
+  <div class="mc"><div class="mc-v">92%</div><div class="mc-l">First Time Right (dashboard real)</div></div>
+  <div class="mc"><div class="mc-v">0.54</div><div class="mc-l">Rounds of Amends (avg industria: 3.5)</div></div>
+  <div class="mc"><div class="mc-v">$14.7</div><div class="mc-l">Costo promedio por asset (USD)</div></div>
+</div>
+</section>
+
+<!-- ══ S6B CREATIVE INTELLIGENCE DASHBOARD ══ -->
+<section id="s6b" style="background:var(--g-cobalt);">
+<div class="sn" style="color:rgba(255,255,255,0.15);">06</div>
+<div class="tag fi" style="color:var(--lime);">Creative Intelligence Dashboard</div>
+<h2 class="fi d1" style="font-size:clamp(22px,3.2vw,46px);letter-spacing:-2px;margin-bottom:8px;color:white;line-height:1.05;">Lo que ninguna agencia ni freelance<br>te puede mostrar: <span style="color:var(--lime);">tus propios datos.</span></h2>
+<p class="fi d2" style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:28px;max-width:680px;line-height:1.7;">El dashboard de Creative Intelligence muestra en tiempo real el rendimiento completo de tu operación creativa — por categoría, por tipo de pieza, por área, por requester. Y lo más poderoso: ves cómo mejoras a través del tiempo.</p>
+
+<div class="fi d2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;">
+
+  <!-- CALIDAD -->
+  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:8px;background:rgba(200,255,0,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;">⭐</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--lime);">Calidad</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:4px;">FTR — FIRST TIME RIGHT</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:white;">58%</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Piezas aprobadas sin revisión</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:4px;">ROA — ROUNDS OF AMENDS</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:white;">0.54</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">vs avg industria 3.5 rondas</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:4px;">RR — REWORK RATE</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:white;">8%</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Piezas que requieren reproceso</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIEMPO -->
+  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:8px;background:rgba(26,86,255,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;">⚡</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#7BA7FF;">Velocidad</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:4px;">LEAD TIME</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:white;">3.2d</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Promedio solicitud → entrega final</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:4px;">AVG TIME / ASSET</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:white;">22.7m</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Tiempo promedio de producción</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:4px;">ON-TIME DELIVERY</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:white;">98%</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Entregas dentro del SLA</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CANTIDAD -->
+  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,140,0,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;">📦</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#FFB347;">Cantidad</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:2px;">VOLUMEN POR TIPO DE PIEZA</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;color:rgba(255,255,255,0.55);width:90px;flex-shrink:0;">Social Media</span><div style="flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.08);"><div style="width:85%;height:100%;border-radius:3px;background:#FFB347;"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FFB347;width:32px;text-align:right;">342</span></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;color:rgba(255,255,255,0.55);width:90px;flex-shrink:0;">Ads / Display</span><div style="flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.08);"><div style="width:62%;height:100%;border-radius:3px;background:#FFB347;"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FFB347;width:32px;text-align:right;">248</span></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;color:rgba(255,255,255,0.55);width:90px;flex-shrink:0;">Email / Newsletter</span><div style="flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.08);"><div style="width:38%;height:100%;border-radius:3px;background:#FFB347;"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FFB347;width:32px;text-align:right;">152</span></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;color:rgba(255,255,255,0.55);width:90px;flex-shrink:0;">Key Visual</span><div style="flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.08);"><div style="width:24%;height:100%;border-radius:3px;background:#FFB347;"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FFB347;width:32px;text-align:right;">96</span></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;color:rgba(255,255,255,0.55);width:90px;flex-shrink:0;">Motion / Video</span><div style="flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.08);"><div style="width:18%;height:100%;border-radius:3px;background:#FFB347;"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FFB347;width:32px;text-align:right;">72</span></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;color:rgba(255,255,255,0.55);width:90px;flex-shrink:0;">Print / OOH</span><div style="flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.08);"><div style="width:12%;height:100%;border-radius:3px;background:#FFB347;"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FFB347;width:32px;text-align:right;">48</span></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:10px;margin-top:4px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:white;">958</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);">Total assets este período</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COSTO -->
+  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:8px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;">💰</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#34D399;">Costo</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:6px;">COSTO POR TIPO</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:10px;color:rgba(255,255,255,0.5);">Por asset</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#34D399;font-weight:700;">$14.7 USD</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:10px;color:rgba(255,255,255,0.5);">Por request</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#34D399;font-weight:700;">$98 USD</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:rgba(255,255,255,0.5);">Por hora</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#34D399;font-weight:700;">$36 USD</span></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:6px;">COSTO POR ÁREA</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:10px;color:rgba(255,255,255,0.5);">Performance Mkt</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#34D399;font-weight:700;">42%</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:10px;color:rgba(255,255,255,0.5);">Brand / Content</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#34D399;font-weight:700;">35%</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:rgba(255,255,255,0.5);">Producto / UX</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#34D399;font-weight:700;">23%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEMPORAL VIEW -->
+<div class="fi d3" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,255,0,0.2);border-radius:16px;padding:20px 28px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--lime);letter-spacing:2px;margin-bottom:4px;">EVOLUCIÓN EN EL TIEMPO</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:white;">Así ves cómo ganas eficiencia y ahorro mes a mes.</div>
+    </div>
+    <div style="display:flex;gap:16px;">
+      <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--lime);">83%</div><div style="font-size:10px;color:rgba(255,255,255,0.4);">Reducción de costo</div></div>
+      <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:#7BA7FF;">+34pts</div><div style="font-size:10px;color:rgba(255,255,255,0.4);">FTR en 6 meses</div></div>
+      <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:#FFB347;">3.2×</div><div style="font-size:10px;color:rgba(255,255,255,0.4);">Volumen producido</div></div>
+    </div>
+  </div>
+  <!-- TEMPORAL VIEW - dual axis canvas chart -->
+<div class="fi d3" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,255,0,0.2);border-radius:16px;padding:20px 28px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--lime);letter-spacing:2px;margin-bottom:4px;">EVOLUCIÓN EN EL TIEMPO — CLIENTE REAL · 13 MESES</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:white;">Producción sube. Costo baja. Así de simple.</div>
+    </div>
+    <div style="display:flex;gap:20px;align-items:center;">
+      <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:3px;background:var(--lime);border-radius:2px;"></div><span style="font-size:10px;color:rgba(255,255,255,0.5);">Piezas/mes</span></div>
+      <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:3px;background:rgba(100,120,180,0.7);border-radius:2px;"></div><span style="font-size:10px;color:rgba(255,255,255,0.5);">Costo USD/mes</span></div>
+    </div>
+  </div>
+  <canvas id="dualChart" height="120" style="width:100%;max-width:100%;"></canvas>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;">
+    <div style="text-align:center;background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--lime);">3.2×</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Más piezas producidas</div>
+    </div>
+    <div style="text-align:center;background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt);">−83%</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Reducción de costo</div>
+    </div>
+    <div style="text-align:center;background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#7BA7FF;">+34pts</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">FTR ganado en 6 meses</div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const canvas = document.getElementById('dualChart');
+  if(!canvas) return;
+  function drawChart(){
+    const ctx = canvas.getContext('2d');
+    const months = ['Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene','Feb','Mar+'];
+    const pieces = [50,62,78,95,105,120,130,145,160,165,175,180,183];
+    const costs =  [12500,11800,10200,8500,6500,4200,4000,3800,3500,3200,2900,2600,2400];
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.parentElement ? canvas.parentElement.offsetWidth - 56 : 600;
+    canvas.width = w * dpr;
+    canvas.height = 120 * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = '120px';
+    ctx.scale(dpr, dpr);
+  const W = w;
+  const H = 120;
+  const pad = {l:36,r:36,t:12,b:24};
+  const cw = W - pad.l - pad.r;
+  const ch = H - pad.t - pad.b;
+  const n = months.length;
+  const maxP = 200; const minP = 0;
+  const maxC = 14000; const minC = 0;
+  const xPos = i => pad.l + (i/(n-1))*cw;
+  const yP = v => pad.t + ch - ((v-minP)/(maxP-minP))*ch;
+  const yC = v => pad.t + ch - ((v-minC)/(maxC-minC))*ch;
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 1;
+  for(let i=0;i<4;i++){
+    const y = pad.t + (ch/3)*i;
+    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+cw,y); ctx.stroke();
+  }
+  // Cost area fill
+  ctx.beginPath();
+  costs.forEach((v,i)=>{ i===0 ? ctx.moveTo(xPos(i),yC(v)) : ctx.lineTo(xPos(i),yC(v)); });
+  ctx.lineTo(xPos(n-1),H-pad.b); ctx.lineTo(pad.l,H-pad.b); ctx.closePath();
+  ctx.fillStyle = 'rgba(80,100,160,0.12)'; ctx.fill();
+  // Cost line
+  ctx.beginPath();
+  costs.forEach((v,i)=>{ i===0?ctx.moveTo(xPos(i),yC(v)):ctx.lineTo(xPos(i),yC(v)); });
+  ctx.strokeStyle='rgba(100,120,180,0.9)'; ctx.lineWidth=2; ctx.setLineDash([4,3]); ctx.stroke(); ctx.setLineDash([]);
+  // Production area fill
+  ctx.beginPath();
+  pieces.forEach((v,i)=>{ i===0?ctx.moveTo(xPos(i),yP(v)):ctx.lineTo(xPos(i),yP(v)); });
+  ctx.lineTo(xPos(n-1),H-pad.b); ctx.lineTo(pad.l,H-pad.b); ctx.closePath();
+  const grad = ctx.createLinearGradient(0,pad.t,0,H);
+  grad.addColorStop(0,'rgba(200,255,0,0.25)'); grad.addColorStop(1,'rgba(200,255,0,0.02)');
+  ctx.fillStyle=grad; ctx.fill();
+  // Production line
+  ctx.beginPath();
+  pieces.forEach((v,i)=>{ i===0?ctx.moveTo(xPos(i),yP(v)):ctx.lineTo(xPos(i),yP(v)); });
+  ctx.strokeStyle='#C8FF00'; ctx.lineWidth=2.5; ctx.stroke();
+  // Month labels
+  ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.font='9px JetBrains Mono,monospace'; ctx.textAlign='center';
+  months.forEach((m,i)=>{ ctx.fillText(m, xPos(i), H-6); });
+  // Axis labels
+  ctx.fillStyle='rgba(200,255,0,0.6)'; ctx.font='bold 9px JetBrains Mono,monospace'; ctx.textAlign='left';
+  ctx.fillText('183p', Math.max(pad.l-2,0), yP(183)+3);
+  ctx.fillStyle='rgba(150,160,210,0.8)'; ctx.textAlign='right';
+  ctx.fillText('$2.4k', W-2, yC(2400)+3);
+  }
+  drawChart();
+  window.addEventListener('resize', ()=>{ clearTimeout(window._crt); window._crt=setTimeout(drawChart,200); });
+})();
+</script>
+</section>
+
+<!-- ══ S7 CASO DE ÉXITO ══ -->
+<section id="s7">
+<div class="sn">07</div>
+<div class="tag fi">Caso de Éxito</div>
+<div class="s7-wrap">
+  <div class="fi d1">
+    <div class="case-ctx">
+      <h3>Marketplace líder de crédito para motos en LATAM</h3>
+      <p>Startup fintech en México y LATAM. Reemplazó un equipo in-house de 5 diseñadores con UpPipe. Necesitaban escalar producción mientras alcanzaban punto de equilibrio — sin comprometer caja.</p>
+      <div class="case-q"><p>"Necesitábamos capacidad elástica real. Con UpPipe triplicamos la producción mientras el costo operativo cayó 83%. Y por primera vez tenemos datos de qué funciona."</p></div>
+    </div>
+    <div class="chart-w">
+      <h4>Costo operativo mensual (USD) — 13 meses</h4>
+      <div class="br"><span class="br-l" style="color:#DC2626;">Mar 24</span><div class="br-t"><div class="br-f" style="width:88%;background:#FCA5A5;"></div></div><span class="br-v" style="color:#DC2626;">$12.5k</span></div>
+      <div class="br"><span class="br-l" style="color:var(--cobalt);">Jul 24</span><div class="br-t"><div class="br-f" style="width:46%;background:var(--cobalt);opacity:.6;"></div></div><span class="br-v" style="color:var(--cobalt);">$4.2k</span></div>
+      <div class="br"><span class="br-l" style="color:var(--lime-deep);">Mar 25</span><div class="br-t"><div class="br-f" style="width:18%;background:var(--lime-deep);"></div></div><span class="br-v" style="color:var(--lime-deep);">$2.4k</span></div>
+      <p style="font-size:10px;color:var(--lt);margin-top:8px;">Producción mensual: 50 piezas → 183 piezas en el mismo período.</p>
+    </div>
+  </div>
+  <div class="fi d2">
+    <div class="kgrid">
+      <div class="kpi hl"><div class="kpi-v">1,683</div><div class="kpi-l">Assets producidos en 13 meses</div></div>
+      <div class="kpi ok"><div class="kpi-v">3.2×</div><div class="kpi-l">Crecimiento vs. equipo in-house</div></div>
+      <div class="kpi ok"><div class="kpi-v">83%</div><div class="kpi-l">Ahorro vs. presupuesto original</div></div>
+      <div class="kpi hl"><div class="kpi-v">0.54</div><div class="kpi-l">ROA final (avg industria: 3.5)</div></div>
+    </div>
+    <div class="fin-strip">
+      <div><div class="fsi-v">$24.8k</div><div class="fsi-l">Inversión total 13 meses (USD)</div></div>
+      <div><div class="fsi-v">$117k</div><div class="fsi-l">Ahorro vs. in-house</div></div>
+      <div><div class="fsi-v">22.7m</div><div class="fsi-l">Tiempo promedio/pieza</div></div>
+    </div>
+    <div class="nrr-note">
+      <p>Este cliente pasó de un piloto de <strong>30 horas el primer mes</strong> a <strong>120h/mes en 6 meses</strong> por convicción propia. El NRR crece naturalmente porque el sistema genera confianza medible — el cliente ve sus propios datos mejorar mes a mes.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ S9 WIN-WIN: CITL NETWORK ══ -->
+<section id="s9">
+<div class="sn">09</div>
+<div class="tag fi" style="color:var(--lime);">El Otro Lado del Sistema</div>
+<h2 class="ww-h fi d1">Por qué el creativo senior prefiere<br>UpPipe sobre el <span>freelance caótico</span>.</h2>
+<div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;" class="fi d1">
+  <div style="background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;">
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--lime);">~45K</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5;">Diseñadores gráficos<br>freelance senior en Colombia*</div>
+  </div>
+  <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;">
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:white;">50%</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5;">De su tiempo se va<br>en labores no remuneradas</div>
+  </div>
+  <div style="background:rgba(26,86,255,0.15);border:1px solid rgba(26,86,255,0.3);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;">
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:#7BA7FF;">95%</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5;">Tiempo facturable<br>con UpPipe</div>
+  </div>
+</div>
+<div class="ww-layout">
+  <div class="fi d2">
+    <span class="ww-tag">El problema del creativo senior hoy</span>
+    <div class="freelance-pains">
+      <div class="fp"><div class="fp-ico">😩</div><div class="fp-t"><strong>50% de su tiempo es no remunerado:</strong> buscar clientes, perseguir briefs, gestionar cobros, dar la cara en reuniones, aclarar cambios de último momento.</div></div>
+      <div class="fp"><div class="fp-ico">🎢</div><div class="fp-t"><strong>Flujo caótico e impredecible.</strong> Proyectos que van y vienen, clientes que no pagan a tiempo, meses buenos y meses de cero.</div></div>
+      <div class="fp"><div class="fp-ico">🧩</div><div class="fp-t"><strong>Sin estructura operativa.</strong> Briefs incompletos, feedback sin contexto, cambios infinitos sin compensación adicional.</div></div>
+    </div>
+    <div class="internal-cost">
+      <div class="ic-label">COSTO REAL DE UN CREATIVO SENIOR IN-HOUSE PARA UNA EMPRESA</div>
+      <div class="ic-rows">
+        <div class="ic-row"><span class="ic-name">Salario creativo senior branding/UX</span><span class="ic-val r">$5–7M COP/mes</span></div>
+        <div class="ic-row"><span class="ic-name">+ Prestaciones sociales (~52%)</span><span class="ic-val r">+$2.6–3.6M COP</span></div>
+        <div class="ic-row"><span class="ic-name">+ Dotación, licencias, equipos</span><span class="ic-val r">+$500k–1M COP</span></div>
+        <div class="ic-row"><span class="ic-name">Total real por perfil</span><span class="ic-val r">$8–11.6M COP/mes</span></div>
+        <div class="ic-row"><span class="ic-name">→ Con UpPipe (40h/mes Flex)</span><span class="ic-val g">$5.8M COP/mes all-inclusive</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="ww-benefits fi d3">
+    <span class="ww-tag">Con UpPipe el creativo senior gana</span>
+    <div class="wb"><div class="wb-ico">💰</div><div><div class="wb-t">Ingreso predecible y escalable</div><div class="wb-d">Flujo constante de proyectos desde la plataforma. No depende de conseguir clientes. De 48h/mes ($1.68M) a 160h/mes ($5.6M) — sin techo.</div></div></div>
+    <div class="wb"><div class="wb-ico">⚡</div><div><div class="wb-t">95% del tiempo facturando, no en admin</div><div class="wb-d">UpPipe elimina: gestión comercial, manejo de cliente, perseguir briefs, reuniones de alineación, gestión de cobro. El PM lo hace todo.</div></div></div>
+    <div class="wb"><div class="wb-ico">🎯</div><div><div class="wb-t">Briefs completos, scope definido, promedio de horas</div><div class="wb-d">Brief asertivo desde el inicio. Alcance claro. Estimado de tiempo justo. No improvisa — opera dentro de un sistema que protege su tiempo.</div></div></div>
+    <div class="wb"><div class="wb-ico">📈</div><div><div class="wb-t">Bono FTR — el mérito se paga directo</div><div class="wb-d">FTR ≥60% = bono del 5% trimestral sobre honorarios de piezas aprobadas en primera entrega. Más precisión = más ingreso.</div></div></div>
+    <div class="academy-band">
+      <div class="ab-ico">🎓</div>
+      <div>
+        <div class="ab-t">UpPipe Academy</div>
+        <div class="ab-d">Comunidad del CITL Network. Capacitación continua en las últimas herramientas AI especializadas, metodologías CITL y tips de eficiencia operativa. El creativo senior que entra a UpPipe se vuelve más valioso con el tiempo.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="margin-top:16px;font-size:10px;color:rgba(255,255,255,0.25);font-family:'JetBrains Mono',monospace;">*Estimación basada en datos del DANE (fuerza laboral creativa Colombia), CompuTrabajo y proyecciones del sector diseño gráfico 2024. Perfil senior: 3+ años experiencia, portfolio activo, modalidad independiente.</div>
+</section>
+<section id="s10">
+<div class="sn">10</div>
+<div class="tag fi">Mercado & Go-to-Market</div>
+<h2 class="fi d1" style="font-size:clamp(24px,3.6vw,50px);letter-spacing:-2px;margin-bottom:24px;color:var(--cobalt-deep);">Un mercado de $162B<br>sin infraestructura operativa real.</h2>
+<div class="s10-wrap">
+  <div class="fi d2">
+    <div class="tams">
+      <div class="tami t"><div><div class="tl">TAM</div><div class="tn">Mercado Global — Design Economy + CreativeOps</div></div><div class="tv">$162B</div></div>
+      <div class="tami s"><div><div class="tl">SAM</div><div class="tn">LATAM + MX + USA — Startups y Mid-Market</div></div><div class="tv">$8.4B</div></div>
+      <div class="tami m"><div><div class="tl">SOM</div><div class="tn">Colombia + México · Primeros 3 años</div></div><div class="tv">$180M</div></div>
+    </div>
+    <div class="ss-note">
+      <p><strong>La prueba de que esto escala:</strong> Superside factura <strong>$44.9M USD/año</strong> con el mismo modelo atacando enterprise en USA (levantó $35M en funding). Acaban de lanzar "Superspace" como brand brain separado. <strong>UpPipe ya tiene ambas cosas integradas, operativas, con clientes reales en LATAM.</strong> Ellos van por arriba. Nosotros somos dueños de LATAM y subimos.</p>
+    </div>
+    <!-- GO TO MARKET -->
+    <div style="margin-top:16px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cobalt);letter-spacing:2px;margin-bottom:12px;font-weight:700;">GO-TO-MARKET · DOS SEGMENTOS</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="seg fast" style="border-radius:14px;padding:18px;">
+          <div class="sbadge">TRIGGER RÁPIDO · CICLO DE VENTA 2 REUNIONES</div>
+          <h3 style="font-size:14px;margin-bottom:6px;">Scaling Startups Serie A/B</h3>
+          <p style="font-size:11px;">Necesitan escalar producción creativa sin aumentar nómina. Pagan con tarjeta, piloto de 1 mes, conversión natural a anual. CAC bajo, NRR alto.</p>
+          <div class="stags" style="margin-top:8px;"><span class="stag">Galgo · MX</span><span class="stag">Bold</span><span class="stag">Pinbus</span><span class="stag">Wanderloop</span><span class="stag">Laika</span><span class="stag">ONtop</span></div>
+        </div>
+        <div class="seg corp" style="border-radius:14px;padding:18px;">
+          <div class="sbadge">MERCADO SECUNDARIO · BOLSA ANUAL + OC</div>
+          <h3 style="font-size:14px;margin-bottom:6px;">Corporativos y grandes marcas</h3>
+          <p style="font-size:11px;">Consolidan producción de múltiples equipos. Orden de compra anual, horas acumulables, reportes por área y proyecto. ACV alto y predecible.</p>
+          <div class="stags" style="margin-top:8px;"><span class="stag">Alpina</span><span class="stag">Vanti</span><span class="stag">Prodesa</span><span class="stag">Rappi</span><span class="stag">Alciautos</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="whys fi d3">
+    <div class="why"><div class="why-ico">⏱️</div><div><div class="why-t">Ventana de tiempo única</div><div class="why-d">La AI generativa destruye el freelance commodity. El mercado busca sistemas con criterio, consistencia y métricas. Ese sistema es UpPipe.</div></div></div>
+    <div class="why"><div class="why-ico">🌎</div><div><div class="why-t">Ventaja LATAM estructural</div><div class="why-d">Talento senior colombiano y mexicano con zona horaria USA. 3–5× más económico que Norte América. Margen permanente, no temporal.</div></div></div>
+    <div class="why"><div class="why-ico">💳</div><div><div class="why-t">Modelo de compra SaaS-friendly</div><div class="why-d">Las scaling startups ya piensan en suscripción mensual — UpPipe entra por el mismo flujo mental sin negociaciones largas ni contratos complejos.</div></div></div>
+    <div class="why"><div class="why-ico">🏗️</div><div><div class="why-t">El moat es el sistema, no el software</div><div class="why-d">82K+ data points + CITL Network + Brand Intelligence activo + clientes activos. Eso no se replica en 18 meses.</div></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ══ S11 TRACCIÓN + EQUIPO ══ -->
+<section id="s11">
+<div class="sn">11</div>
+<div class="tag fi">Tracción &amp; Equipo</div>
+<h2 class="fi d1" style="font-size:clamp(22px,3.2vw,46px);letter-spacing:-2px;margin-bottom:24px;color:var(--cobalt-deep);">Clientes reales. Modelo probado.<br>Listos para escalar.</h2>
+<div class="fi d1" style="margin-bottom:20px;background:linear-gradient(135deg,rgba(26,86,255,0.07),rgba(200,255,0,0.04));border:1px solid rgba(26,86,255,0.18);border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cobalt);letter-spacing:2px;margin-bottom:6px;font-weight:700;">ESTADO ACTUAL · PLATAFORMA FASE 2</div>
+    <div style="font-size:13px;color:var(--dark);font-weight:600;">El modelo funciona. Los clientes pagan y crecen. <span style="color:var(--cobalt-deep);">El siguiente paso es escalar el engine de crecimiento.</span></div>
+  </div>
+  <div style="display:flex;gap:16px;flex-shrink:0;">
+    <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt);">Sales</div><div style="font-size:10px;color:var(--mid);">team</div></div>
+    <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt);">CITL</div><div style="font-size:10px;color:var(--mid);">recruitment</div></div>
+    <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--cobalt);">Pauta</div><div style="font-size:10px;color:var(--mid);">leads digitales</div></div>
+    <div style="text-align:center;border-left:1px solid rgba(26,86,255,0.15);padding-left:16px;"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--lime-deep);">$300–400K</div><div style="font-size:10px;color:var(--mid);">USD ARR · target año 1</div><div style="font-size:9px;color:rgba(107,122,159,0.6);margin-top:2px;">post growth investment</div></div>
+  </div>
+</div>
+<div class="s11-wrap">
+  <div class="fi d2">
+    <div class="s11h3">Clientes Activos</div>
+    <div class="cpills">
+      <span class="cpill a">Galgo · México</span><span class="cpill a">Alpina</span><span class="cpill a">Rappi · LATAM</span><span class="cpill a">Prodesa</span><span class="cpill a">Alciautos</span><span class="cpill a">Wanderloop</span>
+    </div>
+    <div class="plabel">PIPELINE CALIENTE</div>
+    <div class="cpills">
+      <span class="cpill p">Bold (Grupo SD)</span><span class="cpill p">Pinbus</span><span class="cpill p">ONtop</span><span class="cpill p">Laika</span>
+    </div>
+    <div class="wnows">
+      <div class="wn"><div class="wn-ico">📋</div><div class="wn-t"><strong>2 reuniones para cerrar</strong> con startups. El pain es urgente. El piloto de 30h elimina toda fricción de entrada.</div></div>
+      <div class="wn"><div class="wn-ico">🔁</div><div class="wn-t"><strong>NRR que crece solo.</strong> Galgo pasó de 30h a 120h/mes en 6 meses por convicción propia — el sistema genera confianza medible.</div></div>
+      <div class="wn"><div class="wn-ico">🤝</div><div class="wn-t"><strong>Red activa.</strong> Paula Barrientos (InQlab / Grupo Santo Domingo) conecta directamente con Bold, Pinbus, ONtop, Laika — todos en pipeline.</div></div>
+    </div>
+  </div>
+  <div class="fi d3">
+    <div class="tc">
+      <div class="tc-av">👩‍💼</div>
+      <div>
+        <div class="tc-name">Olga Lucía Rodríguez</div>
+        <div class="tc-role">CEO & FOUNDER</div>
+        <div class="tc-bio">Fundadora de Brandnew Studio S.A.S. — 15+ años operando producción creativa de alto volumen para Uber, Alpina, Natura Avon, Rappi, Lili Pink y más. Construyó el modelo CITL desde adentro viviendo el dolor de cada lado: el del CMO y el del creative.</div>
+      </div>
+    </div>
+    <div class="citl-band">
+      <div>
+        <h4>CITL Network — el activo que no se copia</h4>
+        <p>20+ creatives senior evaluados por FTR, entrenados en AI, con acceso al Brand Intelligence. UpPipe Academy los mantiene al día. Tarda años en construir.</p>
+      </div>
+      <div class="cs">
+        <div><div class="cs-v">20+</div><div class="cs-l">Creatives activos</div></div>
+        <div><div class="cs-v">82K+</div><div class="cs-l">Data points</div></div>
+        <div><div class="cs-v">15+</div><div class="cs-l">Años de data</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ S12 CIERRE ══ -->
+<section id="s12">
+<div class="sn">12</div>
+<div style="position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;">
+  <div class="tag fi" style="display:inline-block;margin-bottom:14px;color:var(--cobalt-deep);">UpPipe · CreativeOps Infrastructure</div>
+  <div class="fi d1" style="margin-bottom:16px;">
+    <div style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(26,86,255,0.1),rgba(200,255,0,0.08));border:1px solid rgba(200,255,0,0.25);border-radius:100px;padding:10px 28px;">
+      <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--cobalt-deep);">AI Design.</span>
+      <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--lime-deep);">Human Powered.</span>
+    </div>
+  </div>
+  <h1 class="close-h fi d1">La producción creativa que el<br>marketing en crecimiento<br><span>estaba esperando.</span></h1>
+  <p class="close-sub fi d2">No una agencia. No un marketplace. No DIY con AI. Un Senior Creative In The Loop operando la AI con criterio de marca — con Brand Intelligence propietario y datos que ningún competidor tiene en LATAM.</p>
+  <div class="close-stats fi d2">
+    <div class="cstat"><div class="cstat-v">83%</div><div class="cstat-l">Ahorro operativo demostrado con clientes reales</div></div>
+    <div class="cstat"><div class="cstat-v">3.2×</div><div class="cstat-l">Más producción al mismo o menor costo</div></div>
+    <div class="cstat"><div class="cstat-v">92%</div><div class="cstat-l">First Time Right — calidad medible y garantizada</div></div>
+  </div>
+  <div class="contact-row fi d3">
+    <a href="mailto:hello@uppipe.io" class="cbtn pri">✉ hello@uppipe.io</a>
+    <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" class="cbtn sec">📅 Agendar una llamada</a>
+    <a href="https://uppipe.co/intelligence" target="_blank" class="cbtn sec">🔮 Ver Brand Intelligence</a>
+  </div>
+  <div class="url-line fi d4">uppipe.co &nbsp;·&nbsp; <span>uppipe.io</span> &nbsp;·&nbsp; hello@uppipe.io &nbsp;·&nbsp; +57 316 380 7993</div>
+</div>
+</section>
+
+<script>
+const slides=document.querySelectorAll('section');
+const ndots=document.getElementById('ndots');
+const nctr=document.getElementById('nctr');
+const total=slides.length;
+slides.forEach((s,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' on':'');
+  d.onclick=()=>s.scrollIntoView({behavior:'smooth'});
+  ndots.appendChild(d);
+});
+const dots=document.querySelectorAll('.dot');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const i=Array.from(slides).indexOf(e.target);
+      dots.forEach((d,j)=>d.classList.toggle('on',j===i));
+      nctr.textContent=String(i+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');    }
+  });
+},{threshold:0.5});
+slides.forEach(s=>io.observe(s));
+const fio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});
+},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>fio.observe(el));
+const bio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.br-f,.ir-b').forEach(b=>{
+        const w=b.style.width;b.style.width='0';
+        setTimeout(()=>b.style.width=w,150);
+      });
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('#s5,#s7').forEach(s=>bio.observe(s));
+document.addEventListener('keydown',e=>{
+  const cur=Array.from(slides).findIndex(s=>{
+    const r=s.getBoundingClientRect();
+    return r.top>=-50&&r.top<window.innerHeight/2;
+  });
+  if(e.key==='ArrowDown'||e.key==='PageDown')slides[Math.min(cur+1,total-1)].scrollIntoView({behavior:'smooth'});
+  if(e.key==='ArrowUp'||e.key==='PageUp')slides[Math.max(cur-1,0)].scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
