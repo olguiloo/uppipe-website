@@ -178,9 +178,9 @@ h3{font-family:'Syne',sans-serif;font-weight:700;}
 /* ══ S6 CÓMO FUNCIONA ══ */
 #s6{background:var(--g-pastel);}
 .s6h{font-size:clamp(24px,3.4vw,48px);letter-spacing:-1px;margin-bottom:32px;color:var(--cobalt-deep);}
-.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:start;margin-bottom:32px;}
-.fs{position:relative;text-align:center;padding:0 4px;}
-.fs:not(:last-child)::after{content:'';position:absolute;top:28px;right:-8%;width:16%;height:2px;background:linear-gradient(90deg,var(--cobalt),rgba(26,86,255,0.1));}
+.flow{display:flex;flex-direction:row;gap:0;align-items:flex-start;margin-bottom:32px;width:100%;}
+.fs{position:relative;text-align:center;padding:0 8px;flex:1;}
+.fs:not(:last-child)::after{content:'→';position:absolute;top:22px;right:-10px;font-size:16px;color:var(--cobalt);opacity:0.4;font-weight:700;z-index:1;}
 .fs-ico{width:56px;height:56px;border-radius:14px;margin:0 auto 11px;display:flex;align-items:center;justify-content:center;font-size:21px;background:rgba(255,255,255,0.82);border:1px solid rgba(26,86,255,0.14);box-shadow:0 3px 10px rgba(26,86,255,0.07);}
 .fs h4{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;margin-bottom:4px;color:var(--cobalt-deep);}
 .fs p{font-size:10px;color:var(--mid);line-height:1.6;}
@@ -365,9 +365,10 @@ h3{font-family:'Syne',sans-serif;font-weight:700;}
   .hn-v{font-size:26px;}
   .co-layout,.twocol,.s3-layout,.ci-wrap,.s7-wrap,.ue-wrap,.ww-layout,.s10-wrap,.s11-wrap{grid-template-columns:1fr;gap:24px;}
   .co-cols,.pillars3{grid-template-columns:1fr;gap:10px;}
-  .flow{grid-template-columns:1fr 1fr;gap:12px;}
-  .fs:not(:last-child)::after{display:none;}
-  .fs-ico{width:48px;height:48px;font-size:18px;}
+  .flow{flex-direction:column;gap:8px;}
+  .fs{padding:12px;text-align:left;display:flex;align-items:flex-start;gap:12px;}
+  .fs:not(:last-child)::after{content:'↓';position:static;display:block;text-align:center;width:100%;margin-top:4px;}
+  .fs-ico{flex-shrink:0;}
   .mcards{grid-template-columns:1fr!important;gap:10px;}
   .kgrid{grid-template-columns:1fr 1fr;gap:10px;}
   .sc-grid{grid-template-columns:1fr 1fr;gap:8px;}
@@ -394,7 +395,7 @@ h3{font-family:'Syne',sans-serif;font-weight:700;}
   .hero-sub{font-size:13px;}
   .h3nums{max-width:100%;}
   .hn-v{font-size:22px;}
-  .flow{grid-template-columns:1fr;}
+  .flow{flex-direction:column;}
   .mcards{grid-template-columns:1fr 1fr;}
   .kgrid{grid-template-columns:1fr 1fr;}
   .close-stats{grid-template-columns:1fr;}
