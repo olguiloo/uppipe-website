@@ -1,3 +1,15 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "resumen.uppipe.co" }],
+      "destination": "/resumen.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "summary.uppipe.co" }],
+      "destination": "/summary.html"
+    }
+  ]
 }
