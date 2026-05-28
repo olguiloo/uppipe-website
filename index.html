@@ -1835,6 +1835,22 @@ footer .bn-footer-meta{
   .bn-plan-card, .bn-engine-card{ padding:24px 20px; }
 }
 
+
+/* === FIX: forzar stacking de grids inline en #platform en móvil === */
+@media (max-width:900px){
+  #platform [style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr !important;
+    gap:32px !important;
+  }
+  #platform [style*="grid-template-columns:1fr 1fr 1fr"]{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+  }
+  /* Asegurar que la imagen quede DEBAJO del texto en las features donde el DOM la tiene primero */
+  #platform [style*="grid-template-columns:1fr 1fr"] > div{ order:1; }
+  #platform [style*="grid-template-columns:1fr 1fr"] > div:has(img){ order:2; }
+}
+
 </style>
 <meta name="description" content="Capacidad creativa elástica para equipos de marketing en LATAM: creativos senior que suben y bajan con tu demanda, PM dedicado, Brand Memory y precios en COP/USD. Sin retainer de agencia.">
 <link rel="canonical" href="https://uppipe.co/">
@@ -2523,7 +2539,7 @@ footer .bn-footer-meta{
       <p class="bn-lead" style="margin-bottom:32px;">
         Nuestro modelo propietario — entrenado con más de 15 años de data real de producción — traduce tu demanda creativa de piezas y campañas en las horas de diseño exactas para ejecutarlas. En la llamada te mostramos el modelo funcionando con tu caso: <strong>sabes cuánto necesitas antes de empezar</strong>.
       </p>
-      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" rel="noopener" class="bn-btn bn-btn-primary">
+      <a href="/intelligence" target="_blank" rel="noopener" class="bn-btn bn-btn-primary">
         Calcula tu demanda en la llamada
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
       </a>
@@ -2590,7 +2606,7 @@ footer .bn-footer-meta{
     </div>
 
     <div class="bn-calc-cta" style="display:none;">
-      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" rel="noopener" class="bn-btn">
+      <a href="/intelligence" target="_blank" rel="noopener" class="bn-btn">
         Calcula tu demanda en la llamada
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
       </a>
