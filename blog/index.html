@@ -13,6 +13,9 @@
 <meta property="og:description" content="Guías y comparativas sobre CreativeOps y producción creativa con IA para equipos de marketing en LATAM.">
 <meta property="og:url" content="https://uppipe.co/blog">
 <meta property="og:site_name" content="UpPipe">
+<meta property="og:image" content="https://uppipe.co/blog/designer-pastel-2.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://uppipe.co/blog/designer-pastel-2.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
@@ -102,6 +105,8 @@ nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:100;widt
 .post-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,86,255,0.12);}
 .post-card.featured{grid-column:1 / -1;flex-direction:row;}
 .post-thumb{background:var(--g-hero);min-height:180px;flex-shrink:0;display:flex;align-items:flex-end;padding:24px;position:relative;}
+.post-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.35) 0%,transparent 45%);pointer-events:none;}
+.post-thumb-tag{position:relative;z-index:1;}
 .post-card.featured .post-thumb{width:42%;min-height:300px;}
 .post-thumb-tag{font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#1A3A00;background:var(--lime);padding:5px 14px;border-radius:100px;}
 .post-body{padding:28px 30px;display:flex;flex-direction:column;flex:1;}
@@ -184,7 +189,7 @@ footer{background:#0A0C1C;padding:54px 0 30px;}
 
       <!-- FEATURED -->
       <a href="/blog/mejores-plataformas-creativeops-latam-2026" class="post-card featured">
-        <div class="post-thumb">
+        <div class="post-thumb" style="background-image:url('/blog/designer-pastel-2.png');background-size:cover;background-position:center;">
           <span class="post-thumb-tag">CreativeOps 2026</span>
         </div>
         <div class="post-body">
