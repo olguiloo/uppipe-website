@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — UpPipe | CreativeOps, producción creativa y marketing en LATAM</title>
+<meta name="description" content="Ideas, guías y comparativas sobre CreativeOps, capacidad creativa elástica y producción creativa con IA para equipos de marketing en LATAM. Del equipo de UpPipe.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://uppipe.co/blog">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — UpPipe | CreativeOps para equipos de marketing en LATAM">
+<meta property="og:description" content="Guías y comparativas sobre CreativeOps y producción creativa con IA para equipos de marketing en LATAM.">
+<meta property="og:url" content="https://uppipe.co/blog">
+<meta property="og:site_name" content="UpPipe">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ── JSON-LD: Blog + Breadcrumb ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "name": "Blog de UpPipe",
+      "description": "Guías y comparativas sobre CreativeOps, capacidad creativa elástica y producción creativa con IA para equipos de marketing en LATAM.",
+      "url": "https://uppipe.co/blog",
+      "inLanguage": "es",
+      "publisher": {
+        "@type": "Organization",
+        "name": "UpPipe",
+        "url": "https://uppipe.co",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Brandnew Studio SAS",
+          "url": "https://brandnew.com.co"
+        }
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Las mejores plataformas de CreativeOps y producción creativa con IA para equipos de marketing en LATAM (2026)",
+          "url": "https://uppipe.co/blog/mejores-plataformas-creativeops-latam-2026",
+          "datePublished": "2026-05-27",
+          "inLanguage": "es"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "UpPipe", "item": "https://uppipe.co" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://uppipe.co/blog" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cobalt:#1A56FF;--cobalt-deep:#0D3FBF;--cobalt-tint:#E8EFFE;
+  --lime:#C8FF00;--lime-deep:#8CB800;
+  --cream:#FDFBF7;--white:#FFFFFF;
+  --dark:#2D2D2D;--mid:#6B6B6B;--lt:#AFAFAF;
+  --border:#E8E8E8;--success:#10B981;--violet:#8B5CF6;
+  --g-hero:radial-gradient(ellipse 72% 64% at 14% 88%,#F5C6D8 0%,transparent 62%),radial-gradient(ellipse 58% 52% at 86% 18%,#C8FF00 0%,transparent 58%),radial-gradient(ellipse 62% 56% at 52% 52%,#B8AAFF 0%,transparent 64%),radial-gradient(ellipse 52% 46% at 82% 78%,#5B8BFF 0%,transparent 58%),linear-gradient(138deg,#F5C6D8 0%,#C4AAFF 38%,#4870FF 70%,#C8FF00 100%);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1100px;}
+.nav-inner{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.9);border-radius:12px;padding:7px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 24px rgba(26,86,255,0.08);}
+.nav-logo svg{display:block;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:13px;font-weight:600;color:var(--dark);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--cobalt);}
+.nav-links a.active{color:var(--cobalt);font-weight:700;}
+.nav-cta a{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:#1A3A00;font-size:11px;font-weight:800;padding:9px 18px;border-radius:100px;text-decoration:none;}
+@media(max-width:840px){.nav-links{display:none;}}
+
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+/* ── HERO ── */
+#blog-hero{background:var(--g-hero);padding:150px 0 80px;}
+.blog-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:100px;padding:7px 18px;margin-bottom:24px;font-size:11px;font-weight:700;color:var(--cobalt-deep);}
+.blog-h1{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;line-height:1.02;letter-spacing:-2px;color:var(--cobalt-deep);}
+.blog-h1 em{font-style:normal;color:var(--dark);position:relative;display:inline-block;}
+.blog-h1 em::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:5px;background:var(--lime);border-radius:3px;}
+.blog-sub{font-size:18px;color:var(--dark);line-height:1.7;margin-top:22px;opacity:0.8;max-width:600px;}
+
+/* ── POSTS GRID ── */
+#posts{padding:72px 0 90px;}
+.posts-label{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cobalt);margin-bottom:28px;}
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+
+/* featured card spans full width */
+.post-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.2s,box-shadow 0.2s;}
+.post-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,86,255,0.12);}
+.post-card.featured{grid-column:1 / -1;flex-direction:row;}
+.post-thumb{background:var(--g-hero);min-height:180px;flex-shrink:0;display:flex;align-items:flex-end;padding:24px;position:relative;}
+.post-card.featured .post-thumb{width:42%;min-height:300px;}
+.post-thumb-tag{font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#1A3A00;background:var(--lime);padding:5px 14px;border-radius:100px;}
+.post-body{padding:28px 30px;display:flex;flex-direction:column;flex:1;}
+.post-card.featured .post-body{justify-content:center;padding:40px 44px;}
+.post-cat{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cobalt);margin-bottom:12px;}
+.post-title{font-family:'Syne',sans-serif;font-weight:800;line-height:1.2;letter-spacing:-0.5px;color:var(--dark);margin-bottom:12px;}
+.post-card.featured .post-title{font-size:30px;letter-spacing:-1px;}
+.post-card:not(.featured) .post-title{font-size:18px;}
+.post-excerpt{font-size:14px;color:var(--mid);line-height:1.65;margin-bottom:18px;}
+.post-meta{font-size:11px;font-weight:600;color:var(--lt);margin-top:auto;display:flex;gap:14px;}
+.post-readmore{font-size:13px;font-weight:800;color:var(--cobalt);margin-top:14px;}
+
+/* empty/coming soon card */
+.post-card.soon{align-items:center;justify-content:center;text-align:center;padding:40px 24px;border-style:dashed;background:rgba(255,255,255,0.5);cursor:default;}
+.post-card.soon:hover{transform:none;box-shadow:none;}
+.post-card.soon span{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--lt);}
+.post-card.soon small{font-size:12px;color:var(--lt);margin-top:6px;}
+
+@media(max-width:900px){.posts-grid{grid-template-columns:1fr 1fr;}.post-card.featured{flex-direction:column;}.post-card.featured .post-thumb{width:100%;min-height:200px;}}
+@media(max-width:600px){.posts-grid{grid-template-columns:1fr;}.blog-h1{font-size:40px;}}
+
+/* ── CTA ── */
+#blog-cta{background:radial-gradient(ellipse 68% 68% at 78% 18%,#C8FF00 0%,transparent 54%),radial-gradient(ellipse 52% 52% at 18% 82%,#E8EFFE 0%,transparent 54%),linear-gradient(148deg,#E8EFFE 0%,#EEFFC0 52%,#C8FF00 100%);padding:72px 0;}
+.cta-inner{text-align:center;}
+.cta-inner h2{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--cobalt-deep);margin-bottom:14px;}
+.cta-inner p{font-size:15px;color:var(--mid);max-width:480px;margin:0 auto 24px;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;border:none;border-radius:100px;cursor:pointer;text-decoration:none;background:var(--cobalt);color:white;font-size:13px;padding:13px 28px;transition:background 0.15s;}
+.btn:hover{background:var(--cobalt-deep);}
+
+/* ── FOOTER ── */
+footer{background:#0A0C1C;padding:54px 0 30px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.4);}
+.footer-bottom a{font-size:11px;color:rgba(255,255,255,0.55);text-decoration:none;margin-left:20px;}
+.footer-bottom a:hover{color:white;}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="UpPipe">
+      <svg width="120" viewBox="88 298 844 436" fill="none">
+        <rect fill="#1A56FF" x="525.84" y="549.52" width="33.58" height="82.76"/>
+        <rect fill="#1A56FF" x="525.84" y="508.85" width="33.58" height="24.88"/>
+        <path fill="#1A56FF" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/>
+        <path fill="#1A56FF" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#how">Cómo funciona</a>
+      <a href="/#pricing">Precios</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/intelligence">Calcula tu demanda</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/#pilot">Agendar llamada</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header id="blog-hero">
+  <div class="container">
+    <span class="blog-eyebrow">Blog de UpPipe</span>
+    <h1 class="blog-h1">Ideas sobre <em>CreativeOps</em><br>y producción creativa en LATAM.</h1>
+    <p class="blog-sub">Guías, comparativas y aprendizajes sobre capacidad creativa elástica, producción con IA y cómo los equipos de marketing en Latinoamérica dejan de gestionar el caos creativo.</p>
+  </div>
+</header>
+
+<!-- ── POSTS ── -->
+<section id="posts">
+  <div class="container">
+    <div class="posts-label">Últimos artículos</div>
+    <div class="posts-grid">
+
+      <!-- FEATURED -->
+      <a href="/blog/mejores-plataformas-creativeops-latam-2026" class="post-card featured">
+        <div class="post-thumb">
+          <span class="post-thumb-tag">CreativeOps 2026</span>
+        </div>
+        <div class="post-body">
+          <div class="post-cat">Guía comparativa</div>
+          <h2 class="post-title">Las mejores plataformas de CreativeOps y producción creativa con IA para equipos de marketing en LATAM (2026)</h2>
+          <p class="post-excerpt">Comparamos —de forma honesta— UpPipe, Superside, Mavity, Rocketium, Air y Uplifted: qué hace cada una, su modelo, su precio y para quién es. Con tabla comparativa y guía de decisión.</p>
+          <div class="post-meta">
+            <span>27 may 2026</span>
+            <span>8 min de lectura</span>
+          </div>
+          <div class="post-readmore">Leer artículo →</div>
+        </div>
+      </a>
+
+      <!-- COMING SOON placeholders -->
+      <div class="post-card soon">
+        <span>Próximamente</span>
+        <small>Más guías sobre CreativeOps en camino</small>
+      </div>
+      <div class="post-card soon">
+        <span>Próximamente</span>
+        <small>Suscríbete para enterarte primero</small>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="blog-cta">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>¿Cuántas horas creativas necesita tu equipo?</h2>
+      <p>Calcula tu demanda creativa en 2 minutos, con un modelo entrenado en más de 82.000 data points reales de producción.</p>
+      <a href="/intelligence" class="btn">Calcular mi demanda creativa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 UpPipe · Una división de Brandnew Studio SAS · Bogotá, Colombia</p>
+      <div>
+        <a href="/">Inicio</a>
+        <a href="/#pricing">Precios</a>
+        <a href="/terminos">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
