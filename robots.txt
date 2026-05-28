@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# No indexar one-pagers de campaña (mandados por link directo)
+Disallow: /resumen
+Disallow: /summary
+Disallow: /brandnew
+Disallow: /deck
+
+# Sitemap
+Sitemap: https://uppipe.co/sitemap.xml
