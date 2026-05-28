@@ -56,7 +56,7 @@ section{position:relative;}
 
 /* ── HERO ── */
 #hero{background:var(--g-hero);min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;}
-.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
 .hero-content{max-width:580px;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:100px;padding:7px 18px;margin-bottom:28px;}
 .hero-eyebrow span{font-size:11px;font-weight:700;color:var(--cobalt-deep);}
@@ -247,6 +247,7 @@ footer{background:#0A0C1C;padding:64px 0 32px;}
    RESPONSIVE — TABLET (max 900px)
 ══════════════════════════════════════ */
 @media (max-width:900px){
+  .hero-stats{margin-top:0 !important;}
   .nav-links,.nav-cta{display:none!important;}
   .nav-hamburger{display:flex;}
   nav{width:calc(100% - 32px);}
@@ -2016,7 +2017,7 @@ footer .bn-footer-meta{
       </div>
 
       <!-- RIGHT: video with floating KPI cards -->
-      <div class="hero-stats" style="position:relative;border-radius:24px;overflow:hidden;min-height:480px;">
+      <div class="hero-stats" style="position:relative;border-radius:24px;overflow:hidden;min-height:480px;margin-top:120px;">
 
         <!-- Video -->
         <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;border-radius:24px;min-height:480px;transform:scaleX(-1);">
