@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -300,14 +300,14 @@ nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:100;widt
 .nav-mobile-lang{padding:10px 0 4px;display:flex;justify-content:center;gap:20px;}
 /* When menu is open, expand the nav-inner to show everything */
 .nav-inner.menu-open{border-radius:12px;}
-.nav-links,.nav-cta{display:none!important;}
-.nav-hamburger{display:flex;}
+.nav-links{display:none!important;}
+.nav-hamburger{display:none;}
 nav{width:calc(100% - 32px);}
 nav{top:8px;width:calc(100% - 24px);}
 .nav-inner{padding:6px 14px;}
 @media (max-width:900px){
-  .nav-links,.nav-cta{display:none!important;}
-  .nav-hamburger{display:flex;}
+  .nav-links{display:none!important;}
+  .nav-hamburger{display:none;}
   nav{width:calc(100% - 32px);}
 
   .hero-layout{grid-template-columns:1fr;gap:32px;}
@@ -408,7 +408,7 @@ nav{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:1000;wid
 .nav-links a:hover{color:#1A56FF;}
 .nav-cta{display:flex;gap:10px;align-items:center;flex-shrink:0;}
 nav a{text-decoration:none !important;}
-@media(max-width:900px){.nav-links,.nav-cta{display:none!important;}#nav-hamburger{display:flex!important;}nav{width:calc(100% - 32px);}}
+@media(max-width:900px){.nav-links{display:none!important;}#nav-hamburger{display:flex!important;}nav{width:calc(100% - 32px);}}
 @media(max-width:600px){nav{top:8px;width:calc(100% - 24px);}.nav-inner{padding:6px 14px;}}
 </style>
 <meta name="description" content="Calculate your real creative demand. Built on 69,210+ time entries across 9 years and 6 industries. Free intelligence tool from UpPipe.">
@@ -469,33 +469,12 @@ nav a{text-decoration:none !important;}
         <path fill="#1A56FF" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/>
       </svg>
     </a>
-    <div class="nav-links">
-      <a href="/talent">Talent</a>
-      <a href="/#platform">CreativeOps Platform</a>
-      <a href="/#brandmemory">Brand Memory</a>
-      <a href="/work-with-us">Apply as CITL</a>
-      <a href="/#pricing">Precios</a>
-      <a href="/blog">Blog</a>
-      <a href="https://uppipe.io/log_in" target="_blank" rel="noopener" style="font-size:11px;font-weight:600;color:var(--lt);text-decoration:none;white-space:nowrap;">Log in</a>
-    </div>
+
     <div class="nav-cta">
-      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;padding:8px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='var(--cobalt-deep)'" onmouseout="this.style.background='var(--cobalt)'">Book a call</a>
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;padding:8px 16px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='var(--cobalt-deep)'" onmouseout="this.style.background='var(--cobalt)'">Agenda una llamada</a>
     </div>
-    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    
     </div><!-- end nav-top -->
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="/talent" onclick="toggleMobileNav()">Talent</a>
-    <a href="/#platform" onclick="toggleMobileNav()">CreativeOps Platform</a>
-    <a href="/#brandmemory" onclick="toggleMobileNav()">Brand Memory</a>
-    <a href="/work-with-us" onclick="toggleMobileNav()">Apply as CITL</a>
-    <a href="/#pricing" onclick="toggleMobileNav()">Precios</a>
-    <a href="/blog" onclick="toggleMobileNav()">Blog</a>
-    <div class="nav-mobile-actions">
-      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:14px 24px;border-radius:100px;text-decoration:none;">Book a call</a>
-      <a href="https://uppipe.io/log_in" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;background:transparent;color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:13px 24px;border-radius:100px;text-decoration:none;border:2px solid var(--cobalt);">Log in</a>
-    </div>
   </div>
   </div>
 </nav>
@@ -525,24 +504,24 @@ function setLang(lang){
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-pill"><span class="hero-pill-dot"></span> AI-Powered Demand Engine</div>
-    <h1>How many creative hours<br>does your team <em>actually</em> need?</h1>
-    <p class="hero-sub">Stop guessing. This model is built on real creative production data — actual briefs, revision cycles, asset types, rush rates, and delivery times logged across 9+ years of client work. Not benchmarks. Not surveys. The real thing.</p>
+    <div class="hero-pill"><span class="hero-pill-dot"></span> Motor de demanda con IA</div>
+    <h1>¿Cuántas horas creativas<br>necesita el equipo de marketing <em>en realidad</em>?</h1>
+    <p class="hero-sub">Deja de adivinar. Este modelo está construido sobre datos reales de producción creativa — briefs reales, ciclos de revisión, tipos de pieza, tasas de urgencia y tiempos de entrega registrados a lo largo de más de 9 años de trabajo con clientes. No son benchmarks. No son encuestas. Es la realidad.</p>
     <div class="data-proof">
       <div class="proof-stat">
         <div class="proof-num">+82,168</div>
-        <div class="proof-lbl">Real data points & counting</div>
+        <div class="proof-lbl">Datos reales y subiendo</div>
       </div>
       <div class="proof-stat">
         
       </div>
       <div class="proof-stat">
         <div class="proof-num">+6</div>
-        <div class="proof-lbl">Industries modeled</div>
+        <div class="proof-lbl">Industrias modeladas</div>
       </div>
       <div class="proof-stat">
-        <div class="proof-num">+9 yrs</div>
-        <div class="proof-lbl">Production history</div>
+        <div class="proof-num">+9 años</div>
+        <div class="proof-lbl">Años de historial de producción</div>
       </div>
     </div>
   </div>
@@ -556,59 +535,59 @@ function setLang(lang){
 
   <!-- STEP INDICATOR -->
   <div class="steps-bar">
-    <div class="step-item active" id="si1"><span class="step-num">1</span> Your industry</div>
-    <div class="step-item" id="si2"><span class="step-num">2</span> Production rhythm</div>
-    <div class="step-item" id="si3"><span class="step-num">3</span> Your situation</div>
-    <div class="step-item" id="si4"><span class="step-num">4</span> Your results</div>
+    <div class="step-item active" id="si1"><span class="step-num">1</span> Tu industria</div>
+    <div class="step-item" id="si2"><span class="step-num">2</span> Ritmo de producción</div>
+    <div class="step-item" id="si3"><span class="step-num">3</span> Tu situación</div>
+    <div class="step-item" id="si4"><span class="step-num">4</span> Tus resultados</div>
   </div>
 
   <!-- ── STEP 1: INDUSTRY ── -->
   <div class="step-panel active" id="step1">
     <div class="card">
-      <div class="card-label"><span class="card-label-num">01</span> Tell us about your business</div>
-      <h2 class="card-title">What industry are you in?</h2>
-      <p class="card-sub">We'll match you against real production benchmarks from similar companies. Each industry has very different creative demand patterns.</p>
+      <div class="card-label"><span class="card-label-num">01</span> Cuéntanos sobre tu negocio</div>
+      <h2 class="card-title">¿En qué industria estás?</h2>
+      <p class="card-sub">Te compararemos con benchmarks reales de producción de empresas similares. Cada industria tiene patrones de demanda creativa muy distintos.</p>
 
       <div class="field">
-        <label>Industry</label>
+        <label>Industria</label>
         <div class="chips" id="industryChips">
-          <div class="chip" data-val="Tech / Mobility" onclick="selectChip(this,'industry')">🚀 Tech / SaaS</div>
-          <div class="chip" data-val="Food & Beverage" onclick="selectChip(this,'industry')">🍃 Food & Beverage / CPG</div>
-          <div class="chip" data-val="Real Estate / Coworking" onclick="selectChip(this,'industry')">🏢 Real Estate</div>
+          <div class="chip" data-val="Tech / Mobility" onclick="selectChip(this,'industry')">🚀 Tecnología / SaaS</div>
+          <div class="chip" data-val="Food & Beverage" onclick="selectChip(this,'industry')">🍃 Alimentos y Bebidas / Consumo</div>
+          <div class="chip" data-val="Real Estate / Coworking" onclick="selectChip(this,'industry')">🏢 Inmobiliario</div>
           <div class="chip" data-val="Retail / E-commerce" onclick="selectChip(this,'industry')">🛍️ Retail / E-commerce</div>
-          <div class="chip" data-val="Agency / Creative Services" onclick="selectChip(this,'industry')">🎨 Agency / Services</div>
-          <div class="chip" data-val="Manufacturing / Industrial" onclick="selectChip(this,'industry')">⚙️ Manufacturing / B2B</div>
-          <div class="chip" data-val="Other" onclick="selectChip(this,'industry')">📊 Other</div>
+          <div class="chip" data-val="Agency / Creative Services" onclick="selectChip(this,'industry')">🎨 Agencia / Servicios</div>
+          <div class="chip" data-val="Manufacturing / Industrial" onclick="selectChip(this,'industry')">⚙️ Manufactura / B2B</div>
+          <div class="chip" data-val="Other" onclick="selectChip(this,'industry')">📊 Otra</div>
         </div>
-        <div class="field-hint">Model trained on real data for highlighted industries. Others use cross-industry benchmarks.</div>
+        <div class="field-hint">Modelo entrenado con datos reales para las industrias destacadas. Las demás usan benchmarks entre industrias.</div>
       </div>
 
       <div class="field">
-        <label>Team size</label>
+        <label>Tamaño del equipo</label>
         <div class="chips" id="teamChips">
-          <div class="chip" data-val="solo" onclick="selectChip(this,'team')">Solo founder / 1 marketer</div>
-          <div class="chip" data-val="small" onclick="selectChip(this,'team')">2–5 person team</div>
-          <div class="chip" data-val="mid" onclick="selectChip(this,'team')">6–15 people</div>
-          <div class="chip" data-val="large" onclick="selectChip(this,'team')">15+ people</div>
+          <div class="chip" data-val="solo" onclick="selectChip(this,'team')">Fundador solo / 1 persona de marketing</div>
+          <div class="chip" data-val="small" onclick="selectChip(this,'team')">Equipo de 2–5 personas</div>
+          <div class="chip" data-val="mid" onclick="selectChip(this,'team')">6–15 personas</div>
+          <div class="chip" data-val="large" onclick="selectChip(this,'team')">15+ personas</div>
         </div>
       </div>
 
       <div class="field">
-        <label>Active marketing channels (select all that apply)</label>
+        <label>Canales de marketing activos (selecciona todos los que apliquen)</label>
         <div class="chips" id="channelChips">
-          <div class="chip" data-val="social" onclick="toggleChip(this,'channels')">Social media</div>
-          <div class="chip" data-val="paid" onclick="toggleChip(this,'channels')">Paid ads</div>
+          <div class="chip" data-val="social" onclick="toggleChip(this,'channels')">Redes sociales</div>
+          <div class="chip" data-val="paid" onclick="toggleChip(this,'channels')">Pauta paga</div>
           <div class="chip" data-val="email" onclick="toggleChip(this,'channels')">Email / CRM</div>
-          <div class="chip" data-val="web" onclick="toggleChip(this,'channels')">Website / landing pages</div>
+          <div class="chip" data-val="web" onclick="toggleChip(this,'channels')">Sitio web / landing pages</div>
           <div class="chip" data-val="video" onclick="toggleChip(this,'channels')">Video / motion</div>
-          <div class="chip" data-val="print" onclick="toggleChip(this,'channels')">Print / OOH</div>
-          <div class="chip" data-val="events" onclick="toggleChip(this,'channels')">Events / activations</div>
+          <div class="chip" data-val="print" onclick="toggleChip(this,'channels')">Impresos / OOH</div>
+          <div class="chip" data-val="events" onclick="toggleChip(this,'channels')">Eventos / activaciones</div>
         </div>
       </div>
 
       <div class="btn-row">
         <button class="btn-primary" onclick="goStep(2)" id="btn1">
-          Continue <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Continuar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
@@ -617,58 +596,58 @@ function setLang(lang){
   <!-- ── STEP 2: PRODUCTION RHYTHM ── -->
   <div class="step-panel" id="step2">
     <div class="card">
-      <div class="card-label"><span class="card-label-num">02</span> Production rhythm</div>
-      <h2 class="card-title">How much do you produce?</h2>
-      <p class="card-sub">This is where most teams underestimate. Every channel multiplies asset volume. Let's get the real picture.</p>
+      <div class="card-label"><span class="card-label-num">02</span> Ritmo de producción</div>
+      <h2 class="card-title">¿Cuánto produces?</h2>
+      <p class="card-sub">Aquí es donde la mayoría de equipos subestima. Cada canal multiplica el volumen de piezas. Veamos el panorama real.</p>
 
       <div class="grid2">
         <div class="field">
-          <label>Campaigns per month</label>
+          <label>Campañas por mes</label>
           <div class="chips" id="campaignChips">
-            <div class="chip" data-val="1" onclick="selectChip(this,'campaigns')">1 campaign</div>
-            <div class="chip" data-val="2.5" onclick="selectChip(this,'campaigns')">2–3 campaigns</div>
-            <div class="chip" data-val="5" onclick="selectChip(this,'campaigns')">4–6 campaigns</div>
-            <div class="chip" data-val="8" onclick="selectChip(this,'campaigns')">7+ campaigns</div>
+            <div class="chip" data-val="1" onclick="selectChip(this,'campaigns')">1 campaña</div>
+            <div class="chip" data-val="2.5" onclick="selectChip(this,'campaigns')">2–3 campañas</div>
+            <div class="chip" data-val="5" onclick="selectChip(this,'campaigns')">4–6 campañas</div>
+            <div class="chip" data-val="8" onclick="selectChip(this,'campaigns')">7+ campañas</div>
           </div>
         </div>
 
         <div class="field">
-          <label>Assets per campaign (avg)</label>
+          <label>Piezas por campaña (promedio)</label>
           <div class="chips" id="assetsChips">
-            <div class="chip" data-val="3" onclick="selectChip(this,'assets')">1–5 assets</div>
-            <div class="chip" data-val="8" onclick="selectChip(this,'assets')">6–10 assets</div>
-            <div class="chip" data-val="15" onclick="selectChip(this,'assets')">11–20 assets</div>
-            <div class="chip" data-val="25" onclick="selectChip(this,'assets')">20+ assets</div>
+            <div class="chip" data-val="3" onclick="selectChip(this,'assets')">1–5 piezas</div>
+            <div class="chip" data-val="8" onclick="selectChip(this,'assets')">6–10 piezas</div>
+            <div class="chip" data-val="15" onclick="selectChip(this,'assets')">11–20 piezas</div>
+            <div class="chip" data-val="25" onclick="selectChip(this,'assets')">20+ piezas</div>
           </div>
         </div>
       </div>
 
       <div class="field">
-        <label>Do you have demand peaks?</label>
+        <label>¿Tienes picos de demanda?</label>
         <div class="chips" id="peakChips">
-          <div class="chip" data-val="none" onclick="selectChip(this,'peaks')">Steady year-round</div>
-          <div class="chip" data-val="seasonal" onclick="selectChip(this,'peaks')">Seasonal peaks (Q4, summer…)</div>
-          <div class="chip" data-val="launches" onclick="selectChip(this,'peaks')">Product launches</div>
-          <div class="chip" data-val="both" onclick="selectChip(this,'peaks')">Both peaks and launches</div>
+          <div class="chip" data-val="none" onclick="selectChip(this,'peaks')">Constante todo el año</div>
+          <div class="chip" data-val="seasonal" onclick="selectChip(this,'peaks')">Picos estacionales (Q4, verano…)</div>
+          <div class="chip" data-val="launches" onclick="selectChip(this,'peaks')">Lanzamientos de producto</div>
+          <div class="chip" data-val="both" onclick="selectChip(this,'peaks')">Picos y lanzamientos</div>
         </div>
-        <div class="field-hint">Peaks can 2–4× your baseline creative demand. We'll factor this in.</div>
+        <div class="field-hint">Los picos pueden multiplicar tu demanda creativa base por 2–4×. Lo tendremos en cuenta.</div>
       </div>
 
       <div class="field">
-        <label>Urgency (rush requests)</label>
+        <label>Urgencia (pedidos express)</label>
         <div class="chips" id="rushChips">
-          <div class="chip" data-val="5" onclick="selectChip(this,'rush_pct')">Rarely (&lt;10%)</div>
-          <div class="chip" data-val="20" onclick="selectChip(this,'rush_pct')">Sometimes (10–30%)</div>
-          <div class="chip" data-val="40" onclick="selectChip(this,'rush_pct')">Often (30–50%)</div>
-          <div class="chip" data-val="60" onclick="selectChip(this,'rush_pct')">Constantly (&gt;50%)</div>
+          <div class="chip" data-val="5" onclick="selectChip(this,'rush_pct')">Rara vez (&lt;10%)</div>
+          <div class="chip" data-val="20" onclick="selectChip(this,'rush_pct')">A veces (10–30%)</div>
+          <div class="chip" data-val="40" onclick="selectChip(this,'rush_pct')">Seguido (30–50%)</div>
+          <div class="chip" data-val="60" onclick="selectChip(this,'rush_pct')">Constantemente (&gt;50%)</div>
         </div>
-        <div class="field-hint">Rush requests in our dataset average 40% more hours than standard. Our data shows tech companies run 28% rush rate.</div>
+        <div class="field-hint">Los pedidos express en nuestros datos promedian 40% más horas que los estándar. Nuestros datos muestran que las empresas de tecnología tienen una tasa de urgencia del 28%.</div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-secondary" onclick="goStep(1)">← Back</button>
+        <button class="btn-secondary" onclick="goStep(1)">← Atrás</button>
         <button class="btn-primary" onclick="goStep(3)">
-          Continue <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Continuar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
@@ -677,57 +656,57 @@ function setLang(lang){
   <!-- ── STEP 3: SITUATION ── -->
   <div class="step-panel" id="step3">
     <div class="card">
-      <div class="card-label"><span class="card-label-num">03</span> Your current situation</div>
-      <h2 class="card-title">How do you produce today?</h2>
-      <p class="card-sub">This helps us calculate how much operational waste you currently have — and what the real efficiency gain looks like.</p>
+      <div class="card-label"><span class="card-label-num">03</span> Tu situación actual</div>
+      <h2 class="card-title">¿Cómo produces hoy?</h2>
+      <p class="card-sub">Esto nos ayuda a calcular cuánto desperdicio operativo tienes hoy — y cómo se ve la ganancia real de eficiencia.</p>
 
       <div class="field">
-        <label>How do you currently produce creative assets?</label>
+        <label>¿Cómo produces tus piezas creativas hoy?</label>
         <div class="chips" id="currentChips">
-          <div class="chip" data-val="agency" onclick="selectChip(this,'current')">Traditional agency</div>
+          <div class="chip" data-val="agency" onclick="selectChip(this,'current')">Agencia tradicional</div>
           <div class="chip" data-val="freelance" onclick="selectChip(this,'current')">Freelancers</div>
-          <div class="chip" data-val="inhouse" onclick="selectChip(this,'current')">In-house team</div>
-          <div class="chip" data-val="mix" onclick="selectChip(this,'current')">Mix of all</div>
-          <div class="chip" data-val="none" onclick="selectChip(this,'current')">Nothing structured yet</div>
+          <div class="chip" data-val="inhouse" onclick="selectChip(this,'current')">Equipo interno</div>
+          <div class="chip" data-val="mix" onclick="selectChip(this,'current')">Mezcla de todo</div>
+          <div class="chip" data-val="none" onclick="selectChip(this,'current')">Aún nada estructurado</div>
         </div>
       </div>
 
       <div class="grid2">
         <div class="field">
-          <label>Average revision rounds per asset</label>
+          <label>Rondas de revisión promedio por pieza</label>
           <div class="chips" id="revChips">
-            <div class="chip" data-val="0" onclick="selectChip(this,'revisions')">0–1 rounds</div>
-            <div class="chip" data-val="2" onclick="selectChip(this,'revisions')">2–3 rounds</div>
-            <div class="chip" data-val="4" onclick="selectChip(this,'revisions')">4–5 rounds</div>
-            <div class="chip" data-val="6" onclick="selectChip(this,'revisions')">6+ rounds</div>
+            <div class="chip" data-val="0" onclick="selectChip(this,'revisions')">0–1 rondas</div>
+            <div class="chip" data-val="2" onclick="selectChip(this,'revisions')">2–3 rondas</div>
+            <div class="chip" data-val="4" onclick="selectChip(this,'revisions')">4–5 rondas</div>
+            <div class="chip" data-val="6" onclick="selectChip(this,'revisions')">6+ rondas</div>
           </div>
-          <div class="field-hint">Industry avg is 2.1 rounds. Each round adds ~0.75h to total delivery time.</div>
+          <div class="field-hint">El promedio de la industria es 2.1 rondas. Cada ronda suma ~0.75h al tiempo total de entrega.</div>
         </div>
 
         <div class="field">
-          <label>Expected delivery time per asset</label>
+          <label>Tiempo de entrega esperado por pieza</label>
           <div class="chips" id="deliveryChips">
-            <div class="chip" data-val="fast" onclick="selectChip(this,'delivery')">24–48 hours</div>
-            <div class="chip" data-val="normal" onclick="selectChip(this,'delivery')">3–5 days</div>
-            <div class="chip" data-val="slow" onclick="selectChip(this,'delivery')">1–2 weeks</div>
-            <div class="chip" data-val="very_slow" onclick="selectChip(this,'delivery')">2+ weeks</div>
+            <div class="chip" data-val="fast" onclick="selectChip(this,'delivery')">24–48 horas</div>
+            <div class="chip" data-val="normal" onclick="selectChip(this,'delivery')">3–5 días</div>
+            <div class="chip" data-val="slow" onclick="selectChip(this,'delivery')">1–2 semanas</div>
+            <div class="chip" data-val="very_slow" onclick="selectChip(this,'delivery')">2+ semanas</div>
           </div>
         </div>
       </div>
 
       <div class="field">
-        <label>Is this your first time using a CreativeOps model?</label>
+        <label>¿Es tu primera vez usando un modelo CreativeOps?</label>
         <div class="chips" id="firsttimeChips">
-          <div class="chip" data-val="yes" onclick="selectChip(this,'firsttime')">Yes — new to this</div>
-          <div class="chip" data-val="no" onclick="selectChip(this,'firsttime')">No — I've used subscription creative before</div>
+          <div class="chip" data-val="yes" onclick="selectChip(this,'firsttime')">Sí — es nuevo para mí</div>
+          <div class="chip" data-val="no" onclick="selectChip(this,'firsttime')">No — ya he usado creatividad por suscripción</div>
         </div>
-        <div class="field-hint">New clients get a 30% hour buffer in month 1 — it's our onboarding investment, not a price increase.</div>
+        <div class="field-hint">Los clientes nuevos reciben un 30% extra de horas en el mes 1 — es nuestra inversión de onboarding, no un aumento de precio.</div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-secondary" onclick="goStep(2)">← Back</button>
+        <button class="btn-secondary" onclick="goStep(2)">← Atrás</button>
         <button class="btn-primary" onclick="goStep(4)">
-          Calculate my demand <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Calcular mi demanda <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
@@ -741,36 +720,36 @@ function setLang(lang){
       <div class="email-gate">
         <div class="gate-eyebrow"><span class="gate-eyebrow-dot"></span>Creative Intelligence</div>
         <div class="gate-icon">🧠</div>
-        <h2 class="gate-title">This is just the<br><span>tip of the iceberg.</span></h2>
-        <p class="gate-sub">Imagine everything your marketing team needs — with this intelligence behind it. More assets. Fewer revisions. Zero fixed headcount. Creative capacity that scales up and down with your demand.</p>
+        <h2 class="gate-title">Esto es apenas la<br><span>punta del iceberg.</span></h2>
+        <p class="gate-sub">Imagina todo lo que el equipo de marketing necesita — con esta inteligencia detrás. Más piezas. Menos revisiones. Cero nómina fija. Capacidad creativa que sube y baja con su demanda.</p>
 
         <div class="gate-what-you-get">
           <div class="gate-item">
             <div class="gate-item-icon">📊</div>
-            <div class="gate-item-text">Your hours estimate and recommended tier — built on 82,168 real data points, not guesswork</div>
+            <div class="gate-item-text">El estimado de horas y plan recomendado — construido sobre 82.168 datos reales, no suposiciones</div>
           </div>
           <div class="gate-item">
             <div class="gate-item-icon">🏭</div>
-            <div class="gate-item-text">Your industry benchmark — how your creative demand compares to similar companies</div>
+            <div class="gate-item-text">El benchmark de industria — cómo se compara la demanda creativa con empresas similares</div>
           </div>
           <div class="gate-item">
             <div class="gate-item-icon">⚡</div>
-            <div class="gate-item-text">A tailored CreativeOps proposal — senior LATAM creatives + AI, no overhead, no idle time</div>
+            <div class="gate-item-text">Una propuesta CreativeOps a la medida — creativos senior de LATAM + IA, sin overhead, sin tiempo muerto</div>
           </div>
         </div>
 
         <div class="gate-form">
           <div class="gate-row">
-            <input type="text" id="gateFirstName" placeholder="First name" />
-            <input type="text" id="gateLastName" placeholder="Last name" />
+            <input type="text" id="gateFirstName" placeholder="Nombre" />
+            <input type="text" id="gateLastName" placeholder="Apellido" />
           </div>
-          <input type="email" id="gateEmail" placeholder="Work email *" required />
+          <input type="email" id="gateEmail" placeholder="Email corporativo *" required />
           <div id="gateError" style="display:none;color:#C8FF00;font-size:12px;font-weight:600;padding:4px 0;text-align:left;"></div>
           <button class="btn-primary" id="gateSubmitBtn" onclick="submitEmail()">
-            See my estimate and proposal →
+            Ver mi estimado y propuesta →
           </button>
         </div>
-        <p class="gate-legal">No spam. We use this to send your report and, if you want, a personalized proposal. Opt out anytime.</p>
+        <p class="gate-legal">Sin spam. Usamos esto para enviarte tu reporte y, si quieres, una propuesta personalizada. Puedes darte de baja cuando quieras.</p>
       </div>
     </div>
 
@@ -781,27 +760,27 @@ function setLang(lang){
       <div class="result-hero">
         <div class="result-hero-inner">
           <div class="result-tag" id="resIndustryTag">Tech / SaaS</div>
-          <div class="result-title">You need <em id="resHoursRec">—</em> hours/month.</div>
-          <p class="result-sub" id="resSubtitle">Based on your profile and real production data from similar companies.</p>
+          <div class="result-title">El equipo necesita <em id="resHoursRec">—</em> horas/mes.</div>
+          <p class="result-sub" id="resSubtitle">Basado en el perfil y datos reales de producción de empresas similares.</p>
 
           <div class="hours-range">
             <div class="hours-box">
               <div class="hours-val" id="resMin">—</div>
-              <div class="hours-lbl">Minimum viable</div>
+              <div class="hours-lbl">Mínimo viable</div>
             </div>
             <div class="hours-box">
               <div class="hours-val recommended" id="resRec">—</div>
-              <div class="hours-lbl">✦ Recommended</div>
+              <div class="hours-lbl">✦ Recomendado</div>
             </div>
             <div class="hours-box">
               <div class="hours-val" id="resPeak">—</div>
-              <div class="hours-lbl">Peak-ready</div>
+              <div class="hours-lbl">Listo para picos</div>
             </div>
           </div>
 
           <div class="result-cta">
-            <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" class="result-btn primary">Book a call →</a>
-            <a href="https://uppipe.co/#pricing" class="result-btn secondary">See pricing</a>
+            <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" class="result-btn primary">Agenda una llamada →</a>
+            <a href="https://uppipe.co/#pricing" class="result-btn secondary">Ver precios</a>
           </div>
         </div>
       </div>
@@ -810,25 +789,25 @@ function setLang(lang){
       <div class="metric-grid">
         <div class="metric-card highlight">
           <div class="metric-val" id="metRequests">—</div>
-          <div class="metric-lbl">Estimated requests/mo</div>
-          <div class="metric-sub">Based on your campaign volume</div>
+          <div class="metric-lbl">Pedidos estimados/mes</div>
+          <div class="metric-sub">Según el volumen de campañas</div>
         </div>
         <div class="metric-card">
           <div class="metric-val" id="metHoursPerReq">—</div>
-          <div class="metric-lbl">Avg hours / request</div>
-          <div class="metric-sub" id="metHoursPerReqSub">Industry benchmark</div>
+          <div class="metric-lbl">Horas promedio / pedido</div>
+          <div class="metric-sub" id="metHoursPerReqSub">Benchmark de industria</div>
         </div>
         <div class="metric-card">
           <div class="metric-val" id="metRevBurden">—</div>
-          <div class="metric-lbl">Revision overhead</div>
-          <div class="metric-sub">Of your total hours are re-work</div>
+          <div class="metric-lbl">Sobrecarga de revisiones</div>
+          <div class="metric-sub">De las horas totales son reproceso</div>
         </div>
       </div>
 
       <!-- TASK MIX -->
       <div class="card" style="margin-bottom:20px;">
-        <div class="card-label"><span class="card-label-num">→</span> How your hours break down</div>
-        <div class="mix-title">Hour allocation by task type — <span id="mixIndustryLabel">your industry</span></div>
+        <div class="card-label"><span class="card-label-num">→</span> Cómo se reparten las horas</div>
+        <div class="mix-title">Asignación de horas por tipo de tarea — <span id="mixIndustryLabel">tu industria</span></div>
         <div id="mixBars"></div>
         <div class="insight">
           <div class="insight-icon">💡</div>
@@ -839,42 +818,42 @@ function setLang(lang){
 
       <!-- SUBSCRIPTION TIERS -->
       <div class="card" style="margin-bottom:20px;">
-        <div class="card-label"><span class="card-label-num">→</span> Choose your plan</div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Your recommended plan</h3>
-        <p style="font-size:13px;color:var(--mid);margin-bottom:0;">Based on your estimated hours — here's what UpPipe costs you. <span id="recHoursInline" style="color:var(--cobalt);font-weight:700;"></span></p>
+        <div class="card-label"><span class="card-label-num">→</span> Elige el plan</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">El plan recomendado</h3>
+        <p style="font-size:13px;color:var(--mid);margin-bottom:0;">Según las horas estimadas — esto es lo que cuesta UpPipe. <span id="recHoursInline" style="color:var(--cobalt);font-weight:700;"></span></p>
         <div id="tierGrid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:16px;margin-top:24px;"></div>
-        <p style="font-size:11px;color:var(--lt);margin-top:16px;">* First month includes 30% additional hours as learning curve investment. Prices in USD + IVA.</p>
+        <p style="font-size:11px;color:var(--lt);margin-top:16px;">* El primer mes incluye 30% de horas adicionales como inversión de curva de aprendizaje. Precios en USD + IVA.</p>
       </div>
 
       <!-- BENCHMARK COMPARISON -->
       <div class="card">
-        <div class="card-label"><span class="card-label-num">→</span> How you compare</div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:24px;">Industry benchmark</h3>
+        <div class="card-label"><span class="card-label-num">→</span> Cómo se compara</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:24px;">Benchmark de industria</h3>
         <div class="metric-grid">
           <div class="metric-card">
             <div class="metric-val" id="benchMedian">—</div>
-            <div class="metric-lbl">Median hours/mo</div>
-            <div class="metric-sub" id="benchIndustry">Your industry</div>
+            <div class="metric-lbl">Horas medianas/mes</div>
+            <div class="metric-sub" id="benchIndustry">Tu industria</div>
           </div>
           <div class="metric-card">
             <div class="metric-val" id="benchRush">—</div>
-            <div class="metric-lbl">Rush rate</div>
-            <div class="metric-sub">In your industry</div>
+            <div class="metric-lbl">Tasa de urgencia</div>
+            <div class="metric-sub">En tu industria</div>
           </div>
           <div class="metric-card">
-            <div class="metric-val" id="benchConfidence">High</div>
-            <div class="metric-lbl">Model confidence</div>
-            <div class="metric-sub" id="benchDataPoints">Based on real entries</div>
+            <div class="metric-val" id="benchConfidence">Alta</div>
+            <div class="metric-lbl">Confianza del modelo</div>
+            <div class="metric-sub" id="benchDataPoints">Según registros reales</div>
           </div>
         </div>
         <div style="margin-top:24px;padding:20px;background:var(--cobalt-tint);border-radius:14px;">
           <p style="font-size:12px;color:var(--cobalt-deep);line-height:1.7;font-weight:600;">
-            <strong>This estimate is based on real UpPipe production data</strong> — 82,168 real data points from Brandnew Studio's 15+ years serving similar companies. Not industry surveys. Not guesses. Real hours, real tasks, real revision cycles.
+            <strong>Este estimado se basa en datos reales de producción de UpPipe</strong> — 82.168 datos reales de los más de 15 años de Brandnew Studio sirviendo a empresas similares. No son encuestas de industria. No son suposiciones. Horas reales, tareas reales, ciclos de revisión reales.
           </p>
         </div>
         <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" class="btn-primary" style="text-decoration:none;display:inline-flex;width:auto;padding:14px 28px;">Book a call →</a>
-          <a href="https://uppipe.co/#pricing" class="btn-secondary" style="text-decoration:none;display:inline-flex;padding:14px 28px;">See pricing</a>
+          <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" class="btn-primary" style="text-decoration:none;display:inline-flex;width:auto;padding:14px 28px;">Agenda una llamada →</a>
+          <a href="https://uppipe.co/#pricing" class="btn-secondary" style="text-decoration:none;display:inline-flex;padding:14px 28px;">Ver precios</a>
         </div>
       </div>
 
@@ -884,7 +863,10 @@ function setLang(lang){
 </main>
 
 <footer class="page-footer">
-  <p><strong>UpPipe Creative Intelligence</strong> — trained on <strong>70,152 time entries + 12,016 Trello cards</strong>, not assumptions.</p>
+  <div style="margin-bottom:28px;">
+    <a href="https://uppipe.co" style="display:inline-flex;align-items:center;gap:8px;background:var(--cobalt);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;padding:13px 28px;border-radius:100px;text-decoration:none;">← Volver a UpPipe</a>
+  </div>
+  <p><strong>UpPipe Creative Intelligence</strong> — entrenado con <strong>70.152 registros de tiempo + 12.016 tarjetas de Trello</strong>, no con suposiciones.</p>
   <p style="margin-top:8px;">© 2026 UpPipe · <a href="https://uppipe.co">uppipe.co</a> · <a href="/cdn-cgi/l/email-protection#523a373e3e3d122722223b22377c313d"><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29da8adadb4adb8f3beb2">[email&#160;protected]</span></a></p>
 </footer>
 
@@ -906,7 +888,7 @@ const MODEL = {
   industry_profiles: {
     // Tech/Mobility: 44,136 timesheet entries + 4,749 Trello cards — Uber (all countries), Rappi, Glovo, Ramsay, PayU, Elibom, Flexport
     "Tech / Mobility": {
-      label:"Tech / SaaS / Mobility", icon:"🚀",
+      label:"Tecnología / SaaS / Movilidad", icon:"🚀",
       task_mix: {"Design":39.5,"Rush Design":27.2,"Adjustments":26.5,"Final Artwork":4.3,"Other":1.2,"Presentations":0.7,"Meetings":0.5},
       hours_per_request: { count:7229, mean:1.113, median:0.700, p25:0.317, p75:1.467 },
       hours_per_month:   { count:74,   mean:99.7,  median:37.3,  p25:17.6,  p75:76.1 },
@@ -918,7 +900,7 @@ const MODEL = {
     },
     // Food & Beverage: 9,378 timesheet entries + 4,689 Trello cards — Alpina, Natura, Powerful Yogurt, Arcos Dorados
     "Food & Beverage": {
-      label:"Food & Beverage / CPG", icon:"🍃",
+      label:"Alimentos y Bebidas / Consumo", icon:"🍃",
       task_mix: {"Design":32.2,"Adjustments":30.7,"Rush Design":16.9,"Final Artwork":8.9,"Other":6.1,"Meetings":2.3,"Presentations":1.3,"Copywriting":1.1},
       hours_per_request: { count:1445, mean:1.204, median:0.850, p25:0.371, p75:1.662 },
       hours_per_month:   { count:12,  mean:52.8,  median:27.7,  p25:9.3,   p75:70.6 },
@@ -930,7 +912,7 @@ const MODEL = {
     },
     // Real Estate / Coworking: 2,065 timesheet entries + 91 Trello cards — Casa Legado, WeWork, Baia Kristal, Amarilo
     "Real Estate / Coworking": {
-      label:"Real Estate / Coworking", icon:"🏢",
+      label:"Inmobiliario / Coworking", icon:"🏢",
       task_mix: {"Design":39.3,"Adjustments":31.3,"Copywriting":8.0,"Other":5.3,"Final Artwork":5.4,"Meetings":5.3,"Presentations":2.8,"Rush Design":2.6},
       hours_per_request: { count:99, mean:1.539, median:1.317, p25:0.510, p75:2.243 },
       hours_per_month:   { count:6,  mean:25.4,  median:24.5,  p25:15.1,  p75:33.8 },
@@ -954,7 +936,7 @@ const MODEL = {
     },
     // Agency / Creative Services: 8,048 timesheet entries + 2,487 Trello cards — Brandnew, Edelman, AED, Straik, Seijiro
     "Agency / Creative Services": {
-      label:"Agency / Creative Services", icon:"🎨",
+      label:"Agencia / Servicios Creativos", icon:"🎨",
       task_mix: {"Design":34.9,"Adjustments":28.2,"Other":18.3,"Rush Design":8.6,"Meetings":5.9,"Final Artwork":2.9,"Presentations":0.8,"Copywriting":0.4},
       hours_per_request: { count:1342, mean:1.466, median:1.068, p25:0.420, p75:2.100 },
       hours_per_month:   { count:2,  mean:9.6,   median:9.6,   p25:9.1,   p75:10.0 },
@@ -966,7 +948,7 @@ const MODEL = {
     },
     // Manufacturing/Industrial: 2,158 timesheet entries — Gran Tierra, Geopark, Climatec, Laminados
     "Manufacturing / Industrial": {
-      label:"Manufacturing / B2B Industrial", icon:"⚙️",
+      label:"Manufactura / B2B Industrial", icon:"⚙️",
       task_mix: {"Design":56.3,"Adjustments":34.8,"Other":4.7,"Final Artwork":1.3,"Rush Design":1.8,"Meetings":1.1},
       hours_per_request: { count:348, mean:1.793, median:1.413, p25:0.735, p75:2.552 },
       hours_per_month:   { count:2,  mean:79.5,  median:79.5,  p25:62.8,  p75:96.2 },
@@ -977,7 +959,7 @@ const MODEL = {
       rush_by_year: {}
     },
     "Other": {
-      label:"Other industries", icon:"📊",
+      label:"Otras industrias", icon:"📊",
       task_mix: {"Design":40.0,"Adjustments":28.0,"Rush Design":14.0,"Final Artwork":10.0,"Other":8.0},
       hours_per_request: { count:50, mean:1.5, median:0.9, p25:0.4, p75:2.0 },
       hours_per_month:   { count:10, mean:45.0, median:35.0, p25:20.0, p75:60.0 },
@@ -987,8 +969,8 @@ const MODEL = {
     }
   },
   tiers: [
-    { name:"Starter",    hours:40,  desc:"1–2 campaigns/month" },
-    { name:"Growth",     hours:80,  desc:"3–5 campaigns/month" },
+    { name:"Starter",    hours:40,  desc:"1–2 campañas/mes" },
+    { name:"Growth",     hours:80,  desc:"3–5 campañas/mes" },
     { name:"Scale",      hours:160, desc:"6+ campaigns, multi-channel" },
     { name:"Enterprise", hours:320, desc:"Full creative ops replacement" },
   ]
@@ -1045,7 +1027,7 @@ async function submitEmail() {
 
   // Validate
   if (!email || !email.includes('@') || !email.includes('.')) {
-    errorEl.textContent = 'Please enter a valid work email.';
+    errorEl.textContent = 'Por favor ingresa un email corporativo válido.';
     errorEl.style.display = 'block';
     emailEl.focus();
     return;
@@ -1059,7 +1041,7 @@ async function submitEmail() {
 
   // Loading state
   submitBtn.disabled = true;
-  submitBtn.innerHTML = 'Calculating… <span style="opacity:0.6;font-size:12px;">just a sec</span>';
+  submitBtn.innerHTML = 'Calculando… <span style="opacity:0.6;font-size:12px;">un segundo</span>';
 
   // ── HubSpot Forms API submission ──
   try {
@@ -1154,12 +1136,12 @@ function renderResults() {
   
   const name = STATE.name ? `, ${STATE.name}` : '';
   document.getElementById('resSubtitle').textContent = 
-    `Based on your campaign volume (${Math.round(totalRequests)} estimated requests/month), ${profile.label.toLowerCase()} benchmarks, and ${MODEL.meta.records.toLocaleString()} real time entries.`;
+    `Según el volumen de campañas (${Math.round(totalRequests)} pedidos estimados/mes), benchmarks de ${profile.label.toLowerCase()} y ${MODEL.meta.records.toLocaleString()} registros de tiempo reales.`;
   
   // Metrics
   document.getElementById('metRequests').textContent = Math.round(totalRequests);
   document.getElementById('metHoursPerReq').textContent = hoursPerReq.toFixed(1) + 'h';
-  document.getElementById('metHoursPerReqSub').textContent = `From ${profile.hours_per_request.count} real requests`;
+  document.getElementById('metHoursPerReqSub').textContent = `De ${profile.hours_per_request.count} pedidos reales`;
   document.getElementById('metRevBurden').textContent = profile.revision_pct.toFixed(0) + '%';
   
   // Task mix bars
@@ -1183,17 +1165,17 @@ function renderResults() {
   // Insight
   let insightTitle = '', insightBody = '';
   if(profile.revision_pct > 35) {
-    insightTitle = '⚠️ High revision overhead in your industry';
-    insightBody = `${profile.revision_pct}% of your hours go to adjustments — above the 20% benchmark. This means your briefs need to be exceptionally detailed before work starts. UpPipe's AI brief builder captures 87% of critical info upfront, cutting revision rounds significantly.`;
+    insightTitle = '⚠️ Alta sobrecarga de revisiones en esta industria';
+    insightBody = `${profile.revision_pct}% de las horas se van en ajustes — por encima del benchmark del 20%. Esto significa que los briefs necesitan ser excepcionalmente detallados antes de empezar. El constructor de briefs con IA de UpPipe captura el 87% de la información crítica desde el inicio, reduciendo las rondas de revisión significativamente.`;
   } else if(profile.rush_pct > 20) {
-    insightTitle = '🔴 Rush requests dominate your industry';
-    insightBody = `${profile.rush_pct}% of requests in your sector are marked rush. Rush jobs average 40% more hours than standard delivery. Investing in a larger subscription buffer (Scale tier) protects you from surge costs and gives your team breathing room.`;
+    insightTitle = '🔴 Los pedidos express dominan esta industria';
+    insightBody = `${profile.rush_pct}% de los pedidos en este sector se marcan como urgentes. Los trabajos express promedian 40% más horas que la entrega estándar. Invertir en un buffer de suscripción más grande (plan Scale) protege de los costos por picos y le da aire al equipo.`;
   } else if(firstTimeFactor > 1) {
-    insightTitle = '📈 Month 1 includes a 30% learning buffer';
-    insightBody = `First-time clients get 30% additional hours in month 1 — this covers onboarding, brand familiarization, and workflow calibration. It's an investment we make, not a price increase. From month 2 onward, your team runs at full speed.`;
+    insightTitle = '📈 El mes 1 incluye un buffer de aprendizaje del 30%';
+    insightBody = `Los clientes nuevos reciben 30% de horas adicionales en el mes 1 — esto cubre el onboarding, la familiarización con la marca y la calibración del flujo de trabajo. Es una inversión que hacemos, no un aumento de precio. Del mes 2 en adelante, el equipo opera a toda velocidad.`;
   } else {
-    insightTitle = '✅ Your demand profile is well-modeled';
-    insightBody = `Your industry has strong data coverage in our model (${profile.hours_per_request.count} real requests analyzed). This estimate is statistically reliable. The recommended tier gives you enough capacity for peaks without over-committing.`;
+    insightTitle = '✅ El perfil de demanda está bien modelado';
+    insightBody = `Esta industria tiene una sólida cobertura de datos en nuestro modelo (${profile.hours_per_request.count} pedidos reales analizados). Este estimado es estadísticamente confiable. El plan recomendado da capacidad suficiente para los picos sin sobrecomprometerse.`;
   }
   document.getElementById('insightTitle').textContent = insightTitle;
   document.getElementById('insightBody').textContent = insightBody;
@@ -1222,38 +1204,38 @@ function renderResults() {
   const warnSVG  = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E9756B" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
   tierEl.innerHTML += `
     <div style="border:2px solid ${!scaleIsBetter?'var(--cobalt)':'var(--border)'};border-radius:20px;padding:28px;position:relative;${!scaleIsBetter?'background:rgba(26,86,255,0.04);':''}">
-      ${!scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ Best fit</div>' : ''}
-      <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,86,255,0.1);color:var(--cobalt);margin-bottom:14px;">Flex · Month-to-month</div>
+      ${!scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ Mejor opción</div>' : ''}
+      <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,86,255,0.1);color:var(--cobalt);margin-bottom:14px;">Flex · Mes a mes</div>
       <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:8px;">Flex</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$35<span style="font-size:14px;font-weight:400;color:var(--mid);">/hr</span></div>
-      <div style="font-size:10px;color:var(--mid);margin-bottom:14px;">No long-term commitment</div>
+      <div style="font-size:10px;color:var(--mid);margin-bottom:14px;">Sin compromiso a largo plazo</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${flexMonthly.toLocaleString()}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mo</span></div>
       <div style="font-size:10px;color:var(--mid);margin-bottom:16px;">${rec}h × $35</div>
-      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Scale up or down monthly</div>
-      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${warnSVG} Hours expire monthly</div>
-      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:block;text-align:center;margin-top:18px;border:1.5px solid var(--cobalt);color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:10px;border-radius:100px;text-decoration:none;">Start Flex →</a>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Sube o baja cada mes</div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${warnSVG} Las horas expiran cada mes</div>
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:block;text-align:center;margin-top:18px;border:1.5px solid var(--cobalt);color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:10px;border-radius:100px;text-decoration:none;">Empieza con Flex →</a>
     </div>`;
   tierEl.innerHTML += `
     <div style="border:${scaleIsBetter?'2.5px':'2px'} solid ${scaleIsBetter?'var(--cobalt)':'var(--border)'};border-radius:20px;padding:28px;position:relative;${scaleIsBetter?'background:linear-gradient(135deg,rgba(26,86,255,0.04),rgba(200,255,0,0.06));':''}">
-      ${scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ Best value for your volume</div>' : ''}
-      <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(200,255,0,0.25);color:#4A7A00;margin-bottom:14px;">Scale · Annual · Hours roll over</div>
+      ${scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ El mejor valor para ese volumen</div>' : ''}
+      <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(200,255,0,0.25);color:#4A7A00;margin-bottom:14px;">Scale · Anual · Las horas se acumulan</div>
       <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:8px;">Scale</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$${scaleRate}<span style="font-size:14px;font-weight:400;color:var(--mid);">/hr</span></div>
       <div style="font-size:10px;color:var(--mid);margin-bottom:14px;">${scaleTierLabel}</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${scaleMonthly.toLocaleString()}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mo</span></div>
       <div style="font-size:10px;color:var(--mid);margin-bottom:12px;">${rec}h × $${scaleRate}</div>
-      ${scaleSaving > 0 ? `<div style="background:rgba(200,255,0,0.2);border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;color:#3A6A00;margin-bottom:12px;">You save ~$${scaleSaving.toLocaleString()}/mo vs Flex</div>` : ''}
-      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Unused hours accumulate all year</div>
-      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} 30% OFF first month</div>
-      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Priority access + dedicated PM</div>
-      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:block;text-align:center;margin-top:18px;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:10px;border-radius:100px;text-decoration:none;">Book a call →</a>
+      ${scaleSaving > 0 ? `<div style="background:rgba(200,255,0,0.2);border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;color:#3A6A00;margin-bottom:12px;">Ahorras ~$${scaleSaving.toLocaleString()}/mes vs Flex</div>` : ''}
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Las horas no usadas se acumulan todo el año</div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} 30% OFF el primer mes</div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Acceso prioritario + PM dedicado</div>
+      <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:block;text-align:center;margin-top:18px;background:var(--cobalt);color:white;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:10px;border-radius:100px;text-decoration:none;">Agenda una llamada →</a>
     </div>`;
   
   // Benchmarks
   document.getElementById('benchMedian').textContent = profile.hours_per_month.median + 'h';
   document.getElementById('benchIndustry').textContent = profile.label;
   document.getElementById('benchRush').textContent = profile.rush_pct + '%';
-  const confLevel = profile.hours_per_request.count > 100 ? 'High' : profile.hours_per_request.count > 20 ? 'Medium' : 'Low';
+  const confLevel = profile.hours_per_request.count > 100 ? 'Alta' : profile.hours_per_request.count > 20 ? 'Media' : 'Baja';
   document.getElementById('benchConf').textContent = confLevel;
 
   // Update inline hours label
@@ -1261,22 +1243,6 @@ function renderResults() {
   if (inlineEl) inlineEl.textContent = rec + 'h';
 }
 
-// Event delegation fallback for chips
-document.addEventListener('click', function(e) {
-  const chip = e.target.closest('.chip');
-  if (!chip) return;
-  const oc = chip.getAttribute('onclick') || '';
-  if (oc.includes('toggleChip')) {
-    chip.classList.toggle('active');
-    const key = oc.match(/'([^']+)'\)/)[1];
-    STATE[key] = Array.from(chip.parentElement.querySelectorAll('.chip.active')).map(c=>c.dataset.val);
-  } else if (oc.includes('selectChip')) {
-    chip.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-    chip.classList.add('active');
-    const key = oc.match(/'([^']+)'\)/)[1];
-    STATE[key] = chip.dataset.val;
-  }
-});
 
 </script>
 </body>
