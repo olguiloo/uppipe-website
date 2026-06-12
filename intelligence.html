@@ -822,7 +822,7 @@ function setLang(lang){
         <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">El plan recomendado</h3>
         <p style="font-size:13px;color:var(--mid);margin-bottom:0;">Según las horas estimadas — esto es lo que cuesta UpPipe. <span id="recHoursInline" style="color:var(--cobalt);font-weight:700;"></span></p>
         <div id="tierGrid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:16px;margin-top:24px;"></div>
-        <p style="font-size:11px;color:var(--lt);margin-top:16px;">* El primer mes incluye 30% de horas adicionales como inversión de curva de aprendizaje. Precios en USD + IVA.</p>
+        <p style="font-size:11px;color:var(--lt);margin-top:16px;">* El primer mes incluye 30% de horas adicionales como inversión de curva de aprendizaje. Precios en COP + IVA.</p>
       </div>
 
       <!-- BENCHMARK COMPARISON -->
@@ -1189,17 +1189,14 @@ function renderResults() {
   const tierEl = document.getElementById('tierGrid');
   tierEl.innerHTML = '';
   const annualHrs = rec * 12;
-  let scaleRate, scaleTierLabel;
-  if      (annualHrs <= 480)  { scaleRate = 32;   scaleTierLabel = '120–480 hrs/yr'; }
-  else if (annualHrs <= 960)  { scaleRate = 30.5; scaleTierLabel = '481–960 hrs/yr'; }
-  else if (annualHrs <= 1440) { scaleRate = 29;   scaleTierLabel = '961–1,440 hrs/yr'; }
-  else if (annualHrs <= 1920) { scaleRate = 27.5; scaleTierLabel = '1,441–1,920 hrs/yr'; }
-  else if (annualHrs <= 2400) { scaleRate = 26;   scaleTierLabel = '1,921–2,400 hrs/yr'; }
-  else                         { scaleRate = 24;   scaleTierLabel = '2,401+ hrs · Enterprise'; }
-  const flexMonthly  = Math.round(rec * 35);
+  const flexRate = 144180;   // COP/hora (igual que el index)
+  const scaleRate = 99000;   // COP/hora (igual que el index)
+  const scaleTierLabel = 'Tarifa anual · +1.500 horas/año';
+  const fmt = function(n){ return Math.round(n).toLocaleString('es-CO'); };
+  const flexMonthly  = Math.round(rec * flexRate);
   const scaleMonthly = Math.round(rec * scaleRate);
   const scaleSaving  = Math.round(flexMonthly - scaleMonthly);
-  const scaleIsBetter = scaleSaving > 150;
+  const scaleIsBetter = scaleSaving > 150000;
   const checkSVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"><path d=\"M20 6L9 17l-5-5\"/></svg>';
   const warnSVG  = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E9756B" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
   tierEl.innerHTML += `
@@ -1207,10 +1204,10 @@ function renderResults() {
       ${!scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ Mejor opción</div>' : ''}
       <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,86,255,0.1);color:var(--cobalt);margin-bottom:14px;">Flex · Mes a mes</div>
       <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:8px;">Flex</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$35<span style="font-size:14px;font-weight:400;color:var(--mid);">/hr</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$144.180<span style="font-size:14px;font-weight:400;color:var(--mid);">/hora</span></div>
       <div style="font-size:10px;color:var(--mid);margin-bottom:14px;">Sin compromiso a largo plazo</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${flexMonthly.toLocaleString()}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mo</span></div>
-      <div style="font-size:10px;color:var(--mid);margin-bottom:16px;">${rec}h × $35</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${fmt(flexMonthly)}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mes</span></div>
+      <div style="font-size:10px;color:var(--mid);margin-bottom:16px;">${rec}h × $144.180</div>
       <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Sube o baja cada mes</div>
       <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${warnSVG} Las horas expiran cada mes</div>
       <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" style="display:block;text-align:center;margin-top:18px;border:1.5px solid var(--cobalt);color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:10px;border-radius:100px;text-decoration:none;">Empieza con Flex →</a>
@@ -1220,11 +1217,11 @@ function renderResults() {
       ${scaleIsBetter ? '<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cobalt);color:white;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">✦ El mejor valor para ese volumen</div>' : ''}
       <div style="display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(200,255,0,0.25);color:#4A7A00;margin-bottom:14px;">Scale · Anual · Las horas se acumulan</div>
       <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:8px;">Scale</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$${scaleRate}<span style="font-size:14px;font-weight:400;color:var(--mid);">/hr</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--cobalt);line-height:1;">~$${fmt(scaleRate)}<span style="font-size:14px;font-weight:400;color:var(--mid);">/hora</span></div>
       <div style="font-size:10px;color:var(--mid);margin-bottom:14px;">${scaleTierLabel}</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${scaleMonthly.toLocaleString()}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mo</span></div>
-      <div style="font-size:10px;color:var(--mid);margin-bottom:12px;">${rec}h × $${scaleRate}</div>
-      ${scaleSaving > 0 ? `<div style="background:rgba(200,255,0,0.2);border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;color:#3A6A00;margin-bottom:12px;">Ahorras ~$${scaleSaving.toLocaleString()}/mes vs Flex</div>` : ''}
+      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:2px;">~$${fmt(scaleMonthly)}<span style="font-size:12px;font-weight:400;color:var(--mid);">/mes</span></div>
+      <div style="font-size:10px;color:var(--mid);margin-bottom:12px;">${rec}h × $${fmt(scaleRate)}</div>
+      ${scaleSaving > 0 ? `<div style="background:rgba(200,255,0,0.2);border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;color:#3A6A00;margin-bottom:12px;">Ahorras ~$${fmt(scaleSaving)}/mes vs Flex · ~30% menos</div>` : ''}
       <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Las horas no usadas se acumulan todo el año</div>
       <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} 30% OFF el primer mes</div>
       <div style="display:flex;gap:8px;margin-bottom:6px;font-size:12px;color:var(--mid);">${checkSVG} Acceso prioritario + PM dedicado</div>
