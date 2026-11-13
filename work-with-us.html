@@ -588,9 +588,19 @@ function setLang(lang){
         </div>
 
         <div class="form-group">
+          <label class="form-label" id="l_jornada">¿En qué jornada trabajarías con UpPipe? *</label>
+          <div role="group" aria-labelledby="l_jornada" style="display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:4px;">
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox" name="jornada" value="diurna"/> Jornada diurna</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox" name="jornada" value="nocturna"/> Jornada nocturna</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox" name="jornada" value="fines_de_semana"/> Fines de semana</label>
+          </div>
+          <p class="form-note" style="text-align:left;margin-top:8px;">Puedes marcar varias.</p>
+        </div>
+
+        <div class="form-group">
           <label class="form-label" for="f_horas">¿Cuántas horas a la semana tienes disponibles? *</label>
           <input type="number" class="form-input" id="f_horas" min="1" max="80" step="1" inputmode="numeric" placeholder="Ej. 15" required/>
-          <p class="form-note" style="text-align:left;margin-top:8px;">Cuentan noches y fines de semana: no tienen que ser horas laborales.</p>
+          <p class="form-note" style="text-align:left;margin-top:8px;">Suma todas las jornadas que marcaste: no tienen que ser horas laborales.</p>
         </div>
 
         <div class="form-group">
@@ -640,14 +650,17 @@ function txt(id){ var el=document.getElementById(id); return (el && el.selectedI
 async function submitForm(e) {
   e.preventDefault();
   var btn=document.getElementById('citlSubmit'), err=document.getElementById('citlError');
+  var jornadas=[].slice.call(document.querySelectorAll('input[name="jornada"]:checked'));
+  if(!jornadas.length){ alert('Marca al menos una jornada en la que trabajarías con UpPipe.'); return; }
   err.style.display='none';
   btn.disabled=true; btn.textContent='Enviando…';
   // El formulario de HubSpot solo guarda los campos que tiene. Lo que no tiene viaja
   // en "rasgos_de_personalidad" con este formato; la tarea automática lo reparte
-  // en anos_de_experiencia, herramientas_ia,
+  // en anos_de_experiencia, jornada_disponible, herramientas_ia,
   // en_que_es_mejor e interes_citl_academy, y marca contact_type.
   var extra=['[Aplicación web]',
     'Años de experiencia: '+txt('f_anos')+' ('+val('f_anos')+')',
+    'Jornada: '+jornadas.map(function(c){return c.parentNode.textContent.trim();}).join(', ')+' ('+jornadas.map(function(c){return c.value;}).join(';')+')',
     'Herramientas de IA: '+val('f_ia'),
     'Interés en CITL Academy: '+(document.getElementById('academy_interest').checked?'sí (true)':'no (false)'),
     'En qué es mejor: '+val('f_mejor')].join('\n');
