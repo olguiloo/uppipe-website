@@ -588,14 +588,9 @@ function setLang(lang){
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="f_horas">¿Cuántas horas al mes tienes disponibles? *</label>
-          <select class="form-select" id="f_horas" required>
-            <option value="" disabled selected>Selecciona disponibilidad</option>
-            <option value="20_40">20–40 h/mes (medio tiempo)</option>
-            <option value="40_80">40–80 h/mes</option>
-            <option value="80_120">80–120 h/mes</option>
-            <option value="120_mas">120+ h/mes (dedicación completa)</option>
-          </select>
+          <label class="form-label" for="f_horas">¿Cuántas horas a la semana tienes disponibles? *</label>
+          <input type="number" class="form-input" id="f_horas" min="1" max="80" step="1" inputmode="numeric" placeholder="Ej. 15" required/>
+          <p class="form-note" style="text-align:left;margin-top:8px;">Cuentan noches y fines de semana: no tienen que ser horas laborales.</p>
         </div>
 
         <div class="form-group">
@@ -649,11 +644,10 @@ async function submitForm(e) {
   btn.disabled=true; btn.textContent='Enviando…';
   // El formulario de HubSpot solo guarda los campos que tiene. Lo que no tiene viaja
   // en "rasgos_de_personalidad" con este formato; la tarea automática lo reparte
-  // en anos_de_experiencia, horas_mensuales_disponibles, herramientas_ia,
+  // en anos_de_experiencia, herramientas_ia,
   // en_que_es_mejor e interes_citl_academy, y marca contact_type.
   var extra=['[Aplicación web]',
     'Años de experiencia: '+txt('f_anos')+' ('+val('f_anos')+')',
-    'Horas al mes: '+txt('f_horas')+' ('+val('f_horas')+')',
     'Herramientas de IA: '+val('f_ia'),
     'Interés en CITL Academy: '+(document.getElementById('academy_interest').checked?'sí (true)':'no (false)'),
     'En qué es mejor: '+val('f_mejor')].join('\n');
@@ -664,6 +658,7 @@ async function submitForm(e) {
     {name:'hs_linkedin_url', value:val('f_linkedin')},
     {name:'portafolio_del_creativo', value:val('f_portfolio')},
     {name:'especialidad_a_la_que_aplica', value:val('f_especialidad')},
+    {name:'horas_semanales_disponibles', value:val('f_horas')},
     {name:'contact_source', value:'website__form'},
     {name:'rasgos_de_personalidad', value:extra}
   ].filter(function(f){ return f.value!==''; });
