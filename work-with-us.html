@@ -639,13 +639,24 @@ function setLang(lang){
 // Cada aplicación crea o actualiza el contacto por correo; la tarea automática
 // le crea su tarjeta en el tablero "Reclutamiento Interno".
 var HS_PORTAL_ID = '50708869';
-var HS_FORM_ID   = 'PENDIENTE_FORM_ID';
+var HS_FORM_ID   = '6765fdf0-b485-4e80-8b27-3eb8c1ec6086'; // "Creative Crew UpPipe Reclutamiento Directo"
 function val(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+function txt(id){ var el=document.getElementById(id); return (el && el.selectedIndex>0) ? el.options[el.selectedIndex].text : ''; }
 async function submitForm(e) {
   e.preventDefault();
   var btn=document.getElementById('citlSubmit'), err=document.getElementById('citlError');
   err.style.display='none';
   btn.disabled=true; btn.textContent='Enviando…';
+  // El formulario de HubSpot solo guarda los campos que tiene. Lo que no tiene viaja
+  // en "rasgos_de_personalidad" con este formato; la tarea automática lo reparte
+  // en anos_de_experiencia, horas_mensuales_disponibles, herramientas_ia,
+  // en_que_es_mejor e interes_citl_academy, y marca contact_type.
+  var extra=['[Aplicación web]',
+    'Años de experiencia: '+txt('f_anos')+' ('+val('f_anos')+')',
+    'Horas al mes: '+txt('f_horas')+' ('+val('f_horas')+')',
+    'Herramientas de IA: '+val('f_ia'),
+    'Interés en CITL Academy: '+(document.getElementById('academy_interest').checked?'sí (true)':'no (false)'),
+    'En qué es mejor: '+val('f_mejor')].join('\n');
   var fields=[
     {name:'firstname', value:val('f_firstname')},
     {name:'lastname', value:val('f_lastname')},
@@ -653,13 +664,8 @@ async function submitForm(e) {
     {name:'hs_linkedin_url', value:val('f_linkedin')},
     {name:'portafolio_del_creativo', value:val('f_portfolio')},
     {name:'especialidad_a_la_que_aplica', value:val('f_especialidad')},
-    {name:'anos_de_experiencia', value:val('f_anos')},
-    {name:'herramientas_ia', value:val('f_ia')},
-    {name:'horas_mensuales_disponibles', value:val('f_horas')},
-    {name:'en_que_es_mejor', value:val('f_mejor')},
-    {name:'interes_citl_academy', value:document.getElementById('academy_interest').checked?'true':'false'},
-    {name:'contact_type', value:'creative_crew_external'},
-    {name:'contact_source', value:'website__form'}
+    {name:'contact_source', value:'website__form'},
+    {name:'rasgos_de_personalidad', value:extra}
   ].filter(function(f){ return f.value!==''; });
   var payload={
     fields:fields,
