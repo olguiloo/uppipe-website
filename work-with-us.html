@@ -524,7 +524,7 @@ function setLang(lang){
     <div style="text-align:center;margin-bottom:56px;">
       <div class="sec-label" style="text-align:center;">Aplica a la red</div>
       <h2 class="sec-title" style="margin-bottom:16px;">¿Listo para aplicar?</h2>
-      <p style="font-size:16px;color:var(--mid);max-width:480px;margin:0 auto;line-height:1.7;">Takes 5 minutes. Revisamos cada aplicación personalmente y te respondemos en 5 días hábiles si hay match.</p>
+      <p style="font-size:16px;color:var(--mid);max-width:480px;margin:0 auto;line-height:1.7;">Toma 5 minutos. Revisamos cada aplicación personalmente y te respondemos en 5 días hábiles si hay match.</p>
     </div>
 
     <div class="form-card" id="formCard">
@@ -532,89 +532,89 @@ function setLang(lang){
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Nombre *</label>
-            <input type="text" class="form-input" placeholder="Tu nombre" required/>
+            <label class="form-label" for="f_firstname">Nombre *</label>
+            <input type="text" class="form-input" id="f_firstname" placeholder="Tu nombre" required/>
           </div>
           <div class="form-group">
-            <label class="form-label">Apellido *</label>
-            <input type="text" class="form-input" placeholder="Tu apellido" required/>
+            <label class="form-label" for="f_lastname">Apellido *</label>
+            <input type="text" class="form-input" id="f_lastname" placeholder="Tu apellido" required/>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Email *</label>
-          <input type="email" class="form-input" placeholder="tu@email.com" required/>
+          <label class="form-label" for="f_email">Email *</label>
+          <input type="email" class="form-input" id="f_email" placeholder="tu@email.com" required/>
         </div>
 
         <div class="form-group">
-          <label class="form-label">URL de LinkedIn *</label>
-          <input type="url" class="form-input" placeholder="https://linkedin.com/in/tuperfil" required/>
+          <label class="form-label" for="f_linkedin">URL de LinkedIn *</label>
+          <input type="url" class="form-input" id="f_linkedin" placeholder="https://linkedin.com/in/tuperfil" required/>
         </div>
 
         <div class="form-group">
-          <label class="form-label">URL del portafolio *</label>
-          <input type="url" class="form-input" placeholder="https://behance.net/tutrabajo o tu website" required/>
+          <label class="form-label" for="f_portfolio">URL del portafolio *</label>
+          <input type="url" class="form-input" id="f_portfolio" placeholder="https://behance.net/tutrabajo o tu website" required/>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Disciplina principal *</label>
-            <select class="form-select" required>
-              <option value="" disabled selected>Selecciona tu disciplina principal</option>
-              <option>Dirección de Arte</option>
-              <option>Motion Design & Animation</option>
-              <option>UX / UI Design</option>
-              <option>Fotografía & Retoque</option>
-              <option>Ilustración</option>
-              <option>Packaging</option>
-              <option>Copywriting & Contenido</option>
-              <option>3D & Renders</option>
-              <option>Diseño de presentaciones</option>
-              <option>Identidad de marca</option>
-              <option>Diseño para redes</option>
-              <option>Print & OOH</option>
-              <option>Otra</option>
+            <label class="form-label" for="f_especialidad">Especialidad principal *</label>
+            <select class="form-select" id="f_especialidad" required>
+              <option value="" disabled selected>Selecciona tu especialidad</option>
+              <option value="Estrategia & Concepto">Estrategia & Concepto — big idea, key visuals, dirección de arte, copy</option>
+              <option value="Marca">Marca — identidad visual, logo, manuales, tipografía</option>
+              <option value="Gráfica & Layout">Gráfica & Layout — editorial, presentaciones, infografías, ilustración</option>
+              <option value="Imagen & Audiovisual">Imagen & Audiovisual — foto, retoque, motion, video, 3D</option>
+              <option value="Digital & Contenido">Digital & Contenido — social media, UGC, pauta, UI/UX, web</option>
+              <option value="Producción & Físico">Producción & Físico — packaging, POP, gran formato, stands</option>
+              <option value="Adaptación & Cierre">Adaptación & Cierre — resize, versionado, artes finales</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Años de experiencia *</label>
-            <select class="form-select" required>
+            <label class="form-label" for="f_anos">Años de experiencia *</label>
+            <select class="form-select" id="f_anos" required>
               <option value="" disabled selected>Selecciona el rango</option>
-              <option>3–5 años</option>
-              <option>5–8 años</option>
-              <option>8–12 años</option>
-              <option>12+ años</option>
+              <option value="3_5">3–5 años</option>
+              <option value="5_8">5–8 años</option>
+              <option value="8_12">8–12 años</option>
+              <option value="12_mas">12+ años</option>
             </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Herramientas de IA que usas regularmente</label>
-          <input type="text" class="form-input" placeholder="ej. Midjourney, ChatGPT, Adobe Firefly, Runway, Sora..."/>
+          <label class="form-label" for="f_ia">Herramientas de IA que usas regularmente</label>
+          <input type="text" class="form-input" id="f_ia" placeholder="ej. Midjourney, ChatGPT, Adobe Firefly, Runway, Sora..."/>
         </div>
 
         <div class="form-group">
-          <label class="form-label">¿Cuántas horas/mes tienes disponibles? *</label>
-          <select class="form-select" required>
+          <label class="form-label" for="f_horas">¿Cuántas horas al mes tienes disponibles? *</label>
+          <select class="form-select" id="f_horas" required>
             <option value="" disabled selected>Selecciona disponibilidad</option>
-            <option>20–40 hrs/mes (part-time)</option>
-            <option>40–80 hrs/mes</option>
-            <option>80–120 hrs/mes</option>
-            <option>120+ hrs/mes (dedicación completa)</option>
+            <option value="20_40">20–40 h/mes (medio tiempo)</option>
+            <option value="40_80">40–80 h/mes</option>
+            <option value="80_120">80–120 h/mes</option>
+            <option value="120_mas">120+ h/mes (dedicación completa)</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Cuéntanos en qué eres bueno — y qué te hace diferente</label>
-          <textarea class="form-textarea" placeholder="Descripción corta de tu trabajo, los tipos de proyectos que amas y por qué crees que eres'd be a strong CITL..."></textarea>
+          <label class="form-label" for="f_mejor">Cuéntanos en qué eres bueno — y qué te hace diferente</label>
+          <textarea class="form-textarea" id="f_mejor" placeholder="Descripción corta de tu trabajo, los proyectos que más disfrutas y por qué serías un gran CITL..."></textarea>
         </div>
 
         <div class="form-group" style="display:flex;align-items:flex-start;gap:12px;">
           <input type="checkbox" id="academy_interest" style="margin-top:2px;flex-shrink:0;"/>
-          <label for="academy_interest" style="font-size:13px;color:var(--mid);line-height:1.6;cursor:pointer;">También me interesa la <strong>UpPipe CITL Academy</strong> when it launches — notify me.</label>
+          <label for="academy_interest" style="font-size:13px;color:var(--mid);line-height:1.6;cursor:pointer;">También me interesa la <strong>UpPipe CITL Academy</strong> — avísenme cuando lance.</label>
         </div>
 
-        <button type="submit" class="form-btn">Enviar aplicación →</button>
+        <div class="form-group" style="display:flex;align-items:flex-start;gap:12px;">
+          <input type="checkbox" id="data_consent" required style="margin-top:2px;flex-shrink:0;"/>
+          <label for="data_consent" style="font-size:13px;color:var(--mid);line-height:1.6;cursor:pointer;">Autorizo a UpPipe a guardar y usar mis datos personales solo para evaluar mi aplicación al Creative Crew y contactarme sobre ella, según la Ley 1581 de 2012. Puedo pedir que los borren escribiendo a hello@uppipe.io. *</label>
+        </div>
+
+        <button type="submit" class="form-btn" id="citlSubmit">Enviar aplicación →</button>
+        <p class="form-note" id="citlError" style="display:none;color:#C62828;">No pudimos enviar tu aplicación. Intenta de nuevo en un momento o escríbenos a <a href="mailto:hello@uppipe.io">hello@uppipe.io</a> con tu portafolio.</p>
         <p class="form-note">Revisamos cada aplicación personalmente. Si hay match, te escribimos en 5 días hábiles. Si no, también te avisamos.</p>
 
       </form>
@@ -635,11 +635,51 @@ function setLang(lang){
 </footer>
 
 <script>
-function submitForm(e) {
+// Envío a HubSpot — formulario "Creative Crew UpPipe – Web" (portal 50708869).
+// Cada aplicación crea o actualiza el contacto por correo; la tarea automática
+// le crea su tarjeta en el tablero "Reclutamiento Interno".
+var HS_PORTAL_ID = '50708869';
+var HS_FORM_ID   = 'PENDIENTE_FORM_ID';
+function val(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+async function submitForm(e) {
   e.preventDefault();
-  document.getElementById('citlForm').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
-  window.scrollTo({top: document.getElementById('apply').offsetTop, behavior: 'smooth'});
+  var btn=document.getElementById('citlSubmit'), err=document.getElementById('citlError');
+  err.style.display='none';
+  btn.disabled=true; btn.textContent='Enviando…';
+  var fields=[
+    {name:'firstname', value:val('f_firstname')},
+    {name:'lastname', value:val('f_lastname')},
+    {name:'email', value:val('f_email')},
+    {name:'hs_linkedin_url', value:val('f_linkedin')},
+    {name:'portafolio_del_creativo', value:val('f_portfolio')},
+    {name:'especialidad_a_la_que_aplica', value:val('f_especialidad')},
+    {name:'anos_de_experiencia', value:val('f_anos')},
+    {name:'herramientas_ia', value:val('f_ia')},
+    {name:'horas_mensuales_disponibles', value:val('f_horas')},
+    {name:'en_que_es_mejor', value:val('f_mejor')},
+    {name:'interes_citl_academy', value:document.getElementById('academy_interest').checked?'true':'false'},
+    {name:'contact_type', value:'creative_crew_external'},
+    {name:'contact_source', value:'website__form'}
+  ].filter(function(f){ return f.value!==''; });
+  var payload={
+    fields:fields,
+    context:{pageUri:window.location.href, pageName:'Trabaja con UpPipe — Únete a la red CITL'},
+    legalConsentOptions:{consent:{consentToProcess:true,
+      text:document.querySelector('label[for="data_consent"]').textContent.trim()}}
+  };
+  try {
+    var res=await fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HS_PORTAL_ID+'/'+HS_FORM_ID,
+      {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+    if(!res.ok) throw new Error('HubSpot '+res.status);
+    if(typeof gtag==='function') gtag('event','crew_application_submit');
+    document.getElementById('citlForm').style.display='none';
+    document.getElementById('successMsg').style.display='block';
+    window.scrollTo({top:document.getElementById('apply').offsetTop, behavior:'smooth'});
+  } catch(ex) {
+    console.warn('[UpPipe] Error enviando aplicación:', ex);
+    err.style.display='block';
+    btn.disabled=false; btn.textContent='Enviar aplicación →';
+  }
 }
 </script>
 
