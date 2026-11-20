@@ -1117,7 +1117,7 @@ function calculate() {
   const rawHours = (baseHours + revisionAdder + rushAdder) * channelFactor * teamFactor;
   
   const min = Math.round(rawHours * 0.75 / 10) * 10;
-  const rec = Math.round(rawHours / 10) * 10;
+  const rec = Math.max(10, Math.round(rawHours / 10) * 10); // Flex arranca en 10 h (20-nov-2026)
   const peak = Math.round(rawHours * peakFactor * firstTimeFactor / 10) * 10;
   
   return { min, rec, peak, totalRequests, hoursPerReq, profile, ind, firstTimeFactor };
