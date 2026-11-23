@@ -27,11 +27,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://uppipe.co/work-with-us</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://uppipe.co/portfolio</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>

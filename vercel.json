@@ -3,13 +3,40 @@
   "rewrites": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "resumen.uppipe.co" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "resumen.uppipe.co"
+        }
+      ],
       "destination": "/resumen.html"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "summary.uppipe.co" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "summary.uppipe.co"
+        }
+      ],
       "destination": "/summary.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "crew.uppipe.co"
+        }
+      ],
+      "destination": "/crew.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/work-with-us",
+      "destination": "/crew",
+      "permanent": false
     }
   ]
 }
