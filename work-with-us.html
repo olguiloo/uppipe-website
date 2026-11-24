@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trabaja con UpPipe — Únete a la red CITL</title>
+<title>Apply as Crew — UpPipe</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -208,7 +208,7 @@ a{text-decoration:none;color:inherit;}
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<meta property="og:title" content="Work with UpPipe — CITL Network">
+<meta property="og:title" content="Apply as Crew — UpPipe Creative Crew">
 <meta property="og:description" content="Join UpPipe's Creative-In-The-Loop network. Senior creatives operating invisibly inside scaling brands' creative operations.">
 <meta property="og:url" content="https://uppipe.co/work-with-us">
 <meta property="og:locale" content="en_US">
@@ -240,6 +240,13 @@ a{text-decoration:none;color:inherit;}
   gtag('js', new Date());
   gtag('config', 'G-TDP4CCP21F');
 </script>
+<style>
+.apply-hero{background:radial-gradient(ellipse 52% 62% at 92% 8%,rgba(26,86,255,0.38) 0%,transparent 54%),radial-gradient(ellipse 42% 42% at 8% 92%,rgba(200,255,0,0.20) 0%,transparent 50%),#141414;padding:80px 0 90px;}
+.apply-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start;}
+.apply-copy{position:sticky;top:110px;}
+.apply-hero .form-card{max-width:none;margin:0;padding:40px;}
+@media(max-width:900px){.apply-grid{grid-template-columns:1fr;gap:36px;}.apply-copy{position:static;}.apply-hero{padding:56px 0 64px;}.apply-hero .form-card{padding:28px 18px;}}
+</style>
 </head>
 <body>
 <!-- ── NAV ── -->
@@ -267,7 +274,7 @@ a{text-decoration:none;color:inherit;}
       <a href="/#brandmemory">Brand Memory</a>
       <a href="/talent">Work</a>
       <a href="/blog">Blog</a>
-      <a href="/crew">Apply</a>
+      <a href="/work-with-us">Apply as Crew</a>
       <a href="/#pricing">Precios</a>
     </div>
     <div class="nav-right">
@@ -283,7 +290,7 @@ a{text-decoration:none;color:inherit;}
   <a href="/#brandmemory">Brand Memory</a>
   <a href="/talent">Work</a>
   <a href="/blog">Blog</a>
-  <a href="/crew">Apply</a>
+  <a href="/work-with-us">Apply as Crew</a>
   <a href="/#pricing">Precios</a>
   <a href="https://app.uppipe.io/" target="_blank" rel="noopener">Log in</a>
   <a href="https://meetings.hubspot.com/uppipe/uppipe-intro-call" target="_blank" rel="noopener" class="btn btn-primary">Agenda una llamada</a>
@@ -307,227 +314,21 @@ function setLang(lang){
 <!-- NAV -->
 
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container" style="position:relative;z-index:1;">
-    <div style="max-width:680px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(200,255,0,0.1);border:1px solid rgba(200,255,0,0.25);padding:6px 16px;border-radius:100px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:28px;" class="fade-up">
-        <span style="width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite;"></span>
-        UpPipe CITL Network · Aplicaciones abiertas
-      </div>
-      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(40px,5.5vw,70px);font-weight:800;color:#FFFFFF;letter-spacing:-2px;line-height:1.0;margin-bottom:24px;" class="fade-up-2">
-        No todos<br>entran.<br>
-        <span style="color:var(--lime);">Tú podrías.</span>
-      </h1>
-      <p style="font-size:17px;color:rgba(255,255,255,0.55);max-width:520px;line-height:1.8;margin-bottom:40px;" class="fade-up-3">La red CITL de UpPipe no es un marketplace de freelancers. Es una red vetted de creativos senior que trabajan dentro de un sistema operacional estructurado — usando IA como herramienta, no como muleta. Somos selectivos. Vamos en serio. Y cuidamos a los que entran.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;" class="fade-up-3">
-        <a href="#apply" style="display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#1A3A00;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:16px 28px;border-radius:100px;text-decoration:none;">Aplica para entrar →</a>
-        <a href="#academy" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.7);font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;padding:15px 28px;border-radius:100px;text-decoration:none;border:2px solid rgba(255,255,255,0.15);">Ver la Academy</a>
-      </div>
-
-      <!-- Proof stats -->
-      <div style="display:flex;gap:32px;flex-wrap:wrap;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08);">
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:#FFFFFF;letter-spacing:-1px;">Senior only</div>
-          <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">No juniors, ever</div>
-        </div>
-        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:#FFFFFF;letter-spacing:-1px;">IA + craft</div>
-          <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">La combinación que gana</div>
-        </div>
-        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:#FFFFFF;letter-spacing:-1px;">Ingresos elásticos</div>
-          <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">Sube o baja tus horas según el mes</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT IS A CITL -->
-<section style="background:var(--white);padding:100px 0;">
+<!-- HERO + FORMULARIO -->
+<section class="apply-hero" id="apply">
   <div class="container">
-    <div class="sec-label">¿Qué es un Creative In The Loop?</div>
-    <h2 class="sec-title" style="max-width:620px;">No es un freelancer.<br><span style="color:var(--cobalt);">No es un empleado.<br>Es un CITL.</span></h2>
-    <p style="font-size:16px;color:var(--mid);max-width:560px;line-height:1.8;margin-top:16px;">Un Creative In The Loop es un creativo senior que opera dentro de un sistema CreativeOps estructurado — con briefing asistido por IA, inteligencia de workflow y contexto de marca ya cargado. You focus on craft. El sistema se encarga del resto.</p>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:48px;">
-      <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:20px;padding:28px;">
-        <div style="font-size:28px;margin-bottom:16px;">🎨</div>
-        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--dark);margin-bottom:8px;">Tu craft. Amplificado.</div>
-        <div style="font-size:13px;color:var(--mid);line-height:1.7;">Tú aportas la seniority, el criterio de marca, el pensamiento creativo. La IA maneja routing, estructura de brief y optimización del workflow. The output is better than either alone.</div>
-      </div>
-      <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:20px;padding:28px;">
-        <div style="font-size:28px;margin-bottom:16px;">⚡</div>
-        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--dark);margin-bottom:8px;">Trabaja en tus términos.</div>
-        <div style="font-size:13px;color:var(--mid);line-height:1.7;">Tú eliges cuántas horas tomar cada mes. Busy season? Scale up. Need a break? Scale back. Tus ingresos son elásticos — las decisiones de tu carrera siguen siendo tuyas.</div>
-      </div>
-      <div style="background:var(--dark);border:1.5px solid rgba(200,255,0,0.15);border-radius:20px;padding:28px;">
-        <div style="font-size:28px;margin-bottom:16px;">🚀</div>
-        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#FFFFFF;margin-bottom:8px;">Trabaja con las mejores marcas.</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">UpPipe trabaja con startups en crecimiento, compañías en growth-stage y marcas establecidas en LATAM y US. Tu portafolio crece con cada proyecto.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STANDARDS -->
-<section class="standards-section">
-  <div class="container">
-    <div class="sec-label">Qué buscamos</div>
-    <h2 class="sec-title" style="max-width:560px;">El estándar es alto.<br><span style="color:var(--cobalt);">Ese es el punto.</span></h2>
-    <p style="font-size:16px;color:var(--mid);max-width:520px;line-height:1.7;margin-top:14px;">We're not looking for volume. Estamos construyendo la red senior más confiable de LATAM. Cada CITL en la red hace mejores a los demás.</p>
-
-    <div class="standards-grid">
-      <div class="standard-card">
-        <div class="standard-num">Obligatorio</div>
-        <div class="standard-title">5+ años de experiencia senior</div>
-        <div class="standard-body">No 5 años haciendo trabajo de junior. 5 años tomando decisiones de marca, entendiendo estrategia y entregando primeros pases certeros. Portfolio must prove it.</div>
-      </div>
-      <div class="standard-card">
-        <div class="standard-num">Obligatorio</div>
-        <div class="standard-title">Manejo de IA — no dependencia de IA</div>
-        <div class="standard-body">You use AI to go faster, not to replace thinking. Midjourney, ChatGPT, Adobe Firefly, Runway — conoces las herramientas. Pero el criterio creativo sigue siendo tuyo.</div>
-      </div>
-      <div class="standard-card">
-        <div class="standard-num">Obligatorio</div>
-        <div class="standard-title">Disciplina de comunicación</div>
-        <div class="standard-body">Los clientes confían en nuestros SLA. Eso significa que respondes el mismo día hábil, avisas los bloqueos a tiempo y nunca desapareces ante un deadline. Non-negotiable.</div>
-      </div>
-      <div class="standard-card highlight">
-        <div class="standard-num">La mentalidad</div>
-        <div class="standard-title" style="color:#FFFFFF;">Quieres mejorar. Rápido.</div>
-        <div class="standard-body">Los CITLs que prosperan en la red son los que ven la IA no como una amenaza sino como un multiplicador de leverage. Son curiosos, experimentan y evolucionan su craft constantemente.</div>
-      </div>
-      <div class="standard-card">
-        <div class="standard-num">Suma puntos</div>
-        <div class="standard-title">Conocimiento del mercado LATAM</div>
-        <div class="standard-body">Entender mercados colombiano, mexicano o LATAM en general — comportamiento del consumidor, matiz cultural, lenguaje visual local. No es obligatorio pero suma.</div>
-      </div>
-      <div class="standard-card">
-        <div class="standard-num">Suma puntos</div>
-        <div class="standard-title">Inglés sólido</div>
-        <div class="standard-body">Muchos de nuestros clientes están en US o son bilingües. El inglés no es obligatorio para entrar, pero abre un rango más amplio de proyectos y mejores tarifas.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DISCIPLINES -->
-<section class="disciplines-section">
-  <div class="container">
-    <div class="sec-label">Disciplinas abiertas</div>
-    <h2 class="sec-title" style="max-width:500px;">Buscamos a los mejores en<br><span style="color:var(--cobalt);">cada disciplina.</span></h2>
-    <div class="disc-grid">
-      <div class="disc-chip"><div class="disc-icon">🎨</div><div class="disc-name">Dirección de Arte</div></div>
-      <div class="disc-chip"><div class="disc-icon">🎬</div><div class="disc-name">Motion Design</div></div>
-      <div class="disc-chip"><div class="disc-icon">💻</div><div class="disc-name">UX / UI Design</div></div>
-      <div class="disc-chip"><div class="disc-icon">📸</div><div class="disc-name">Fotografía</div></div>
-      <div class="disc-chip"><div class="disc-icon">🖼️</div><div class="disc-name">Ilustración</div></div>
-      <div class="disc-chip"><div class="disc-icon">📦</div><div class="disc-name">Packaging</div></div>
-      <div class="disc-chip"><div class="disc-icon">✍️</div><div class="disc-name">Copywriting</div></div>
-      <div class="disc-chip"><div class="disc-icon">🏗️</div><div class="disc-name">3D & Renders</div></div>
-      <div class="disc-chip"><div class="disc-icon">📊</div><div class="disc-name">Diseño de presentaciones</div></div>
-      <div class="disc-chip"><div class="disc-icon">🎭</div><div class="disc-name">Identidad de marca</div></div>
-      <div class="disc-chip"><div class="disc-icon">📱</div><div class="disc-name">Diseño para redes</div></div>
-      <div class="disc-chip"><div class="disc-icon">🖨️</div><div class="disc-name">Print & OOH</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process-section">
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="sec-label" style="color:var(--lime);">Cómo funciona</div>
-    <h2 class="sec-title" style="color:#FFFFFF;max-width:500px;">De la aplicación<br><span style="color:rgba(255,255,255,0.4);">al primer proyecto.</span></h2>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-num">Paso 01</div>
-        <div class="step-title">Aplicas</div>
-        <div class="step-body">Mandas tu portafolio, LinkedIn, disciplina y una descripción corta de en qué eres bueno. 5 minutos.</div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">Paso 02</div>
-        <div class="step-title">Revisamos</div>
-        <div class="step-body">Revisamos cada aplicación personalmente — no con un bot. Si tu trabajo conecta con nuestro estándar, te escribimos en 5 días hábiles.</div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">Paso 03</div>
-        <div class="step-title">Llamada corta</div>
-        <div class="step-body">A 20-minute conversation. Hablamos de cómo trabajas, tu manejo de IA, tu disponibilidad y qué tipo de proyectos te interesan. No tests, no lengthy process.</div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">Paso 04</div>
-        <div class="step-title">Primer proyecto</div>
-        <div class="step-body">Te hacemos el onboarding a la plataforma, te briefeamos en tu primer cliente y arrancas. El sistema se encarga del routing — tú te concentras en el trabajo.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACADEMY -->
-<section class="academy-section" id="academy">
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="academy-badge" style="background:rgba(26,86,255,0.1);border-color:rgba(26,86,255,0.3);color:var(--cobalt);">
-      <span style="width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite;"></span>
-      Próximamente
-    </div>
-    <div class="academy-grid">
-      <div>
-        <div class="sec-label" style="color:var(--lime);">UpPipe CITL Academy</div>
-        <h2 class="sec-title" style="color:var(--dark);max-width:500px;">El lugar donde los buenos creativos<br><span style="color:var(--cobalt);">se vuelven CITLs élite.</span></h2>
-        <p style="font-size:15px;color:var(--mid);max-width:480px;line-height:1.8;margin-top:16px;margin-bottom:32px;">Hay creativos talentosos en todas partes que solo necesitan una cosa — aprender a trabajar con IA a nivel profesional. The Academy is where that happens. Entrenamiento estructurado, proyectos reales y un camino directo a la red UpPipe para los que se gradúan.</p>
-        <div style="background:rgba(200,255,0,0.06);border:1px solid rgba(200,255,0,0.15);border-radius:14px;padding:20px;">
-          <div style="font-size:13px;font-weight:700;color:var(--mid);margin-bottom:8px;">Filosofía de la Academy</div>
-          <div style="font-size:14px;color:var(--dark);line-height:1.7;font-style:italic;">«Creativos nuevos hay en todas partes. Pensadores creativos senior que dominan la IA son raros. Estamos construyendo el pipeline.»</div>
+    <div class="apply-grid">
+      <div class="apply-copy">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(200,255,0,0.1);border:1px solid rgba(200,255,0,0.25);padding:6px 16px;border-radius:100px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:28px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite;"></span>
+          UpPipe Creative Crew · Aplicaciones abiertas
         </div>
+        <h1 style="font-family:'Syne',sans-serif;font-size:clamp(40px,5.2vw,66px);font-weight:800;color:#FFFFFF;letter-spacing:-2px;line-height:1.0;margin-bottom:24px;">
+          No todos<br>entran.<br><span style="color:var(--lime);">Tú podrías.</span>
+        </h1>
+        <p style="font-size:17px;color:rgba(255,255,255,0.6);max-width:480px;line-height:1.8;">Una red de creativos senior en Latinoamérica que trabaja con IA como herramienta, no como muleta. Somos selectivos. Toma 5 minutos y revisamos cada aplicación personalmente.</p>
       </div>
-      <div>
-        <div style="margin-bottom:8px;font-size:10px;font-weight:700;color:var(--cobalt);letter-spacing:2px;text-transform:uppercase;">Módulos de la Academy (borrador)</div>
-        <div class="academy-module">
-          <div class="academy-module-icon">🧠</div>
-          <div><div class="academy-module-title">Manejo de IA para creativos</div><div class="academy-module-sub">Midjourney, Sora, Adobe AI, ChatGPT para briefs — dominio práctico, no teoría.</div></div>
-        </div>
-        <div class="academy-module">
-          <div class="academy-module-icon">📋</div>
-          <div><div class="academy-module-title">El sistema de brief de UpPipe</div><div class="academy-module-sub">Cómo leer un brief estructurado, hacer las preguntas correctas y entregar primeros pases certeros.</div></div>
-        </div>
-        <div class="academy-module">
-          <div class="academy-module-icon">🎯</div>
-          <div><div class="academy-module-title">Pensamiento creativo guiado por la marca</div><div class="academy-module-sub">Estrategia antes que estética. Entender el negocio del cliente antes de escoger una tipografía.</div></div>
-        </div>
-        <div class="academy-module">
-          <div class="academy-module-icon">⚡</div>
-          <div><div class="academy-module-title">Velocidad sin sacrificar el craft</div><div class="academy-module-sub">Optimización del workflow, gestión de archivos, control de versiones — la disciplina que separa a los pros.</div></div>
-        </div>
-        <div class="academy-module">
-          <div class="academy-module-icon">🔁</div>
-          <div><div class="academy-module-title">Revision culture & feedback loops</div><div class="academy-module-sub">Cómo recibir feedback, iterar sin ego y mantener un FTR alto.</div></div>
-        </div>
-        <div style="margin-top:20px;padding:16px;background:rgba(200,255,0,0.06);border:1px solid rgba(200,255,0,0.15);border-radius:12px;">
-          <div style="font-size:12px;color:var(--mid);line-height:1.6;">Los graduados con mejor performance reciben invitación directa a la red CITL de UpPipe. <span style="color:var(--cobalt);font-weight:700;">Solo entran los mejores.</span></div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:56px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.06);">
-      <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:16px;">¿Te interesa la Academy cuando arranque?</p>
-      <a href="#apply" style="display:inline-flex;align-items:center;gap:8px;background:var(--cobalt-tint);border:1px solid rgba(26,86,255,0.3);color:var(--cobalt);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;padding:12px 24px;border-radius:100px;text-decoration:none;">Déjanos tus datos en el formulario abajo →</a>
-    </div>
-  </div>
-</section>
-
-<!-- APPLICATION FORM -->
-<section class="form-section" id="apply">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:56px;">
-      <div class="sec-label" style="text-align:center;">Aplica a la red</div>
-      <h2 class="sec-title" style="margin-bottom:16px;">¿Listo para aplicar?</h2>
-      <p style="font-size:16px;color:var(--mid);max-width:480px;margin:0 auto;line-height:1.7;">Toma 5 minutos. Revisamos cada aplicación personalmente y te respondemos en 5 días hábiles si hay match.</p>
-    </div>
-
-    <div class="form-card" id="formCard">
+      <div class="form-card" id="formCard">
       <form id="citlForm" onsubmit="submitForm(event)">
 
         <div class="form-row">
@@ -605,12 +406,12 @@ function setLang(lang){
 
         <div class="form-group">
           <label class="form-label" for="f_mejor">Cuéntanos en qué eres bueno — y qué te hace diferente</label>
-          <textarea class="form-textarea" id="f_mejor" placeholder="Descripción corta de tu trabajo, los proyectos que más disfrutas y por qué serías un gran CITL..."></textarea>
+          <textarea class="form-textarea" id="f_mejor" placeholder="Descripción corta de tu trabajo, los proyectos que más disfrutas y por qué serías parte del Creative Crew..."></textarea>
         </div>
 
         <div class="form-group" style="display:flex;align-items:flex-start;gap:12px;">
           <input type="checkbox" id="academy_interest" style="margin-top:2px;flex-shrink:0;"/>
-          <label for="academy_interest" style="font-size:13px;color:var(--mid);line-height:1.6;cursor:pointer;">También me interesa la <strong>UpPipe CITL Academy</strong> — avísenme cuando lance.</label>
+          <label for="academy_interest" style="font-size:13px;color:var(--mid);line-height:1.6;cursor:pointer;">También me interesa la <strong>UpPipe Academy</strong> — avísenme cuando lance.</label>
         </div>
 
         <div class="form-group" style="display:flex;align-items:flex-start;gap:12px;">
@@ -630,12 +431,35 @@ function setLang(lang){
         <p>Revisamos tu portafolio y te respondemos en 5 días hábiles.<br>Solo las aplicaciones más fuertes pasan al siguiente paso — y tomamos cada una en serio.</p>
       </div>
     </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCIPLINES -->
+<section class="disciplines-section">
+  <div class="container">
+    <div class="sec-label">Disciplinas abiertas</div>
+    <h2 class="sec-title" style="max-width:500px;">Buscamos a los mejores en<br><span style="color:var(--cobalt);">cada disciplina.</span></h2>
+    <div class="disc-grid">
+      <div class="disc-chip"><div class="disc-icon">🎨</div><div class="disc-name">Dirección de Arte</div></div>
+      <div class="disc-chip"><div class="disc-icon">🎬</div><div class="disc-name">Motion Design</div></div>
+      <div class="disc-chip"><div class="disc-icon">💻</div><div class="disc-name">UX / UI Design</div></div>
+      <div class="disc-chip"><div class="disc-icon">📸</div><div class="disc-name">Fotografía</div></div>
+      <div class="disc-chip"><div class="disc-icon">🖼️</div><div class="disc-name">Ilustración</div></div>
+      <div class="disc-chip"><div class="disc-icon">📦</div><div class="disc-name">Packaging</div></div>
+      <div class="disc-chip"><div class="disc-icon">✍️</div><div class="disc-name">Copywriting</div></div>
+      <div class="disc-chip"><div class="disc-icon">🏗️</div><div class="disc-name">3D & Renders</div></div>
+      <div class="disc-chip"><div class="disc-icon">📊</div><div class="disc-name">Diseño de presentaciones</div></div>
+      <div class="disc-chip"><div class="disc-icon">🎭</div><div class="disc-name">Identidad de marca</div></div>
+      <div class="disc-chip"><div class="disc-icon">📱</div><div class="disc-name">Diseño para redes</div></div>
+      <div class="disc-chip"><div class="disc-icon">🖨️</div><div class="disc-name">Print & OOH</div></div>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>© 2026 UpPipe · <a href="/">uppipe.co</a> · <a href="/talent">Portfolio</a> · <a href="/for-cmos">For CMOs</a> · <a href="/for-founders">For Founders</a></p>
+    <p>© 2026 UpPipe · <a href="/">uppipe.co</a></p>
   </div>
 </footer>
 
@@ -677,7 +501,7 @@ async function submitForm(e) {
   ].filter(function(f){ return f.value!==''; });
   var payload={
     fields:fields,
-    context:{pageUri:window.location.href, pageName:'Trabaja con UpPipe — Únete a la red CITL'},
+    context:{pageUri:window.location.href, pageName:'Apply as Crew — uppipe.co/work-with-us'},
     legalConsentOptions:{consent:{consentToProcess:true,
       text:document.querySelector('label[for="data_consent"]').textContent.trim()}}
   };

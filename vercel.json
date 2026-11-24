@@ -31,12 +31,5 @@
       ],
       "destination": "/crew.html"
     }
-  ],
-  "redirects": [
-    {
-      "source": "/work-with-us",
-      "destination": "/crew",
-      "permanent": false
-    }
   ]
 }
