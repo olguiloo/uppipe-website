@@ -31,5 +31,51 @@
       ],
       "destination": "/crew.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/crew",
+      "has": [
+        {
+          "type": "host",
+          "value": "uppipe.co"
+        }
+      ],
+      "destination": "https://crew.uppipe.co/",
+      "permanent": false
+    },
+    {
+      "source": "/crew.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "uppipe.co"
+        }
+      ],
+      "destination": "https://crew.uppipe.co/",
+      "permanent": false
+    },
+    {
+      "source": "/crew",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.uppipe.co"
+        }
+      ],
+      "destination": "https://crew.uppipe.co/",
+      "permanent": false
+    },
+    {
+      "source": "/crew.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.uppipe.co"
+        }
+      ],
+      "destination": "https://crew.uppipe.co/",
+      "permanent": false
+    }
   ]
 }
