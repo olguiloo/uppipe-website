@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UpPipe Creative Crew — Una comunidad de talento conectada con oportunidades reales</title>
-<meta name="description" content="El Creative Crew de UpPipe: creativos senior en Latinoamérica que toman pedidos reales de grandes marcas, con tarifa fija por hora, sin exclusividad y desde donde quieran. Conoce el proceso y aplica.">
+<meta name="description" content="El Creative Crew de UpPipe: creativos senior con criterio, para proyectos reales según su especialidad. Postula tu portafolio.">
 <link rel="canonical" href="https://crew.uppipe.co/">
 <meta name="robots" content="index, follow">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -252,6 +252,128 @@ footer a{color:rgba(255,255,255,.7);text-decoration:none;}
   .brand-tag{display:none;}
 }
 </style>
+<style>
+/* ── Estrategia 360 · Creative Crew (prefijo c3-) · look oscuro, azules y degradados ── */
+:root{
+  --c3-night:#0A0C1C;--c3-navy:#161A38;
+  --c3-g-dark:radial-gradient(ellipse 52% 62% at 92% 8%,rgba(26,86,255,.55) 0%,transparent 56%),radial-gradient(ellipse 42% 42% at 6% 94%,rgba(200,255,0,.20) 0%,transparent 52%),radial-gradient(ellipse 62% 42% at 50% 52%,rgba(139,92,246,.16) 0%,transparent 58%),linear-gradient(138deg,#0A0C1C 0%,#161A38 52%,#0D3FBF 100%);
+  --c3-g-blue:radial-gradient(ellipse 55% 65% at 100% 0%,rgba(200,255,0,.26) 0%,transparent 55%),radial-gradient(ellipse 60% 60% at 0% 100%,rgba(184,170,255,.22) 0%,transparent 60%),linear-gradient(138deg,#0A0C1C 0%,#0D3FBF 58%,#4870FF 100%);
+  --c3-glass:rgba(255,255,255,.06);--c3-glass-b:rgba(255,255,255,.14);
+}
+body{background:var(--c3-night);}
+nav{background:rgba(10,12,28,.86)!important;border-bottom-color:rgba(255,255,255,.08)!important;}
+nav .nav-links a:not(.btn),.mobile-menu a:not(.btn){color:#fff;}
+.mobile-menu{background:var(--c3-night)!important;border-top-color:rgba(255,255,255,.08)!important;}
+.mobile-menu a{border-bottom-color:rgba(255,255,255,.08)!important;}
+.hamburger span{background:#fff!important;}
+.brand svg *{fill:#fff;}
+
+.c3-dk{color:#fff;}
+.c3-dk .label{color:var(--lime);}
+.c3-dk .title{color:#fff;}
+.c3-dk .title span{color:var(--lime);}
+.c3-dk .lead{color:rgba(255,255,255,.66);}
+
+.c3-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;}
+.c3-top{align-items:start;}
+
+/* Hero */
+.c3-hero{background:var(--c3-g-dark);padding:84px 0 96px;position:relative;overflow:hidden;}
+.c3-hero .c3-split{align-items:start;}
+.c3-hero-txt{position:sticky;top:110px;}
+.c3-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.3);padding:6px 16px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);}
+.c3-pill i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);}
+.c3-hero h1{font-family:'Syne',sans-serif;font-size:clamp(30px,3.2vw,42px);font-weight:800;line-height:1.04;letter-spacing:-1.5px;color:#fff;margin-top:22px;}
+.c3-hero h1 span{color:var(--lime);}
+.c3-hero-txt>p{font-size:18px;line-height:1.65;color:rgba(255,255,255,.68);margin:22px 0 30px;max-width:560px;}
+.c3-btn-o{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+.c3-btn-o:hover{border-color:#fff;}
+.c3-form{background:#fff;border-radius:24px;padding:30px 30px 10px;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08);}
+.c3-form-t{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--ink);}
+.c3-form .form-card{margin:14px 0 0;padding:0;border:none;background:transparent!important;max-width:none;}
+
+/* Tarjetas */
+.c3-grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;}
+.c3-card{border-radius:20px;padding:26px 24px;border:1px solid transparent;}
+.c3-card h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;line-height:1.15;}
+.c3-card p{font-size:14.5px;line-height:1.55;margin-top:10px;opacity:.85;}
+.c3-glass{background:var(--c3-glass);border-color:var(--c3-glass-b);color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.c3-step .n{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--lime);margin-bottom:12px;}
+
+/* Secciones */
+.c3-s-night{background:var(--c3-night);}
+.c3-s-blue{background:var(--c3-g-blue);}
+.c3-s-navy{background:radial-gradient(ellipse 50% 70% at 0% 0%,rgba(26,86,255,.35) 0%,transparent 60%),var(--c3-navy);}
+.c3-h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:14px;}
+.c3-chip{display:inline-block;background:var(--c3-glass);border:1px solid var(--c3-glass-b);border-radius:99px;padding:8px 16px;font-weight:600;font-size:14px;margin:0 6px 8px 0;color:#fff;}
+
+/* Seamos claros: golpe de lima */
+.c3-claro{background:var(--lime);color:var(--c3-night);padding:76px 0;}
+.c3-claros{display:grid;grid-template-columns:1fr 2fr;gap:56px;align-items:center;}
+.c3-claros h2{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;line-height:1.02;}
+.c3-claros p{font-size:19px;line-height:1.6;font-weight:500;}
+
+/* Preguntas */
+.c3-faq details{border:none!important;border-bottom:1px solid rgba(255,255,255,.14)!important;padding:22px 0;background:transparent!important;border-radius:0!important;}
+.c3-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-family:'Syne',sans-serif;font-weight:800;font-size:20px;line-height:1.25;color:#fff;padding:0!important;}
+.c3-faq summary::-webkit-details-marker{display:none;}
+.c3-faq summary::after{content:"+";font:700 22px 'Montserrat',sans-serif;color:var(--lime);transition:transform .2s;}
+.c3-faq details[open] summary::after{transform:rotate(45deg);}
+.c3-faq p{font-size:16px;line-height:1.6;color:rgba(255,255,255,.66);margin-top:12px;max-width:760px;padding:0!important;}
+
+/* Cierre */
+.c3-cta{background:var(--c3-g-blue);color:#fff;padding:84px 0;}
+.c3-cta .c3-split{grid-template-columns:1fr auto;}
+.c3-cta h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.4vw,46px);font-weight:800;line-height:1.08;}
+.c3-cta h2 span{color:var(--lime);}
+.c3-cta p{font-size:18px;margin-top:10px;color:rgba(255,255,255,.75);}
+
+/* Pie */
+.c3-foot{background:var(--c3-night);color:#ddd;padding:48px 0 26px;text-align:left;font-size:14px;border-top:1px solid rgba(255,255,255,.08);}
+.c3-foot a{color:#ddd;}
+.c3-foot-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+.c3-foot-brand{display:flex;align-items:center;gap:12px;}
+.c3-foot-brand svg{height:26px;width:auto;}
+.c3-foot-brand svg *{fill:#fff;}
+.c3-foot-bot{border-top:1px solid rgba(255,255,255,.1);margin-top:28px;padding-top:18px;font-size:12px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#9aa;}
+
+@media (max-width:980px){
+  .c3-grid4{grid-template-columns:repeat(2,1fr);}
+  .c3-split,.c3-claros{grid-template-columns:1fr;gap:32px;}
+  .c3-hero-txt{position:static;}
+  .c3-cta .c3-split{grid-template-columns:1fr;}
+}
+@media (max-width:600px){
+  .c3-grid4{grid-template-columns:1fr;}
+  .c3-hero{padding:52px 0 64px;}
+  .c3-form{padding:24px 18px 6px;}
+  .c3-claros h2{font-size:36px;}
+  .c3-faq summary{font-size:17px;}
+  .hero-cta .btn{width:100%;}
+}
+
+/* Hero en dos columnas + formulario ancho */
+.c3-hero-top{align-items:end!important;margin-bottom:48px;}
+.c3-hero-txt{position:static!important;}
+.c3-hero h1{font-size:clamp(32px,4.2vw,56px)!important;margin-top:20px;}
+.c3-hero-txt>p{margin:0 0 26px!important;}
+.c3-form{padding:36px 40px 18px!important;}
+.c3-form #citlForm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;}
+.c3-form #citlForm .form-row{display:contents;}
+.c3-form #citlForm .form-group{margin-bottom:18px;}
+.c3-form #citlForm .form-group:has(textarea){grid-column:span 2;}
+.c3-form #citlForm .form-group:has(textarea) .form-textarea{min-height:52px;height:52px;}
+.c3-form #citlForm .form-group.check,.c3-form #citlForm>p{grid-column:1/-1;}
+.c3-form #citlForm>button{grid-column:1/-1;justify-self:center;width:100%;max-width:380px;}
+.brand svg{height:34px!important;}
+.c3-foot-brand svg{height:38px!important;}
+@media (max-width:980px){.c3-form #citlForm{grid-template-columns:1fr 1fr;}.c3-form #citlForm .form-group:has(textarea){grid-column:1/-1;}.c3-hero-top{margin-bottom:32px;}}
+@media (max-width:600px){.c3-form #citlForm{grid-template-columns:1fr;}.c3-form{padding:24px 18px 8px!important;}.brand svg{height:28px!important;}}
+.c3-hero-top{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)!important;gap:48px!important;}
+.c3-hero h1{font-size:clamp(30px,3.6vw,50px)!important;}
+@media (max-width:980px){.c3-hero-top{grid-template-columns:1fr!important;}}
+
+</style>
 </head>
 <body>
 
@@ -270,294 +392,38 @@ footer a{color:rgba(255,255,255,.7);text-decoration:none;}
       <span class="brand-tag">Creative Crew</span>
     </a>
     <div class="nav-links">
-      <a href="#que-es">Qué es</a>
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#reglas">Reglas</a>
+      <a href="#que-encuentras">Qué encuentras</a>
+      <a href="#a-quien">A quién buscamos</a>
+      <a href="#postulacion">Postulación</a>
       <a href="#preguntas">Preguntas</a>
-      <a href="#aplica" class="btn btn-cobalt">Aplica</a>
+      <a href="#aplica" class="btn btn-cobalt">Postula tu portafolio</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#que-es">Qué es</a>
-    <a href="#como-funciona">Cómo funciona</a>
-    <a href="#proceso">Proceso</a>
-    <a href="#reglas">Reglas</a>
-    <a href="#preguntas">Preguntas</a>
-    <a href="#aplica" class="btn btn-cobalt">Aplica</a>
+    <a href="#que-encuentras">Qué encuentras</a>
+      <a href="#a-quien">A quién buscamos</a>
+      <a href="#postulacion">Postulación</a>
+      <a href="#preguntas">Preguntas</a>
+    <a href="#aplica" class="btn btn-cobalt">Postula tu portafolio</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="hero" id="top">
+<header class="c3-hero" id="top">
   <div class="container">
-    <div class="pill"><span class="dot"></span>Creative Crew · Aplicaciones abiertas</div>
-    <h1>Una comunidad de talento conectada con <span>oportunidades reales.</span></h1>
-    <p>Creativos senior en Latinoamérica que toman pedidos de las marcas más grandes de la región. Tarifa fija por hora, sin exclusividad y desde donde quieras. Tu talento es senior. Tu tiempo es flexible. Tu ingreso es escalable.</p>
-    <div class="hero-cta">
-      <a href="#aplica" class="btn btn-lime">Aplica al Creative Crew →</a>
-      <a href="#proceso" class="btn btn-ghost">Ver el proceso</a>
-    </div>
-    <div class="stats">
-      <div><div class="stat-n">14</div><div class="stat-l">años de operación</div></div>
-      <div><div class="stat-n">86.000+</div><div class="stat-l">horas medidas</div></div>
-      <div><div class="stat-n">147</div><div class="stat-l">clientes</div></div>
-      <div><div class="stat-n">20</div><div class="stat-l">países</div></div>
-    </div>
-  </div>
-</header>
-
-<!-- QUÉ ES -->
-<section id="que-es">
-  <div class="container">
-    <div class="reveal">
-      <div class="label">Qué es</div>
-      <h2 class="title">Una plataforma que trae el trabajo.<br><span>Un crew que lo resuelve.</span></h2>
-      <p class="lead">UpPipe es una plataforma de operaciones creativas para equipos de marketing. Los pedidos llegan ordenados, con las horas estimadas y las reglas de la marca ya cargadas. Tú pones el criterio.</p>
-    </div>
-    <div class="two reveal">
-      <div class="card">
-        <div class="card-k">01 · La plataforma</div>
-        <h3>Ordena el trabajo antes de que llegue a ti.</h3>
-        <p>Recibe los pedidos de marketing, estima las horas antes de empezar, asigna con las reglas de la marca cargadas y mide todo.</p>
-      </div>
-      <div class="card dark">
-        <div class="card-k">02 · El Creative Crew</div>
-        <h3>Aquí entras tú.</h3>
-        <p>Una red de creativos senior en Latinoamérica que toma esos pedidos cuando el equipo del cliente no alcanza.</p>
-      </div>
-    </div>
-    <div class="fit reveal">
-      <div class="card">
-        <h3>Este es el lugar si quieres</h3>
-        <ul>
-          <li>Flexibilidad</li>
-          <li>Trabajo constante</li>
-          <li>Ingresos adicionales sin salir a buscarlos</li>
-        </ul>
-      </div>
-      <div class="card no">
-        <h3 style="color:var(--mid);">No es el lugar si buscas</h3>
-        <ul>
-          <li>Premios</li>
-          <li>Reconocimiento público</li>
-          <li>Piezas para tu portafolio</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CÓMO FUNCIONA -->
-<section class="bg-white" id="como-funciona">
-  <div class="container">
-    <div class="reveal">
-      <div class="label">Cómo funciona</div>
-      <h2 class="title">Más parecido a Uber<br><span>que a un marketplace.</span></h2>
-    </div>
-    <div class="compare reveal">
-      <div class="col them">
-        <h3>Marketplace de freelancers</h3>
-        <ul>
-          <li>Compites por cada proyecto</li>
-          <li>Negocias el precio cada vez</li>
-          <li>Tratas directo con el cliente y persigues el pago</li>
-          <li>Nadie te respalda si el brief está mal</li>
-        </ul>
-      </div>
-      <div class="col us">
-        <h3>UpPipe Creative Crew</h3>
-        <ul>
-          <li>Los clientes piden por la plataforma y tú aceptas pedidos, como un viaje</li>
-          <li>Tarifa fija por hora, sin negociar</li>
-          <li>Te califican por tu trabajo, con métricas claras</li>
-          <li>Una PM hace de puente entre el cliente y tú, y te apoya</li>
-        </ul>
-      </div>
-    </div>
-    <p class="note reveal">Sin horario ni oficina, sin exclusividad, desde donde quieras. Tu ingreso depende de tu capacidad y tu calidad.</p>
-
-    <div class="reveal" style="margin-top:80px;">
-      <div class="label">Cómo llega un pedido</div>
-      <h2 class="title">No improvisas tiempos.<br><span>Optimizas dentro de un sistema.</span></h2>
-    </div>
-    <div class="grid4 reveal">
-      <div class="mini"><b>Brief armado</b><span>Información completa desde el inicio.</span></div>
-      <div class="mini"><b>Alcance claro</b><span>Sabes qué se espera y hasta dónde llega.</span></div>
-      <div class="mini"><b>Horas estimadas</b><span>Calculadas con datos reales de 14 años.</span></div>
-      <div class="mini"><b>24 a 48 horas</b><span>Plazo de entrega de cada pieza en la plataforma.</span></div>
-    </div>
-    <div class="r0 reveal">
-      <div class="big">R0</div>
+    <div class="c3-split c3-hero-top">
       <div>
-        <h3>El primer intento no es un boceto. Es el primer impacto.</h3>
-        <p>El senior se nota en el primer intento: entiende el brief, aplica criterio y llega con menos rondas. La meta no es gastar horas. Es resolver mejor en menos tiempo.</p>
+        <span class="c3-pill"><i></i>Creative Crew · Aplicaciones abiertas</span>
+        <h1>Una comunidad de talento <span>conectada con oportunidades reales.</span></h1>
+      </div>
+      <div class="c3-hero-txt">
+        <p>No buscamos llenar una base de datos de diseñadores. Buscamos creativos senior con criterio, para proyectos reales según su especialidad.</p>
+        <div class="hero-cta"><a href="#aplica" class="btn btn-lime">Postula tu portafolio</a><a href="#preguntas" class="btn c3-btn-o">Preguntas frecuentes</a></div>
       </div>
     </div>
-
-    <div class="reveal" style="margin-top:80px;">
-      <div class="label">Cómo te medimos y cómo te pagamos</div>
-      <h2 class="title">Cuatro números,<br><span>y los ves igual que nosotros.</span></h2>
-    </div>
-    <div class="metrics reveal">
-      <div class="metric"><b>Aprobación al primer intento</b><span>Qué porcentaje de tus piezas se aprueba en R0, sin rondas de ajuste.</span></div>
-      <div class="metric"><b>Rondas de ajuste</b><span>Las piezas con más de 2 rondas no deben pasar del 10% del trimestre.</span></div>
-      <div class="metric"><b>Horas contra lo estimado</b><span>Cuánto tardas frente al promedio de esa pieza.</span></div>
-      <div class="metric"><b>Entregas a tiempo</b><span>Dentro de las 24 a 48 horas, con el archivo editable cargado.</span></div>
-    </div>
-    <div class="pay reveal">
-      <div class="card">
-        <div class="card-k">Tarifa</div>
-        <h3>La define el tipo de trabajo, no la persona.</h3>
-        <p>Hay una tarifa por hora para marca, estrategia, concepto y UI/UX, y otra para piezas y ejecución sobre un manual que ya existe. Se paga la hora aprobada, no la hora registrada. Si aciertas al primer intento, ganas un bono trimestral.</p>
-      </div>
-      <div class="card dark">
-        <div class="card-k">Qué pone cada uno</div>
-        <h3>Usas tus horas para facturar, no en labores que nadie paga.</h3>
-        <ul>
-          <li><b style="color:#fff;">Tú pones:</b> tu equipo de trabajo, tus licencias de software y tu criterio senior.</li>
-          <li><b style="color:#fff;">UpPipe pone:</b> los clientes, la cara ante ellos (la PM va a las reuniones), briefs completos, la plataforma, los créditos de IA y el cobro.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESO -->
-<section class="process" id="proceso">
-  <div class="container">
-    <div class="reveal">
-      <div class="label">Proceso de selección</div>
-      <h2 class="title">Siete pasos<br><span>hasta firmar tu contrato.</span></h2>
-    </div>
-    <div class="steps reveal">
-      <div class="step"><div class="step-n">01</div><b>Aplicas</b><span>Llenas el formulario de esta página.</span></div>
-      <div class="step"><div class="step-n">02</div><b>Entrevista</b><span>Nos conocemos.</span></div>
-      <div class="step"><div class="step-n">03</div><b>Portafolio</b><span>Revisamos tu trabajo.</span></div>
-      <div class="step"><div class="step-n">04</div><b>NDA</b><span>Firmas el acuerdo de confidencialidad.</span></div>
-      <div class="step"><div class="step-n">05</div><b>Onboarding</b><span>Entras a la plataforma y conoces el flujo.</span></div>
-      <div class="step"><div class="step-n">06</div><b>Pruebas</b><span>Dos pedidos reales, calificados por el equipo.</span></div>
-      <div class="step"><div class="step-n">07</div><b>Contrato</b><span>Firmas y recibes pedidos.</span></div>
-    </div>
-
-    <div class="days-head reveal">
-      <h3>Del NDA al contrato, todo pasa en 4 días.</h3>
-      <p>El reloj arranca cuando te llega el NDA.</p>
-    </div>
-    <div class="days reveal">
-      <div class="day"><div class="day-k">DÍA 1</div><b>NDA</b><span>Te llega el acuerdo de confidencialidad por PandaDoc. Lo firmas ese mismo día.</span></div>
-      <div class="day"><div class="day-k">DÍA 2</div><b>Pruebas</b><span>Con el NDA firmado, entras a la plataforma y recibes los dos briefs.</span></div>
-      <div class="day"><div class="day-k">DÍA 3</div><b>Entrega</b><span>Subes las dos pruebas antes de que termine el día. Máximo 2 horas cada una.</span></div>
-      <div class="day"><div class="day-k">DÍA 4</div><b>Contrato</b><span>Calificamos en la mañana. Si pasas, te llega el contrato y lo firmas ese día.</span></div>
-    </div>
-    <p class="warn reveal"><b>Los tiempos también son parte de la prueba.</b> Así trabajamos con los clientes. Si respondes a tiempo sin que tengamos que perseguirte, ya nos estás mostrando cómo vas a trabajar. Si un plazo se vence sin aviso, cerramos el proceso.</p>
-
-    <div class="tests reveal">
-      <div class="test">
-        <div class="card-k">Prueba A · Oficio</div>
-        <h3>Tu formación en tu disciplina.</h3>
-        <p>Puedes usar IA como herramienta, pero la pieza tiene que sostenerse sin ella.</p>
-      </div>
-      <div class="test">
-        <div class="card-k">Prueba B · IA a fondo</div>
-        <h3>Cómo diriges la IA.</h3>
-        <p>Cómo escoges, corriges a mano y sostienes la marca. La IA tiene que notarse.</p>
-      </div>
-    </div>
-    <div class="test-facts reveal">
-      <div><b>Máximo 2 horas</b> por prueba. Declaras las horas reales.</div>
-      <div><b>Una sola entrega:</b> es tu R0, sin rondas ni preguntas intermedias.</div>
-      <div><b>Piezas reales:</b> si no entras, UpPipe no las usa sin acordar contigo una compensación.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTRATO Y REGLAS -->
-<section id="reglas">
-  <div class="container">
-    <div class="reveal">
-      <div class="label">El contrato</div>
-      <h2 class="title">Prestación de servicios<br><span>independiente.</span></h2>
-    </div>
-    <div class="contract reveal">
-      <div class="card"><div class="card-k">Sin exclusividad</div><p>No hay relación laboral. Puedes trabajar con otros clientes, incluso con la competencia.</p></div>
-      <div class="card"><div class="card-k">Pago mensual</div><p>La plataforma arma tu cuenta de cobro con las horas aprobadas del mes. Pago en pesos a una cuenta bancaria colombiana.</p></div>
-      <div class="card"><div class="card-k">Libre terminación</div><p>Cualquiera de las partes puede terminar cuando quiera, sin preaviso ni indemnización.</p></div>
-    </div>
-
-    <div class="reveal" style="margin-top:72px;">
-      <div class="label">Las reglas</div>
-      <h2 class="title">Lo que no se negocia.</h2>
-      <p class="lead">Romper cualquiera de estas reglas tiene penalidades en el contrato y termina la relación.</p>
-    </div>
-    <div class="rules reveal">
-      <div class="rule"><i>01</i><div>No publicas el trabajo ni nombras clientes: ni portafolio, ni Behance, ni redes, ni premios.</div></div>
-      <div class="rule"><i>02</i><div>No revelas ni comentas lanzamientos que aún no son públicos, ni en qué cliente trabajas, ni siquiera para negarlo.</div></div>
-      <div class="rule"><i>03</i><div>Los activos del cliente solo sirven para ese pedido: no se reutilizan, no se guardan, no van a herramientas de IA no autorizadas.</div></div>
-      <div class="rule"><i>04</i><div>Nunca contratas directamente a los clientes que te asignamos, ni siquiera después de terminar.</div></div>
-      <div class="rule"><i>05</i><div>Tu usuario es personal: no lo prestas ni subcontratas el trabajo.</div></div>
-      <div class="rule"><i>06</i><div>Siempre entregas el archivo editable. Sin editable, la hora no se paga.</div></div>
-    </div>
-    <div class="secret reveal">
-      <div class="big">Ni a tu mamá.</div>
-      <p>Vas a trabajar en lanzamientos y campañas de los anunciantes más grandes del país y de Latinoamérica, antes de que salgan. El cliente nos confía su marca y confía en ti. Lo único que puedes decir es que trabajas para UpPipe.</p>
-    </div>
-
-    <div class="reveal" style="margin-top:72px;">
-      <div class="label">Lo que esperamos de ti</div>
-      <h2 class="title">Senior no es antigüedad.<br><span>Es nivel de pensamiento.</span></h2>
-    </div>
-    <div class="expect reveal">
-      <div>Entiendes la marca antes de diseñar</div>
-      <div>No ejecutas literal: filtras lo que no funciona</div>
-      <div>Propones con criterio estratégico</div>
-      <div>Garantizas originalidad</div>
-      <div>Usas la IA como herramienta, no como sustituto</div>
-      <div>Levantas la mano cuando el brief cambia o no alcanza</div>
-    </div>
-  </div>
-</section>
-
-<!-- PREGUNTAS -->
-<section class="bg-white" id="preguntas">
-  <div class="container">
-    <div class="reveal">
-      <div class="label">Preguntas frecuentes</div>
-      <h2 class="title">Lo que más nos preguntan.</h2>
-    </div>
-    <div class="faq">
-      <div class="faq-group">Aplicación</div>
-      <details><summary>¿Cuánto tarda la respuesta después de aplicar?</summary><p>Revisamos cada aplicación personalmente. Si hay match, te escribimos en 5 días hábiles. Si no, también te avisamos.</p></details>
-      <details><summary>¿Tengo que vivir en Colombia?</summary><p>No tienes que ir a ninguna oficina: trabajas desde donde quieras. El pago se hace en pesos a una cuenta bancaria colombiana.</p></details>
-      <details><summary>¿Necesito exclusividad?</summary><p>No. Puedes trabajar con otros clientes, incluso con la competencia. Tú decides cuántas horas tomas.</p></details>
-
-      <div class="faq-group">Pagos</div>
-      <details><summary>¿Cada cuánto me pagan?</summary><p>Una vez al mes. La plataforma arma tu cuenta de cobro con las horas aprobadas de ese mes; tú la revisas y la firmas ahí.</p></details>
-      <details><summary>¿Los 30 días para el pago son hábiles?</summary><p>No, son calendario. Se cuentan desde que radicas la cuenta de cobro completa, y el pago sale el viernes siguiente al día 30.</p></details>
-      <details><summary>¿Cuándo paso mi planilla de seguridad social?</summary><p>Con cada cuenta de cobro: adjuntas la planilla PILA pagada del mes anterior, con tu RUT actualizado, cédula y certificación bancaria. Si falta algo, los 30 días no empiezan a contar.</p></details>
-
-      <div class="faq-group">Horas y descuentos</div>
-      <details><summary>¿Qué horas no se pagan?</summary><p>Se paga la hora aprobada, no la registrada. No se pagan los reprocesos por no cumplir el estándar, los errores técnicos propios, leer mal el brief, pasarte de lo estimado sin pedir permiso, entregar sin editable o dejar el cronómetro prendido sin trabajar. Sí se pagan cuando el brief estaba incompleto, el cliente manda información nueva, cambia el lineamiento o quiere otra cosa. Todo descuento se explica por escrito y ves el historial de cada pieza.</p></details>
-      <details><summary>¿Me descuentan los ajustes que el cliente pide después?</summary><p>No. Si el cliente cambió de idea o mandó información nueva, es una ronda nueva, con sus propias horas, y se paga. Solo se descuenta si el ajuste corrige un error tuyo o algo que el brief sí pedía.</p></details>
-      <details><summary>¿Cuándo debo pedir una extensión de tiempo?</summary><p>Antes de pasarte de las horas estimadas, por la plataforma. Apenas veas que no alcanzan, pide la extensión y explica por qué. No entregues a medias sin avisar.</p></details>
-
-      <div class="faq-group">Portafolio</div>
-      <details><summary>¿Puedo usar los artes finales en mi portafolio?</summary><p>No. Ni en Behance, ni en redes, ni en entrevistas o presentaciones privadas, ni después del lanzamiento. Tampoco puedes decir para qué marca trabajaste. Lo que sí puedes decir es que trabajas para UpPipe.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- FORMULARIO -->
-<section class="form-section" id="aplica" style="background:var(--cream);">
-  <div class="container">
-    <div style="text-align:center;" class="reveal">
-      <div class="label">Aplica al Creative Crew</div>
-      <h2 class="title">¿Listo para aplicar?</h2>
-      <p class="lead" style="margin:16px auto 0;">Toma 5 minutos. Revisamos cada aplicación personalmente y te respondemos en 5 días hábiles si hay match.</p>
-    </div>
-
-    <div class="form-card" id="formCard" style="background:var(--white);">
+    <div id="aplica" class="c3-form">
+      <h2 class="c3-form-t">Postula tu portafolio</h2>
+      <div class="form-card" id="formCard" style="background:var(--white);">
       <form id="citlForm" onsubmit="submitForm(event)">
         <div class="form-row">
           <div class="form-group">
@@ -638,29 +504,87 @@ footer a{color:rgba(255,255,255,.7);text-decoration:none;}
         </div>
         <button type="submit" class="form-btn" id="citlSubmit">Enviar aplicación →</button>
         <p class="form-note" id="citlError" style="display:none;color:#C62828;">No pudimos enviar tu aplicación. Intenta de nuevo en un momento o escríbenos a <a href="mailto:hello@uppipe.io">hello@uppipe.io</a> con tu portafolio.</p>
-        <p class="form-note">Revisamos cada aplicación personalmente. Si hay match, te escribimos en 5 días hábiles. Si no, también te avisamos.</p>
+        <p class="form-note">Revisamos cada aplicación personalmente y te respondemos en 24 horas.</p>
       </form>
       <div class="success-msg" id="successMsg">
         <div style="font-size:48px;margin-bottom:16px;">🎯</div>
         <h3>Aplicación recibida.</h3>
-        <p>Revisamos tu portafolio y te respondemos en 5 días hábiles.</p>
+        <p>Revisamos tu portafolio y te respondemos en 24 horas.</p>
       </div>
+    </div>
+    </div>
+  </div>
+</header>
+
+<section id="que-encuentras" class="c3-dk c3-s-night">
+  <div class="container">
+    <div class="label reveal">Qué encuentras</div>
+    <h2 class="title reveal" style="max-width:900px">Más espacio para crear. <span>Menos tiempo persiguiendo proyectos.</span></h2>
+    <div class="c3-grid4 reveal">
+      <div class="c3-card" style="background:#1A56FF;color:#fff"><h3>Oportunidades reales</h3><p>Proyectos de marcas que necesitan criterio senior.</p></div>
+      <div class="c3-card" style="background:#C8FF00;color:var(--ink)"><h3>Tu especialidad</h3><p>Trabajas en lo que mejor sabes hacer.</p></div>
+      <div class="c3-card c3-glass"><h3>Una comunidad</h3><p>Pares senior con quienes aprender y crecer.</p></div>
+      <div class="c3-card c3-glass"><h3>Tu criterio cuenta</h3><p>Se valora tu mirada, no solo tu velocidad.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACTO -->
-<section class="contact">
-  <div class="container">
-    <h2>Si te motiva diseñar con criterio, trabajar con autonomía y escalar tu ingreso:<br><span>UpPipe es para ti.</span></h2>
-    <p>Aplica en 5 minutos. Te respondemos en 5 días hábiles.</p>
-    <a href="#aplica" class="btn btn-lime">Aplica al Creative Crew →</a>
-    <div class="who">¿Dudas sobre el proceso? Escríbele a Luiza Cardona, Head PM: <a href="mailto:operations@uppipe.io">operations@uppipe.io</a></div>
+<section class="c3-dk c3-s-blue" id="a-quien">
+  <div class="container c3-split c3-top">
+    <div class="reveal"><div class="label">A quién buscamos</div><h2 class="title">Creativos senior con portafolio y <span>criterio propio.</span></h2><p class="lead">Más de 5 años de experiencia en marcas, agencias o equipos internos.</p></div>
+    <div class="reveal"><h3 class="c3-h3">Especialidades que buscamos hoy</h3>
+      <div><span class="c3-chip">Diseño senior</span><span class="c3-chip">Motion y video</span><span class="c3-chip">Dirección de arte</span><span class="c3-chip">UX/UI</span><span class="c3-chip">Ilustración</span><span class="c3-chip">Contenido para redes</span></div>
+      <p class="lead" style="font-size:15px">¿Tu especialidad no está? Postúlate igual: la lista cambia según la demanda de las marcas.</p></div>
   </div>
 </section>
 
-<footer>
-  © 2026 UpPipe Creative Crew
+<section id="postulacion" class="c3-dk c3-s-night">
+  <div class="container">
+    <div class="label reveal">Postulación</div>
+    <h2 class="title reveal">Cuatro pasos, <span>sin vueltas.</span></h2>
+    <div class="c3-grid4 reveal">
+      <div class="c3-card c3-glass c3-step"><div class="n">1</div><h3>Postula</h3><p>Comparte tu portafolio, tu especialidad y tu disponibilidad.</p></div><div class="c3-card c3-glass c3-step"><div class="n">2</div><h3>Revisamos</h3><p>Nuestro equipo revisa tu portafolio.</p></div><div class="c3-card c3-glass c3-step"><div class="n">3</div><h3>Conversamos</h3><p>Te contamos cómo trabajamos y resolvemos tus dudas.</p></div><div class="c3-card c3-glass c3-step"><div class="n">4</div><h3>Bienvenida</h3><p>Entras a la comunidad y a los proyectos según tu especialidad.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="c3-claro">
+  <div class="container c3-claros">
+    <h2>Seamos claros.</h2>
+    <p>El Creative Crew no es un empleo fijo, ni una bolsa de hojas de vida, ni garantiza un volumen de proyectos. Es una comunidad de talento senior conectada con oportunidades reales.</p>
+  </div>
+</section>
+
+<section class="c3-dk c3-s-navy" id="preguntas">
+  <div class="container">
+    <div class="label reveal">Preguntas frecuentes</div>
+    <h2 class="title reveal" style="margin-bottom:20px">Antes de postularte.</h2>
+    <div class="c3-faq reveal"><details><summary>¿Tengo que ser senior?</summary><p>Sí. El Creative Crew es solo para perfiles senior con portafolio comprobable.</p></details><details><summary>¿Puedo trabajar desde cualquier ciudad?</summary><p>Sí. El trabajo es remoto.</p></details><details><summary>¿Cómo y cuánto se paga?</summary><p>Te lo explicamos en detalle en la conversación, después de revisar tu portafolio.</p></details><details><summary>¿Hay exclusividad?</summary><p>No es exclusividad, es reserva: nunca muestras las piezas que haces para UpPipe ni dices para qué cliente trabajas, ni después de publicada la campaña. Solo puedes decir que prestas servicios a UpPipe.</p></details></div>
+  </div>
+</section>
+
+<section class="c3-cta">
+  <div class="container c3-split">
+    <div><h2>Tu próximo proyecto <span>puede empezar aquí.</span></h2><p>Postula tu portafolio. Te respondemos en 24 horas.</p></div>
+    <a href="#aplica" class="btn btn-lime">Postula tu portafolio</a>
+  </div>
+</section>
+
+<footer class="c3-foot">
+  <div class="container">
+    <div class="c3-foot-top"><span class="c3-foot-brand"><svg viewBox="88 298 844 436" fill="none" aria-hidden="true">
+        <rect fill="#1A56FF" x="525.84" y="549.52" width="33.58" height="82.76"/>
+        <rect fill="#1A56FF" x="525.84" y="508.85" width="33.58" height="24.88"/>
+        <path fill="#1A56FF" d="M242.21,410.48l-.18,76.77c0,17.43,12.71,29.59,30.87,29.59,29.05,0,42.66-24.69,42.66-34.5l.18-71.87h33.41v121.98h-33.41v-21.97c-7.62,11.44-24.87,23.24-50.1,23.24s-56.28-14.16-56.28-46.48v-76.77h32.86Z"/>
+        <path fill="#1A56FF" d="M364.24,409.05h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.4,489.66c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M364.6,548.87h33.41v21.6c10.53-11.98,32.49-23.06,55.37-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.15,0-44.84-11.44-55.37-23.42v48.01h-33.41v-123.53ZM443.75,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.2,18.34-45.2,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M573.82,548.87h33.4v21.6c10.53-11.98,32.5-23.06,55.38-23.06,35.4,0,63.54,23.42,63.54,50.83,0,31.23-28.14,49.56-63.54,49.56-20.16,0-44.85-11.44-55.38-23.42v48.01h-33.4v-123.53ZM652.97,629.48c24.51,0,39.58-12.53,39.58-30.86,0-20.88-17.43-33.22-40.12-33.22-26.51,0-45.21,18.34-45.21,31.59s17.97,32.5,45.75,32.5Z"/>
+        <path fill="#1A56FF" d="M734.13,602.43c0-31.95,32.13-52.47,69.72-52.47,34.49,0,66.63,16.89,66.81,52.83,0,2.9-.36,5.99-1.09,8.71-10.17,0-87.87.36-99.49.36.55,13.98,13.61,25.6,32.49,25.6,13.07,0,25.78-4.72,34.13-13.8l26.15,4.36c-9.08,16.16-32.32,26.5-59.91,26.5-37.58,0-68.81-20.33-68.81-52.1ZM769.53,598.8l65.72-.18c0-17.97-13.43-30.5-32.68-30.5-21.24,0-33.22,15.61-33.04,30.68Z"/>
+      </svg>
+      <span class="brand-tag">Creative Crew</span></span>
+      <span><a href="https://www.linkedin.com/company/uppipe" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:operations@uppipe.io">operations@uppipe.io</a></span></div>
+    <div class="c3-foot-bot"><span>© 2026 UpPipe. Todos los derechos reservados.</span><span><a href="https://uppipe.co/terminos">Términos</a> · <a href="https://uppipe.co/privacidad">Política de tratamiento de datos personales (Ley 1581 de 2012)</a></span></div>
+  </div>
 </footer>
 
 <script>
